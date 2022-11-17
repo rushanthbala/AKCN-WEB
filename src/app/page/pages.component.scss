@@ -119,19 +119,6 @@ mat-sidenav-container {
 .nested-list {
   padding-left: 12px;
 }
-// .active-side {
-//   background-color: var(--primary);
-//   mat-icon {
-//     opacity: 1;
-//   }
-//   img {
-//     opacity: 1;
-//   }
-//   span {
-//     opacity: 1;
-//     color: var(--main) !important;
-//   }
-// }
 .menu-button:hover {
   mat-icon {
     opacity: 1;
@@ -192,16 +179,9 @@ mat-divider {
   height: 7%;
   display: flex;
   align-items: center;
-  // background: aqua;
-  // // box-shadow: red;
-  // -webkit-box-shadow: 0px 3px 6px #272d3b33;
-  // -moz-box-shadow: 0px 3px 6px #272d3b33;
-  // box-shadow: 0px 3px 6px #272d3b33;
-  // background: #ffffff 0% 0% no-repeat padding-box;
 }
 .navbar-divs {
   width: 100%;
-  // height: 14%;
   display: flex;
   flex-direction: column;
   max-width: 2000px;
@@ -228,13 +208,11 @@ mat-divider {
   max-height: auto;
   height: auto;
   border-radius: 10px;
-  // padding: 16px;
   overflow: auto;
   max-width: 1550px;
   margin: auto;
 }
 .side-icon-div {
-  // width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,7 +222,6 @@ mat-divider {
   width: 24px !important;
   margin-right: 10px;
 }
-// 10rem
 .menu-btn-end {
   margin-top: 10rem;
 }
@@ -313,7 +290,6 @@ hr {
   margin-left: 17px;
 }
 .secound-nav {
-  // max-width: 1200px;
   width: 100%;
   padding: 0px 10px 0px 0px;
 }
@@ -338,8 +314,6 @@ hr {
   padding: 14px;
 }
 .icon {
-  // width: 50px;
-  // height: 50px;
   width: 100%;
   max-width: 24px;
   height: auto;
@@ -381,12 +355,6 @@ hr {
   background-image: url("../../assets/svg/Group\ 26.svg");
   background-repeat: no-repeat;
 }
-
-// .icon-Calendar:hover {
-//   background-image: url("../../assets/svgHover/Calendar.svg");
-//   // background-image: url("../../assets/svg/Group.svg");
-//   background-repeat: no-repeat;
-// }
 .icon-setteing:hover {
   background-repeat: no-repeat;
   color: orange;
