@@ -1,0 +1,93 @@
+<div class="main-div">
+  <div class="main-heading">Reply Comment Information's</div>
+  <div class="table-div" style="overflow-x: auto">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>Comments</th>
+        <th style="text-align: center">ACTION</th>
+      </tr>
+      <tr
+        *ngFor="
+          let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
+        "
+      >
+        <td>{{ us.id }}</td>
+        <td>{{ us.name }}</td>
+
+        <td>{{ us.comments }}</td>
+
+        <td
+          style="text-align: center; cursor: pointer"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          (click)="selectingID(us.id)"
+        >
+          <img
+            src="../../../assets/delete.svg"
+            alt="delete"
+            width="28"
+            color="red"
+          />
+        </td>
+      </tr>
+    </table>
+    <br />
+    <pagination-controls
+      class="my-pagination"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="false"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="register-form">
+          <h1 class="form-heading mb-4 int-div">Conform To Delete The Data</h1>
+          <!-- <br /> -->
+          <br />
+          <div class="row d-flex justify-content-center w-50">
+            <div
+              class="col-4 yes btn-sty"
+              (click)="handleDelete()"
+              data-bs-dismiss="modal"
+            >
+              <div class="">Yes</div>
+            </div>
+            <div class="no btn-sty col-4" data-bs-dismiss="modal">No</div>
+          </div>
+          <br />
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>

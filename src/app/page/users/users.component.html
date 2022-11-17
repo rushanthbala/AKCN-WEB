@@ -1,0 +1,53 @@
+<div class="main-div">
+  <div class="main-heading">User Information's</div>
+  <div class="table-div" style="overflow-x: auto">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>IMAGE</th>
+        <th>BIO</th>
+        <th>POINTS</th>
+        <!-- <th style="text-align: center">ACTION</th> -->
+      </tr>
+      <tr
+        *ngFor="
+          let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
+        "
+      >
+        <!--   -->
+        <td>{{ us.id }}</td>
+        <td>{{ us.name }}</td>
+        <td>
+          <img
+            src="{{ baseurl + us.image }}"
+            alt="user"
+            color="red"
+            class="img"
+          />
+          <!-- {{ us.Image }} -->
+        </td>
+        <td>{{ us.bio }}</td>
+        <td>{{ us.points }}</td>
+
+        <!-- <td style="text-align: center" (click)="handleDelete(us.id)">
+          <img
+            src="../../../assets/delete.svg"
+            alt="delete"
+            width="28"
+            color="red"
+          />
+        </td> -->
+      </tr>
+    </table>
+    <br />
+    <pagination-controls
+      class="my-pagination"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div>
+</div>

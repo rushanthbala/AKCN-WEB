@@ -1,0 +1,100 @@
+<div
+  class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
+>
+  <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
+
+  <div class="input-div">
+    <input
+      type="text"
+      class="form-control int mt-2"
+      id="ID"
+      placeholder="Search"
+      formControlName="address"
+    />
+  </div>
+  <div class="btn-set d-flex m-1">
+    <button
+      class="input-group-text cus-btn-down btn-c-1"
+      id="basic-addon2"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      (click)="exportNormalTable()"
+    >
+      Excel
+    </button>
+    <button
+      class="input-group-text cus-btn-down btn-c-2"
+      id="basic-addon2"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      (click)="openPDF()"
+    >
+      PDF
+    </button>
+    <button
+      class="input-group-text cus-btn-down btn-c-3"
+      id="basic-addon2"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      Print
+    </button>
+  </div>
+</div>
+
+<!-- <table id="ExampleNormalTable" class="normal-table mat-elevation-z8">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Weight</th>
+      <th>Symbol</th>
+    </tr>
+  </thead>
+</table> -->
+<div id="htmlData">
+  <div class="main-div">
+    <!-- <div class="main-heading">User Information's</div> -->
+    <div class="table-div">
+      <table id="ExampleNormalTable">
+        <tr>
+          <th>TICKET</th>
+          <th>ID</th>
+          <th>SUBJECT</th>
+          <th>PHONE</th>
+          <th>CREATED BY</th>
+          <th>CREATED AT</th>
+          <!-- <th style="text-align: center">ACTION</th> -->
+        </tr>
+        <tr
+          *ngFor="
+            let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
+          "
+        >
+          <!--   -->
+          <td>{{ us.ticket }}</td>
+          <td>{{ us.id }}</td>
+
+          <td>{{ us.subject }}</td>
+          <!-- <td>
+          <div class="status">
+            {{ us.address }}
+          </div>
+        </td> -->
+          <td>{{ us.phone }}</td>
+          <td>{{ us.createBy }}</td>
+          <td>{{ us.createAt }}</td>
+        </tr>
+      </table>
+      <br />
+      <pagination-controls
+        class="my-pagination"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        (pageChange)="p = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>

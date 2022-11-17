@@ -1,0 +1,166 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <div class="heading-main" routerLink="/auth/home">
+      <div class="d-flex p-4">
+        <img
+          src="../../assets/sidebarIcon/jack.jpeg"
+          alt="logo"
+          srcset=""
+          class="main-user-logo"
+        />
+        <div class="headings">
+          <div class="heading-main">ALEX KUMAR</div>
+          <div class="heading-para">ADMIN</div>
+        </div>
+      </div>
+    </div>
+    <hr
+      style="color: #a6a6a6; width: 180px; margin: 0 auto; margin-top: 0.7rem"
+    />
+
+    <br />
+    <br />
+    <div class="menu-center-items">
+      <div
+        *ngFor="let item of menuItems; let i = index"
+        (click)="menuClick(i)"
+        style="width: 100%"
+      >
+        <button
+          mat-button
+          class="menu-button"
+          routerLink="{{ item.link }}"
+          routerLinkActive="active-side"
+        >
+          <div>
+            <span class="icon {{ item.iconClass }}">&nbsp;</span>
+
+            <!-- <img src="{{ item.icon }}" class="fa" /> -->
+            <!-- <img src="../../assets/icons/dashboard.png" class="fa" /> -->
+            <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+            <span>{{ item.label }} </span>
+            <!-- <span class="fa minus">&nbsp;</span> -->
+
+            <span class="col-icon-span">
+              <span class="fa icon plus" *ngIf="!item.state">&nbsp;</span>
+              <span class="fa icon minus" *ngIf="item.state">&nbsp;</span>
+              <!-- <img
+                src="../../assets/icons/plus.png"
+                class="fa fa-minus"
+                *ngIf="!item.state"
+                aria-hidden="true"
+              />
+              <img
+                src="../../assets/icons/minus.png"
+                class="fa fa-minus"
+                *ngIf="item.state"
+                aria-hidden="true"
+              /> -->
+              <!-- <span
+                class="fa fa-minus"
+                *ngIf="item.state"
+                aria-hidden="true"
+              ></span> -->
+            </span>
+          </div>
+        </button>
+        <div *ngIf="item.item.length > 0 && item.state">
+          <div *ngFor="let it of item.item; let i = index">
+            <div class="nested-list">
+              <button
+                mat-button
+                class="menu-button"
+                routerLink="{{ it.href }}"
+                routerLinkActive="active-side"
+              >
+                <i class="fa fa-use" aria-hidden="true"></i>
+                <span>{{ it.name }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-flex justify-content-center align-items-center under-logo-div"
+      >
+        <img
+          src="../../assets/icons/logo1.png"
+          class="fa fa-minus"
+          aria-hidden="true"
+        />
+        <div class="logo-under">AKCN-MIS</div>
+      </div>
+      <!-- <mat-divider></mat-divider> -->
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <div class="navbar-div">
+        <button
+          mat-icon-button
+          class="side-nav-mode"
+          (click)="sidenav.toggle()"
+        >
+          <div class="i1">
+            <img
+              src="../../assets/svg/Group (1).svg"
+              alt="logo"
+              srcset=""
+              class="fa main-user-avathar-menu"
+            />
+            <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+          </div>
+          <!-- <mat-icon style="color: #11193c">menu</mat-icon> -->
+        </button>
+        <br />
+        <br />
+        <br />
+      </div>
+      <div class="navbar-divs">
+        <div
+          class="d-flex justify-content-lg-between justify-content-sm-center flex-column flex-lg-row secound-nav"
+        >
+          <div class="navbar-name">
+            <div class="navbar-name" *ngIf="!sidenav.opened">
+              <div style="min-width: 180px; font-size: 20px; margin: 6px">
+                {{ href }}
+              </div>
+            </div>
+            <div class="navbar-name" *ngIf="sidenav.opened">
+              <div>{{ href }}</div>
+            </div>
+          </div>
+          <div
+            class="navbar-avartar-div d-flex align-items-center justify-content-start justify-content-lg-end"
+            style="margin: 6px"
+          >
+            <div class="i1">
+              <img
+                src="../../assets/svg/Group 28.svg"
+                alt="logo"
+                srcset=""
+                class="fa main-user-avathars"
+              />
+              <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+            </div>
+            <div class="avathar">
+              <img
+                src="../../assets/sidebarIcon/jack.jpeg"
+                alt="logo"
+                srcset=""
+                class="main-user-avathar"
+              />
+            </div>
+            <div class="username">Alex Kumar</div>
+          </div>
+        </div>
+        <div class="welcome-username">Welcome back, Alex</div>
+      </div>
+
+      <br />
+      <div class="all-content">
+        <router-outlet (activate)="getNavName()"></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

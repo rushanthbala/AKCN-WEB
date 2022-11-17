@@ -1,0 +1,33 @@
+.card {
+  color: #fff;
+  background: #fff;
+  width: 300px;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 6px;
+  border: none;
+}
+.card-number {
+  font-weight: 500 !important;
+  font-size: 28px;
+  padding-bottom: 10px;
+  color: #11193c;
+}
+.card-heading {
+  font-size: 1rem;
+  font-weight: 400 !important;
+  padding-top: 1rem;
+  color: #8990ad;
+}
+.card-flex {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.image {
+  width: 100%;
+  max-width: 44px;
+
+  padding: 4px;
+  margin-left: 19px;
+}

@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+  font-family: "Montserrat", sans-serif !important;
+  // background-color: red;
+}
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* You can add global styles to this file, and also import other style files */
+:root {
+  // #008CB3
+  --main: #fff;
+  --primary: #00613d;
+  --mainText: #00613d; /*using heading*/
+  --primaryText: ##9b9b9b; /*using paragraph*/
+  font-family: "Montserrat", sans-serif !important;
+  --background: #fff;
+  --background-linear: #2594b0;
+  --linear: transparent linear-gradient(270deg, #008cb3 0%, #003c4d 100%) 0% 0%
+    no-repeat padding-box;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+  display: none;
+}
+// btn
+.btn-com-sty {
+  width: 100px;
+  height: 40px !important;
+  border-radius: 24px !important;
+  color: #fff;
+  border: none !important;
+  padding: 0px !important;
+  font-weight: 600 !important;
+}
+.btn-yes {
+  background-color: red !important;
+}
+.btn-no {
+  background-color: green !important;
+}
+.para {
+  color: #707070;
+}
+.head-2 {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+// model box css
+
+.modal-header {
+  border-bottom: none;
+}
+
+.model-footer {
+  border-bottom: none;
+}
+.modal {
+  margin-top: 6rem;
+}
+.modal-dialog {
+  box-shadow: 5px 5px 5px #ccc;
+}
+.modal-content {
+  border: none;
+}
+.cus-model-c-div {
+  width: 100%;
+}
+.card-head-h2 {
+  color: #0f2d52;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0px !important;
+}
+.cart-input {
+  width: 220px;
+}
+.cus-model-btn-down {
+  color: #fff !important;
+  border-radius: 10px;
+  max-width: 220px;
+  width: 100%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 1rem 0rem 0rem 0rem;
+  background-color: #027afe !important;
+}
+.cus-model-cancel-btn-down {
+  color: #027afe !important;
+  border-radius: 10px;
+  max-width: 220px;
+  width: 100%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 1rem 0rem 0rem 0rem;
+  background-color: #fff !important;
+  border: none !important;
+}
+.form-select {
+  font-size: 14px !important;
+}

@@ -1,0 +1,93 @@
+.heading {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+}
+.lbl {
+  padding-left: 20px;
+}
+.cus-form-check {
+  margin: 0px 14px 14px 1px;
+}
+.cus-btn {
+  background: #027afe !important;
+  color: #fff;
+  border-radius: 6px;
+}
+.int {
+  border-radius: 10px !important;
+  background-color: #99999917;
+}
+
+// table
+.main-div {
+  background-color: #fff;
+  // margin-top: 2rem;
+  border-radius: 24px;
+  // margin:1rem 4rem 0rem 4rem;
+}
+@media only screen and(max-width:900px) {
+  .main-div {
+    margin: auto !important;
+  }
+}
+.img {
+  width: 100%;
+  max-width: 32px;
+  border-radius: 4px;
+}
+.main-heading {
+  font-weight: 700 !important;
+  font-size: 26px !important;
+  padding: 2rem 0px 0px 2rem;
+}
+.table-div {
+  padding: 1rem;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  padding: 10px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+th {
+  font-weight: 600;
+}
+td {
+  font-weight: 400;
+  color: #000;
+}
+tr:nth-child(even) {
+  background-color: #99999917;
+  // opacity: 9%;
+}
+.status {
+  border-radius: 24px;
+  background-color: #d63964;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 50%;
+  min-width: 60px;
+  // margin: 0 auto;
+}
+
+// .my-pagination /deep/ .ngx-pagination{
+//   .ng-star-inserted{
+//     a{
+//       text-decoration: none;
+//     }
+//   }
+//   .current {
+//     background: var(--main);
+//      a{
+//       text-decoration: none;
+//     }
+//   }
+// }

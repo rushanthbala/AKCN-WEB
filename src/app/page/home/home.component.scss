@@ -1,0 +1,91 @@
+.card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  flex-wrap: wrap;
+  margin: auto;
+}
+@media screen and (max-width: 1200px) {
+  .card-main {
+    justify-content: space-around;
+  }
+  .table-heading {
+    width: 120% !important;
+    padding: 1rem !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .table-heading {
+    width: 220% !important;
+    padding: 1rem !important;
+  }
+  .canava-heading{
+    font-size: 16px !important;
+  }
+}
+.card {
+  color: #fff;
+  background: var(--linear);
+  width: 200px;
+  // height: 70px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // background: var(--background-linear);
+}
+.card-number {
+  font-weight: 400 !important;
+}
+.card-heading {
+  font-weight: 600 !important;
+}
+.table-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  width: 100%;
+  flex-direction: column;
+  background: #fff;
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 24px;
+}
+.canva-chart{
+    display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  // width: 100%;
+  flex-direction: column;
+  background: #fff;
+  padding: 1rem;
+  max-width: 600px;
+  margin:0rem 1rem !important;
+  border-radius: 24px;
+}
+// @media screen and (max-width: 1300px) {
+//   .canva-chart{
+//     // margin:1rem 0.5rem;
+//   }
+// }
+.canava-heading{
+    width: 100%;
+    text-align: left;
+    font-weight: 700 !important;
+    font-size: 26px;
+
+}
+.table-heading {
+  width: 100%;
+  padding: 1rem 0rem 2rem 89px;
+  font-size: 28px;
+  color: #272d3b;
+}
+//

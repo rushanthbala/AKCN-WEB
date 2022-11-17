@@ -1,0 +1,142 @@
+<p class="heading">Choose searching type and enter the value</p>
+<br />
+<form [formGroup]="loginForm" (ngSubmit)="searching()">
+  <div class="d-flex flex-wrap">
+    <div class="form-check cus-form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="flexRadioDefault1"
+        formControlName="type"
+        value="ConnectionID"
+        name="type"
+      />
+      <label class="form-check-label para lbl" for="flexRadioDefault1">
+        Connection ID
+      </label>
+    </div>
+
+    <div class="form-check cus-form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="flexRadioDefault1"
+        formControlName="type"
+        value="PhoneNo"
+        name="type"
+      />
+      <label class="form-check-label para lbl" for="flexRadioDefault1">
+        Phone No
+      </label>
+    </div>
+
+    <div class="form-check cus-form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="flexRadioDefault1"
+        formControlName="type"
+        value="NIC"
+        name="type"
+      />
+      <label class="form-check-label para lbl" for="flexRadioDefault1">
+        NIC
+      </label>
+    </div>
+
+    <div class="form-check cus-form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="flexRadioDefault1"
+        formControlName="type"
+        value="OldID"
+        name="type"
+      />
+      <label class="form-check-label para lbl" for="flexRadioDefault1">
+        Old ID
+      </label>
+    </div>
+    <div class="form-check cus-form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="flexRadioDefault1"
+        formControlName="type"
+        value="name"
+        name="type"
+      />
+      <label class="form-check-label para lbl" for="flexRadioDefault1">
+        Name
+      </label>
+    </div>
+  </div>
+  <br />
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control me-2 int"
+      placeholder="Connection ID"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+      formControlName="searchinginput"
+    />
+    <br />
+    <span
+      class="input-group-text cus-btn"
+      id="basic-addon2"
+      (click)="searching()"
+      >Search Connection</span
+    >
+  </div>
+</form>
+<br />
+<br />
+
+<p class="head-2">25 Results found</p>
+<!-- table -->
+<div class="main-div">
+  <!-- <div class="main-heading">User Information's</div> -->
+  <div class="table-div">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>SUBSCRIBER</th>
+        <th>PHONE</th>
+        <th>ADDRESS</th>
+        <th>STATUS</th>
+        <th>TV</th>
+        <th>TYPE</th>
+        <!-- <th style="text-align: center">ACTION</th> -->
+      </tr>
+      <tr
+        *ngFor="
+          let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
+        "
+      >
+        <!--   -->
+        <td>{{ us.id }}</td>
+        <td>{{ us.subscriber }}</td>
+
+        <td>{{ us.phone }}</td>
+        <td>
+          <div class="status">
+            {{ us.address }}
+          </div>
+        </td>
+        <td>{{ us.status }}</td>
+        <td>{{ us.tv }}</td>
+        <td>{{ us.type }}</td>
+      </tr>
+    </table>
+    <br />
+    <pagination-controls
+      class="my-pagination"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+<div class="row">
+  <div class="col-6">
+    <div class="subheadingCol">Admin informations</div>
+  </div>
+  <div class="col-6">
+    <div
+      class="subheadingColLeft"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      Add New Admin User
+    </div>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<!-- <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    Launch static backdrop modal
+  </button> -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="false"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          class="register-form"
+          [formGroup]="AdminLoginForm"
+          (ngSubmit)="AdminLogin()"
+        >
+          <h1 class="form-heading mb-4 int-div">Add New Admin user</h1>
+          <!-- <br /> -->
+          <div class="mb-2 int-div">
+            <input
+              placeholder="Enter The Email"
+              type="email"
+              class="input-core"
+              id="email"
+              aria-describedby="emailHelp"
+              formControlName="email"
+            />
+          </div>
+          <!-- <br /> -->
+          <div class="mb-4 int-div">
+            <input
+              type="password"
+              class="input-core"
+              id="password"
+              placeholder="Enter The password"
+              formControlName="password"
+            />
+          </div>
+          <!-- <br /> -->
+          <div class="mb-4 int-div">
+            <input
+              type="text"
+              class="input-core"
+              id="name"
+              placeholder="Enter The Name"
+              formControlName="name"
+            />
+          </div>
+          <div class="mb-4 int-div">
+            <input
+              type="text"
+              class="input-core"
+              id="number"
+              placeholder="Enter The Number"
+              formControlName="number"
+            />
+          </div>
+          <!-- <br /> -->
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary form-btn btn-div">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div> -->
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<!-- table -->
+<div class="main-div">
+  <div class="table-div" style="overflow-x: auto">
+    <table>
+      <tr style="background-color: var(--mainText); color: #fff">
+        <th>ID</th>
+        <th>Email</th>
+        <!-- <th>Name</th> -->
+        <th style="text-align: center">ACTION</th>
+      </tr>
+      <tr
+        *ngFor="
+          let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
+        "
+      >
+        <!--   -->
+        <td>{{ us.id }}</td>
+        <td>{{ us.email }}</td>
+        <!-- <td>{{ us.name }}</td> -->
+        <td
+          style="text-align: center; cursor: pointer"
+          (click)="handleDelete(us.id)"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop1"
+        >
+          <img
+            src="../../../assets/delete.svg"
+            alt="delete"
+            width="28"
+            color="red"
+          />
+        </td>
+      </tr>
+    </table>
+    <br />
+    <pagination-controls
+      class="my-pagination"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div>
+</div>
+
+<!-- Modal 02 -->
+<div
+  class="modal fade"
+  id="staticBackdrop1"
+  data-bs-backdrop="false"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="register-form">
+          <h1 class="form-heading mb-4 int-div">Conform Delete ?</h1>
+          <!-- <br /> -->
+          <div class="row">
+            <div class="col-6">
+              <button type="submit" class="btn btn-primary btn-com-sty btn-no">
+                No
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="submit" class="btn btn-primary btn-com-sty btn-yes">
+                Delete
+              </button>
+            </div>
+          </div>
+          <!-- <br /> -->
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div> -->
+    </div>
+  </div>
+</div>

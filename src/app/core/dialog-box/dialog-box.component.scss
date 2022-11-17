@@ -1,0 +1,63 @@
+.register-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .int-div {
+    width: 100%;
+    text-align: center;
+  }
+  .btn-div {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .input-core {
+    height: 45px;
+    max-width: 500px;
+    min-width: 270px;
+    padding-left: 26px;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+  }
+  .form-heading {
+    color: var(--mainText);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  .form-btn {
+    background-color: var(--mainText);
+    height: 40px;
+    max-width: 30px;
+    min-width: 270px;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    width: 100%;
+    font-weight: 600;
+  }
+  .modal-header {
+    border-bottom: none;
+  }
+  
+  .model-footer {
+    border-bottom: none;
+  }
+  .modal {
+    margin-top: 6rem;
+  }
+  .modal-dialog {
+    box-shadow: 5px 5px 5px #ccc;
+  }
+  .modal-content {
+    border: none;
+  }
+  

@@ -1,0 +1,1 @@
+export const DBURL = 'http://localhost:4000/';

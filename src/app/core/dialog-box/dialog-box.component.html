@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-6">
+    <div class="subheadingCol">Admin informations</div>
+  </div>
+  <div class="col-6">
+    <div class="subheadingColLeft">Add New Admin User</div>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdrop"
+>
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="false"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="register-form">
+          <h1 class="form-heading mb-4 int-div">Add New Admin user</h1>
+          <!-- <br /> -->
+          <div class="mb-2 int-div">
+            <input
+              placeholder="Enter The Email"
+              type="email"
+              class="input-core"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <!-- <br /> -->
+          <div class="mb-4 int-div">
+            <input
+              type="password"
+              class="input-core"
+              id="exampleInputPassword1"
+              placeholder="Enter The password"
+            />
+          </div>
+          <!-- <br /> -->
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary form-btn btn-div">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>
