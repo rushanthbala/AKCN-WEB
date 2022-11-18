@@ -21,9 +21,10 @@ import { AdminsComponent } from './admins/admins.component';
 import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 import { PendingTicketComponent } from './pending-ticket/pending-ticket.component';
+import { PendingOneTicketComponent } from './pending-one-ticket/pending-one-ticket.component';
 
 @NgModule({
-  declarations: [HomeComponent, CardTemplateComponent, TableComponent, DashboardComponent, AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent],
+  declarations: [HomeComponent, CardTemplateComponent, TableComponent, DashboardComponent, AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent, PendingOneTicketComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
