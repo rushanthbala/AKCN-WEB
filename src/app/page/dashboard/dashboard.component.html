@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
 >
   <div *ngFor="let it of sdata; let i = index">
@@ -8,17 +8,30 @@
       [img]="it.img"
     ></app-card-template>
   </div>
+</div> -->
+<div class="row">
+  <div
+    *ngFor="let it of sdata; let i = index"
+    class="col-6 col-sm-6 col-md-4 col-xl-3"
+  >
+    <app-card-template
+      title="{{ it.name }}"
+      number="{{ it.number }}"
+      [img]="it.img"
+    ></app-card-template>
+  </div>
 </div>
+
 <br />
 <br />
 <div class="row">
-  <div class="col-6">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
     <div class="canva-chart">
       <div class="canava-heading">Annual Report</div>
       <canvas id="chart" baseChart> </canvas>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
     <div class="canava-heading mb-3">Today Collection Report</div>
     <div class="row left-report-content mt-2">
       <div class="col-4">SANOJAN</div>
@@ -52,5 +65,3 @@
     </div>
   </div>
 </div>
-
-
