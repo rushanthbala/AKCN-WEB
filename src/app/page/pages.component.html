@@ -38,29 +38,13 @@
             <!-- <img src="{{ item.icon }}" class="fa" /> -->
             <!-- <img src="../../assets/icons/dashboard.png" class="fa" /> -->
             <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
-            <span>{{ item.label }} </span>
+            <span class="menu-button-label" >{{ item.label }} </span>
             <!-- <span class="fa minus">&nbsp;</span> -->
 
             <span class="col-icon-span">
               <span class="fa icon plus" *ngIf="!item.state">&nbsp;</span>
               <span class="fa icon minus" *ngIf="item.state">&nbsp;</span>
-              <!-- <img
-                src="../../assets/icons/plus.png"
-                class="fa fa-minus"
-                *ngIf="!item.state"
-                aria-hidden="true"
-              />
-              <img
-                src="../../assets/icons/minus.png"
-                class="fa fa-minus"
-                *ngIf="item.state"
-                aria-hidden="true"
-              /> -->
-              <!-- <span
-                class="fa fa-minus"
-                *ngIf="item.state"
-                aria-hidden="true"
-              ></span> -->
+             
             </span>
           </div>
         </button>
@@ -122,7 +106,7 @@
         >
           <div class="navbar-name">
             <div class="navbar-name" *ngIf="!sidenav.opened">
-              <div style="min-width: 180px; font-size: 20px; margin: 6px">
+              <div style="min-width: 180px; font-size: 24px;">
                 {{ href }}
               </div>
             </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { LoginService } from '../servise/login/login.service';
 import { ToastrService } from 'ngx-toastr';
+
 import {
   Router,
   CanActivate,
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     public dataServise: LoginService,
     private toastr: ToastrService,
     private router: Router
-  ) {}
+  ) { }
   loginForm: FormGroup | any;
   errmsg = '';
   sucmsg = '';
@@ -36,37 +37,42 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.loading = true;
-    console.log(this.loginForm.value);
     let data = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
+      phone:"077123456"
     };
-    console.log(data, 'data');
-    // {errorMessage: true, message: 'These credentials do not match!!.'}
-    this.dataServise.postValue('superadmin/login', data).subscribe(
-      (res: any) => {
-        console.log('Post created successfully!', res);
-        if (res.errorMessage) {
-          this.errmsg = res.message || 'These credentials do not match !!.';
-          // localStorage.setItem('auth', 'res.token');
-          // this.router.navigate(['auth/home']);
+    if (data.email == "" || data.password == "") {
+      this.isEmpty();
+      this.loading = false;
+    } else {
+      this.dataServise.postValue('admin/login', data).subscribe(
+        (res: any) => {
+          if (res.errorMessage) {
+            this.errmsg = res.message || 'These credentials do not match !!.';
+            this.loading = false;
+          } else {
+            localStorage.setItem('auth', JSON.stringify(res.message));
+            this.sucmsg = res.message || 'sucessfull !!.';
+            this.showSuccess()
+            this.loading = false;
+            this.router.navigate(['auth/dashboard/']);
+          }
+        },
+        (e) => {
           this.loading = false;
-        } else {
-          localStorage.setItem('auth', JSON.stringify(res.message));
-          this.sucmsg = res.message || 'sucessfull !!.';
-          console.log('auth', JSON.stringify(res.message));
-          this.loading = false;
-          this.router.navigate(['auth/dashboard/']);
         }
-      },
-      (e) => {
-        // console.log(e, 'error');
-        this.loading = false;
-      }
-    );
+      );
+    }
   }
 
   showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+    this.toastr.success('Sucessfully Login', 'Sucessfully');
+  }
+  showError() {
+    this.toastr.error('Someting Went Wrong', 'Error');
+  }
+  isEmpty() {
+    this.toastr.error('Fill All The Feild', 'Error');
   }
 }

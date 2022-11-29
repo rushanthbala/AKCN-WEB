@@ -36,7 +36,7 @@ export class PagesComponent implements OnInit {
   }
   ngAfterViewInit() {
     this.observer
-      .observe(['(max-width: 800px)'])
+      .observe(['(max-width: 1200px)'])
       // .pipe(untilDestroyed(this))
       .subscribe((res) => {
         console.log('sub');
@@ -66,8 +66,8 @@ export class PagesComponent implements OnInit {
     var urlSpilite = url.split('/');
     if (urlSpilite[2] === 'dashboard') {
       this.href = 'Dashboard';
-    } else if (urlSpilite[2] === 'admins') {
-      this.href = 'Admins';
+    } else if (urlSpilite[2] === 'create-ticket') {
+      this.href = 'Tickets';
     } else if (urlSpilite[2] === 'sendmessage') {
       this.href = 'Send Message';
     } else if (urlSpilite[2] === 'review') {
@@ -99,6 +99,7 @@ export class PagesComponent implements OnInit {
       label: 'Tickets',
       text: 'Lorem Ipsum',
       state: false,
+      link: '/auth/create-ticket',
       item: [
         { name: 'Create Tickets', href: '/auth/create-ticket' },
         { name: 'Pending Tickets', href: '/auth/pending-ticket' },
@@ -110,7 +111,6 @@ export class PagesComponent implements OnInit {
         },
         { name: 'Cancelled Tickets' },
       ],
-      link: '/auth/dashboard',
       icon: '../../assets/icons/Bookmark png (2).png',
     },
     {
