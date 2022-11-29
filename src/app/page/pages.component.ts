@@ -21,6 +21,9 @@ export class PagesComponent implements OnInit {
     private authService: AuthService
   ) {}
   public href: string = '';
+  public link: string = '';
+  public sublink: string = '';
+  public contentSubHeading: string = '';
   public navName: string = '';
   logout() {
     localStorage.clear();
@@ -66,23 +69,14 @@ export class PagesComponent implements OnInit {
     var urlSpilite = url.split('/');
     if (urlSpilite[2] === 'dashboard') {
       this.href = 'Dashboard';
+      this.link ='/auth/dashboard'
+      this.contentSubHeading='Welcome back, Alex'
     } else if (urlSpilite[2] === 'create-ticket') {
       this.href = 'Tickets';
-    } else if (urlSpilite[2] === 'sendmessage') {
-      this.href = 'Send Message';
-    } else if (urlSpilite[2] === 'review') {
-      this.href = 'Review';
-    } else if (urlSpilite[2] === 'comment') {
-      this.href = 'Comment';
-    } else if (urlSpilite[2] === 'replycomment') {
-      this.href = 'Reply Comment';
-    } else if (urlSpilite[2] === 'setting') {
-      this.href = 'Setting';
-    } else if (urlSpilite[2] === '') {
-      this.href = '';
-    } else if (urlSpilite[2].length < 0) {
-      this.href = 'testeter';
-    }
+      this.link ='/auth/create-ticket'
+      this.sublink ='/auth/create-ticket'
+      this.contentSubHeading="Tickets > Create Tickets"
+    } 
   }
   menuItems = [
     {
@@ -119,7 +113,7 @@ export class PagesComponent implements OnInit {
       text: 'Lorem Ipsum',
       state: false,
       item: [{ name: 'name01' }],
-      link: '/auth/dashboard',
+      link: '/auth/requests',
       icon: '../../assets/icons/adduser.png',
     },
     {
@@ -128,7 +122,7 @@ export class PagesComponent implements OnInit {
       text: 'Lorem Ipsum',
       state: false,
       item: [{ name: 'name01' }],
-      link: '/auth/dashboard',
+      link: '/auth/connection',
       icon: '../../assets/icons/Swap.png',
     },
     {
@@ -137,7 +131,7 @@ export class PagesComponent implements OnInit {
       text: 'Lorem Ipsum',
       state: false,
       item: [{ name: 'name01' }],
-      link: '/auth/dashboard',
+      link: '/auth/payments',
       icon: '../../assets/icons/currency-dollar.png',
     },
     {
@@ -146,7 +140,7 @@ export class PagesComponent implements OnInit {
       text: 'Lorem Ipsum',
       state: false,
       item: [{ name: 'name01' }],
-      link: '/auth/dashboard',
+      link: '/auth/reports',
       icon: '../../assets/icons/Calendar.png',
     },
     {
@@ -155,7 +149,7 @@ export class PagesComponent implements OnInit {
       text: 'Lorem Ipsum',
       state: false,
       item: [{ name: 'name01' }],
-      link: '/auth/dashboard',
+      link: '/auth/setting',
       icon: '../../assets/icons/setting.png',
     },
   ];

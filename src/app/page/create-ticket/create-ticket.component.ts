@@ -12,15 +12,19 @@ export class CreateTicketComponent implements OnInit {
   tableDatasetsData: any;
   tableDatasetsDate: any;
   userData: any;
-
+  // table variable
+  // showTable :boolean |any;
+  showTable:boolean=true ;
+  tableResult : any;
   userArray: any = [
     {
-      ID: 1,
-      TICKET: 'rushanth',
-      SUBJECT: '0776450707',
-      PHONE: 'add 01',
-      CREATED_BY: '1212',
-      CREATED_AT: '21',
+      id: 1,
+      subscriber: 'rushanth',
+      phone: '0776450707',
+      address: 'add 01',
+      status: '1212',
+      tv: '21',
+      type: 'NORMAL',
     },
     {
       id: 2,
@@ -62,18 +66,14 @@ export class CreateTicketComponent implements OnInit {
   p: number = 1;
 
   ngOnInit(): void {
-    this.initialForm();
     this.userData = this.userArray;
   }
+  searching(first:Object|any) {
+    console.log("this.loginForm.value"+first.searchinginput,first.type);
+    this.showTable= true
 
-  initialForm() {
-    this.loginForm = this.fb.group({
-      searchinginput: '',
-      type: '',
-    });
   }
-
-  searching() {
-    console.log(this.loginForm.value);
+  viewDetails(){
+    this.showTable= false
   }
 }

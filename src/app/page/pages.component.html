@@ -28,23 +28,16 @@
       >
         <button
           mat-button
-          class="menu-button"
+          class="menu-button {{item.link==link &&  'sidebtnhover'}}"
           routerLink="{{ item.link }}"
           routerLinkActive="active-side"
         >
           <div>
             <span class="icon {{ item.iconClass }}">&nbsp;</span>
-
-            <!-- <img src="{{ item.icon }}" class="fa" /> -->
-            <!-- <img src="../../assets/icons/dashboard.png" class="fa" /> -->
-            <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
             <span class="menu-button-label" >{{ item.label }} </span>
-            <!-- <span class="fa minus">&nbsp;</span> -->
-
             <span class="col-icon-span">
               <span class="fa icon plus" *ngIf="!item.state">&nbsp;</span>
               <span class="fa icon minus" *ngIf="item.state">&nbsp;</span>
-             
             </span>
           </div>
         </button>
@@ -57,8 +50,10 @@
                 routerLink="{{ it.href }}"
                 routerLinkActive="active-side"
               >
-                <i class="fa fa-use" aria-hidden="true"></i>
-                <span>{{ it.name }}</span>
+              <i *ngIf="it.href== sublink" class="fa fa-circle" style="color:#027AFE;" aria-hidden="true"></i>
+              <i *ngIf=" !(it.href== sublink)" class="fa  fa-circle" style="color:none;width: 20px;" aria-hidden="true"></i>
+              <!-- <i class="fa fa-circl" style="color:red;" aria-hidden="true"></i> -->
+              <span>{{ it.name }}</span>
               </button>
             </div>
           </div>
@@ -138,7 +133,7 @@
             <div class="username">Alex Kumar</div>
           </div>
         </div>
-        <div class="welcome-username">Welcome back, Alex</div>
+        <div class="welcome-username">{{contentSubHeading}}</div>
       </div>
 
       <br />

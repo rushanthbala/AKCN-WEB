@@ -22,9 +22,13 @@ import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 import { PendingTicketComponent } from './pending-ticket/pending-ticket.component';
 import { PendingOneTicketComponent } from './pending-one-ticket/pending-one-ticket.component';
+import { CustomButtonComponent } from '../core/custom-button/custom-button.component';
+import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
 
 @NgModule({
-  declarations: [HomeComponent, CardTemplateComponent, TableComponent, DashboardComponent, AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent, PendingOneTicketComponent],
+  declarations: [HomeComponent, CardTemplateComponent, TableComponent, DashboardComponent,
+     AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent,
+      PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
