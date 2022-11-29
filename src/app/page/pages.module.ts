@@ -2,7 +2,6 @@ import { NgModule, enableProdMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
-import { HomeComponent } from './home/home.component';
 import { CardTemplateComponent } from '../core/card-template/card-template.component';
 import { TableComponent } from '../core/table/table.component';
 import { UserApiService } from '../servise/user-api.service';
@@ -26,7 +25,7 @@ import { CustomButtonComponent } from '../core/custom-button/custom-button.compo
 import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
 
 @NgModule({
-  declarations: [HomeComponent, CardTemplateComponent, TableComponent, DashboardComponent,
+  declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
      AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent,
       PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent],
   imports: [

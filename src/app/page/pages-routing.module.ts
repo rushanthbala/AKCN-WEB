@@ -4,7 +4,6 @@ import { AdminsComponent } from './admins/admins.component';
 import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
-import { HomeComponent } from './home/home.component';
 import { PagesComponent } from './pages.component';
 import { PendingOneTicketComponent } from './pending-one-ticket/pending-one-ticket.component';
 import { PendingTicketComponent } from './pending-ticket/pending-ticket.component';
