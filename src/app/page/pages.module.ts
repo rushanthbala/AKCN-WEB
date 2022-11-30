@@ -19,11 +19,14 @@ import { PendingTicketComponent } from './pending-ticket/pending-ticket.componen
 import { PendingOneTicketComponent } from './pending-one-ticket/pending-one-ticket.component';
 import { CustomButtonComponent } from '../core/custom-button/custom-button.component';
 import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MaterialExampleModule } from './material.module';
+import { DialogBoxComponent } from '../core/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
      AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent,
-      PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent],
+      PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent,DialogBoxComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -32,9 +35,11 @@ import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
     NgChartsModule,
     ReactiveFormsModule,
     FormsModule,
+    MaterialExampleModule
   ],
   providers: [
     LoginService,
   ],
+  bootstrap: [DialogBoxComponent],
 })
 export class PagesModule {}

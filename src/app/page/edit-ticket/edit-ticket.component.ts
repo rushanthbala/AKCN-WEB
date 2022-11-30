@@ -1,16 +1,23 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { DialogBoxComponent } from 'src/app/core/dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-edit-ticket',
   templateUrl: './edit-ticket.component.html',
   styleUrls: ['./edit-ticket.component.scss'],
 })
+
+
 export class EditTicketComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  // model
+  animal: string | any;
+  name: string | any;
+  constructor(private fb: FormBuilder,public dialog: MatDialog) {}
   @Input() object:object | any;
   @Input() text:string | any;
-
+  
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -18,7 +25,7 @@ export class EditTicketComponent implements OnInit {
   Reconnection: FormGroup | any;
   Change: FormGroup | any;
   Extra: FormGroup | any;
-
+  
   ngOnInit(): void {
     
     this.initialForm();
@@ -71,5 +78,28 @@ export class EditTicketComponent implements OnInit {
   }
   ExtraRequest() {
     console.log(this.Reconnection.value);
+  }
+   openDialog(): void {
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialog2(): void {
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 }
