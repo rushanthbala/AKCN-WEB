@@ -24,7 +24,8 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
-      phoneNumber: ''
+      phoneNumber: '',
+      noOfTv:""
     });
   }
   ReconnectionRequest() {

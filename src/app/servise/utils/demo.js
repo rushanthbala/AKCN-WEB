@@ -243,3 +243,40 @@
         "actionDate": "2022-11-02T00:00:00.000Z"
     }
 ]
+var demoroad = [
+    {
+        "id": 1,
+        "areaID": 3,
+        "road": "Marine Drive"
+    },
+    {
+        "id": 2,
+        "areaID": 3,
+        "road": "Marine Drive"
+    },
+    {
+        "id": 3,
+        "areaID": 3,
+        "road": "Marine Drive"
+    },
+    {
+        "id": 4,
+        "areaID": 3,
+        "road": "Marine Drive"
+    },
+    {
+        "id": 5,
+        "areaID": 3,
+        "road": "Marine Drive"
+    },
+    {
+        "id": 6,
+        "areaID": 3,
+        "road": "Marine Drive"
+    },
+    {
+        "id": 7,
+        "areaID": 3,
+        "road": "Marine Drive"
+    }
+]
