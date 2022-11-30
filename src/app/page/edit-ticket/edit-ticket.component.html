@@ -68,18 +68,15 @@
 
   <div
     class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
-    <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="searching()" data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop">
+    <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="openDialog()">
       Reconnection Request
     </button>
 
-    <button class="input-group-text cus-btn-down btn-c-2" id="basic-addon2" (click)="searching()" data-bs-toggle="modal"
-      data-bs-target="#changeRequest">
+    <button class="input-group-text cus-btn-down btn-c-2" (click)="openDialog2()">
       Change request
     </button>
 
-    <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" (click)="searching()" data-bs-toggle="modal"
-      data-bs-target="#extraRequest">
+    <button class="input-group-text cus-btn-down btn-c-3" (click)="searching()">
       Extra TV Request
     </button>
   </div>

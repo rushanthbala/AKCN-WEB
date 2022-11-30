@@ -21,12 +21,15 @@ import { CustomButtonComponent } from '../core/custom-button/custom-button.compo
 import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialExampleModule } from './material.module';
-import { DialogBoxComponent } from '../core/dialog-box/dialog-box.component';
+import { DialogBoxComponent } from '../core/dialogBox/dialog-box/dialog-box.component';
+import { ChangeRequestComponent } from '../core/dialogBox/change-request/change-request.component';
+import { ExtraRequestDialogBoxComponent } from '../core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
      AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent,
-      PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent,DialogBoxComponent],
+      PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent,DialogBoxComponent,
+      ExtraRequestDialogBoxComponent, ChangeRequestComponent,],
   imports: [
     CommonModule,
     PagesRoutingModule,

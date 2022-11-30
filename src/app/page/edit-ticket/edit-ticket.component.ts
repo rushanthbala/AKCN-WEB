@@ -1,7 +1,8 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { DialogBoxComponent } from 'src/app/core/dialog-box/dialog-box.component';
+import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
+import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-edit-ticket',
@@ -92,7 +93,7 @@ export class EditTicketComponent implements OnInit {
   }
 
   openDialog2(): void {
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
+    const dialogRef = this.dialog.open(ChangeRequestComponent, {
       width: '250px',
       data: {name: this.name, animal: this.animal},
     });
