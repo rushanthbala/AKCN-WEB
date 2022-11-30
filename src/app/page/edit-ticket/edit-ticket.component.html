@@ -64,10 +64,11 @@
       <input type="text" class="form-control int" id="Type" value="{{object.connectionType}}" readonly
         placeholder="Type" />
     </div>
-  </div>  
+  </div>
 
   <div
     class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
+
     <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="openDialog()">
       Reconnection Request
     </button>
@@ -76,9 +77,10 @@
       Change request
     </button>
 
-    <button class="input-group-text cus-btn-down btn-c-3" (click)="searching()">
+    <button class="input-group-text cus-btn-down btn-c-3" (click)="openDialog3()">
       Extra TV Request
     </button>
+
   </div>
 </form>
 
@@ -210,11 +212,11 @@
 </div>
 
 
-<ol>
+<!-- <ol>
   <li>
     <button mat-raised-button (click)="openDialog()">Pick one</button>
   </li>
   <li *ngIf="animal">
     You chose: <i>{{animal}}</i>
   </li>
-</ol>
+</ol> -->

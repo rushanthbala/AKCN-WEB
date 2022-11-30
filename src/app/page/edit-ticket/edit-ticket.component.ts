@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
+import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 
 @Component({
   selector: 'app-edit-ticket',
@@ -94,6 +95,17 @@ export class EditTicketComponent implements OnInit {
 
   openDialog2(): void {
     const dialogRef = this.dialog.open(ChangeRequestComponent, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  openDialog3(): void {
+    const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
       width: '250px',
       data: {name: this.name, animal: this.animal},
     });

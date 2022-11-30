@@ -35,6 +35,32 @@ p {
     no-repeat padding-box;
 }
 
+// Removing focus border outline on bootstrap select
+.bootstrap-select .btn:focus {
+  outline: none !important;
+}
+select,select:focus{
+  outline: none !important;
+  border-color:none !important;
+  box-shadow:none !important;
+  outline: 0 none !important;
+  border-color: none !important;
+}
+.form-select{
+  padding: 0.375rem 2.25rem 0.375rem 20px !important;
+  font-size: 12px !important;
+  height: 50px;
+  color: #707070;
+  opacity: 0.7;
+}
+.form-select:focus{
+  outline: none !important;
+  border-color:none !important;
+  box-shadow:none !important;
+  outline: 0 none !important;
+  border-color: none !important;
+}
+
 .mat-drawer-inner-container::-webkit-scrollbar {
   display: none;
 }
