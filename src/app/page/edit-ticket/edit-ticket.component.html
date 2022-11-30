@@ -1,265 +1,97 @@
-<p class="heading">Choose searching type and enter the value</p>
-<br />
-<form [formGroup]="loginForm" (ngSubmit)="searching()">
-  <div class="d-flex flex-wrap">
-    <div class="form-check cus-form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        id="ConnectionID"
-        formControlName="type"
-        value="ConnectionID"
-        name="type"
-      />
-      <label class="form-check-label para lbl" for="ConnectionID">
-        Connection ID
-      </label>
-    </div>
-
-    <div class="form-check cus-form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        id="PhoneNo"
-        formControlName="type"
-        value="PhoneNo"
-        name="type"
-      />
-      <label class="form-check-label para lbl" for="PhoneNo"> Phone No </label>
-    </div>
-
-    <div class="form-check cus-form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        id="NIC"
-        formControlName="type"
-        value="NIC"
-        name="type"
-      />
-      <label class="form-check-label para lbl" for="NIC"> NIC </label>
-    </div>
-
-    <div class="form-check cus-form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        id="OldID"
-        formControlName="type"
-        value="OldID"
-        name="type"
-      />
-      <label class="form-check-label para lbl" for="OldID"> Old ID </label>
-    </div>
-    <div class="form-check cus-form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        id="name"
-        formControlName="type"
-        value="name"
-        name="type"
-      />
-      <label class="form-check-label para lbl" for="name"> Name </label>
-    </div>
-  </div>
-  <br />
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control me-2 int"
-      placeholder="Connection ID"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-      formControlName="searchinginput"
-    />
-    <br />
-    <span
-      class="input-group-text cus-btn"
-      id="basic-addon2"
-      (click)="searching()"
-      >Search Connection</span
-    >
-  </div>
-</form>
-<br />
-<br />
-
 <form [formGroup]="inputset">
   <div
-    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
-  >
+    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
     <div class="mb-3 cus-int-div">
-      <label for="NIC" class="form-label labels">NIC</label>
-      <input
-        type="text"
-        class="form-control int"
-        id="NIC"
-        placeholder="9999999999V"
-      />
+      <label for="NIC" class="form-label labels">NIC </label>
+      <input type="text" class="form-control int" id="NIC" placeholder="9999999999V" value="{{object.subscriberNIC}}"
+        readonly />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="SUBSCRIBER" class="form-label labels">SUBSCRIBER</label>
-      <input
-        type="text"
-        class="form-control int"
-        id="SUBSCRIBER"
-        placeholder="SUBSCRIBER"
-      />
+      <input type="text" class="form-control int" id="SUBSCRIBER" value="{{object.firstName}}" readonly
+        placeholder="SUBSCRIBER" />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="PHONE" class="form-label labels">PHONE</label>
-      <input
-        type="text"
-        class="form-control int"
-        id="PHONE"
-        placeholder="PHONE"
-      />
+      <input type="text" class="form-control int" id="PHONE" value="{{object.primaryPhone}}" readonly
+        placeholder="PHONE" />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="PHONE" class="form-label labels">PHONE</label>
-      <input
-        type="text"
-        class="form-control int"
-        id="PHONE"
-        placeholder="PHONE"
-      />
+      <input type="text" class="form-control int" id="PHONE" value="{{object.secondaryPhone}}" readonly
+        placeholder="PHONE" />
     </div>
 
     <!-- 2 -->
     <div class="mb-3 cus-int-div">
-      <label for="Pending Requests" class="form-label labels"
-        >Pending Requests</label
-      >
-      <input
-        type="text"
-        class="form-control int"
-        id="Pending Requests"
-        placeholder="9999999999V"
-      />
+      <label for="Pending Requests" class="form-label labels">Pending Requests</label>
+      <input type="text" class="form-control int" id="Pending Requests" value="{{object.subscriberNIC}}" readonly
+        placeholder="9999999999V" />
     </div>
     <div class="mb-3 cus-int-div">
-      <label for="Assigned Requests" class="form-label labels"
-        >Assigned Requests</label
-      >
-      <input
-        type="text"
-        class="form-control int"
-        id="Assigned Requests"
-        placeholder="Assigned Requests"
-      />
+      <label for="Assigned Requests" class="form-label labels">Assigned Requests</label>
+      <input type="text" class="form-control int" id="Assigned Requests" value="{{object.subscriberNIC}}" readonly
+        placeholder="Assigned Requests" />
     </div>
     <div class="mb-3 cus-int-div">
-      <label for="Closed Requests" class="form-label labels"
-        >Closed Requests</label
-      >
-      <input
-        type="text"
-        class="form-control int"
-        id="Closed Requests"
-        placeholder="Closed Requests"
-      />
+      <label for="Closed Requests" class="form-label labels">Closed Requests</label>
+      <input type="text" class="form-control int" id="Closed Requests" value="{{object.subscriberNIC}}" readonly
+        placeholder="Closed Requests" />
     </div>
     <div class="mb-3 cus-int-div">
-      <label for="Cancelled Requests" class="form-label labels"
-        >Cancelled Requests</label
-      >
-      <input
-        type="text"
-        class="form-control int"
-        id="Cancelled Requests"
-        placeholder="Cancelled Requests"
-      />
+      <label for="Cancelled Requests" class="form-label labels">Cancelled Requests</label>
+      <input type="text" class="form-control int" id="Cancelled Requests" value="{{object.subscriberNIC}}" readonly
+        placeholder="Cancelled Requests" />
     </div>
 
     <!-- 3 -->
     <div class="mb-3 cus-int-div">
       <label for="ID" class="form-label labels">ID</label>
-      <input
-        type="text"
-        class="form-control int"
-        id="ID"
-        placeholder="9999999999V"
-      />
+      <input type="text" class="form-control int" id="ID" value="{{object.connectionID}}" readonly
+        placeholder="9999999999V" />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="Status" class="form-label labels">Status</label>
-      <input
-        type="text"
-        class="form-control int"
-        id="Status"
-        placeholder="Status"
-      />
+      <input type="text" class="form-control int" id="Status" value="{{object.connectionStatus}}" readonly
+        placeholder="Status" />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="TV" class="form-label labels">TV</label>
-      <input type="text" class="form-control int" id="TV" placeholder="TV" />
+      <input type="text" class="form-control int" id="TV" value="{{object.tvCount}}" readonly placeholder="TV" />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="Type" class="form-label labels">Type</label>
-      <input
-        type="text"
-        class="form-control int"
-        id="Type"
-        placeholder="Type"
-      />
+      <input type="text" class="form-control int" id="Type" value="{{object.connectionType}}" readonly
+        placeholder="Type" />
     </div>
-  </div>
+  </div>  
 
   <div
-    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set"
-  >
-    <button
-      class="input-group-text cus-btn-down btn-c-1"
-      id="basic-addon2"
-      (click)="searching()"
-      data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
-    >
+    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
+    <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="searching()" data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop">
       Reconnection Request
     </button>
 
-    <button
-      class="input-group-text cus-btn-down btn-c-2"
-      id="basic-addon2"
-      (click)="searching()"
-      data-bs-toggle="modal"
-      data-bs-target="#changeRequest"
-    >
+    <button class="input-group-text cus-btn-down btn-c-2" id="basic-addon2" (click)="searching()" data-bs-toggle="modal"
+      data-bs-target="#changeRequest">
       Change request
     </button>
 
-    <button
-      class="input-group-text cus-btn-down btn-c-3"
-      id="basic-addon2"
-      (click)="searching()"
-      data-bs-toggle="modal"
-      data-bs-target="#extraRequest"
-    >
+    <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" (click)="searching()" data-bs-toggle="modal"
+      data-bs-target="#extraRequest">
       Extra TV Request
     </button>
   </div>
 </form>
 
 <!-- Modal Reconnection Request -->
-<div
-  class="modal fade"
-  id="staticBackdrop"
-  data-bs-backdrop="false"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" style="max-width: 260px">
     <div class="modal-content">
       <div class="modal-header">
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="Reconnection" (ngSubmit)="ReconnectionRequest()">
@@ -269,30 +101,15 @@
             </div>
             <p class="para">PKA00001</p>
             <div class="cart-input">
-              <input
-                type="text"
-                class="form-control int mt-2"
-                id="ID"
-                placeholder="Phone Number"
-                formControlName="phoneNumber"
-              />
-              <button
-                class="input-group-text cus-model-btn-down btn-c-1"
-                id="basic-addon2"
-                (click)="searching()"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-              >
+              <input type="text" class="form-control int mt-2" id="ID" placeholder="Phone Number"
+                formControlName="phoneNumber" />
+              <button class="input-group-text cus-model-btn-down btn-c-1" id="basic-addon2" (click)="searching()"
+                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Create
               </button>
-              <button
-                class="input-group-text cus-model-cancel-btn-down btn-c-1"
-                id="basic-addon2"
-                (click)="searching()"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                style="background-color: #fff !important; color: #027afe"
-              >
+              <button class="input-group-text cus-model-cancel-btn-down btn-c-1" id="basic-addon2" (click)="searching()"
+                data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                style="background-color: #fff !important; color: #027afe">
                 Cancel
               </button>
               <br />
@@ -307,24 +124,12 @@
 </div>
 
 <!-- Modal Reconnection Request -->
-<div
-  class="modal fade"
-  id="changeRequest"
-  data-bs-backdrop="false"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="changeRequest" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" style="max-width: 260px">
     <div class="modal-content">
       <div class="modal-header">
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="Reconnection" (ngSubmit)="ReconnectionRequest()">
@@ -338,47 +143,24 @@
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
-              <select
-                class="form-select mt-2"
-                aria-label="Default select example "
-              >
+              <select class="form-select mt-2" aria-label="Default select example ">
                 <option selected>Road</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
 
-              <input
-                type="text"
-                class="form-control int mt-2"
-                id="ID"
-                placeholder="New Address"
-                formControlName="address"
-              />
-              <input
-                type="text"
-                class="form-control int mt-2"
-                id="ID"
-                placeholder="Phone Number"
-                formControlName="phoneNumber"
-              />
-              <button
-                class="input-group-text cus-model-btn-down btn-c-1"
-                id="basic-addon2"
-                (click)="searching()"
-                data-bs-toggle="modal"
-                data-bs-target="#changeRequest"
-              >
+              <input type="text" class="form-control int mt-2" id="ID" placeholder="New Address"
+                formControlName="address" />
+              <input type="text" class="form-control int mt-2" id="ID" placeholder="Phone Number"
+                formControlName="phoneNumber" />
+              <button class="input-group-text cus-model-btn-down btn-c-1" id="basic-addon2" (click)="searching()"
+                data-bs-toggle="modal" data-bs-target="#changeRequest">
                 Create
               </button>
-              <button
-                class="input-group-text cus-model-cancel-btn-down btn-c-1"
-                id="basic-addon2"
-                (click)="searching()"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                style="background-color: #fff !important; color: #027afe"
-              >
+              <button class="input-group-text cus-model-cancel-btn-down btn-c-1" id="basic-addon2" (click)="searching()"
+                data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                style="background-color: #fff !important; color: #027afe">
                 Cancel
               </button>
               <br />
@@ -394,24 +176,12 @@
 </div>
 
 <!-- Modal Extra Request -->
-<div
-  class="modal fade"
-  id="extraRequest"
-  data-bs-backdrop="false"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="extraRequest" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" style="max-width: 260px">
     <div class="modal-content">
       <div class="modal-header">
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="Reconnection" (ngSubmit)="ReconnectionRequest()">
@@ -421,42 +191,56 @@
             </div>
             <p class="para">PKA00001</p>
             <div class="cart-input">
-              <input
-                type="text"
-                class="form-control int mt-2"
-                id="ID"
-                placeholder="Number of TVs"
-                formControlName="numberOfTV"
-              />
-              <input
-                type="text"
-                class="form-control int mt-2"
-                id="ID"
-                placeholder="Phone Number"
-                formControlName="phoneNumber"
-              />
-              <button
-                class="input-group-text cus-model-btn-down btn-c-1"
-                id="basic-addon2"
-                (click)="searching()"
-                data-bs-toggle="modal"
-                data-bs-target="#extraRequest"
-              >
+              <input type="text" class="form-control int mt-2" id="ID" placeholder="Number of TVs"
+                formControlName="numberOfTV" />
+              <input type="text" class="form-control int mt-2" id="ID" placeholder="Phone Number"
+                formControlName="phoneNumber" />
+              <button class="input-group-text cus-model-btn-down btn-c-1" id="basic-addon2" (click)="searching()"
+                data-bs-toggle="modal" data-bs-target="#extraRequest">
                 Create
               </button>
-              <button
-                class="input-group-text cus-model-cancel-btn-down btn-c-1"
-                id="basic-addon2"
-                (click)="searching()"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                style="background-color: #fff !important; color: #027afe"
-              >
+              <button class="input-group-text cus-model-cancel-btn-down btn-c-1" id="basic-addon2" (click)="searching()"
+                data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                style="background-color: #fff !important; color: #027afe">
                 Cancel
               </button>
             </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  User Login
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="flase"  data-bs-backdrop="true" data-bs-keyboard="true">
+  <div class="modal-dialog" style="z-index: 999;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModalLabel">Login Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

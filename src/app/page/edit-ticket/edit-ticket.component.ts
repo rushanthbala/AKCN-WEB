@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,9 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class EditTicketComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
+  @Input() object:object | any;
+  @Input() text:string | any;
+
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -17,6 +20,7 @@ export class EditTicketComponent implements OnInit {
   Extra: FormGroup | any;
 
   ngOnInit(): void {
+    
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();

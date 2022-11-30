@@ -74,16 +74,21 @@ tr:nth-child(even) {
 }
 .status {
   border-radius: 24px;
-  background-color: #d63964;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   width: 50%;
   min-width: 60px;
+  font-size: 11px;
   // margin: 0 auto;
 }
-
+.DEACTIVE{
+  background-color: #d63964;
+}
+.ACTIVE{
+  background-color: #74BC78;
+}
 // .my-pagination /deep/ .ngx-pagination{
 //   .ng-star-inserted{
 //     a{

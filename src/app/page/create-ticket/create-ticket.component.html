@@ -1,18 +1,16 @@
 <p class="heading">Choose searching type and enter the value</p>
 <br />
-<app-filter-box 
-(OnClick)="searching($event)"
-  ></app-filter-box>
+<app-filter-box (OnClick)="searching($event)"></app-filter-box>
 <!-- <app-custom-button text="'000000000'" btnClass="btn" (OnClick)="test()" ></app-custom-button> -->
 
 <br />
 <br />
 
-<p class="head-2">25 Results found</p>
+<p class="head-2" *ngIf="showTable">{{tableResult}} Results found</p>
 <!-- table -->
 <div class="main-div">
   <!-- <div class="main-heading">User Information's</div> -->
-  <div class="table-div" *ngIf="showTable" >
+  <div class="table-div" *ngIf="showTable">
     <table>
       <tr>
         <th>ID</th>
@@ -24,35 +22,29 @@
         <th>TYPE</th>
         <!-- <th style="text-align: center">ACTION</th> -->
       </tr>
-      <tr
-        *ngFor="
+      <tr *ngFor="
           let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
-        "
-        
-        (click)="viewDetails()"
-      >
+        " (click)="viewDetails(us)">
         <td>{{ us.id }}</td>
-        <td>{{ us.subscriber }}</td>
+        <td>{{ us.firstName }} {{us.lastName}}</td>
 
-        <td>{{ us.phone }}</td>
-        <td>{{ us.address }}</td>
+        <td>{{ us.primaryPhone }}</td>
+        <td>{{ us.connectionAddress }}</td>
         <td>
-          <div class="status">
-            {{ us.status }}
+          <div class="status {{us.connectionStatus}}">
+            {{ us.connectionStatus }}
           </div>
         </td>
-        <td>{{ us.tv }}</td>
-        <td>{{ us.type }}</td>
+        <td>{{ us.tvCount }}</td>
+        <td>{{ us.connectionType }}</td>
       </tr>
     </table>
     <br />
-    <pagination-controls
-      class="my-pagination"
-      previousLabel="Previous"
-      nextLabel="Next"
-      screenReaderPaginationLabel="Pagination"
-      screenReaderPageLabel="page"
-      (pageChange)="p = $event"
-    ></pagination-controls>
+    <pagination-controls class="my-pagination" previousLabel="Previous" nextLabel="Next"
+      screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" (pageChange)="p = $event">
+    </pagination-controls>
+  </div>
+  <div *ngIf="isSubscriberdata">
+    <app-edit-ticket [object]='subscriberdata'  text="text" ></app-edit-ticket>
   </div>
 </div>
