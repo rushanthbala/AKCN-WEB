@@ -23,9 +23,9 @@ export class CreateTicketComponent implements OnInit {
   // table variable
   showTable: boolean = false;
   subscriberdata:any={};
-  isSubscriberdata:boolean=true;
-
+  isSubscriberdata:boolean=false;
   tableResult: any;
+  
   userArray: any = [
     {
       id: 1,
@@ -91,7 +91,7 @@ export class CreateTicketComponent implements OnInit {
 
   }
   viewDetails(us:any) {
-    // this.showTable = false;
+    this.showTable = false;
     this.subscriberdata=us;
     this.isSubscriberdata=true;
     console.log(us);

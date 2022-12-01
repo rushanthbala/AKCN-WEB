@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { MatPaginator } from '@angular/material/paginator';
 import { TableUtil } from './tableUtils';
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
@@ -15,25 +15,27 @@ import { HttpService } from 'src/app/servise/http/http.service';
   styleUrls: ['./pending-ticket.component.scss'],
 })
 export class PendingTicketComponent implements AfterViewInit, OnInit {
-  ELEMENT_DATA = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  ];
+
+  TICKET_DATA=[]
   dataSource: any;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['ticketID','connectionID','description','phone','createdBy','createdAt'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService) { }
   @ViewChild(MatSort) sort: MatSort | any;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   userData: any;
+  // 
+  loading: boolean = true;
+  errmsg: string = ""
+  sucmsg: string = ""
+  suburl: string = "connection"
+  // table variable
+  showTable: boolean = false;
+  subscriberdata:any={};
+  isSubscriberdata:boolean=false;
+
+  tableResult: any;
 
   userArray: any = [
     {
@@ -75,15 +77,18 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
   }
   getPendingData() {
     console.log("okokok");
-    
-    this.dataServise.getData(`ticket/status/pending`).subscribe((res) => {
-      // this.ELEMENT_DATA = res;
+      this.dataServise.getData(`ticket/status/pending`).subscribe((res) => {
+      this.TICKET_DATA = res;
+      this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       console.log(res);
     });
   }
-  ngAfterViewInit(): void {
 
-    this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  ngAfterViewInit(): void {
+    this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
@@ -99,26 +104,25 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
     }
   }
   exportNormalTable() {
-    console.log('ko');
+    console.log('ko', this.dataSource.filteredData);
+    const onlyNameAndSymbolArr: Partial<TicketElement>[] = this.dataSource.filteredData.map((x: TicketElement) => ({
+      connectionID: x.connectionID,
+       "ticketID":x.ticketID,
+  "createdBy": x.createdBy, 
+  "assignedTo": x.assignedTo,
+  "assignedToID": x.assignedToID, "updatedBy": x.updatedBy,
+  "subject": x.subject, "description": x.description,
+  "reason": x.reason, "phone": x.phone,
+  "status": x.status, "createdAt": x.createdAt,
+  "updatedAt": x.updatedAt,
 
-    TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
+    }));
+    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, "ExampleArray");
+    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
-  public SavePDF(): void {
-    // let content = this.content.nativeElement;
-    // let doc = new jsPDF();
-    // let _elementHandlers = {
-    //   '#editor': function (element: any, renderer: any) {
-    //     return true;
-    //   },
-    // };
-    // doc.fromHTML(content.innerHTML, 15, 15, {
-    //   width: 190,
-    //   elementHandlers: _elementHandlers,
-    // });
-    // doc.save('test.pdf');
-  }
+ 
 
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
@@ -132,4 +136,37 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
       PDF.save('angular-demo.pdf');
     });
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  viewDetails(us:any) {
+    this.showTable = false;
+    this.subscriberdata=us;
+    this.isSubscriberdata=true;
+    console.log(us);
+    
+  }
+}
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+export interface TicketElement {
+  "id": number,
+  "connectionID": number, "ticketID": string,
+  "createdBy": string, "assignedTo": string,
+  "assignedToID": string, "updatedBy": string,
+  "subject": string, "description": string,
+  "reason": string, "phone": string,
+  "status": string, "createdAt": string,
+  "updatedAt": string, "closedAt": string
 }

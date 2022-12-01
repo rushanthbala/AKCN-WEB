@@ -19,7 +19,7 @@ export class PagesComponent implements OnInit {
     private observer: BreakpointObserver,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) { }
   public href: string = '';
   public link: string = '';
   public sublink: string = '';
@@ -69,19 +69,19 @@ export class PagesComponent implements OnInit {
     var urlSpilite = url.split('/');
     if (urlSpilite[2] === 'dashboard') {
       this.href = 'Dashboard';
-      this.link ='/auth/dashboard'
-      this.contentSubHeading='Welcome back, Alex'
+      this.link = '/auth/dashboard'
+      this.contentSubHeading = 'Welcome back, Alex'
     } else if (urlSpilite[2] === 'create-ticket') {
       this.href = 'Tickets';
-      this.link ='/auth/create-ticket'
-      this.sublink ='/auth/create-ticket'
-      this.contentSubHeading="Tickets > Create Tickets"
-    }  else if (urlSpilite[2] === 'pending-ticket') {
+      this.link = '/auth/create-ticket'
+      this.sublink = '/auth/create-ticket'
+      this.contentSubHeading = "Tickets > Create Tickets"
+    } else if (urlSpilite[2] === 'pending-ticket') {
       this.href = 'Tickets';
-      this.link ='/auth/pending-ticket'
-      this.sublink ='/auth/pending-ticket'
-      this.contentSubHeading="Tickets > Pending Tickets"
-    } 
+      this.link = '/auth/pending-ticket'
+      this.sublink = '/auth/pending-ticket'
+      this.contentSubHeading = "Tickets > Pending Tickets"
+    }
   }
   menuItems = [
     {
@@ -97,8 +97,8 @@ export class PagesComponent implements OnInit {
       iconClass: 'icon-Ticket',
       label: 'Tickets',
       text: 'Lorem Ipsum',
-      state: false,
-      link: '/auth/create-ticket',
+      state: this.href !='Tickets',
+      link: '/auth/ticket',
       item: [
         { name: 'Create Tickets', href: '/auth/create-ticket' },
         { name: 'Pending Tickets', href: '/auth/pending-ticket' },
@@ -162,8 +162,13 @@ export class PagesComponent implements OnInit {
   menuClick(clickedItem: number) {
     this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state; // flips the boolean value for the clicked item
     for (let item of this.menuItems) {
+      console.log(item,this.menuItems[clickedItem]);
+      
       if (item !== this.menuItems[clickedItem]) {
         item.state = false;
+      }else{
+        item.state = true;
+
       }
     }
     // the for loop goes through the array and sets each item to false *if* its not the item that was clicked

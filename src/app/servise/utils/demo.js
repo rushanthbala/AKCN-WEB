@@ -280,3 +280,16 @@ var demoroad = [
         "road": "Marine Drive"
     }
 ]
+
+export interface TicketElement {
+    "id": number,
+    "connectionID": number, "ticketID": string,
+    "createdBy": string, "assignedTo": string,
+    "assignedToID": string, "updatedBy": string,
+    "subject": string, "description": string,
+    "reason": string, "phone": string,
+    "status": string, "createdAt": string,
+    "updatedAt": string, "closedAt": string
+  }
+  ['ticketID','connectionID','description',
+  'phone','createdBy','createdAt'];
