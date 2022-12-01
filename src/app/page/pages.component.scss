@@ -76,7 +76,7 @@ mat-sidenav-container {
       background-repeat: no-repeat;
     }
     .icon-Dashboard {
-      background-image: url("../../assets/svgHover/Calendar.svg");
+      background-image: url("../../assets/svgHover/dashboard.svg");
       background-repeat: no-repeat;
     }
     .icon-Ticket {
@@ -92,7 +92,7 @@ mat-sidenav-container {
       background-repeat: no-repeat;
     }
     .icon-Connections {
-      background-image: url("../../assets/svgHover/Iconly-Curved-Add\ User.svg");
+      background-image: url("../../assets/svgHover/connection.svg");
       background-repeat: no-repeat;
     }
     .icon-Reports {
@@ -132,8 +132,9 @@ mat-sidenav-container {
     // background-image: url("../../assets/svg/Group.svg");
     background-repeat: no-repeat;
   }
+  
   .icon-Dashboard {
-    background-image: url("../../assets/svgHover/Calendar.svg");
+    background-image: url("../../assets/svgHover/dashboard.svg");
     background-repeat: no-repeat;
   }
   .icon-Ticket {
@@ -149,7 +150,7 @@ mat-sidenav-container {
     background-repeat: no-repeat;
   }
   .icon-Connections {
-    background-image: url("../../assets/svgHover/Iconly-Curved-Add\ User.svg");
+    background-image: url("../../assets/svgHover/connection.svg");
     background-repeat: no-repeat;
   }
   .icon-Reports {
@@ -371,7 +372,7 @@ hr {
   padding: 2px 0px 9px 24px;
 }
 .icon-Dashboard {
-  background-image: url("../../assets/svg/Calendar.svg");
+  background-image: url("../../assets/svg/dashboard.svg");
   background-repeat: no-repeat;
 }
 .icon-Ticket {
@@ -387,7 +388,7 @@ hr {
   background-repeat: no-repeat;
 }
 .icon-Connections {
-  background-image: url("../../assets/svg/Iconly-Curved-Add\ User.svg");
+  background-image: url("../../assets/svg/connection.svg");
   background-repeat: no-repeat;
 }
 .icon-Reports {

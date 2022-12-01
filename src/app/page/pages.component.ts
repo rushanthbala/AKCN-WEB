@@ -76,6 +76,11 @@ export class PagesComponent implements OnInit {
       this.link ='/auth/create-ticket'
       this.sublink ='/auth/create-ticket'
       this.contentSubHeading="Tickets > Create Tickets"
+    }  else if (urlSpilite[2] === 'pending-ticket') {
+      this.href = 'Tickets';
+      this.link ='/auth/pending-ticket'
+      this.sublink ='/auth/pending-ticket'
+      this.contentSubHeading="Tickets > Pending Tickets"
     } 
   }
   menuItems = [
@@ -117,7 +122,7 @@ export class PagesComponent implements OnInit {
       icon: '../../assets/icons/adduser.png',
     },
     {
-      iconClass: 'icon-Ticket',
+      iconClass: 'icon-Connections',
       label: 'Connection',
       text: 'Lorem Ipsum',
       state: false,
