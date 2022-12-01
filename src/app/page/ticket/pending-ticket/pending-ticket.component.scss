@@ -45,6 +45,9 @@ th.mat-header-cell{
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
    border-bottom-width: 0px !important;
   border-bottom-style: none;
+
+  cursor: pointer;
+
 }
 td{
   color: #707070 !important;
