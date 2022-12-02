@@ -7,6 +7,9 @@ import { EditTicketComponent } from './ticket/create-ticket/edit-ticket/edit-tic
 import { PagesComponent } from './pages.component';
 import { PendingOneTicketComponent } from './pending-one-ticket/pending-one-ticket.component';
 import { PendingTicketComponent } from './ticket/pending-ticket/pending-ticket.component';
+import { AssignTicketComponent } from './ticket/assign-ticket/assign-ticket.component';
+import { ClosedTicketComponent } from './ticket/closed-ticket/pending-ticket.component';
+import { CancelledTicketComponent } from './ticket/cancelled-ticket/pending-ticket.component';
 
 const routes: Routes = [
   {
@@ -39,9 +42,18 @@ const routes: Routes = [
         component: PendingTicketComponent,
       },
       {
-        path: 'pending-ticket/:id',
-        component: PendingOneTicketComponent,
+        path: 'assign-ticket',
+        component: AssignTicketComponent,
       },
+      {
+        path: 'closed-ticket',
+        component: ClosedTicketComponent,
+      },
+      {
+        path: 'cancelled-ticket',
+        component: CancelledTicketComponent,
+      },
+
     ],
   },
 ];

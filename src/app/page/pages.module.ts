@@ -27,12 +27,20 @@ import { ExtraRequestDialogBoxComponent } from '../core/dialogBox/extra-request-
 import { PendingDetailsComponent } from './ticket/pending-ticket/pending-details/pending-details.component';
 import { PendingChangeRequestComponent } from '../core/dialogBox/pending/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from '../core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
+import { AssignTicketComponent } from './ticket/assign-ticket/assign-ticket.component';
+import { AssignDetailsComponent } from './ticket/assign-ticket/pending-details/assign-details.component';
+import { ClosedTicketComponent } from './ticket/closed-ticket/pending-ticket.component';
+import { CancelledTicketComponent } from './ticket/cancelled-ticket/pending-ticket.component';
+import { CancelledDetailsComponent } from './ticket/cancelled-ticket/pending-details/pending-details.component';
+import { ClosedRequestComponent } from '../core/dialogBox/pending/close-request/closed-request.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
      AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent,
       PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent,DialogBoxComponent,
-      ExtraRequestDialogBoxComponent, ChangeRequestComponent, PendingDetailsComponent,PendingChangeRequestComponent,CancelDialogBoxComponent],
+      ExtraRequestDialogBoxComponent, ChangeRequestComponent, PendingDetailsComponent,
+      PendingChangeRequestComponent,CancelDialogBoxComponent,AssignTicketComponent,
+      AssignDetailsComponent,ClosedTicketComponent,CancelledTicketComponent,CancelledDetailsComponent,ClosedRequestComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

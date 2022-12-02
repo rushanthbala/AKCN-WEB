@@ -81,6 +81,22 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/pending-ticket'
       this.sublink = '/auth/pending-ticket'
       this.contentSubHeading = "Tickets > Pending Tickets"
+    } else if (urlSpilite[2] === 'assign-ticket') {
+      this.href = 'Tickets';
+      this.link = '/auth/assign-ticket'
+      this.sublink = '/auth/assign-ticket'
+      this.contentSubHeading = "Tickets > Assign Tickets"
+    } else if (urlSpilite[2] === 'closed-ticket') {
+      this.href = 'Tickets';
+      this.link = '/auth/closed-ticket'
+      this.sublink = '/auth/closed-ticket'
+      this.contentSubHeading = "Tickets > Closed Tickets"
+    }
+    else if (urlSpilite[2] === 'cancelled-ticket') {
+      this.href = 'Tickets';
+      this.link = '/auth/cancelled-ticket'
+      this.sublink = '/auth/cancelled-ticket'
+      this.contentSubHeading = "Tickets > Cancelled Tickets"
     }
   }
   menuItems = [
@@ -97,18 +113,23 @@ export class PagesComponent implements OnInit {
       iconClass: 'icon-Ticket',
       label: 'Tickets',
       text: 'Lorem Ipsum',
-      state: this.href !='Tickets',
+      state: this.href != 'Tickets',
       link: '/auth/ticket',
       item: [
         { name: 'Create Tickets', href: '/auth/create-ticket' },
         { name: 'Pending Tickets', href: '/auth/pending-ticket' },
         {
-          name: 'Assigned Tickets',
+          name: 'Assigned Tickets', href: '/auth/assign-ticket'
         },
         {
-          name: 'Closed Tickets',
+          name: 'Closed Tickets', href: '/auth/closed-ticket'
         },
-        { name: 'Cancelled Tickets' },
+        {
+          name: 'Closed Tickets', href: '/auth/cancelled-ticket'
+        },
+        //   { name: 'Cancelled Tickets'
+        // ,href: '/auth/cancelled-ticket'
+        // },
       ],
       icon: '../../assets/icons/Bookmark png (2).png',
     },
@@ -117,7 +138,7 @@ export class PagesComponent implements OnInit {
       label: 'Requests',
       text: 'Lorem Ipsum',
       state: false,
-      item: [{ name: 'name01' }],
+      item: [{ name: 'name01', href: '/auth/cancelled-ticket' }],
       link: '/auth/requests',
       icon: '../../assets/icons/adduser.png',
     },
@@ -126,7 +147,7 @@ export class PagesComponent implements OnInit {
       label: 'Connection',
       text: 'Lorem Ipsum',
       state: false,
-      item: [{ name: 'name01' }],
+      item: [],
       link: '/auth/connection',
       icon: '../../assets/icons/Swap.png',
     },
@@ -135,7 +156,8 @@ export class PagesComponent implements OnInit {
       label: 'Payments',
       text: 'Lorem Ipsum',
       state: false,
-      item: [{ name: 'name01' }],
+      item: [],
+
       link: '/auth/payments',
       icon: '../../assets/icons/currency-dollar.png',
     },
@@ -144,7 +166,8 @@ export class PagesComponent implements OnInit {
       label: 'Reports',
       text: 'Lorem Ipsum',
       state: false,
-      item: [{ name: 'name01' }],
+      item: [],
+
       link: '/auth/reports',
       icon: '../../assets/icons/Calendar.png',
     },
@@ -153,7 +176,8 @@ export class PagesComponent implements OnInit {
       label: 'Setting',
       text: 'Lorem Ipsum',
       state: false,
-      item: [{ name: 'name01' }],
+      item: [],
+
       link: '/auth/setting',
       icon: '../../assets/icons/setting.png',
     },
@@ -162,11 +186,11 @@ export class PagesComponent implements OnInit {
   menuClick(clickedItem: number) {
     this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state; // flips the boolean value for the clicked item
     for (let item of this.menuItems) {
-      console.log(item,this.menuItems[clickedItem]);
-      
+      console.log(item, this.menuItems[clickedItem]);
+
       if (item !== this.menuItems[clickedItem]) {
         item.state = false;
-      }else{
+      } else {
         item.state = true;
 
       }
