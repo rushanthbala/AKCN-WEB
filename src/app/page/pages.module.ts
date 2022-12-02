@@ -25,12 +25,14 @@ import { DialogBoxComponent } from '../core/dialogBox/dialog-box/dialog-box.comp
 import { ChangeRequestComponent } from '../core/dialogBox/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from '../core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingDetailsComponent } from './ticket/pending-ticket/pending-details/pending-details.component';
+import { PendingChangeRequestComponent } from '../core/dialogBox/pending/assign-request/change-request.component';
+import { CancelDialogBoxComponent } from '../core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
      AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent,
       PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent,DialogBoxComponent,
-      ExtraRequestDialogBoxComponent, ChangeRequestComponent, PendingDetailsComponent],
+      ExtraRequestDialogBoxComponent, ChangeRequestComponent, PendingDetailsComponent,PendingChangeRequestComponent,CancelDialogBoxComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

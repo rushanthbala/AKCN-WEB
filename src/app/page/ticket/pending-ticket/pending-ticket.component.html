@@ -22,7 +22,9 @@
 </div>
 <br />
 <br />
-<div id="htmlData" >
+<div   *ngIf="showTable">
+
+<div id="htmlData">
 
   <table mat-table [dataSource]="dataSource" id="ExampleNormalTable" matSort
     (matSortChange)="announceSortChange($event)" class="">
@@ -92,3 +94,8 @@
 </div>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+<div class="editData">
+  <!--  [object]='subscriberdata'  text="text" -->
+  <app-pending-details   [object]='subscriberdata'  text="text"  ></app-pending-details>
+</div>
