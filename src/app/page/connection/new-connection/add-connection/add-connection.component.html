@@ -1,0 +1,47 @@
+<form [formGroup]="inputset">
+    <div class="heading m-3">Subscriber's Information</div>
+    <div
+    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
+        <div class="mb-3 cus-int-div2">
+            <label for="NIC" class="form-label labels">NIC </label>
+            <input type="text" class="form-control int" id="NIC" placeholder="9999999999V"
+                value="{{object.subscriberNIC}}" readonly />
+        </div>
+        <div class="mb-3 cus-int-div2">
+            <label for="firstName" class="form-label labels">FIRST NAME</label>
+            <input type="text" class="form-control int" id="firstName" value="{{object.firstName}}" readonly
+                placeholder="first Name" />
+        </div>
+        <div class="mb-3 cus-int-div2">
+            <label for="lastName" class="form-label labels">LAST NAME</label>
+            <input type="text" class="form-control int" id="lastName" value="{{object.lastName}}" readonly
+                placeholder="last Name" />
+        </div>
+
+        <!-- 2 -->
+        <div class="mb-3 cus-int-div2">
+            <label for="primaryPhone" class="form-label labels">PRIMARY NUMBER</label>
+            <input type="text" class="form-control int" id="primaryPhone" value="{{object.primaryPhone}}" readonly
+                placeholder="primary Phone" />
+        </div>
+        <div class="mb-3 cus-int-div2">
+            <label for="secondaryPhone" class="form-label labels">SECOUNDARY NUMBER</label>
+            <input type="text" class="form-control int" id="secondaryPhone" value="{{object.secondaryPhone}}" readonly
+                placeholder="secondary Phone" />
+        </div>
+        <div class="mb-3 cus-int-div2">
+            <label for="EMAIL" class="form-label labels">EMAIL</label>
+            <input type="email" class="form-control int" id="EMAIL" value="{{object.email}}" readonly placeholder="TV" />
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <div
+        class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
+        <button class="input-group-text cus-btn-down btn-c-2" (click)="addEventClick()">
+            Add Anothor Connection
+        </button>
+    </div>
+</form>
+<div class="heading m-3">Connection Information</div>

@@ -1,0 +1,19 @@
+<form [formGroup]="chackRequest" >
+    <div class=" cus-model-c-div">
+        <div class="form-heading int-div card-head-h2">
+          There is no Data 
+        </div>
+        <!-- <p class="para">{{data.id}}</p> -->
+        <div class="">
+            <p class="para">Try Again </p>
+            <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"   (click)="onNoClick()">
+                Yes
+            </button>
+            <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
+                style="background-color: #fff !important; color: #027afe">
+                No
+            </button>
+
+        </div>
+    </div>
+</form>
