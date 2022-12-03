@@ -1,0 +1,7 @@
+<div class="">
+    <app-connection-search (OnClick)="searching($event)"></app-connection-search>
+</div>
+<div *ngIf="showTable">
+    <app-subscriber-details  [object]='userData'  text="text" (OnClick)="addAnotherConnection()" ></app-subscriber-details>
+    <!-- <app-edit-ticket [object]='subscriberdata'  text="text" ></app-edit-ticket> -->
+</div>

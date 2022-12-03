@@ -10,6 +10,7 @@ import { PendingTicketComponent } from './ticket/pending-ticket/pending-ticket.c
 import { AssignTicketComponent } from './ticket/assign-ticket/assign-ticket.component';
 import { ClosedTicketComponent } from './ticket/closed-ticket/pending-ticket.component';
 import { CancelledTicketComponent } from './ticket/cancelled-ticket/pending-ticket.component';
+import { NewConnectionComponent } from './connection/new-connection/new-connection.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
         path: 'cancelled-ticket',
         component: CancelledTicketComponent,
       },
+      {
+        path: 'new-connection',
+        component: NewConnectionComponent,
+      },
 
     ],
   },
@@ -62,4 +67,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {}
+export class PagesRoutingModule { }

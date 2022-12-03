@@ -97,6 +97,16 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/cancelled-ticket'
       this.sublink = '/auth/cancelled-ticket'
       this.contentSubHeading = "Tickets > Cancelled Tickets"
+    } else if (urlSpilite[2] === 'all-connection') {
+      this.href = 'Connections';
+      this.link = '/auth/all-connection'
+      this.sublink = '/auth/all-connection'
+      this.contentSubHeading = "Tickets > All Connection"
+    } else if (urlSpilite[2] === 'new-connection') {
+      this.href = 'Connections';
+      this.link = '/auth/new-connection'
+      this.sublink = '/auth/new-connection'
+      this.contentSubHeading = "Tickets > New Connection"
     }
   }
   menuItems = [
@@ -138,7 +148,7 @@ export class PagesComponent implements OnInit {
       label: 'Requests',
       text: 'Lorem Ipsum',
       state: false,
-      item: [{ name: 'name01', href: '/auth/cancelled-ticket' }],
+      item: [{ name: 'Request', href: '/auth/cancelled-ticket' }],
       link: '/auth/requests',
       icon: '../../assets/icons/adduser.png',
     },
@@ -147,7 +157,12 @@ export class PagesComponent implements OnInit {
       label: 'Connection',
       text: 'Lorem Ipsum',
       state: false,
-      item: [],
+      item: [
+        { name: 'All Connection', href: '/auth/all-connection' },
+        { name: 'New Connection', href: '/auth/new-connection' },
+        {
+          name: 'Alter Connection', href: '/auth/alter-connection'
+        },],
       link: '/auth/connection',
       icon: '../../assets/icons/Swap.png',
     },

@@ -9,9 +9,10 @@ import { FilterBoxComponent } from './filter-box/filter-box.component';
 import { CustomButtonComponent } from './custom-button/custom-button.component';
 import { ChangeRequestComponent } from './dialogBox/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from './dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
+import { ConnectionSearchComponent } from './connection-search/connection-search.component';
 
 @NgModule({
-  declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent],
+  declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent],
   imports: [CommonModule, BrowserModule],
   entryComponents: [CardTemplateComponent],
 })
