@@ -11,6 +11,7 @@ import { AssignTicketComponent } from './ticket/assign-ticket/assign-ticket.comp
 import { ClosedTicketComponent } from './ticket/closed-ticket/pending-ticket.component';
 import { CancelledTicketComponent } from './ticket/cancelled-ticket/pending-ticket.component';
 import { NewConnectionComponent } from './connection/new-connection/new-connection.component';
+import { AlterConnectionComponent } from './connection/alter-connection/alter-connection.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
       {
         path: 'new-connection',
         component: NewConnectionComponent,
+      },
+      {
+        path: 'alter-connection',
+        component: AlterConnectionComponent,
       },
 
     ],

@@ -38,6 +38,9 @@ import { ConnectionSearchComponent } from '../core/connection-search/connection-
 import { SubscriberDetailsComponent } from './connection/new-connection/subscriber-details/subscriber-details.component';
 import { NoDataComponent } from '../core/dialogBox/pending/no-data/no-data.component';
 import { AddConnectionComponent } from './connection/new-connection/add-connection/add-connection.component';
+import { AlterConnectionComponent } from './connection/alter-connection/alter-connection.component';
+import { ConnectionDetailsComponent } from './connection/alter-connection/connection-details/connection-details.component';
+import { MakePaymentComponent } from './payments/make-payment/make-payment.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -46,7 +49,7 @@ import { AddConnectionComponent } from './connection/new-connection/add-connecti
       ExtraRequestDialogBoxComponent, ChangeRequestComponent, PendingDetailsComponent,
       PendingChangeRequestComponent,CancelDialogBoxComponent,AssignTicketComponent,
       AssignDetailsComponent,ClosedTicketComponent,CancelledTicketComponent,CancelledDetailsComponent,ClosedRequestComponent,
-       NewConnectionComponent,ConnectionSearchComponent, SubscriberDetailsComponent,NoDataComponent, AddConnectionComponent
+       NewConnectionComponent,ConnectionSearchComponent, SubscriberDetailsComponent,NoDataComponent, AddConnectionComponent, AlterConnectionComponent, ConnectionDetailsComponent, MakePaymentComponent
       ],
   imports: [
     CommonModule,

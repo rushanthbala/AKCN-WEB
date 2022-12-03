@@ -107,6 +107,17 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/new-connection'
       this.sublink = '/auth/new-connection'
       this.contentSubHeading = "Tickets > New Connection"
+    }else if (urlSpilite[2] === 'alter-connection') {
+      this.href = 'Connections';
+      this.link = '/auth/alter-connection'
+      this.sublink = '/auth/alter-connection'
+      this.contentSubHeading = "Tickets > Alter Connection"
+    }
+    else if (urlSpilite[2] === 'make-payment') {
+      this.href = 'Payments';
+      this.link = '/auth/make-payment'
+      this.sublink = '/auth/make-payment'
+      this.contentSubHeading = "Tickets > Make Payment"
     }
   }
   menuItems = [
@@ -171,8 +182,15 @@ export class PagesComponent implements OnInit {
       label: 'Payments',
       text: 'Lorem Ipsum',
       state: false,
-      item: [],
-
+      item: [
+        { name: 'Make Payment', href: '/auth/make-payment' },
+        { name: 'Adjust Payment', href: '/auth/adjust-payment' },
+        {
+          name: 'Add Arrears', href: '/auth/add-arrears'
+        },
+        {
+          name: 'Add Rental', href: '/auth/add-rental'
+        },],
       link: '/auth/payments',
       icon: '../../assets/icons/currency-dollar.png',
     },
@@ -201,7 +219,7 @@ export class PagesComponent implements OnInit {
   menuClick(clickedItem: number) {
     this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state; // flips the boolean value for the clicked item
     for (let item of this.menuItems) {
-      console.log(item, this.menuItems[clickedItem]);
+      // console.log(item, this.menuItems[clickedItem]);
 
       if (item !== this.menuItems[clickedItem]) {
         item.state = false;

@@ -87,8 +87,6 @@ export class CreateTicketComponent implements OnInit {
       this.tableResult =this.userData.length
     });
     this.showTable = true;
-
-
   }
   viewDetails(us:any) {
     this.showTable = false;
