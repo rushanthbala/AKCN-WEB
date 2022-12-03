@@ -8,6 +8,9 @@
   }
   .cus-form-check {
     margin: 0px 14px 14px 1px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
   }
   .cus-btn {
     background: #027afe !important;
@@ -100,6 +103,11 @@
     width: 100%;
     margin: 0.8rem;
   }
+  .cus-int-div3{
+    max-width: 500px;
+    width: 100%;
+    margin: 0.8rem;
+  }
   .main-input-content {
     max-width: 1000px;
     width: 100%;
@@ -130,4 +138,13 @@
   .btn-c-3 {
     background: #74bc78 !important;
   }
-  
+  mat-error{
+    padding-left: 6px;
+  }
+  // .space{
+  //   margin: 12px 0px;
+  // }
+  form{
+    max-width: 1000px;
+    width: 100%;
+  }

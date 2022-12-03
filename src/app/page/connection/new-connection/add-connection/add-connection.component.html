@@ -1,7 +1,7 @@
 <form [formGroup]="inputset">
     <div class="heading m-3">Subscriber's Information</div>
     <div
-    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
+        class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
         <div class="mb-3 cus-int-div2">
             <label for="NIC" class="form-label labels">NIC </label>
             <input type="text" class="form-control int" id="NIC" placeholder="9999999999V"
@@ -31,12 +31,174 @@
         </div>
         <div class="mb-3 cus-int-div2">
             <label for="EMAIL" class="form-label labels">EMAIL</label>
-            <input type="email" class="form-control int" id="EMAIL" value="{{object.email}}" readonly placeholder="TV" />
+            <input type="email" class="form-control int" id="EMAIL" value="{{object.email}}" readonly
+                placeholder="Email" />
         </div>
     </div>
 
-    <br/>
-    <br/>
+    <br />
+    <br />
+
+</form>
+<div class="heading m-3">Connection Information</div>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="ms-3 d-flex flex-column justify-content-center h-100">
+                <div class="heading">CONNECTION TYPE</div>
+                <div class="d-flex flex-wrap  ">
+                    <div class="form-check cus-form-check">
+                        <input class="form-check-input" type="radio" id="Normal" formControlName="type" value="Normal"
+                            name="type" />
+                        <label class="form-check-label para lbl" for="Normal">
+                            Normal
+                        </label>
+                    </div>
+
+                    <div class="form-check cus-form-check">
+                        <input class="form-check-input" type="radio" id="powerPass" formControlName="type"
+                            value="powerPass" name="type" />
+                        <label class="form-check-label para lbl" for="powerPass">
+                            power Pass
+                        </label>
+                    </div>
+
+                    <div class="form-check cus-form-check">
+                        <input class="form-check-input" type="radio" id="FreeLine" formControlName="type"
+                            value="FreeLine" name="type" />
+                        <label class="form-check-label para lbl" for="FreeLine">
+                            Free Line
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6  d-flex justify-content-center ">
+                    <div class="mb-3 cus-int-div">
+                        <label for="TV" class="form-label labels">TV </label>
+                        <input type="text" formControlName="TV" class="form-control int" id="TV"
+                            placeholder="9999999999V" value="{{object.TVcount}}" />
+                        <mat-error *ngIf="checkErrorUserForm('TV', 'required') && submitted ">
+                            TV is Required
+                        </mat-error>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 d-flex justify-content-center">
+                    <div class="mb-3 cus-int-div">
+                        <label for="OldID" class="form-label labels">Old ID</label>
+                        <input matInput type="text" class="form-control int" id="OldID" value="{{object.OldID}}"
+                            formControlName="OldID" placeholder="first Name" />
+                        <mat-error *ngIf="checkErrorUserForm('OldID', 'required') && submitted ">
+                            Old ID is Required
+                        </mat-error>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
+            <!-- <label for="Area" class="form-label labels">Area </label> -->
+
+            <!-- <select class="form-select" aria-label="Default select example" (change)='onSelectarea(val.value)' required #val>
+                <option disabled selected value="null">Area</option>
+                <option *ngFor="let item of areaArray" [value]="item.area">
+                    {{ item.area }}
+                </option>
+            </select> -->
+            <div class="mb-3 cus-int-div">
+                <label for="Area" class="form-label labels">Area </label>
+                <select class="form-select" aria-label="Default select example" (change)='onSelectarea(val.value)'
+                    required #val>
+                    <option disabled selected value="null">Area</option>
+                    <option *ngFor="let item of areaArray" [value]="item.id">
+                        {{ item.area }}
+                    </option>
+                </select>
+                <mat-error *ngIf="(areaId ==''|| areaId ==undefined) && submitted ">
+                    Area is Required
+                </mat-error>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
+            <div class="mb-3 cus-int-div">
+                <label for="Road" class="form-label labels">Road </label>
+                <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)'
+                    required #val>
+                    <option disabled selected value="null">Road</option>
+                    <option *ngFor="let item of roadArray" [value]="item.id">
+                        {{ item.road }}
+                    </option>
+                </select>
+                <mat-error *ngIf="(roadId==''|| roadId ==undefined) && submitted ">
+                    Road is Required
+                </mat-error>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center">
+            <div class="mb-3 cus-int-div3">
+                <label for="ConnectionAddress" class="form-label labels">Connection Address </label>
+                <input type="text" formControlName="ConnectionAddress" class="form-control int" id="ConnectionAddress"
+                    placeholder="9999999999V" value="{{object.ConnectionAddress}}" />
+                <mat-error *ngIf="checkErrorUserForm('ConnectionAddress', 'required') && submitted ">
+                    Connection Address is Required
+                </mat-error>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
+            <div class="mb-3 cus-int-div">
+                <label for="Technician" class="form-label labels">Technician </label>
+                <select class="form-select" aria-label="Default select example" (change)='onSelectTechnician(val.value)'
+                    required #val>
+                    <option disabled selected value="null">Technician</option>
+                    <option *ngFor="let item of technicianArray" [value]="item.id">
+                        {{ item.firstName }}
+                    </option>
+                </select>
+                <mat-error *ngIf="(technicianId ==''|| technicianId ==undefined) && submitted ">
+                    Technician is Required
+                </mat-error>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
+            <div class="mb-3 cus-int-div">
+                <label for="ConnectionDate" class="form-label labels">Connection Date </label>
+                <input type="date" formControlName="ConnectionDate" class="form-control int" id="ConnectionDate"
+                    placeholder="Connection Date" />
+                <mat-error *ngIf="checkErrorUserForm('ConnectionDate', 'required') && submitted ">
+                    Connection Date is Required
+                </mat-error>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
+            <div class="mb-3 cus-int-div">
+                <label for="Arrears" class="form-label labels">Arrears </label>
+                <input type="text" formControlName="Arrears" class="form-control int" id="Arrears"
+                    placeholder="9999999999V" />
+                <mat-error *ngIf="checkErrorUserForm('Arrears', 'required') && submitted ">
+                    Arrears is Required
+                </mat-error>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
+            <div class="mb-3 cus-int-div">
+                <label for="ConnectionFee" class="form-label labels">Connection Fee </label>
+                <input type="text" formControlName="ConnectionFee" class="form-control int" id="ConnectionFee"
+                    placeholder="9999999999V" />
+                <mat-error *ngIf="checkErrorUserForm('ConnectionFee', 'required') && submitted ">
+                    Connection Fee is Required
+                </mat-error>
+            </div>
+        </div>
+    </div>
+    <!-- <button mat-raised-button color="primary" [disabled]="!userForm.valid" type="submit">
+        Submit
+    </button> -->
     <div
         class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
         <button class="input-group-text cus-btn-down btn-c-2" (click)="addEventClick()">
@@ -44,4 +206,3 @@
         </button>
     </div>
 </form>
-<div class="heading m-3">Connection Information</div>
