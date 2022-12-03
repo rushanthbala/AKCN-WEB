@@ -12,6 +12,8 @@ import { ClosedTicketComponent } from './ticket/closed-ticket/pending-ticket.com
 import { CancelledTicketComponent } from './ticket/cancelled-ticket/pending-ticket.component';
 import { NewConnectionComponent } from './connection/new-connection/new-connection.component';
 import { AlterConnectionComponent } from './connection/alter-connection/alter-connection.component';
+import { MakePaymentComponent } from './payments/make-payment/make-payment.component';
+import { AddArrearsComponent } from './payments/add-arrears/add-arrears.component';
 
 const routes: Routes = [
   {
@@ -63,6 +65,15 @@ const routes: Routes = [
         path: 'alter-connection',
         component: AlterConnectionComponent,
       },
+      {
+        path: 'make-payment',
+        component: MakePaymentComponent,
+      },
+      {
+        path: 'add-arrears',
+        component: AddArrearsComponent,
+      },
+
 
     ],
   },

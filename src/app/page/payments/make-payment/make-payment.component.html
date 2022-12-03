@@ -1,1 +1,7 @@
-<p>make-payment works!</p>
+<p class="heading">Choose searching type and enter the value</p>
+<br />
+<app-filter-box (OnClick)="searching($event)"></app-filter-box>
+
+<div *ngIf="showTable">
+    <app-make-payment-details [object]='userData' text="text"></app-make-payment-details>
+</div>

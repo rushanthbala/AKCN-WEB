@@ -3,11 +3,5 @@
 <app-filter-box (OnClick)="searching($event)"></app-filter-box>
 
 <div *ngIf="showTable">
-<app-connection-details   [object]='userData'  text="text"></app-connection-details>
-
-    <!-- done
-    {{
-        userData | json
-    }} -->
-    <!-- <app-edit-ticket [object]='subscriberdata'  text="text" ></app-edit-ticket> -->
-  </div>
+    <app-connection-details [object]='userData' text="text"></app-connection-details>
+</div>

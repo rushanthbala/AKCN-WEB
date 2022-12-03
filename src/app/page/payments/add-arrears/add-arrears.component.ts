@@ -3,35 +3,27 @@ import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NoDataComponent } from 'src/app/core/dialogBox/pending/no-data/no-data.component';
 import { HttpService } from 'src/app/servise/http/http.service';
-import { findTypeUrl } from 'src/app/servise/utils/function';
 
 @Component({
-  selector: 'app-make-payment',
-  templateUrl: './make-payment.component.html',
-  styleUrls: ['./make-payment.component.scss']
+  selector: 'app-add-arrears',
+  templateUrl: './add-arrears.component.html',
+  styleUrls: ['./add-arrears.component.scss']
 })
-export class MakePaymentComponent  {
-  constructor(private fb: FormBuilder, public dataServise: HttpService,public dialog: MatDialog
-  ) { }
+export class AddArrearsComponent {
   animal: string | any;
   name: string | any;
   userData: any;
   showTable: boolean = false;
-  subscriberdata:any={};
-  isSubscriberdata:boolean=false;
   tableResult: any;
-  // after posting
-  loading: boolean = true;
-  errmsg: string = ""
-  sucmsg: string = ""
-  suburl: string = "connection"
 
+  constructor(private fb: FormBuilder, public dataServise: HttpService,public dialog: MatDialog
+    ) { }
   searching(first: Object | any) {
     var Ctype: string = first.type
-    var url = findTypeUrl(Ctype)
+    // var url = findTypeUrl(Ctype)
 
     var cInput: String = first.searchinginput
-    this.dataServise.getData(`${this.suburl}/${url}/${cInput}`).subscribe((res) => {
+    this.dataServise.getData(`animal`).subscribe((res) => {
       this.userData = res[0];
       this.tableResult = this.userData.length
       this.showTable = true;

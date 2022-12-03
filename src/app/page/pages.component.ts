@@ -112,12 +112,16 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/alter-connection'
       this.sublink = '/auth/alter-connection'
       this.contentSubHeading = "Tickets > Alter Connection"
-    }
-    else if (urlSpilite[2] === 'make-payment') {
+    } else if (urlSpilite[2] === 'make-payment') {
       this.href = 'Payments';
       this.link = '/auth/make-payment'
       this.sublink = '/auth/make-payment'
       this.contentSubHeading = "Tickets > Make Payment"
+    } else if (urlSpilite[2] === 'add-arrears') {
+      this.href = 'Payments';
+      this.link = '/auth/add-arrears'
+      this.sublink = '/auth/add-arrears'
+      this.contentSubHeading = "Tickets > Add Arrears"
     }
   }
   menuItems = [

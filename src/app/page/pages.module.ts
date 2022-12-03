@@ -41,6 +41,9 @@ import { AddConnectionComponent } from './connection/new-connection/add-connecti
 import { AlterConnectionComponent } from './connection/alter-connection/alter-connection.component';
 import { ConnectionDetailsComponent } from './connection/alter-connection/connection-details/connection-details.component';
 import { MakePaymentComponent } from './payments/make-payment/make-payment.component';
+import { MakePaymentDetailsComponent } from './payments/make-payment/make-payment-details/make-payment-details.component';
+import { AddArrearsComponent } from './payments/add-arrears/add-arrears.component';
+import { PaymentUpdateComponent } from '../core/payment-update/payment-update.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -49,7 +52,10 @@ import { MakePaymentComponent } from './payments/make-payment/make-payment.compo
       ExtraRequestDialogBoxComponent, ChangeRequestComponent, PendingDetailsComponent,
       PendingChangeRequestComponent,CancelDialogBoxComponent,AssignTicketComponent,
       AssignDetailsComponent,ClosedTicketComponent,CancelledTicketComponent,CancelledDetailsComponent,ClosedRequestComponent,
-       NewConnectionComponent,ConnectionSearchComponent, SubscriberDetailsComponent,NoDataComponent, AddConnectionComponent, AlterConnectionComponent, ConnectionDetailsComponent, MakePaymentComponent
+       NewConnectionComponent,ConnectionSearchComponent, SubscriberDetailsComponent,NoDataComponent, 
+       AddConnectionComponent, AlterConnectionComponent, ConnectionDetailsComponent, MakePaymentComponent,
+        MakePaymentDetailsComponent, AddArrearsComponent,
+        PaymentUpdateComponent
       ],
   imports: [
     CommonModule,
