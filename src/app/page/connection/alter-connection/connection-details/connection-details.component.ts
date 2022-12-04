@@ -2,6 +2,8 @@ import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
+import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';
+import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 
@@ -27,7 +29,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   Extra: FormGroup | any;
   
   ngOnInit(): void {
-    
+    // this.openReconnectBigDialog()
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();
@@ -80,9 +82,20 @@ export class ConnectionDetailsComponent  implements OnInit {
   ExtraRequest() {
     console.log(this.Reconnection.value);
   }
-   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
+  openReconnectDialog(): void {
+    const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  openReconnectBigDialog(): void {
+    const dialogRef = this.dialog.open(ReconnectBigDialogComponent, {
+      width: '550px',
       data: {name: this.name, animal: this.animal},
     });
 

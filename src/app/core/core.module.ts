@@ -12,11 +12,12 @@ import { ExtraRequestDialogBoxComponent } from './dialogBox/extra-request-dialog
 import { ConnectionSearchComponent } from './connection-search/connection-search.component';
 import { UpdateDataComponent } from './dialogBox/pending/update-data/update-data.component';
 import { UserReportUpdateComponent } from './user-report-update/user-report-update.component';
+import { ReconnectDialogComponent } from './dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
 
 @NgModule({
   declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, 
     FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent,
-     UpdateDataComponent, UserReportUpdateComponent],
+     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent],
   imports: [CommonModule, BrowserModule],
   entryComponents: [CardTemplateComponent],
 })
