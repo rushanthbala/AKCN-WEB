@@ -7,8 +7,8 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './payment-update.component.html',
   styleUrls: ['./payment-update.component.scss']
 })
-export class PaymentUpdateComponent  implements OnInit  {
-  @Output() OnClick = new EventEmitter<{ searchinginput: string, type: string }>()
+export class PaymentUpdateComponent implements OnInit {
+  @Output() OnClick = new EventEmitter<{ connectionId: any, amount: any, arreardate: any }>()
   errmsg = '';
   sucmsg = '';
   loading = false;
@@ -22,8 +22,9 @@ export class PaymentUpdateComponent  implements OnInit  {
   }
   initialForm() {
     this.loginForm = this.fb.group({
-      searchinginput: '',
-      type: '',
+      connectionId: "",
+      amount: "",
+      arreardate: "",
     });
   }
 
@@ -33,13 +34,15 @@ export class PaymentUpdateComponent  implements OnInit  {
   emitEvent() {
     this.loading = true;
 
-    let sInput = this.loginForm.value.searchinginput;
-    let sType = this.loginForm.value.type;
-    if (sInput == "" ) {
+    let connectionId = this.loginForm.value.connectionId;
+    let amount = this.loginForm.value.amount;
+    let arreardate = this.loginForm.value.arreardate;
+
+    if (connectionId == "" || amount == "" || arreardate == "") {
       this.isEmpty();
       this.loading = false;
     } else {
-      this.OnClick.emit({ searchinginput: sInput, type: sType })
+      this.OnClick.emit({ connectionId: connectionId, amount: amount, arreardate: arreardate })
 
       this.loading = false;
     }
