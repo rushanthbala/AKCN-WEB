@@ -45,6 +45,9 @@ import { MakePaymentDetailsComponent } from './payments/make-payment/make-paymen
 import { AddArrearsComponent } from './payments/add-arrears/add-arrears.component';
 import { PaymentUpdateComponent } from '../core/payment-update/payment-update.component';
 import { UpdateDataComponent } from '../core/dialogBox/pending/update-data/update-data.component';
+import { UserReportComponent } from './reports/user-report/user-report.component';
+import { UserReportUpdateComponent } from '../core/user-report-update/user-report-update.component';
+import { UsersSettingComponent } from './settings/users-setting/users-setting.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -56,7 +59,7 @@ import { UpdateDataComponent } from '../core/dialogBox/pending/update-data/updat
        NewConnectionComponent,ConnectionSearchComponent, SubscriberDetailsComponent,NoDataComponent, 
        AddConnectionComponent, AlterConnectionComponent, ConnectionDetailsComponent, MakePaymentComponent,
         MakePaymentDetailsComponent, AddArrearsComponent,
-        PaymentUpdateComponent,UpdateDataComponent
+        PaymentUpdateComponent,UpdateDataComponent, UserReportComponent,UserReportUpdateComponent, UsersSettingComponent
       ],
   imports: [
     CommonModule,

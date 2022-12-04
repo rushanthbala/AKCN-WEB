@@ -14,6 +14,8 @@ import { NewConnectionComponent } from './connection/new-connection/new-connecti
 import { AlterConnectionComponent } from './connection/alter-connection/alter-connection.component';
 import { MakePaymentComponent } from './payments/make-payment/make-payment.component';
 import { AddArrearsComponent } from './payments/add-arrears/add-arrears.component';
+import { UserReportComponent } from './reports/user-report/user-report.component';
+import { UsersSettingComponent } from './settings/users-setting/users-setting.component';
 
 const routes: Routes = [
   {
@@ -72,6 +74,14 @@ const routes: Routes = [
       {
         path: 'add-arrears',
         component: AddArrearsComponent,
+      },
+      {
+        path: 'user-report',
+        component: UserReportComponent,
+      },
+      {
+        path: 'users-setting',
+        component: UsersSettingComponent,
       },
 
 

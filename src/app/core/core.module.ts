@@ -11,9 +11,12 @@ import { ChangeRequestComponent } from './dialogBox/change-request/change-reques
 import { ExtraRequestDialogBoxComponent } from './dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { ConnectionSearchComponent } from './connection-search/connection-search.component';
 import { UpdateDataComponent } from './dialogBox/pending/update-data/update-data.component';
+import { UserReportUpdateComponent } from './user-report-update/user-report-update.component';
 
 @NgModule({
-  declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent, UpdateDataComponent],
+  declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, 
+    FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent,
+     UpdateDataComponent, UserReportUpdateComponent],
   imports: [CommonModule, BrowserModule],
   entryComponents: [CardTemplateComponent],
 })

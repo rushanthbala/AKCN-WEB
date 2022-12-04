@@ -107,7 +107,7 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/new-connection'
       this.sublink = '/auth/new-connection'
       this.contentSubHeading = "Tickets > New Connection"
-    }else if (urlSpilite[2] === 'alter-connection') {
+    } else if (urlSpilite[2] === 'alter-connection') {
       this.href = 'Connections';
       this.link = '/auth/alter-connection'
       this.sublink = '/auth/alter-connection'
@@ -122,6 +122,17 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/add-arrears'
       this.sublink = '/auth/add-arrears'
       this.contentSubHeading = "Tickets > Add Arrears"
+    }
+    else if (urlSpilite[2] === 'user-report') {
+      this.href = 'Reports';
+      this.link = '/auth/user-report'
+      this.sublink = '/auth/user-report'
+      this.contentSubHeading = "Tickets > user report"
+    } else if (urlSpilite[2] === 'users-setting') {
+      this.href = 'Settings';
+      this.link = '/auth/users-setting'
+      this.sublink = '/auth/users-setting'
+      this.contentSubHeading = "Tickets > Users"
     }
   }
   menuItems = [
@@ -149,12 +160,13 @@ export class PagesComponent implements OnInit {
         {
           name: 'Closed Tickets', href: '/auth/closed-ticket'
         },
-        {
-          name: 'Closed Tickets', href: '/auth/cancelled-ticket'
-        },
-        //   { name: 'Cancelled Tickets'
-        // ,href: '/auth/cancelled-ticket'
+        // {
+        //   name: 'Closed Tickets', href: '/auth/cancelled-ticket'
         // },
+        {
+          name: 'Cancelled Tickets'
+          , href: '/auth/cancelled-ticket'
+        },
       ],
       icon: '../../assets/icons/Bookmark png (2).png',
     },
@@ -203,7 +215,16 @@ export class PagesComponent implements OnInit {
       label: 'Reports',
       text: 'Lorem Ipsum',
       state: false,
-      item: [],
+      item: [
+        { name: 'User Report', href: '/auth/user-report' },
+        { name: 'Collection Report', href: '/auth/collection-report' },
+        {
+          name: 'Due Report', href: '/auth/due-report'
+        },
+        {
+          name: 'Unpaid Report', href: '/auth/unpaid-report'
+        },
+      ],
 
       link: '/auth/reports',
       icon: '../../assets/icons/Calendar.png',
@@ -213,7 +234,19 @@ export class PagesComponent implements OnInit {
       label: 'Setting',
       text: 'Lorem Ipsum',
       state: false,
-      item: [],
+      item: [
+        { name: 'Users', href: '/auth/users-setting' },
+        { name: 'Roles', href: '/auth/roles-setting' },
+        {
+          name: 'Roads', href: '/auth/roads-setting'
+        },
+        {
+          name: 'Areas', href: '/auth/areas-setting'
+        },
+        {
+          name: 'Branches', href: '/auth/branches-setting'
+        },
+      ],
 
       link: '/auth/setting',
       icon: '../../assets/icons/setting.png',
