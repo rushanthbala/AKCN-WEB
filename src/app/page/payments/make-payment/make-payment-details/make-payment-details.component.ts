@@ -4,6 +4,8 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
+import { ApplyDiscountDialogBoxComponent } from 'src/app/core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';
+import { UpdatePaymentComponent } from 'src/app/core/dialogBox/payment/update-payment/update-payment.component';
 
 @Component({
   selector: 'app-make-payment-details',
@@ -80,8 +82,8 @@ export class MakePaymentDetailsComponent   implements OnInit {
   ExtraRequest() {
     console.log(this.Reconnection.value);
   }
-   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
+  applyDiscount(): void {
+    const dialogRef = this.dialog.open(ApplyDiscountDialogBoxComponent, {
       width: '250px',
       data: {name: this.name, animal: this.animal},
     });
@@ -92,8 +94,8 @@ export class MakePaymentDetailsComponent   implements OnInit {
     });
   }
 
-  openDialog2(): void {
-    const dialogRef = this.dialog.open(ChangeRequestComponent, {
+  makePayment(): void {
+    const dialogRef = this.dialog.open(UpdatePaymentComponent, {
       width: '250px',
       data: {name: this.name, animal: this.animal},
     });

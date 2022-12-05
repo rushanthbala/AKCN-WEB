@@ -51,6 +51,9 @@ import { UsersSettingComponent } from './settings/users-setting/users-setting.co
 import { ReconnectDialogComponent } from '../core/dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
 import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';
 import { EditConnectionDialogComponent } from '../core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
+import { EditSubscriberDialogComponent } from '../core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
+import { ApplyDiscountDialogBoxComponent } from '../core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';
+import { UpdatePaymentComponent } from '../core/dialogBox/payment/update-payment/update-payment.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -63,7 +66,8 @@ import { EditConnectionDialogComponent } from '../core/dialogBox/connection/edit
        AddConnectionComponent, AlterConnectionComponent, ConnectionDetailsComponent, MakePaymentComponent,
         MakePaymentDetailsComponent, AddArrearsComponent,
         PaymentUpdateComponent,UpdateDataComponent, UserReportComponent,UserReportUpdateComponent, UsersSettingComponent,
-        ReconnectDialogComponent,ReconnectBigDialogComponent,EditConnectionDialogComponent
+        ReconnectDialogComponent,ReconnectBigDialogComponent,EditConnectionDialogComponent,EditSubscriberDialogComponent,
+        ApplyDiscountDialogBoxComponent,UpdatePaymentComponent
       ],
   imports: [
     CommonModule,

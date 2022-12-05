@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { EditConnectionDialogComponent } from 'src/app/core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
+import { EditSubscriberDialogComponent } from 'src/app/core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
 import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';
 import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
@@ -86,7 +87,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   openReconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -97,7 +98,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   openReconnectBigDialog(): void {
     const dialogRef = this.dialog.open(ReconnectBigDialogComponent, {
       width: '550px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -106,10 +107,10 @@ export class ConnectionDetailsComponent  implements OnInit {
     });
   }
 
-  openDialog2(): void {
-    const dialogRef = this.dialog.open(ChangeRequestComponent, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal},
+  editSubscriber(): void {
+    const dialogRef = this.dialog.open(EditSubscriberDialogComponent, {
+      width: '550px',
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -120,7 +121,8 @@ export class ConnectionDetailsComponent  implements OnInit {
   editConnection(): void {
     const dialogRef = this.dialog.open(EditConnectionDialogComponent, {
       width: '600px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -131,7 +133,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   openDialog4(): void {
     const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
