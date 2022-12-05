@@ -5,11 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
-  selector: 'app-reconnect-big-dialog',
-  templateUrl: './reconnect-big-dialog.component.html',
-  styleUrls: ['./reconnect-big-dialog.component.scss']
+  selector: 'app-edit-connection-dialog',
+  templateUrl: './edit-connection-dialog.component.html',
+  styleUrls: ['./edit-connection-dialog.component.scss']
 })
-export class ReconnectBigDialogComponent implements OnInit {
+export class EditConnectionDialogComponent implements OnInit {
 
   public loading: Boolean = true;
   public areaArray: any = [];
@@ -29,7 +29,7 @@ export class ReconnectBigDialogComponent implements OnInit {
     this.getAll()
   }
   constructor(
-    public dialogRef: MatDialogRef<ReconnectBigDialogComponent>,
+    public dialogRef: MatDialogRef<EditConnectionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
@@ -41,28 +41,29 @@ export class ReconnectBigDialogComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      disconnectedDate: '',
-      reconnectionFee: '',
-      newAddress:""
+      type:"Normal",
+      oldId: '',
+      NoOfTV: '',
+      houseNo:""
     });
   }
   ReconnectionRequest() {
     console.log(this.chackRequest.value);
     let data = {
-      disconnectedDate: this.chackRequest.value.disconnectedDate,
-      reconnectionFee: this.chackRequest.value.reconnectionFee,
+      oldId: this.chackRequest.value.oldId,
+      NoOfTV: this.chackRequest.value.NoOfTV,
       TechnicianId:this.TechnicianId  ,
       roadId:this.roadId,
       areaId:this.areaId,
-      newAddress:this.chackRequest.value.newAddress,
+      houseNo:this.chackRequest.value.houseNo,
     };
     console.log(data,"data");
-    console.log(data.disconnectedDate == "" ,data.reconnectionFee == "" ,
-    data.TechnicianId == "Technician" ,data.newAddress=="",   data.roadId == "Road" ,  data.areaId == "Area"
+    console.log(data.oldId == "" ,data.NoOfTV == "" ,
+    data.houseNo=="",   data.roadId == "Road" ,  data.areaId == "Area"
  );
     
-    if (data.disconnectedDate == "" ||data.reconnectionFee == "" ||
-    data.TechnicianId == "Technician" ||data.newAddress==""||   data.roadId == "Road" ||  data.areaId == "Area"
+    if (data.oldId == "" ||data.NoOfTV == "" ||
+    data.houseNo==""||   data.roadId == "Road" ||  data.areaId == "Area"
     ) {
       this.isEmpty();
     } else {

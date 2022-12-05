@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
+import { EditConnectionDialogComponent } from 'src/app/core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';
 import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
@@ -116,9 +117,9 @@ export class ConnectionDetailsComponent  implements OnInit {
       this.animal = result;
     });
   }
-  openDialog3(): void {
-    const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
-      width: '250px',
+  editConnection(): void {
+    const dialogRef = this.dialog.open(EditConnectionDialogComponent, {
+      width: '600px',
       data: {name: this.name, animal: this.animal},
     });
 

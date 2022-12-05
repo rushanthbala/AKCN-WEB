@@ -50,6 +50,7 @@ import { UserReportUpdateComponent } from '../core/user-report-update/user-repor
 import { UsersSettingComponent } from './settings/users-setting/users-setting.component';
 import { ReconnectDialogComponent } from '../core/dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
 import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';
+import { EditConnectionDialogComponent } from '../core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -62,7 +63,7 @@ import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/reconn
        AddConnectionComponent, AlterConnectionComponent, ConnectionDetailsComponent, MakePaymentComponent,
         MakePaymentDetailsComponent, AddArrearsComponent,
         PaymentUpdateComponent,UpdateDataComponent, UserReportComponent,UserReportUpdateComponent, UsersSettingComponent,
-        ReconnectDialogComponent,ReconnectBigDialogComponent
+        ReconnectDialogComponent,ReconnectBigDialogComponent,EditConnectionDialogComponent
       ],
   imports: [
     CommonModule,
