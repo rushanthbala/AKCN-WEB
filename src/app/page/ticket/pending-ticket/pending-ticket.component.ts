@@ -153,6 +153,9 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
     console.log(us);
     
   }
+  detailhide(){
+    this.showTable = true;
+  }
 }
 
 export interface PeriodicElement {

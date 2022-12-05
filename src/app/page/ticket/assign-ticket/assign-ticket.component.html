@@ -95,7 +95,7 @@
 
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>
-<div class="editData">
+<div class="editData"  *ngIf="!showTable">
   <!--  [object]='subscriberdata'  text="text" -->
-  <app-assign-details   [object]='subscriberdata'  text="text"  ></app-assign-details>
+  <app-assign-details   [object]='subscriberdata'  text="text"   (backTo)="detailhide()"  ></app-assign-details>
 </div>

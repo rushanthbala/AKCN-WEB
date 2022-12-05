@@ -1,4 +1,4 @@
-<div *ngIf="isActiveAddConnectionCom">
+<div *ngIf="!isActiveAddConnectionCom">
     <div class=""  >
         <app-connection-search (OnClick)="searching($event)"></app-connection-search>
     </div>
@@ -7,6 +7,6 @@
         <!-- <app-edit-ticket [object]='subscriberdata'  text="text" ></app-edit-ticket> -->
     </div>
 </div>
-<div class="" *ngIf="!isActiveAddConnectionCom" >
+<div class="" *ngIf="isActiveAddConnectionCom" >
     <app-add-connection  [object]='userData'  text="text" (OnClick)="addAnotherConnection()" ></app-add-connection>
 </div>  

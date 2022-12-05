@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,Output, EventEmitter  } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
@@ -16,6 +16,7 @@ import { ClosedRequestComponent } from 'src/app/core/dialogBox/pending/close-req
 export class AssignDetailsComponent {
   animal: string | any;
   name: string | any;
+  @Output() backTo = new EventEmitter<any>()
 
   constructor(private fb: FormBuilder,public dialog: MatDialog) {}
   @Input() object:object | any;
@@ -105,7 +106,18 @@ export class AssignDetailsComponent {
       this.animal = result;
     });
   }  
-  Back(){
+  TransferTicket(): void {
+    const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
+      width: '250px',
+      data: {id:"PKA0001", animal: this.animal},
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  } 
+  Back(){
+    this.backTo.emit()
   }
 }

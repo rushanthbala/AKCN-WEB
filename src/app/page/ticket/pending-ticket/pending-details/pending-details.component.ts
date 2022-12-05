@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,Output, EventEmitter  } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
@@ -19,6 +19,7 @@ export class PendingDetailsComponent {
   constructor(private fb: FormBuilder,public dialog: MatDialog) {}
   @Input() object:object | any;
   @Input() text:string | any;
+  @Output() backTo = new EventEmitter<any>()
 
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
@@ -105,6 +106,6 @@ export class PendingDetailsComponent {
     });
   }  
   Back(){
-
+    this.backTo.emit()
   }
 }
