@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PendingTicketComponent } from './pending-ticket.component';
+import { AssignRequestComponent } from './assign-request.component';
 
-describe('PendingTicketComponent', () => {
-  let component: PendingTicketComponent;
-  let fixture: ComponentFixture<PendingTicketComponent>;
+describe('AssignRequestComponent', () => {
+  let component: AssignRequestComponent;
+  let fixture: ComponentFixture<AssignRequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PendingTicketComponent ]
+      declarations: [ AssignRequestComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PendingTicketComponent);
+    fixture = TestBed.createComponent(AssignRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

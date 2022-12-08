@@ -4,22 +4,22 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
-import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/pending/assign-request/change-request.component';
-import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
 
 @Component({
-  selector: 'app-cancelled-details',
-  templateUrl: './pending-details.component.html',
-  styleUrls: ['./pending-details.component.scss']
+  selector: 'app-edit-request',
+  templateUrl: './edit-request.component.html',
+  styleUrls: ['./edit-request.component.scss'],
 })
-export class CancelledDetailsComponent {
+
+
+export class EditRequestComponent implements OnInit {
+  // model
   animal: string | any;
   name: string | any;
-
   constructor(private fb: FormBuilder,public dialog: MatDialog) {}
   @Input() object:object | any;
   @Input() text:string | any;
-
+  
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -29,6 +29,7 @@ export class CancelledDetailsComponent {
   Extra: FormGroup | any;
   
   ngOnInit(): void {
+    
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();
@@ -81,10 +82,10 @@ export class CancelledDetailsComponent {
   ExtraRequest() {
     console.log(this.Reconnection.value);
   }
-   AssignOpenDialog(): void {
-    const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
+   openDialog(): void {
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data: {name: this.name, animal: this.animal},
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -93,18 +94,26 @@ export class CancelledDetailsComponent {
     });
   }
 
-  CancelTicket(): void {
-    const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
+  openDialog2(): void {
+    const dialogRef = this.dialog.open(ChangeRequestComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data: {name: this.name, animal: this.animal},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
     });
-  }  
-  Back(){
+  }
+  openDialog3(): void {
+    const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 }

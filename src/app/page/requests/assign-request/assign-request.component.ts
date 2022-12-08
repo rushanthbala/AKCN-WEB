@@ -10,11 +10,11 @@ import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
-  selector: 'app-assign-ticket',
-  templateUrl: './assign-ticket.component.html',
-  styleUrls: ['./assign-ticket.component.scss'],
+  selector: 'app-assign-request',
+  templateUrl: './assign-request.component.html',
+  styleUrls: ['./assign-request.component.scss'],
 })
-export class AssignTicketComponent implements AfterViewInit, OnInit {
+export class AssignRequestComponent implements AfterViewInit, OnInit {
 
   TICKET_DATA=[]
   dataSource: any;

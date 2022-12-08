@@ -10,11 +10,11 @@ import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
-  selector: 'app-closed-ticket',
-  templateUrl: './pending-ticket.component.html',
-  styleUrls: ['./pending-ticket.component.scss'],
+  selector: 'app-pending-request',
+  templateUrl: './pending-request.component.html',
+  styleUrls: ['./pending-request.component.scss'],
 })
-export class ClosedTicketComponent implements AfterViewInit, OnInit {
+export class PendingRequestComponent implements AfterViewInit, OnInit {
 
   TICKET_DATA=[]
   dataSource: any;
@@ -78,7 +78,7 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
   }
   getPendingData() {
     console.log("okokok");
-      this.dataServise.getData(`ticket/status/closed`).subscribe((res) => {
+      this.dataServise.getData(`ticket/status/pending`).subscribe((res) => {
       this.TICKET_DATA = res;
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
       this.dataSource.paginator = this.paginator;
@@ -152,6 +152,9 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
     this.isSubscriberdata=true;
     console.log(us);
     
+  }
+  detailhide(){
+    this.showTable = true;
   }
 }
 

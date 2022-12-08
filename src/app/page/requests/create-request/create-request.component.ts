@@ -4,11 +4,11 @@ import { HttpService } from 'src/app/servise/http/http.service';
 import { findTypeUrl } from 'src/app/servise/utils/function';
 
 @Component({
-  selector: 'app-create-ticket',
-  templateUrl: './create-ticket.component.html',
-  styleUrls: ['./create-ticket.component.scss'],
+  selector: 'app-create-request',
+  templateUrl: './create-request.component.html',
+  styleUrls: ['./create-request.component.scss'],
 })
-export class CreateTicketComponent implements OnInit {
+export class CreateRequestComponent implements OnInit {
   constructor(private fb: FormBuilder, public dataServise: HttpService,
   ) { }
   loginForm: FormGroup | any;

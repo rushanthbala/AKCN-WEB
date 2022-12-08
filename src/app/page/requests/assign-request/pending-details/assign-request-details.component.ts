@@ -6,20 +6,21 @@ import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/pending/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
+import { ClosedRequestComponent } from 'src/app/core/dialogBox/pending/close-request/closed-request.component';
 
 @Component({
-  selector: 'app-pending-details',
-  templateUrl: './pending-details.component.html',
-  styleUrls: ['./pending-details.component.scss']
+  selector: 'app-assign-request-details',
+  templateUrl: './assign-request-details.component.html',
+  styleUrls: ['./assign-request-details.component.scss']
 })
-export class PendingDetailsComponent {
+export class AssignRequestDetailsComponent {
   animal: string | any;
   name: string | any;
+  @Output() backTo = new EventEmitter<any>()
 
   constructor(private fb: FormBuilder,public dialog: MatDialog) {}
   @Input() object:object | any;
   @Input() text:string | any;
-  @Output() backTo = new EventEmitter<any>()
 
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
@@ -82,8 +83,8 @@ export class PendingDetailsComponent {
   ExtraRequest() {
     console.log(this.Reconnection.value);
   }
-   AssignOpenDialog(): void {
-    const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
+  CloseOpenDialog(): void {
+    const dialogRef = this.dialog.open(ClosedRequestComponent, {
       width: '250px',
       data: {id:"PKA0001", animal: this.animal},
     });
@@ -105,6 +106,17 @@ export class PendingDetailsComponent {
       this.animal = result;
     });
   }  
+  TransferTicket(): void {
+    const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
+      width: '250px',
+      data: {id:"PKA0001", animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  } 
   Back(){
     this.backTo.emit()
   }

@@ -55,6 +55,16 @@ import { EditSubscriberDialogComponent } from '../core/dialogBox/connection/edit
 import { ApplyDiscountDialogBoxComponent } from '../core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';
 import { UpdatePaymentComponent } from '../core/dialogBox/payment/update-payment/update-payment.component';
 import { CreateTicketComponentDialog } from '../core/dialogBox/ticket/create-ticket/create-ticket.component';
+import { AssignRequestDetailsComponent } from './requests/assign-request/pending-details/assign-request-details.component';
+import { AssignRequestComponent } from './requests/assign-request/assign-request.component';
+import { EditRequestComponent } from './requests/create-request/edit-ticket/edit-request.component';
+import { CreateRequestComponent } from './requests/create-request/create-request.component';
+import { PendingRequestDetailsComponent } from './requests/pending-request/pending-request-details/pending-request-details.component';
+import { PendingRequestComponent } from './requests/pending-request/pending-request.component';
+import { CloseRequestDetailsComponent } from './requests/closed-request/close-request-details/close-request-details.component';
+import { CloseRequestComponent } from './requests/closed-request/close-request.component';
+import { CancelledRequestComponent } from './requests/cancelled-request/cancel-request.component';
+import { CancelledRequestDetailsComponent } from './requests/cancelled-request/cancel-request-details/cancel-request-details.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -68,7 +78,10 @@ import { CreateTicketComponentDialog } from '../core/dialogBox/ticket/create-tic
         MakePaymentDetailsComponent, AddArrearsComponent,
         PaymentUpdateComponent,UpdateDataComponent, UserReportComponent,UserReportUpdateComponent, UsersSettingComponent,
         ReconnectDialogComponent,ReconnectBigDialogComponent,EditConnectionDialogComponent,EditSubscriberDialogComponent,
-        ApplyDiscountDialogBoxComponent,UpdatePaymentComponent,CreateTicketComponentDialog
+        ApplyDiscountDialogBoxComponent,UpdatePaymentComponent,CreateTicketComponentDialog,
+        AssignRequestDetailsComponent,AssignRequestComponent,EditRequestComponent,CreateRequestComponent,
+        PendingRequestDetailsComponent,PendingRequestComponent,CloseRequestDetailsComponent,
+        CloseRequestComponent,CancelledRequestDetailsComponent,CancelledRequestComponent
       ],
   imports: [
     CommonModule,

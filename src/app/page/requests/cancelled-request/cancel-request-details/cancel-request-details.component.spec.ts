@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PendingDetailsComponent } from './pending-details.component';
+import { PendingDetailsComponent } from './cancel-request-details.component';
 
 describe('PendingDetailsComponent', () => {
   let component: PendingDetailsComponent;

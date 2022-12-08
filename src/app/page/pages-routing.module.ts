@@ -16,6 +16,11 @@ import { MakePaymentComponent } from './payments/make-payment/make-payment.compo
 import { AddArrearsComponent } from './payments/add-arrears/add-arrears.component';
 import { UserReportComponent } from './reports/user-report/user-report.component';
 import { UsersSettingComponent } from './settings/users-setting/users-setting.component';
+import { CreateRequestComponent } from './requests/create-request/create-request.component';
+import { PendingRequestComponent } from './requests/pending-request/pending-request.component';
+import { AssignRequestComponent } from './requests/assign-request/assign-request.component';
+import { CloseRequestComponent } from './requests/closed-request/close-request.component';
+import { CancelledRequestComponent } from './requests/cancelled-request/cancel-request.component';
 
 const routes: Routes = [
   {
@@ -84,6 +89,28 @@ const routes: Routes = [
         component: UsersSettingComponent,
       },
 
+
+      // request
+      {
+        path: 'create-request',
+        component: CreateRequestComponent,
+      },
+      {
+        path: 'pending-request',
+        component: PendingRequestComponent,
+      },
+      {
+        path: 'assign-request',
+        component: AssignRequestComponent,
+      },
+      {
+        path: 'closed-request',
+        component: CloseRequestComponent,
+      },
+      {
+        path: 'cancelled-request',
+        component: CancelledRequestComponent,
+      },
 
     ],
   },

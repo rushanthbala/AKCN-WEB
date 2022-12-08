@@ -97,7 +97,38 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/cancelled-ticket'
       this.sublink = '/auth/cancelled-ticket'
       this.contentSubHeading = "Tickets > Cancelled Tickets"
-    } else if (urlSpilite[2] === 'all-connection') {
+    } 
+    // request
+    else if (urlSpilite[2] === 'create-request') {
+      this.href = 'Requests';
+      this.link = '/auth/create-request'
+      this.sublink = '/auth/create-request'
+      this.contentSubHeading = "Requests > Create Requests"
+    } else if (urlSpilite[2] === 'pending-request') {
+      this.href = 'Requests';
+      this.link = '/auth/pending-request'
+      this.sublink = '/auth/pending-request'
+      this.contentSubHeading = "Requests > Pending Requests"
+    } else if (urlSpilite[2] === 'assign-request') {
+      this.href = 'Requests';
+      this.link = '/auth/assign-request'
+      this.sublink = '/auth/assign-request'
+      this.contentSubHeading = "Requests > Assign Requests"
+    } else if (urlSpilite[2] === 'closed-request') {
+      this.href = 'Requests';
+      this.link = '/auth/closed-request'
+      this.sublink = '/auth/closed-request'
+      this.contentSubHeading = "Requests > Closed Requests"
+    }
+    else if (urlSpilite[2] === 'cancelled-request') {
+      this.href = 'Requests';
+      this.link = '/auth/cancelled-request'
+      this.sublink = '/auth/cancelled-request'
+      this.contentSubHeading = "Requests > Cancelled Requests"
+    } 
+
+
+    else if (urlSpilite[2] === 'all-connection') {
       this.href = 'Connections';
       this.link = '/auth/all-connection'
       this.sublink = '/auth/all-connection'
@@ -175,8 +206,20 @@ export class PagesComponent implements OnInit {
       label: 'Requests',
       text: 'Lorem Ipsum',
       state: false,
-      item: [{ name: 'Request', href: '/auth/cancelled-ticket' }],
-      link: '/auth/requests',
+      item: [
+        { name: 'Create Requests', href: '/auth/create-request' },
+        { name: 'Pending Requests', href: '/auth/pending-request' },
+        {
+          name: 'Assigned Requests', href: '/auth/assign-request'
+        },
+        {
+          name: 'Closed Requests', href: '/auth/closed-request'
+        },
+        {
+          name: 'Cancelled Requests'
+          , href: '/auth/cancelled-request'
+        },
+      ], link: '/auth/requests',
       icon: '../../assets/icons/adduser.png',
     },
     {

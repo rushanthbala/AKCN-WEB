@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PendingTicketComponent } from './assign-ticket.component';
+import { CloseRequestComponent } from './close-request.component';
 
-describe('PendingTicketComponent', () => {
-  let component: PendingTicketComponent;
-  let fixture: ComponentFixture<PendingTicketComponent>;
+describe('CloseRequestComponent', () => {
+  let component: CloseRequestComponent;
+  let fixture: ComponentFixture<CloseRequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PendingTicketComponent ]
+      declarations: [ CloseRequestComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PendingTicketComponent);
+    fixture = TestBed.createComponent(CloseRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,22 +4,22 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
+import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/pending/assign-request/change-request.component';
+import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
 
 @Component({
-  selector: 'app-edit-ticket',
-  templateUrl: './edit-ticket.component.html',
-  styleUrls: ['./edit-ticket.component.scss'],
+  selector: 'app-close-request-details',
+  templateUrl: './close-request-details.component.html',
+  styleUrls: ['./close-request-details.component.scss']
 })
-
-
-export class EditTicketComponent implements OnInit {
-  // model
+export class CloseRequestDetailsComponent {
   animal: string | any;
   name: string | any;
+
   constructor(private fb: FormBuilder,public dialog: MatDialog) {}
   @Input() object:object | any;
   @Input() text:string | any;
-  
+
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -29,7 +29,6 @@ export class EditTicketComponent implements OnInit {
   Extra: FormGroup | any;
   
   ngOnInit(): void {
-    
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();
@@ -82,10 +81,10 @@ export class EditTicketComponent implements OnInit {
   ExtraRequest() {
     console.log(this.Reconnection.value);
   }
-   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
+   AssignOpenDialog(): void {
+    const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data: {id:"PKA0001", animal: this.animal},
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -94,26 +93,18 @@ export class EditTicketComponent implements OnInit {
     });
   }
 
-  openDialog2(): void {
-    const dialogRef = this.dialog.open(ChangeRequestComponent, {
+  CancelTicket(): void {
+    const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data: {id:"PKA0001", animal: this.animal},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
     });
-  }
-  openDialog3(): void {
-    const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal},
-    });
+  }  
+  Back(){
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
   }
 }
