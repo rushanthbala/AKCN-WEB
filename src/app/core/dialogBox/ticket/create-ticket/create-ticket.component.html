@@ -1,0 +1,33 @@
+<form [formGroup]="chackRequest">
+    <div class=" cus-model-c-div">
+        <div class="form-heading int-div card-head-h2">
+            Change Request
+        </div>
+        <p class="para">{{data.id}}</p>
+        <div class="">
+
+            <select class="form-select" aria-label="Default select example" (change)='onSelectSubject(val.value)'
+                required #val>
+                <option disabled selected value="null">Subject</option>
+                <option *ngFor="let item of subjectArray" [value]="item.value">
+                    {{ item.value }}
+                </option>
+            </select>
+
+            <textarea type="text" class="form-control ints mt-2" type="number" required id="ID" placeholder="Description"
+            formControlName="description" ></textarea>
+            <input type="text" class="form-control int mt-2" type="number" required id="ID" placeholder="Phone Number"
+                formControlName="phoneNumber" />
+
+
+            <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
+                Create
+            </button>
+            <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
+                style="background-color: #fff !important; color: #027afe">
+                Cancel
+            </button>
+
+        </div>
+    </div>
+</form>

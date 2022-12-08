@@ -4,6 +4,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
+import { CreateTicketComponentDialog } from 'src/app/core/dialogBox/ticket/create-ticket/create-ticket.component';
 
 @Component({
   selector: 'app-edit-ticket',
@@ -82,10 +83,10 @@ export class EditTicketComponent implements OnInit {
   ExtraRequest() {
     console.log(this.Reconnection.value);
   }
-   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
+  createTicket(): void {
+    const dialogRef = this.dialog.open(CreateTicketComponentDialog, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {

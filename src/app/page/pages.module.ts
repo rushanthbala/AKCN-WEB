@@ -54,6 +54,7 @@ import { EditConnectionDialogComponent } from '../core/dialogBox/connection/edit
 import { EditSubscriberDialogComponent } from '../core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
 import { ApplyDiscountDialogBoxComponent } from '../core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';
 import { UpdatePaymentComponent } from '../core/dialogBox/payment/update-payment/update-payment.component';
+import { CreateTicketComponentDialog } from '../core/dialogBox/ticket/create-ticket/create-ticket.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -67,7 +68,7 @@ import { UpdatePaymentComponent } from '../core/dialogBox/payment/update-payment
         MakePaymentDetailsComponent, AddArrearsComponent,
         PaymentUpdateComponent,UpdateDataComponent, UserReportComponent,UserReportUpdateComponent, UsersSettingComponent,
         ReconnectDialogComponent,ReconnectBigDialogComponent,EditConnectionDialogComponent,EditSubscriberDialogComponent,
-        ApplyDiscountDialogBoxComponent,UpdatePaymentComponent
+        ApplyDiscountDialogBoxComponent,UpdatePaymentComponent,CreateTicketComponentDialog
       ],
   imports: [
     CommonModule,
