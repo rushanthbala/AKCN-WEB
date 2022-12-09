@@ -20,12 +20,13 @@ export class CreateTicketComponent implements OnInit {
   errmsg: string = ""
   sucmsg: string = ""
   suburl: string = "connection"
+  isFetchDataFail: boolean = false
   // table variable
   showTable: boolean = false;
-  subscriberdata:any={};
-  isSubscriberdata:boolean=false;
+  subscriberdata: any = {};
+  isSubscriberdata: boolean = false;
   tableResult: any;
-  
+
   userArray: any = [
     {
       id: 1,
@@ -84,15 +85,22 @@ export class CreateTicketComponent implements OnInit {
     var cInput: String = first.searchinginput
     this.dataServise.getData(`${this.suburl}/${url}/${cInput}`).subscribe((res) => {
       this.userData = res;
-      this.tableResult =this.userData.length
-    });
+      this.tableResult = this.userData.length
+      this.isFetchDataFail = false
+
+    }, (err) => {
+      this.isFetchDataFail = true
+    }
+    );
     this.showTable = true;
-  }
-  viewDetails(us:any) {
-    this.showTable = false;
-    this.subscriberdata=us;
-    this.isSubscriberdata=true;
-    console.log(us);
+    console.log(this.showTable,this.showTable && !this.isFetchDataFail);
     
+  }
+  viewDetails(us: any) {
+    this.showTable = false;
+    this.subscriberdata = us;
+    this.isSubscriberdata = true;
+    console.log(us);
+
   }
 }

@@ -71,7 +71,6 @@ export class ReconnectBigDialogComponent implements OnInit {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            localStorage.setItem('auth', JSON.stringify(res.message));
             this.showSuccess()
             this.loading = false;
           }

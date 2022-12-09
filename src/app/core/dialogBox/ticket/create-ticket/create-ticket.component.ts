@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-create-ticket',
@@ -59,16 +60,14 @@ export class CreateTicketComponentDialog implements OnInit {
   ReconnectionRequest() {
     let newDate = new Date();
     let dataObj = {
-      reason: this.chackRequest.value.description,
       description: this.chackRequest.value.description,
       phone: this.chackRequest.value.phoneNumber,
       subject: this.subject,
       connectionID: this.data.id,
-      ticketID: this.data.ticketID,
       createdBy: this.data.firstName,
-      "createdAt": newDate,
+      "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
     };
-    console.log(this.data,dataObj);
+    console.log(this.data, dataObj);
     if (dataObj.description == "" || dataObj.phone == "" || dataObj.subject == 'Subject'
     ) {
       this.isEmpty();
@@ -78,7 +77,6 @@ export class CreateTicketComponentDialog implements OnInit {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            localStorage.setItem('auth', JSON.stringify(res.message));
             this.showSuccess()
             this.loading = false;
           }
@@ -98,7 +96,8 @@ export class CreateTicketComponentDialog implements OnInit {
 
 
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully created !', 'successful');
+    this.onNoClick()
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

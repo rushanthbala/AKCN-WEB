@@ -6,6 +6,7 @@ import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/pending/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
+import { TicketCancelDialogBoxComponent } from 'src/app/core/dialogBox/ticket/cancel-dialog-box/ticket-cancel-dialog-box.component';
 
 @Component({
   selector: 'app-pending-details',
@@ -95,9 +96,9 @@ export class PendingDetailsComponent {
   }
 
   CancelTicket(): void {
-    const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
+    const dialogRef = this.dialog.open(TicketCancelDialogBoxComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {

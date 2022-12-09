@@ -109,7 +109,6 @@ export class AddConnectionComponent implements OnInit  {
             this.errmsg = res.message || 'Something Went wrong.';
             this.loading = false;
           } else {
-            localStorage.setItem('auth', JSON.stringify(res.message));
             this.sucmsg = res.message || 'sucessfull !!.';
             this.showSuccess()
             this.loading = false;

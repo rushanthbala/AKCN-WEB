@@ -65,6 +65,7 @@ import { CloseRequestDetailsComponent } from './requests/closed-request/close-re
 import { CloseRequestComponent } from './requests/closed-request/close-request.component';
 import { CancelledRequestComponent } from './requests/cancelled-request/cancel-request.component';
 import { CancelledRequestDetailsComponent } from './requests/cancelled-request/cancel-request-details/cancel-request-details.component';
+import { TicketCancelDialogBoxComponent } from '../core/dialogBox/ticket/cancel-dialog-box/ticket-cancel-dialog-box.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -81,7 +82,7 @@ import { CancelledRequestDetailsComponent } from './requests/cancelled-request/c
         ApplyDiscountDialogBoxComponent,UpdatePaymentComponent,CreateTicketComponentDialog,
         AssignRequestDetailsComponent,AssignRequestComponent,EditRequestComponent,CreateRequestComponent,
         PendingRequestDetailsComponent,PendingRequestComponent,CloseRequestDetailsComponent,
-        CloseRequestComponent,CancelledRequestDetailsComponent,CancelledRequestComponent
+        CloseRequestComponent,CancelledRequestDetailsComponent,CancelledRequestComponent,TicketCancelDialogBoxComponent
       ],
   imports: [
     CommonModule,

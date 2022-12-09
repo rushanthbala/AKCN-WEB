@@ -1,61 +1,61 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject,OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
+import { formatDate } from '@angular/common';
 
 @Component({
-  selector: 'app-apply-discount-dialog-box',
-  templateUrl: './apply-discount-dialog-box.component.html',
-  styleUrls: ['./apply-discount-dialog-box.component.scss'],
+  selector: 'app-ticket-cancel-dialog-box',
+  templateUrl: './ticket-cancel-dialog-box.component.html',
+  styleUrls: ['./ticket-cancel-dialog-box.component.scss'],
 })
-export class ApplyDiscountDialogBoxComponent implements OnInit {
-  public open: Boolean = true;
+export class TicketCancelDialogBoxComponent  implements OnInit  {
   public loading: Boolean = true;
 
+  public open: Boolean = true;
   Reconnection: FormGroup | any;
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
   constructor(
-    public dialogRef: MatDialogRef<ApplyDiscountDialogBoxComponent>,
+    public dialogRef: MatDialogRef<TicketCancelDialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
     private toastr: ToastrService,
-
-  ) { }
+  ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
-      Remark: '',
-      amount: ""
+      Remark: ''
     });
   }
-  apply() {
+  updateCancel() {
+    alert(1)
     console.log(this.Reconnection.value);
-    let data = {
-      Remark: this.Reconnection.value.Remark,
-      amount: this.Reconnection.value.amount,
-    };
-    console.log(data, "data");
-    console.log(data.Remark == "", data.amount == ""
-    );
 
-    if (data.Remark == "" || data.amount == ""
+    let newDate = new Date();
+    let dataObj = {
+      reason: this.Reconnection.value.Remark,
+      connectionID: this.data.id,
+      createdBy: this.data.firstName,
+      "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
+    };
+    console.log(this.data, dataObj);
+    if (dataObj.reason == "" 
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('admin/login', data).subscribe(
+      this.dataServise.putValue(`tickaset/cancel/${this.data.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
           } else {
             this.showSuccess()
             this.loading = false;
-            this.onNoClick()
           }
         },
         (e) => {
@@ -64,8 +64,10 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
       );
     }
   }
+  
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully created !', 'successful');
+    this.onNoClick()
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
@@ -77,7 +79,7 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
 export interface DialogData {
   animal: string;
   id: string;
-
+  
 }
 
 

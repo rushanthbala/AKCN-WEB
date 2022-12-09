@@ -5,46 +5,46 @@
 
 <br />
 <br />
+<!-- <div *ngIf="!isFetchDataFail"> -->
 
-<p class="head-2" *ngIf="showTable">{{tableResult}} Results found</p>
-<!-- table -->
-<div class="main-div">
-  <!-- <div class="main-heading">User Information's</div> -->
-  <div class="table-div" *ngIf="showTable">
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>SUBSCRIBER</th>
-        <th>PHONE</th>
-        <th>ADDRESS</th>
-        <th>STATUS</th>
-        <th>TV</th>
-        <th>TYPE</th>
-        <!-- <th style="text-align: center">ACTION</th> -->
-      </tr>
-      <tr *ngFor="
+  <p class="head-2" *ngIf="showTable && !isFetchDataFail">{{tableResult}} Results found</p>
+  <p class="head-2" *ngIf="isFetchDataFail">No Data found</p>
+  <!-- table -->
+  <div class="main-div">
+    <div class="table-div" *ngIf="showTable && !isFetchDataFail">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>SUBSCRIBER</th>
+          <th>PHONE</th>
+          <th>ADDRESS</th>
+          <th>STATUS</th>
+          <th>TV</th>
+          <th>TYPE</th>
+        </tr>
+        <tr *ngFor="
           let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
         " (click)="viewDetails(us)">
-        <td>{{ us.id }}</td>
-        <td>{{ us.firstName }} {{us.lastName}}</td>
+          <td>{{ us.id }}</td>
+          <td>{{ us.firstName }} {{us.lastName}}</td>
 
-        <td>{{ us.primaryPhone }}</td>
-        <td>{{ us.connectionAddress }}</td>
-        <td>
-          <div class="status {{us.connectionStatus}}">
-            {{ us.connectionStatus }}
-          </div>
-        </td>
-        <td>{{ us.tvCount }}</td>
-        <td>{{ us.connectionType }}</td>
-      </tr>
-    </table>
-    <br />
-    <pagination-controls class="my-pagination" previousLabel="Previous" nextLabel="Next"
-      screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" (pageChange)="p = $event">
-    </pagination-controls>
+          <td>{{ us.primaryPhone }}</td>
+          <td>{{ us.connectionAddress }}</td>
+          <td>
+            <div class="status {{us.connectionStatus}}">
+              {{ us.connectionStatus }}
+            </div>
+          </td>
+          <td>{{ us.tvCount }}</td>
+          <td>{{ us.connectionType }}</td>
+        </tr>
+      </table>
+      <br />
+      <pagination-controls class="my-pagination" previousLabel="Previous" nextLabel="Next"
+        screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" (pageChange)="p = $event">
+      </pagination-controls>
+    </div>
+    <div *ngIf="isSubscriberdata && !isFetchDataFail && !showTable ">
+      <app-edit-ticket [object]='subscriberdata' text="text"></app-edit-ticket>
+    </div>
   </div>
-  <div *ngIf="isSubscriberdata">
-    <app-edit-ticket [object]='subscriberdata'  text="text" ></app-edit-ticket>
-  </div>
-</div>
