@@ -37,53 +37,18 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
   isSubscriberdata:boolean=false;
 
   tableResult: any;
-
-  userArray: any = [
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-  ];
   p: number = 1;
   ngOnInit() {
     this.getPendingData();
   }
   getPendingData() {
-    console.log("okokok");
       this.dataServise.getData(`ticket/status/pending`).subscribe((res) => {
       this.TICKET_DATA = res;
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       console.log(res);
+      
     });
   }
 

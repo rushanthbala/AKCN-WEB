@@ -6,12 +6,12 @@ import { HttpService } from 'src/app/servise/http/http.service';
 import { formatDate } from '@angular/common';
 
 @Component({
-  selector: 'app-ticket-cancel-dialog-box',
-  templateUrl: './ticket-cancel-dialog-box.component.html',
-  styleUrls: ['./ticket-cancel-dialog-box.component.scss'],
+  selector: 'app-ticket-close-dialog-box',
+  templateUrl: './ticket-close-dialog-box.component.html',
+  styleUrls: ['./ticket-close-dialog-box.component.scss'],
 })
-export class TicketCancelDialogBoxComponent  implements OnInit  {
-  public loading: Boolean = true;
+export class TicketCloseDialogBoxComponent  implements OnInit  {
+  public loading: Boolean = false;
 
   public open: Boolean = true;
   Reconnection: FormGroup | any;
@@ -19,7 +19,7 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
     this.initialReconnectionForm();
   }
   constructor(
-    public dialogRef: MatDialogRef<TicketCancelDialogBoxComponent>,
+    public dialogRef: MatDialogRef<TicketCloseDialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
@@ -35,18 +35,21 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
   }
   updateCancel() {
     let newDate = new Date();
+    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
+    var adminId = admin ? admin.id : null
+
     let dataObj = {
-      reason: this.Reconnection.value.Remark,
-      connectionID: this.data.id,
-      createdBy: this.data.firstName,
-      "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
+      updatedBy: adminId,
+      "closedAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
+      "updatedAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
+
     };
-    console.log(this.data, dataObj);
-    if (dataObj.reason == "" 
+    if (false 
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.putValue(`ticket/cancel/${this.data.id}`, dataObj).subscribe(
+      this.loading =true
+      this.dataServise.putValue(`ticket/close/${this.data.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -57,13 +60,14 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
         },
         (e) => {
           this.loading = false;
+          this.showError()
         }
       );
     }
   }
   
   showSuccess() {
-    this.toastr.success('Sucessfully canceled  !', 'successful');
+    this.toastr.success('Sucessfully Closed !', 'successful');
     this.onNoClick()
     window.location.reload();
   }

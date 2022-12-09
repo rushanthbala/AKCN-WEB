@@ -1,12 +1,15 @@
-import { Component, OnInit,Input,Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/pending/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
 import { ClosedRequestComponent } from 'src/app/core/dialogBox/pending/close-request/closed-request.component';
+import { AssignTicketRequestDilogComponent } from 'src/app/core/dialogBox/ticket/assign-ticket-request/assign-ticket-request.component';
+import { TicketCancelDialogBoxComponent } from 'src/app/core/dialogBox/ticket/cancel-dialog-box/ticket-cancel-dialog-box.component';
+import { TicketCloseDialogBoxComponent } from 'src/app/core/dialogBox/ticket/close-dialog-box/ticket-close-dialog-box.component';
 
 @Component({
   selector: 'app-assign-details',
@@ -18,9 +21,9 @@ export class AssignDetailsComponent {
   name: string | any;
   @Output() backTo = new EventEmitter<any>()
 
-  constructor(private fb: FormBuilder,public dialog: MatDialog) {}
-  @Input() object:object | any;
-  @Input() text:string | any;
+  constructor(private fb: FormBuilder, public dialog: MatDialog) { }
+  @Input() object: object | any;
+  @Input() text: string | any;
 
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
@@ -29,7 +32,7 @@ export class AssignDetailsComponent {
   Reconnection: FormGroup | any;
   Change: FormGroup | any;
   Extra: FormGroup | any;
-  
+
   ngOnInit(): void {
     this.initialForm();
     this.initialInputForm();
@@ -69,7 +72,7 @@ export class AssignDetailsComponent {
       road: '',
     });
   }
-  
+
   searching() {
     console.log(this.loginForm.value);
   }
@@ -84,9 +87,10 @@ export class AssignDetailsComponent {
     console.log(this.Reconnection.value);
   }
   CloseOpenDialog(): void {
-    const dialogRef = this.dialog.open(ClosedRequestComponent, {
+    const dialogRef = this.dialog.open(TicketCloseDialogBoxComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data: this.object,
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -96,28 +100,30 @@ export class AssignDetailsComponent {
   }
 
   CancelTicket(): void {
-    const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
+    const dialogRef = this.dialog.open(TicketCancelDialogBoxComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data: this.object,
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
     });
-  }  
+  }
   TransferTicket(): void {
-    const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
+    const dialogRef = this.dialog.open(AssignTicketRequestDilogComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data: this.object,
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
     });
-  } 
-  Back(){
+  }
+  Back() {
     this.backTo.emit()
   }
 }

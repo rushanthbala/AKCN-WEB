@@ -6,6 +6,7 @@ import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/pending/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
+import { AssignTicketRequestDilogComponent } from 'src/app/core/dialogBox/ticket/assign-ticket-request/assign-ticket-request.component';
 import { TicketCancelDialogBoxComponent } from 'src/app/core/dialogBox/ticket/cancel-dialog-box/ticket-cancel-dialog-box.component';
 
 @Component({
@@ -84,9 +85,9 @@ export class PendingDetailsComponent {
     console.log(this.Reconnection.value);
   }
    AssignOpenDialog(): void {
-    const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
+    const dialogRef = this.dialog.open(AssignTicketRequestDilogComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {

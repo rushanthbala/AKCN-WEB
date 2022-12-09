@@ -98,6 +98,8 @@ export class CreateTicketComponentDialog implements OnInit {
   showSuccess() {
     this.toastr.success('Sucessfully created !', 'successful');
     this.onNoClick()
+    window.location.reload();
+
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
