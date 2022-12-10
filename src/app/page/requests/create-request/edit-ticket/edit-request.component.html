@@ -26,7 +26,7 @@
     <div class="mb-3 cus-int-div">
       <label for="Pending Requests" class="form-label labels">Pending Requests</label>
       <input type="text" class="form-control int" id="Pending Requests" value="{{object.subscriberNIC}}" readonly
-        placeholder="9999999999V" />
+        placeholder="Pending Requests" />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="Assigned Requests" class="form-label labels">Assigned Requests</label>
@@ -48,7 +48,7 @@
     <div class="mb-3 cus-int-div">
       <label for="ID" class="form-label labels">ID</label>
       <input type="text" class="form-control int" id="ID" value="{{object.connectionID}}" readonly
-        placeholder="9999999999V" />
+        placeholder="connectionID" />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="Status" class="form-label labels">Status</label>
@@ -69,15 +69,15 @@
   <div
     class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
 
-    <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="openDialog()">
+    <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="DisconnectionOpenDialog()">
       Disconnection Request
     </button>
 
-    <button class="input-group-text cus-btn-down btn-c-2" (click)="openDialog2()">
+    <button class="input-group-text cus-btn-down btn-c-2" (click)="ChangeOpenDialog()">
       Change request
     </button>
 
-    <button class="input-group-text cus-btn-down btn-c-3" (click)="openDialog3()">
+    <button class="input-group-text cus-btn-down btn-c-3" (click)="ExtraOpenDialog()">
       Extra TV Request
     </button>
 

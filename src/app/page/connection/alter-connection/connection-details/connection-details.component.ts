@@ -1,7 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
+import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
 import { EditConnectionDialogComponent } from 'src/app/core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 import { EditSubscriberDialogComponent } from 'src/app/core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
 import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';

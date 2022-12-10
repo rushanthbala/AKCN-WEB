@@ -14,7 +14,7 @@ export class CreateRequestComponent implements OnInit {
   loginForm: FormGroup | any;
   tableDatasetsData: any;
   tableDatasetsDate: any;
-  userData: any;
+  userData: any=[];
   // after posting
   loading: boolean = true;
   errmsg: string = ""
@@ -26,53 +26,7 @@ export class CreateRequestComponent implements OnInit {
   isSubscriberdata:boolean=false;
   tableResult: any;
   
-  userArray: any = [
-    {
-      id: 1,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 2,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 3,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 4,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 5,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-  ];
+ 
   p: number = 1;
 
   ngOnInit(): void {

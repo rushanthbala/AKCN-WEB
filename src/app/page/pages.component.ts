@@ -180,7 +180,7 @@ export class PagesComponent implements OnInit {
       iconClass: 'icon-Ticket',
       label: 'Tickets',
       text: 'Lorem Ipsum',
-      state: this.href != 'Tickets',
+      state:false,
       link: '/auth/ticket',
       item: [
         { name: 'Create Tickets', href: '/auth/create-ticket' },
@@ -205,7 +205,7 @@ export class PagesComponent implements OnInit {
       iconClass: 'icon-Requests',
       label: 'Requests',
       text: 'Lorem Ipsum',
-      state: false,
+      state: true,
       item: [
         { name: 'Create Requests', href: '/auth/create-request' },
         { name: 'Pending Requests', href: '/auth/pending-request' },

@@ -22,7 +22,7 @@ import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialExampleModule } from './material.module';
 // import { DialogBoxComponent } from '../core/dialogBox/disconnect-dialog-box/dialog-box.component';
-import { ChangeRequestComponent } from '../core/dialogBox/change-request/change-request.component';
+import { ChangeRequestComponent } from '../core/dialogBox/request/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from '../core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingDetailsComponent } from './ticket/pending-ticket/pending-details/pending-details.component';
 import { PendingChangeRequestComponent } from '../core/dialogBox/request/assign-request/change-request.component';
@@ -69,7 +69,7 @@ import { TicketCancelDialogBoxComponent } from '../core/dialogBox/ticket/cancel-
 import { AssignTicketRequestDilogComponent } from '../core/dialogBox/ticket/assign-ticket-request/assign-ticket-request.component';
 import { TicketCloseDialogBoxComponent } from '../core/dialogBox/ticket/close-dialog-box/ticket-close-dialog-box.component';
 import { DialogBoxComponent } from '../core/dialog-box/dialog-box.component';
-import { DisconnectDialogBoxComponent } from '../core/dialogBox/dialog-box/dialog-box.component';
+import { DisconnectDialogBoxComponent } from '../core/dialogBox/disconnect-dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
