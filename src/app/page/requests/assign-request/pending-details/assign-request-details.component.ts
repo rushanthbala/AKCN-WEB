@@ -3,9 +3,9 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
-import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/pending/assign-request/change-request.component';
-import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/pending/cancel-dialog-box/dialog-box.component';
-import { ClosedRequestComponent } from 'src/app/core/dialogBox/pending/close-request/closed-request.component';
+import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/request/assign-request/change-request.component';
+import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/request/cancel-dialog-box/dialog-box.component';
+import { ClosedRequestComponent } from 'src/app/core/dialogBox/request/close-request/closed-request.component';
 
 @Component({
   selector: 'app-assign-request-details',
