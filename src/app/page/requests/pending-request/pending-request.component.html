@@ -36,12 +36,12 @@
       </mat-checkbox> -->
     </td>
 
-    <!-- ticketID Column -->
-    <ng-container matColumnDef="ticketID">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by ticketID">
-        Ticket
+    <!-- requestID Column -->
+    <ng-container matColumnDef="requestID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by requestID">
+        Request ID
       </th>
-      <td mat-cell *matCellDef="let element" (click)="viewDetails(element)" > {{element.ticketID}} </td>
+      <td mat-cell *matCellDef="let element" (click)="viewDetails(element)" > {{element.requestID}} </td>
     </ng-container>
 
     <!-- connectionID Column -->

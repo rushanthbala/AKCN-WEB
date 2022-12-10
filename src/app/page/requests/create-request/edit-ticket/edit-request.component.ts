@@ -2,7 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/change-request/change-request.component';
-import { DialogBoxComponent } from 'src/app/core/dialogBox/dialog-box/dialog-box.component';
+import { DisconnectDialogBoxComponent } from 'src/app/core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 
 @Component({
@@ -83,9 +83,9 @@ export class EditRequestComponent implements OnInit {
     console.log(this.Reconnection.value);
   }
    openDialog(): void {
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
+    const dialogRef = this.dialog.open(DisconnectDialogBoxComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -97,7 +97,7 @@ export class EditRequestComponent implements OnInit {
   openDialog2(): void {
     const dialogRef = this.dialog.open(ChangeRequestComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -108,7 +108,7 @@ export class EditRequestComponent implements OnInit {
   openDialog3(): void {
     const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {

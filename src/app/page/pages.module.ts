@@ -21,7 +21,7 @@ import { CustomButtonComponent } from '../core/custom-button/custom-button.compo
 import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialExampleModule } from './material.module';
-import { DialogBoxComponent } from '../core/dialogBox/dialog-box/dialog-box.component';
+// import { DialogBoxComponent } from '../core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { ChangeRequestComponent } from '../core/dialogBox/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from '../core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingDetailsComponent } from './ticket/pending-ticket/pending-details/pending-details.component';
@@ -68,12 +68,14 @@ import { CancelledRequestDetailsComponent } from './requests/cancelled-request/c
 import { TicketCancelDialogBoxComponent } from '../core/dialogBox/ticket/cancel-dialog-box/ticket-cancel-dialog-box.component';
 import { AssignTicketRequestDilogComponent } from '../core/dialogBox/ticket/assign-ticket-request/assign-ticket-request.component';
 import { TicketCloseDialogBoxComponent } from '../core/dialogBox/ticket/close-dialog-box/ticket-close-dialog-box.component';
+import { DialogBoxComponent } from '../core/dialog-box/dialog-box.component';
+import { DisconnectDialogBoxComponent } from '../core/dialogBox/disconnect-dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
      AdminsComponent, CreateTicketComponent, EditTicketComponent, PendingTicketComponent,
       PendingOneTicketComponent,CustomButtonComponent,FilterBoxComponent,DialogBoxComponent,
-      ExtraRequestDialogBoxComponent, ChangeRequestComponent, PendingDetailsComponent,
+      ChangeRequestComponent, PendingDetailsComponent,
       PendingChangeRequestComponent,CancelDialogBoxComponent,AssignTicketComponent,
       AssignDetailsComponent,ClosedTicketComponent,CancelledTicketComponent,CancelledDetailsComponent,ClosedRequestComponent,
        NewConnectionComponent,ConnectionSearchComponent, SubscriberDetailsComponent,NoDataComponent, 
@@ -85,7 +87,7 @@ import { TicketCloseDialogBoxComponent } from '../core/dialogBox/ticket/close-di
         AssignRequestDetailsComponent,AssignRequestComponent,EditRequestComponent,CreateRequestComponent,
         PendingRequestDetailsComponent,PendingRequestComponent,CloseRequestDetailsComponent,
         CloseRequestComponent,CancelledRequestDetailsComponent,CancelledRequestComponent,TicketCancelDialogBoxComponent,
-        AssignTicketRequestDilogComponent,TicketCloseDialogBoxComponent
+        AssignTicketRequestDilogComponent,TicketCloseDialogBoxComponent,DisconnectDialogBoxComponent, ExtraRequestDialogBoxComponent,
       ],
   imports: [
     CommonModule,

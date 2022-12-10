@@ -1,17 +1,17 @@
 import { formatDate } from '@angular/common';
-import {Component, Inject,OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
-  selector: 'app-extra-request-dialog-box',
-  templateUrl: './extra-request-dialog-box.component.html',
-  styleUrls: ['./extra-request-dialog-box.component.scss']
+  selector: 'app-disconnect-dialog-box',
+  templateUrl: './dialog-box.component.html',
+  styleUrls: ['./dialog-box.component.scss'],
 })
-export class ExtraRequestDialogBoxComponent implements OnInit {
-  public loading: Boolean = true;
+export class DisconnectDialogBoxComponent implements OnInit {
+  public loading: Boolean = false;
 
   public open: Boolean = true;
   Reconnection: FormGroup | any;
@@ -19,19 +19,19 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
     this.initialReconnectionForm();
   }
   constructor(
-    public dialogRef: MatDialogRef<ExtraRequestDialogBoxComponent>,
+    public dialogRef: MatDialogRef<DisconnectDialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
     private toastr: ToastrService,
-  ) {}
+  ) { }
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
       phoneNumber: '',
-      description:""
+      description: ""
     });
   }
   ReconnectionRequest() {
@@ -41,7 +41,7 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
 
     let dataObj = {
       connectionID: this.data.id,
-      requestType:"Reconnection",
+      requestType: "Reconnection",
       description: this.Reconnection.value.description,
       phone: this.Reconnection.value.phoneNumber,
       createdBy: adminId,
@@ -52,7 +52,8 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('ticket', dataObj).subscribe(
+      this.loading = true;
+      this.dataServise.postValue('request', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -72,7 +73,7 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Sucessfully created !', 'successful');
     this.onNoClick()
-    // window.location.reload();
+    window.location.reload();
 
   }
   showError() {
@@ -82,3 +83,24 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
     this.toastr.error('Fill All The Feild', 'Error');
   }
 }
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
