@@ -27,7 +27,7 @@ export class ChangeRequestComponent implements OnInit {
   }
   constructor(
     public dialogRef: MatDialogRef<ChangeRequestComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
     private toastr: ToastrService,
@@ -48,14 +48,16 @@ export class ChangeRequestComponent implements OnInit {
       phoneNumber: this.chackRequest.value.phoneNumber,
       address: this.chackRequest.value.address,
       roadId:this.roadId,
-      areaId:this.areaId
+      areaId:this.areaId,
+      "requestType": "Change Request",
+      connectionID:this.data.id
     };
     if (this.chackRequest.value.phoneNumber == "" || this.chackRequest.value.address == "" ||
       this.roadId == "Road" || this.areaId == "Area"
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('admin/login', data).subscribe(
+      this.dataServise.postValue('request', data).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -92,7 +94,8 @@ export class ChangeRequestComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully Changed', 'Sucessfully');
+    window.location.reload()
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

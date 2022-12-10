@@ -16,9 +16,9 @@ import { HttpService } from 'src/app/servise/http/http.service';
 })
 export class CancelledRequestComponent implements AfterViewInit, OnInit {
 
-  TICKET_DATA=[]
+  TICKET_DATA = []
   dataSource: any;
-  displayedColumns: string[] = ['ticketID','connectionID','description','phone','createdBy','createdAt'];
+  displayedColumns: string[] = ['requestID', 'connectionID', 'description', 'phone', 'createdBy', 'createdAt'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService) { }
   @ViewChild(MatSort) sort: MatSort | any;
@@ -33,8 +33,8 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
   // table variable
   // change show table true
   showTable: boolean = true;
-  subscriberdata:any={};
-  isSubscriberdata:boolean=false;
+  subscriberdata: any = {};
+  isSubscriberdata: boolean = false;
 
   tableResult: any;
 
@@ -78,7 +78,7 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
   }
   getPendingData() {
     console.log("okokok");
-      this.dataServise.getData(`ticket/status/cancelled`).subscribe((res) => {
+    this.dataServise.getData(`request/status/cancelled`).subscribe((res) => {
       this.TICKET_DATA = res;
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
       this.dataSource.paginator = this.paginator;
@@ -108,14 +108,14 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
     console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] = this.dataSource.filteredData.map((x: TicketElement) => ({
       connectionID: x.connectionID,
-       "ticketID":x.ticketID,
-  "createdBy": x.createdBy, 
-  "assignedTo": x.assignedTo,
-  "assignedToID": x.assignedToID, "updatedBy": x.updatedBy,
-  "subject": x.subject, "description": x.description,
-  "reason": x.reason, "phone": x.phone,
-  "status": x.status, "createdAt": x.createdAt,
-  "updatedAt": x.updatedAt,
+      "requestID": x.requestID,
+      "createdBy": x.createdBy,
+      "assignedTo": x.assignedTo,
+      "assignedToID": x.assignedToID, "updatedBy": x.updatedBy,
+      "subject": x.subject, "description": x.description,
+      "reason": x.reason, "phone": x.phone,
+      "status": x.status, "createdAt": x.createdAt,
+      "updatedAt": x.updatedAt,
 
     }));
     TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, "ExampleArray");
@@ -123,7 +123,7 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
- 
+
 
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
@@ -146,12 +146,12 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
     }
   }
 
-  viewDetails(us:any) {
+  viewDetails(us: any) {
     this.showTable = false;
-    this.subscriberdata=us;
-    this.isSubscriberdata=true;
+    this.subscriberdata = us;
+    this.isSubscriberdata = true;
     console.log(us);
-    
+
   }
 }
 
@@ -163,7 +163,7 @@ export interface PeriodicElement {
 }
 export interface TicketElement {
   "id": number,
-  "connectionID": number, "ticketID": string,
+  "connectionID": number, "requestID": string,
   "createdBy": string, "assignedTo": string,
   "assignedToID": string, "updatedBy": string,
   "subject": string, "description": string,

@@ -3,18 +3,18 @@
         <div class="form-heading int-div card-head-h2">
             Change Request
         </div>
-        <p class="para">PKA00001</p>
+        <p class="para">{{data.id}}</p>
         <div class="">
             <select class="form-select" aria-label="Default select example" (change)='onSelectarea(val.value)' required #val>
                 <option disabled selected value="null">Area</option>
-                <option *ngFor="let item of areaArray" [value]="item.area">
+                <option *ngFor="let item of areaArray" [value]="item.id">
                     {{ item.area }}
                 </option>
             </select>
 
             <select class="form-select mt-2" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
                 <option disabled selected value="null">Road</option>
-                <option *ngFor="let item of roadArray" [value]="item.road">
+                <option *ngFor="let item of roadArray" [value]="item.id">
                     {{ item.road }}
                 </option>
             </select>
