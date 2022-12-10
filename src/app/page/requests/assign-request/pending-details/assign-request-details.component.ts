@@ -85,7 +85,7 @@ export class AssignRequestDetailsComponent {
   CloseOpenDialog(): void {
     const dialogRef = this.dialog.open(ClosedRequestComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -97,7 +97,7 @@ export class AssignRequestDetailsComponent {
   CancelTicket(): void {
     const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -108,7 +108,7 @@ export class AssignRequestDetailsComponent {
   TransferTicket(): void {
     const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
       width: '250px',
-      data: {id:"PKA0001", animal: this.animal},
+      data:this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
