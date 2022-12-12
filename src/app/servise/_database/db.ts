@@ -1,1 +1,1 @@
-export const DBURL = 'http://api.akcablemeadia.com/';
+export const DBURL = 'https://api.akcablemeadia.com/';
