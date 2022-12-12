@@ -6,6 +6,7 @@ import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-req
 import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/request/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/request/cancel-dialog-box/dialog-box.component';
 import { ClosedRequestComponent } from 'src/app/core/dialogBox/request/close-request/closed-request.component';
+import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
   selector: 'app-assign-request-details',
@@ -17,7 +18,7 @@ export class AssignRequestDetailsComponent {
   name: string | any;
   @Output() backTo = new EventEmitter<any>()
 
-  constructor(private fb: FormBuilder,public dialog: MatDialog) {}
+  constructor(private fb: FormBuilder,public dialog: MatDialog, public dataServise: HttpService) {}
   @Input() object:object | any;
   @Input() text:string | any;
 
@@ -28,13 +29,23 @@ export class AssignRequestDetailsComponent {
   Reconnection: FormGroup | any;
   Change: FormGroup | any;
   Extra: FormGroup | any;
-  
+  allData: object | any;
+
   ngOnInit(): void {
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
+    this.getUserSingleData()
+
+  }
+  getUserSingleData() {
+    this.dataServise.getData(`connection/id/${this.object.connectionID}`).subscribe((res) => {
+      this.allData = res[0]
+    }, (err) => {
+    }
+    );
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -85,7 +96,7 @@ export class AssignRequestDetailsComponent {
   CloseOpenDialog(): void {
     const dialogRef = this.dialog.open(ClosedRequestComponent, {
       width: '250px',
-      data:this.object,
+      data: this.allData,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -97,7 +108,7 @@ export class AssignRequestDetailsComponent {
   CancelTicket(): void {
     const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
       width: '250px',
-      data:this.object,
+      data: this.allData,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -108,7 +119,7 @@ export class AssignRequestDetailsComponent {
   TransferTicket(): void {
     const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
       width: '250px',
-      data:this.object,
+      data: this.allData,
     });
 
     dialogRef.afterClosed().subscribe(result => {

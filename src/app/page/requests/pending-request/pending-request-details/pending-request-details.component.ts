@@ -5,6 +5,7 @@ import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-re
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/request/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/request/cancel-dialog-box/dialog-box.component';
+import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
   selector: 'app-pending-request-details',
@@ -15,7 +16,7 @@ export class PendingRequestDetailsComponent {
   animal: string | any;
   name: string | any;
 
-  constructor(private fb: FormBuilder,public dialog: MatDialog) {}
+  constructor(private fb: FormBuilder,public dialog: MatDialog, public dataServise: HttpService) {}
   @Input() object:object | any;
   @Input() text:string | any;
   @Output() backTo = new EventEmitter<any>()
@@ -27,6 +28,7 @@ export class PendingRequestDetailsComponent {
   Reconnection: FormGroup | any;
   Change: FormGroup | any;
   Extra: FormGroup | any;
+  allData: object | any;
   
   ngOnInit(): void {
     this.initialForm();
@@ -34,6 +36,16 @@ export class PendingRequestDetailsComponent {
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
+
+    this.getUserSingleData()
+
+  }
+  getUserSingleData() {
+    this.dataServise.getData(`connection/id/${this.object.connectionID}`).subscribe((res) => {
+      this.allData = res[0]
+    }, (err) => {
+    }
+    );
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -84,7 +96,7 @@ export class PendingRequestDetailsComponent {
    AssignOpenDialog(): void {
     const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
       width: '250px',
-      data: this.object,
+      data: this.allData,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -96,7 +108,7 @@ export class PendingRequestDetailsComponent {
   CancelRequests(): void {
     const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
       width: '250px',
-      data: this.object,
+      data: this.allData,
     });
 
     dialogRef.afterClosed().subscribe(result => {

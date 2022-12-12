@@ -9,6 +9,7 @@ import { ClosedRequestComponent } from 'src/app/core/dialogBox/request/close-req
 import { AssignTicketRequestDilogComponent } from 'src/app/core/dialogBox/ticket/assign-ticket-request/assign-ticket-request.component';
 import { TicketCancelDialogBoxComponent } from 'src/app/core/dialogBox/ticket/cancel-dialog-box/ticket-cancel-dialog-box.component';
 import { TicketCloseDialogBoxComponent } from 'src/app/core/dialogBox/ticket/close-dialog-box/ticket-close-dialog-box.component';
+import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
   selector: 'app-assign-details',
@@ -20,7 +21,7 @@ export class AssignDetailsComponent {
   name: string | any;
   @Output() backTo = new EventEmitter<any>()
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public dataServise: HttpService) { }
   @Input() object: object | any;
   @Input() text: string | any;
 
@@ -31,6 +32,7 @@ export class AssignDetailsComponent {
   Reconnection: FormGroup | any;
   Change: FormGroup | any;
   Extra: FormGroup | any;
+  allData: object | any;
 
   ngOnInit(): void {
     this.initialForm();
@@ -38,6 +40,15 @@ export class AssignDetailsComponent {
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
+    this.getUserSingleData()
+
+  }
+  getUserSingleData() {
+    this.dataServise.getData(`connection/id/${this.object.connectionID}`).subscribe((res) => {
+      this.allData = res[0]
+    }, (err) => {
+    }
+    );
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -88,7 +99,7 @@ export class AssignDetailsComponent {
   CloseOpenDialog(): void {
     const dialogRef = this.dialog.open(TicketCloseDialogBoxComponent, {
       width: '250px',
-      data: this.object,
+      data: this.allData,
 
     });
 
@@ -101,7 +112,7 @@ export class AssignDetailsComponent {
   CancelTicket(): void {
     const dialogRef = this.dialog.open(TicketCancelDialogBoxComponent, {
       width: '250px',
-      data: this.object,
+      data: this.allData,
 
     });
 
@@ -113,7 +124,7 @@ export class AssignDetailsComponent {
   TransferTicket(): void {
     const dialogRef = this.dialog.open(AssignTicketRequestDilogComponent, {
       width: '250px',
-      data: this.object,
+      data: this.allData,
 
     });
 

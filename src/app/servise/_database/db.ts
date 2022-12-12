@@ -1,1 +1,1 @@
-export const DBURL = 'http://localhost:4000/';
+export const DBURL = 'http://api.akcablemeadia.com/';
