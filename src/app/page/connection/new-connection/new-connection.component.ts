@@ -13,6 +13,7 @@ export class NewConnectionComponent {
   animal: string | any;
   name: string | any;
   isActiveAddConnectionCom: boolean = false
+  addSubscriberIf: boolean = false
   userData: any = {};
   // after posting
   loading: boolean = true;
@@ -25,6 +26,7 @@ export class NewConnectionComponent {
   subscriberdata: any = {};
   isSubscriberdata: boolean = false;
   tableResult: any;
+  searchtext :any;
 
   constructor(private fb: FormBuilder, public dataServise: HttpService, public dialog: MatDialog
   ) { }
@@ -32,6 +34,7 @@ export class NewConnectionComponent {
     // var url = findTypeUrl(Ctype)
 
     var cInput: String = first.searchinginput
+    this.searchtext =cInput
     // alert(cInput)
     this.dataServise.getData(`connection/nic/${cInput}`).subscribe((res) => {
       let result = res.length;
@@ -42,10 +45,25 @@ export class NewConnectionComponent {
       this.showTable = true;
     }, (err) => {
       this.isNotUserData = true;
-      this.NoDataDialogBoxOpen()
+      // this.NoDataDialogBoxOpen()
+      this.addSubscriberIf= true
     });
 
 
+  }
+  afterSubCreated(){
+    this.dataServise.getData(`connection/nic/${this.searchtext}`).subscribe((res) => {
+      let result = res.length;
+      console.log(result, "result");
+      this.userData = res[0];
+      this.tableResult = this.userData.length
+      this.isNotUserData = false;
+      this.showTable = true;
+    }, (err) => {
+      this.isNotUserData = true;
+      // this.NoDataDialogBoxOpen()
+      this.addSubscriberIf= true
+    });
   }
 
   NoDataDialogBoxOpen(): void {

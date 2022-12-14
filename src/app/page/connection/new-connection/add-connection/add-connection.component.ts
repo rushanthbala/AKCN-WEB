@@ -14,8 +14,10 @@ export class AddConnectionComponent implements OnInit  {
   public areaArray: any = [];
   public roadArray: any = [];
   public technicianArray: any = [];
+  public BranchArray: any = [];
   
   public roadId: any 
+  public branchId: any 
   public areaId: any 
   public technicianId: any 
 
@@ -40,6 +42,10 @@ export class AddConnectionComponent implements OnInit  {
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.technicianArray = res;
     });
+    this.dataServise.getData(`branch`).subscribe((res) => {
+      this.BranchArray = res;
+    });
+    
     console.log(this.roadArray, this.areaArray);
 
   }
@@ -48,6 +54,10 @@ export class AddConnectionComponent implements OnInit  {
   onSelect(val: any) {
     this.roadId = val
   }
+  onSelectBranch(val: any) {
+    this.branchId = val
+  }
+  
   onSelectarea(val: any) {
     this.areaId = val
   }
@@ -70,13 +80,8 @@ export class AddConnectionComponent implements OnInit  {
       type: ['Normal', Validators.required],
       TV: ['', Validators.required],
       OldID: ['', Validators.required],
-      Area: [
-         this.areaId,
-        [Validators.required],
-      ],
-      Road: [ this.roadId, Validators.required],
+     
       ConnectionAddress: ['', Validators.required],
-      Technician: ['', Validators.required],
       ConnectionDate: ['', Validators.required],
       Arrears: ['', Validators.required],
       ConnectionFee: ['', Validators.required],
@@ -85,48 +90,56 @@ export class AddConnectionComponent implements OnInit  {
     });
   }
   inputset: FormGroup | any;
-  addEventClick() {
-    this.submitted = true;
-    console.log(this.userForm.valid, "userForm.valid");
+    addEventClick() {
+
+      this.submitted = true;
+      console.log(this.userForm,this.userForm.valid, "userForm.valid");
 
 
-    let data = {
-      type: this.userForm.value.type,
-      TV: this.userForm.value.TV,
-      OldID: this.userForm.value.OldID,
-      Area: this.areaId,
-      Road: this.roadId,
-      ConnectionAddress: this.userForm.value.ConnectionAddress,
-      technicianId:this.technicianId,
-      Arrears: this.userForm.value.Arrears,
-      ConnectionFee: this.userForm.value.ConnectionFee,
-    }
-    console.log(data);
-    if (this.userForm.valid) {
-      this.dataServise.postValue('connection', data).subscribe(
-        (res: any) => {
-          if (res.errorMessage) {
-            this.errmsg = res.message || 'Something Went wrong.';
+      let data = {
+        connectionType: this.userForm.value.type,
+        tvCount: this.userForm.value.TV,
+        oldID: this.userForm.value.OldID,
+        areaCode: this.areaId,
+        roadID: this.roadId,
+        connectionAddress: this.userForm.value.ConnectionAddress,
+        technicianId:this.technicianId,
+        dueAmount: this.userForm.value.Arrears,
+        ConnectionFee: this.userForm.value.ConnectionFee,
+        roadId:1,
+        customerID:this.object.customerID,
+        "status":"Active", 
+        "connectedDate": this.userForm.value.ConnectionDate,
+        "connectionStatus":"ACTIVE", 
+        "actionDate" :this.userForm.value.ConnectionDate,
+        branchID:this.branchId
+      }
+      console.log(data);
+      if (this.userForm.valid) {
+        this.dataServise.postValue('connection', data).subscribe(
+          (res: any) => {
+            if (res.errorMessage) {
+              this.errmsg = res.message || 'Something Went wrong.';
+              this.loading = false;
+            } else {
+              this.sucmsg = res.message || 'sucessfull !!.';
+              this.showSuccess()
+              this.loading = false;
+              this.OnClick.emit()
+            }
+          },
+          (e) => {
             this.loading = false;
-          } else {
-            this.sucmsg = res.message || 'sucessfull !!.';
-            this.showSuccess()
-            this.loading = false;
-            this.OnClick.emit()
           }
-        },
-        (e) => {
-          this.loading = false;
-        }
-      );
-    } else {
+        );
+      } else {
+
+      }
+
 
     }
-
-
-  }
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully Created', 'Sucessfull');
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

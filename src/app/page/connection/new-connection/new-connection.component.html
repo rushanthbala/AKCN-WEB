@@ -9,4 +9,7 @@
 </div>
 <div class="" *ngIf="isActiveAddConnectionCom" >
     <app-add-connection  [object]='userData'  text="text" (OnClick)="addAnotherConnection()" ></app-add-connection>
+</div> 
+<div class="" *ngIf="addSubscriberIf" >
+<app-add-subscriber (OnClick)="afterSubCreated()" ></app-add-subscriber>
 </div>  
