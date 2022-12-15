@@ -14,15 +14,15 @@
       data-bs-target="#staticBackdrop" (click)="openPDF()">
       PDF
     </button>
-    <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
+    <!-- <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
       data-bs-target="#staticBackdrop">
       Print
-    </button>
+    </button> -->
   </div>
 </div>
 <br />
 <br />
-<div class="head-2 p-5" *ngIf="TICKET_DATA.length !=0">
+<div  *ngIf="TICKET_DATA.length !=0">
 <div *ngIf="showTable">
 
   <div id="htmlData">
@@ -105,4 +105,4 @@
 </div>
 </div>
 
-<p class="head-2 p-5" *ngIf="TICKET_DATA.length ==0">No Data found</p>
+<p class="head-2 p-5" *ngIf="TICKET_DATA.length ==0 && ifGetData">No Data found</p>

@@ -34,7 +34,7 @@ export class CancelledTicketComponent implements AfterViewInit, OnInit {
   // change show table true
   showTable: boolean = true;
   subscriberdata:any={};
-  isSubscriberdata:boolean=false;
+  isSubscriberdata:boolean=false; 
   ifGetData:boolean = false
 
   tableResult: any;

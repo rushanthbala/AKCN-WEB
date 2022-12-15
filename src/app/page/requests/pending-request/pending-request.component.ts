@@ -35,6 +35,7 @@ export class PendingRequestComponent implements AfterViewInit, OnInit {
   showTable: boolean = true;
   subscriberdata: any = {};
   isSubscriberdata: boolean = false;
+  ifGetData:boolean = false
 
   tableResult: any;
 
@@ -50,7 +51,10 @@ export class PendingRequestComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(res);
+      this.ifGetData=true
+    },(err)=>{
+      this.ifGetData=true
+
     });
   }
 

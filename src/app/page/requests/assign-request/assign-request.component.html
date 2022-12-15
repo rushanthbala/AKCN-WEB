@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto">
+<div class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" *ngIf="showTable">
   <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
 
   <div class="input-div">
@@ -14,10 +14,10 @@
       data-bs-target="#staticBackdrop" (click)="openPDF()">
       PDF
     </button>
-    <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
+    <!-- <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
       data-bs-target="#staticBackdrop">
       Print
-    </button>
+    </button> -->
   </div>
 </div>
 <br />
@@ -101,4 +101,4 @@
     <app-assign-request-details   [object]='subscriberdata'  text="text"   (backTo)="detailhide()"  ></app-assign-request-details>
   </div>
 </div>
-<p class="head-2 p-5" *ngIf="TICKET_DATA.length ==0">No Data found</p>
+<p class="head-2 p-5" *ngIf="TICKET_DATA.length ==0 && ifGetData">No Data found</p>
