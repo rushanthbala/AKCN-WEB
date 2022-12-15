@@ -26,7 +26,8 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
 
   userData: any;
   // 
-  loading: boolean = true;
+  loading: boolean = false;
+  ifGetData:boolean = false
   errmsg: string = ""
   sucmsg: string = ""
   suburl: string = "connection"
@@ -48,6 +49,9 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       console.log(res);
+      this.ifGetData=true
+    },(err)=>{
+      this.ifGetData=true
 
     });
   }

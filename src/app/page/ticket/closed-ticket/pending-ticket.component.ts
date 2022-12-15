@@ -35,6 +35,7 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
   showTable: boolean = true;
   subscriberdata:any={};
   isSubscriberdata:boolean=false;
+  ifGetData:boolean = false
 
   tableResult: any;
 
@@ -84,6 +85,10 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       console.log(res);
+      this.ifGetData=true
+    },(err)=>{
+      this.ifGetData=true
+
     });
   }
 

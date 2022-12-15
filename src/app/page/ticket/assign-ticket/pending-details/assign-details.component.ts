@@ -99,7 +99,8 @@ export class AssignDetailsComponent {
   CloseOpenDialog(): void {
     const dialogRef = this.dialog.open(TicketCloseDialogBoxComponent, {
       width: '250px',
-      data: this.allData,
+            data:{TicketData:this.object, allData:this.allData}
+
 
     });
 
@@ -112,7 +113,8 @@ export class AssignDetailsComponent {
   CancelTicket(): void {
     const dialogRef = this.dialog.open(TicketCancelDialogBoxComponent, {
       width: '250px',
-      data: this.allData,
+            data:{TicketData:this.object, allData:this.allData}
+
 
     });
 
@@ -124,7 +126,8 @@ export class AssignDetailsComponent {
   TransferTicket(): void {
     const dialogRef = this.dialog.open(AssignTicketRequestDilogComponent, {
       width: '250px',
-      data: this.allData,
+            data:{TicketData:this.object, allData:this.allData}
+
 
     });
 

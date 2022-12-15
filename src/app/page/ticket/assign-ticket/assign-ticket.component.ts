@@ -33,6 +33,8 @@ export class AssignTicketComponent implements AfterViewInit, OnInit {
   // table variable
   // change show table true
   showTable: boolean = true;
+  ifGetData:boolean = false
+
   subscriberdata:any={};
   isSubscriberdata:boolean=false;
 
@@ -49,6 +51,10 @@ export class AssignTicketComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       console.log(res);
+      this.ifGetData=true
+    },(err)=>{
+      this.ifGetData=true
+
     });
   }
 

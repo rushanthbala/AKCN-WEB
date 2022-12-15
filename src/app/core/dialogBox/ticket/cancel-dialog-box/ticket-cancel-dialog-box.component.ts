@@ -46,7 +46,7 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.putValue(`ticket/cancel/${this.data.id}`, dataObj).subscribe(
+      this.dataServise.putValue(`ticket/cancel/${this.data.TicketData.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;

@@ -18,6 +18,7 @@ export class PendingDetailsComponent {
   animal: string | any;
   name: string | any;
   allData: object | any;
+  TotalObjectData: [] | any;
   constructor(private fb: FormBuilder, public dialog: MatDialog, public dataServise: HttpService) { }
   @Input() object: object | any;
   @Input() text: string | any;
@@ -91,9 +92,13 @@ export class PendingDetailsComponent {
     console.log(this.Reconnection.value);
   }
   AssignOpenDialog(): void {
+    let TotalObjectData =this.TotalObjectData;
+    let allData = this.allData
     const dialogRef = this.dialog.open(AssignTicketRequestDilogComponent, {
       width: '250px',
-      data: this.allData,
+      // ticketData: this.allData
+    data:{TicketData:this.object, allData:this.allData}
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -105,7 +110,7 @@ export class PendingDetailsComponent {
   CancelTicket(): void {
     const dialogRef = this.dialog.open(TicketCancelDialogBoxComponent, {
       width: '250px',
-      data: this.allData,
+      data:{TicketData:this.object, allData:this.allData}
     });
 
     dialogRef.afterClosed().subscribe(result => {

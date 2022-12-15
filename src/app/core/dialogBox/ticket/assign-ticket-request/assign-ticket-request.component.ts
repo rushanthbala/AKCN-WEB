@@ -73,10 +73,12 @@ export class AssignTicketRequestDilogComponent implements OnInit {
     };
     if (dataObj.assignedTo == "Technician"
     ) {
+      console.log(dataObj,"dataObj");
+      
       this.isEmpty();
     } else {
       this.loading =true
-      this.dataServise.putValue(`ticket/assign/${this.data.id}`, dataObj).subscribe(
+      this.dataServise.putValue(`ticket/assign/${this.data.TicketData.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -95,8 +97,13 @@ export class AssignTicketRequestDilogComponent implements OnInit {
 
   getAll() {
     // get TechnicianArray
+
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.TechnicianArray = res;
+      if(res.length >0){
+        this.TechnicianName=res[0].firstName
+        this.TechnicianId=res[0].id
+      }
     });
   }
 
@@ -106,7 +113,8 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Sucessfully Assigned', 'Sucessfully');
     this.onNoClick()
-    window.location.reload();  }
+    window.location.reload();
+    }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
   }

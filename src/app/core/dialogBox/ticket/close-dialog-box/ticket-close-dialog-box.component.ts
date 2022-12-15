@@ -49,7 +49,7 @@ export class TicketCloseDialogBoxComponent  implements OnInit  {
       this.isEmpty();
     } else {
       this.loading =true
-      this.dataServise.putValue(`ticket/close/${this.data.id}`, dataObj).subscribe(
+      this.dataServise.putValue(`ticket/close/${this.data.TicketData.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
