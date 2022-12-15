@@ -147,10 +147,10 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
   }
 
   viewDetails(us:any) {
-    this.showTable = false;
-    this.subscriberdata=us;
-    this.isSubscriberdata=true;
-    console.log(us);
+    // this.showTable = false;
+    // this.subscriberdata=us;
+    // this.isSubscriberdata=true;
+    // console.log(us);
     
   }
 }

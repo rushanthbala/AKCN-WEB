@@ -4,9 +4,10 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
 import { EditConnectionDialogComponent } from 'src/app/core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 import { EditSubscriberDialogComponent } from 'src/app/core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
-import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';
-import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
+import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/change-location-big-dialog/reconnect-big-dialog.component';
+import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
+import { DisconnectDialogBoxComponent } from 'src/app/core/dialogBox/disconnect-dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-connection-details',
@@ -94,7 +95,7 @@ export class ConnectionDetailsComponent  implements OnInit {
       this.animal = result;
     });
   }
-  openReconnectBigDialog(): void {
+  openChangeLocationDialog(): void {
     const dialogRef = this.dialog.open(ReconnectBigDialogComponent, {
       width: '550px',
       data:this.object,
@@ -129,8 +130,9 @@ export class ConnectionDetailsComponent  implements OnInit {
       this.animal = result;
     });
   }
+  // DisconnectDialogBoxComponent
   openDialog4(): void {
-    const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
+    const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
       data:this.object,
     });

@@ -21,6 +21,8 @@ export class EditConnectionDialogComponent implements OnInit {
   public  TechnicianId: any = 'Technician';
   suburl2: string = "area"
   suburl1: string = "road"
+  areaCodeName =""
+  roadIDName=""
 
 
   chackRequest: FormGroup | any;
@@ -41,15 +43,15 @@ export class EditConnectionDialogComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      type:"Normal",
-      oldId: '',
-      NoOfTV: '',
-      houseNo:""
+      type:this.data.connectionType,
+      oldId: this.data.oldID,
+      NoOfTV:  this.data.tvCount,
+      houseNo: this.data.connectionAddress,
     });
   }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
-    let data = {
+    // console.log(this.chackRequest.value);
+    let dataSet = {
       oldId: this.chackRequest.value.oldId,
       NoOfTV: this.chackRequest.value.NoOfTV,
       TechnicianId:this.TechnicianId  ,
@@ -57,17 +59,18 @@ export class EditConnectionDialogComponent implements OnInit {
       areaId:this.areaId,
       houseNo:this.chackRequest.value.houseNo,
     };
-    console.log(data,"data");
-    console.log(data.oldId == "" ,data.NoOfTV == "" ,
-    data.houseNo=="",   data.roadId == "Road" ,  data.areaId == "Area"
+    console.log(dataSet,"dataSet");
+    console.log(dataSet.oldId == "" ,dataSet.NoOfTV == "" ,
+    dataSet.houseNo=="",   dataSet.roadId == "Road" ,  dataSet.areaId == "Area"
  );
+    console.log(dataSet,"dataSet");
     
-    if (data.oldId == "" ||data.NoOfTV == "" ||
-    data.houseNo==""||   data.roadId == "Road" ||  data.areaId == "Area"
+    if (dataSet.oldId == "" ||dataSet.NoOfTV == "" ||
+    dataSet.houseNo==""||   dataSet.roadId == "Road" ||  dataSet.areaId == "Area"
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('admin/login', data).subscribe(
+      this.dataServise.postValue('admin/login', dataSet).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -90,9 +93,23 @@ export class EditConnectionDialogComponent implements OnInit {
     });
     this.dataServise.getData(`area`).subscribe((res) => {
       this.areaArray = res;
+      res.map((item:any)=>{
+        if(item.id==this.data.areaCode){
+          this.areaCodeName=item.area
+          this.areaId = item.area
+        }
+        
+      })
     });
     this.dataServise.getData(`road`).subscribe((res) => {
       this.roadArray = res;
+      res.map((item:any)=>{
+        if(item.id==this.data.roadID){
+          this.roadIDName=item.road
+          this.roadId = item.road
+        }
+        
+      })
     });
   }
 

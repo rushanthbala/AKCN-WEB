@@ -48,8 +48,8 @@ import { UpdateDataComponent } from '../core/dialogBox/pending/update-data/updat
 import { UserReportComponent } from './reports/user-report/user-report.component';
 import { UserReportUpdateComponent } from '../core/user-report-update/user-report-update.component';
 import { UsersSettingComponent } from './settings/users-setting/users-setting.component';
-import { ReconnectDialogComponent } from '../core/dialogBox/connection/reconnect-dialog/reconnect-dialog.component';
-import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/reconnect-big-dialog/reconnect-big-dialog.component';
+import { ReconnectDialogComponent } from '../core/dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
+import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/change-location-big-dialog/reconnect-big-dialog.component';
 import { EditConnectionDialogComponent } from '../core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 import { EditSubscriberDialogComponent } from '../core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
 import { ApplyDiscountDialogBoxComponent } from '../core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';

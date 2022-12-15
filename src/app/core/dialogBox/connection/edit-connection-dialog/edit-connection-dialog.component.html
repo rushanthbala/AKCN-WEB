@@ -3,6 +3,7 @@
         <div class="form-heading int-div card-head-h2">
             Edit Connection
         </div>
+        <!-- {{data |json}} -->
         <p class="para">{{data.id}}</p>
         <div>
             <div class="row mt-2">
@@ -60,7 +61,7 @@
                     <div class="para mt-3 ps-3 "> </div>
                     <select class="form-select mt-2" aria-label="Default select example"
                         (change)='onSelectarea(val.value)' required #val>
-                        <option disabled selected value="null">Area</option>
+                        <option disabled selected value="null">{{areaCodeName}}</option>
                         <option *ngFor="let item of areaArray" [value]="item.id">
                             {{ item.area }}
                         </option>
@@ -70,7 +71,7 @@
                     <div class="para mt-3 ps-3 "> </div>
                     <select class="form-select mt-2" aria-label="Default select example" (change)='onSelect(val.value)'
                         required #val>
-                        <option disabled selected value="null">Road</option>
+                        <option disabled selected value="null">{{roadIDName}}</option>
                         <option *ngFor="let item of roadArray" [value]="item.id">
                             {{ item.road }}
                         </option>

@@ -3,24 +3,30 @@
         <div class="form-heading int-div card-head-h2">
             Reconnect
         </div>
-        <p class="para">{{data.id}}</p>
+        <!-- {{
+            data | json
+        }} -->
+        <p class="para">{{data.connectionID}}</p>
         <div>
             <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
                 #val>
                 <option disabled selected value="null">Technician</option>
-                <option *ngFor="let item of TechnicianArray" [value]="item.area">
+                <option *ngFor="let item of TechnicianArray" [value]="item.id">
                     {{ item.firstName }}
                 </option>
             </select>
             <div class="para mt-3 ps-3">Disconnected Date </div>
             <input type="date" class="form-control int" id="ID" placeholder="12-12-2022" formControlName="disconnectedDate" />
 
-            <div class="para mt-3 ps-3">Reconnection Fee </div>
+            <div class="para mt-3 ps-3">Reason Of Disconnect </div>
 
-            <input type="text" class="form-control int" type="number" required id="ID" placeholder="Amount"
+            <input type="text" class="form-control int" type="text" required id="ID" placeholder="Reason"
                 formControlName="reconnectionFee" />
-            <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
-                Create
+            <button *ngIf="!loading" class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
+                Update
+            </button>
+            <button *ngIf="loading" class="opacity-75 input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
+                Loading ...
             </button>
             <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
                 style="background-color: #fff !important; color: #027afe">

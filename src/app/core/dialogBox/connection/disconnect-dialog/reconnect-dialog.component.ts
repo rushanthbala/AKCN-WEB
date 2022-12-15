@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 })
 export class ReconnectDialogComponent implements OnInit {
 
-  public loading: Boolean = true;
+  public loading: Boolean = false;
   public areaArray: any = [];
   public roadArray: any = [];
   public TechnicianArray: any = [];
@@ -46,20 +46,23 @@ export class ReconnectDialogComponent implements OnInit {
     });
   }
   ReconnectionRequest() {
+    this.loading = true;
     console.log(this.chackRequest.value);
     let data = {
-      disconnectedDate: this.chackRequest.value.disconnectedDate,
-      reconnectionFee: this.chackRequest.value.reconnectionFee,
+      actionDate: this.chackRequest.value.disconnectedDate,
+      remarks: this.chackRequest.value.reconnectionFee,
       TechnicianId:this.TechnicianId  
       // roadId:this.roadId,
       // areaId:this.areaId
     };
-    if (this.chackRequest.value.disconnectedDate == "" || this.chackRequest.value.reconnectionFee == "" ||
+    if (data.actionDate == "" || data.remarks == "" ||
       this.TechnicianId == "Technician" 
     ) {
       this.isEmpty();
+      this.loading = false;
+
     } else {
-      this.dataServise.postValue('admin/login', data).subscribe(
+      this.dataServise.putValue(`connection/status/deactivate/${this.data.connectionID}`, data).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -70,6 +73,7 @@ export class ReconnectDialogComponent implements OnInit {
         },
         (e) => {
           this.loading = false;
+          this.showError()
         }
       );
     }
@@ -86,7 +90,9 @@ export class ReconnectDialogComponent implements OnInit {
     this.TechnicianId = val
   }
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully Disconnected', 'Sucessfully');
+    window.location.reload()
+
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

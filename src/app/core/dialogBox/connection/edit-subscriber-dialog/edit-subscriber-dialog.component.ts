@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 })
 export class EditSubscriberDialogComponent implements OnInit {
 
-  public loading: Boolean = true;
+  public loading: Boolean = false;
   public areaArray: any = [];
   public roadArray: any = [];
   public TechnicianArray: any = [];
@@ -55,13 +55,25 @@ export class EditSubscriberDialogComponent implements OnInit {
     console.log(this.chackRequest.value);
     let datas = {
       NIC: this.chackRequest.value.NIC,
-
       firstName: this.chackRequest.value.firstName,
       lastName: this.chackRequest.value.lastName,
       email:this.chackRequest.value.email,
       secoundaryNo:this.chackRequest.value.secoundaryNo,
       primaryNo:this.chackRequest.value.primaryNo,
+
+      
     };
+    let sendObj ={
+      "subscriberNIC": datas.NIC,
+      "firstName":datas.firstName,
+      "lastName": datas.lastName,
+      "password": datas.lastName,
+      "primaryPhone": datas.primaryNo,
+      "secondaryPhone": datas.secoundaryNo,
+      "email": datas.email,
+      "ppVerified": "1"
+    }
+
     console.log(datas,"datas");
     console.log(datas.firstName == "" ,datas.lastName == "" ,
     datas.primaryNo=="",   datas.secoundaryNo == "Road" ,  datas.NIC == "Area",datas.email == "" 
@@ -72,7 +84,8 @@ export class EditSubscriberDialogComponent implements OnInit {
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('admin/login', datas).subscribe(
+      this.loading = true
+      this.dataServise.putValue(`customer/${this.data.customerID}`, sendObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -83,6 +96,7 @@ export class EditSubscriberDialogComponent implements OnInit {
         },
         (e) => {
           this.loading = false;
+          this.showError()
         }
       );
     }
@@ -111,7 +125,8 @@ export class EditSubscriberDialogComponent implements OnInit {
     this.areaId = val
   }
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully Edited', 'Sucessfully');
+    window.location.reload()
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

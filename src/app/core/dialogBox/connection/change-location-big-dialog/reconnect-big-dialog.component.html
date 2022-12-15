@@ -1,9 +1,10 @@
 <form [formGroup]="chackRequest">
     <div class=" cus-model-c-div">
         <div class="form-heading int-div card-head-h2">
-            Reconnect
+            Change Location
         </div>
-        <p class="para">{{data.id}}</p>
+        <!-- {{data|json}} -->
+        <p class="para">{{data.connectionID}}</p>
         <div>
             <div class="row mt-2">
                 <div class="col-12 col-sm-6 d-flex align-items-end  mt-3">
@@ -62,10 +63,16 @@
                         Cancel
                     </button>
                 </div>
-                <div class="col-12 col-sm-6">
+                <div *ngIf="!loading" class="col-12 col-sm-6">
                     <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
                         (click)="ReconnectionRequest()">
                         Update
+                    </button>
+                </div>
+                <div *ngIf="loading" class="col-12 col-sm-6">
+                    <button class="opacity-75 disabled input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+                        (click)="ReconnectionRequest()">
+                        loading ...
                     </button>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto">
+<div class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" *ngIf="showTable">
   <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
 
   <div class="input-div">
@@ -14,10 +14,10 @@
       data-bs-target="#staticBackdrop" (click)="openPDF()">
       PDF
     </button>
-    <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
+    <!-- <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
       data-bs-target="#staticBackdrop">
       Print
-    </button>
+    </button> -->
   </div>
 </div>
 <br />
@@ -31,11 +31,6 @@
         (matSortChange)="announceSortChange($event)" class="">
         <td mat-cell *matCellDef="let row" (click)="viewDetails(row)">
         </td>
-        <!-- <tr class="mat-row" *matNoDataRow class="centre" colspan="12" >
-      <td class="mat-cell" [attr.colspan]="dataSource.length" colspan="12" > 
-        No data matching the filter.
-      </td>
-    </tr> -->
 
         <!-- ticketID Column -->
         <ng-container matColumnDef="ticketID">

@@ -1,16 +1,18 @@
 export function findTypeUrl(params:string) {
     let param =params.toLowerCase();
-    if (param ==="ConnectionID") {
+    console.log(param,"param");
+    
+    if (param ==="connectionid") {
         return 'connectionId'
-    } else  if (param ==="NIC") {
+    } else  if (param ==="nic") {
         return 'nic'
-    }else  if (param ==="OldID") {
+    }else  if (param ==="oldid") {
         return 'oldId'
     }else  if (param ==="name") {
         return 'name'
-    }else  if (param ==="PhoneNo") {
+    }else  if (param ==="phoneno") {
         return 'phone'
     }else {
-        return 'connectionId'
+        return 'connectionid'
     }
 }

@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 })
 export class ReconnectBigDialogComponent implements OnInit {
 
-  public loading: Boolean = true;
+  public loading: Boolean = false;
   public areaArray: any = [];
   public roadArray: any = [];
   public TechnicianArray: any = [];
@@ -48,7 +48,7 @@ export class ReconnectBigDialogComponent implements OnInit {
   }
   ReconnectionRequest() {
     console.log(this.chackRequest.value);
-    let data = {
+    let datas = {
       disconnectedDate: this.chackRequest.value.disconnectedDate,
       reconnectionFee: this.chackRequest.value.reconnectionFee,
       TechnicianId:this.TechnicianId  ,
@@ -56,27 +56,64 @@ export class ReconnectBigDialogComponent implements OnInit {
       areaId:this.areaId,
       newAddress:this.chackRequest.value.newAddress,
     };
-    console.log(data,"data");
-    console.log(data.disconnectedDate == "" ,data.reconnectionFee == "" ,
-    data.TechnicianId == "Technician" ,data.newAddress=="",   data.roadId == "Road" ,  data.areaId == "Area"
+    let dataObj = {
+      connectionType: this.data.type,
+      tvCount: this.data.TV,
+      oldID: this.data.OldID,
+      areaCode: this.areaId,
+      roadID: this.roadId,
+      technicianId:this.TechnicianId,
+      connectionAddress: this.data.ConnectionAddress,
+      dueAmount: datas.reconnectionFee,
+      ConnectionFee: this.data.ConnectionFee,
+      roadId:1,
+      customerID:this.data.customerID,
+      "status":"Active", 
+      "connectedDate": datas.disconnectedDate,
+      "connectionStatus":"ACTIVE", 
+      "actionDate" :  datas.disconnectedDate,
+      branchID:this.data.branchId
+    }
+    let locationAddress ={
+      "connectionLocation":datas.newAddress
+
+    }
+    console.log(datas,"data");
+    console.log(datas.disconnectedDate == "" ,datas.reconnectionFee == "" ,
+    datas.TechnicianId == "Technician" ,datas.newAddress=="",   datas.roadId == "Road" ,  datas.areaId == "Area"
  );
     
-    if (data.disconnectedDate == "" ||data.reconnectionFee == "" ||
-    data.TechnicianId == "Technician" ||data.newAddress==""||   data.roadId == "Road" ||  data.areaId == "Area"
+    if (datas.disconnectedDate == "" ||datas.reconnectionFee == "" ||
+    datas.TechnicianId == "Technician" ||datas.newAddress==""||   datas.roadId == "Road" ||  datas.areaId == "Area"
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('admin/login', data).subscribe(
+      // connection/location/JAF00012
+      this.loading = true
+      this.dataServise.putValue(`connection/location/${this.data.connectionID}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            this.showSuccess()
-            this.loading = false;
+            this.dataServise.putValue(`connection/${this.data.connectionID}`, locationAddress).subscribe(
+              (res: any) => {
+                if (res.errorMessage) {
+                  this.loading = false;
+                } else {
+                  this.showSuccess()
+                  this.loading = false;
+                }
+              },
+              (e) => {
+                this.loading = false;
+                this.showError()
+              }
+            );
           }
         },
         (e) => {
           this.loading = false;
+          this.showError()
         }
       );
     }
@@ -105,7 +142,7 @@ export class ReconnectBigDialogComponent implements OnInit {
     this.areaId = val
   }
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully Changed', 'Sucessfully');
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
