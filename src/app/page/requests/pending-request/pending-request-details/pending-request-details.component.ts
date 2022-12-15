@@ -96,7 +96,7 @@ export class PendingRequestDetailsComponent {
    AssignOpenDialog(): void {
     const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
       width: '250px',
-      data: this.allData,
+      data:{TicketData:this.object, allData:this.allData}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -108,7 +108,7 @@ export class PendingRequestDetailsComponent {
   CancelRequests(): void {
     const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
       width: '250px',
-      data: this.allData,
+      data:{TicketData:this.object, allData:this.allData}
     });
 
     dialogRef.afterClosed().subscribe(result => {

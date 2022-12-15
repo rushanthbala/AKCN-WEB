@@ -72,7 +72,7 @@ export class PendingChangeRequestComponent implements OnInit {
       this.isEmpty();
     } else {
       this.loading = true
-      this.dataServise.putValue(`request/assign/${this.data.id}`, dataObj).subscribe(
+      this.dataServise.putValue(`request/assign/${this.data.TicketData.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -93,6 +93,10 @@ export class PendingChangeRequestComponent implements OnInit {
     // get TechnicianArray
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.TechnicianArray = res;
+      if(res.length >0){
+        this.TechnicianName=res[0].firstName
+        this.TechnicianId=res[0].id
+      }
     });
   }
 

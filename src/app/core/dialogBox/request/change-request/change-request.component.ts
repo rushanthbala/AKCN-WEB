@@ -50,7 +50,7 @@ export class ChangeRequestComponent implements OnInit {
       roadId:this.roadId,
       areaId:this.areaId,
       "requestType": "Change Request",
-      connectionID:this.data.id
+      connectionID:this.data.allData.id
     };
     if (this.chackRequest.value.phoneNumber == "" || this.chackRequest.value.address == "" ||
       this.roadId == "Road" || this.areaId == "Area"
