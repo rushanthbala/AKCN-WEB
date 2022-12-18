@@ -71,6 +71,7 @@ import { TicketCloseDialogBoxComponent } from '../core/dialogBox/ticket/close-di
 import { DialogBoxComponent } from '../core/dialog-box/dialog-box.component';
 import { DisconnectDialogBoxComponent } from '../core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { AddCSubsciberComponent } from './connection/new-connection/add-subscriber/add-subscriber.component';
+import { AllConnectionComponent } from './connection/all-connection/all-connection.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -89,7 +90,7 @@ import { AddCSubsciberComponent } from './connection/new-connection/add-subscrib
         PendingRequestDetailsComponent,PendingRequestComponent,CloseRequestDetailsComponent,
         CloseRequestComponent,CancelledRequestDetailsComponent,CancelledRequestComponent,TicketCancelDialogBoxComponent,
         AssignTicketRequestDilogComponent,TicketCloseDialogBoxComponent,DisconnectDialogBoxComponent, ExtraRequestDialogBoxComponent,
-        AddCSubsciberComponent
+        AddCSubsciberComponent,AllConnectionComponent
       ],
   imports: [
     CommonModule,

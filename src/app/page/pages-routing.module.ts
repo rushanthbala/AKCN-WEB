@@ -21,6 +21,7 @@ import { PendingRequestComponent } from './requests/pending-request/pending-requ
 import { AssignRequestComponent } from './requests/assign-request/assign-request.component';
 import { CloseRequestComponent } from './requests/closed-request/close-request.component';
 import { CancelledRequestComponent } from './requests/cancelled-request/cancel-request.component';
+import { AllConnectionComponent } from './connection/all-connection/all-connection.component';
 
 const routes: Routes = [
   {
@@ -110,6 +111,10 @@ const routes: Routes = [
       {
         path: 'cancelled-request',
         component: CancelledRequestComponent,
+      },
+      {
+        path: 'all-connection',
+        component: AllConnectionComponent,
       },
 
     ],
