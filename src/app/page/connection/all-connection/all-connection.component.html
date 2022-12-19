@@ -71,10 +71,11 @@
     
         <!-- connectionStatus Column -->
         <ng-container matColumnDef="connectionStatus">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by connectionStatus">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by connectionStatus"
+            >
             Status
           </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)" > {{element.connectionStatus}} </td>
+          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)" class="{{element.connectionStatus.toUpperCase()}}"> {{element.connectionStatus}} </td>
         </ng-container>
     
         <!-- connectedDate Column -->

@@ -107,7 +107,7 @@
                     <div class="mb-3 cus-int-div">
                         <label for="TV" class="form-label labels">TV </label>
                         <input type="text" formControlName="TV" class="form-control int" id="TV"
-                            placeholder="9999999999V"  />
+                            placeholder="TV count"  />
                         <mat-error *ngIf="checkErrorUserForm('TV', 'required') && submitted ">
                             TV is Required
                         </mat-error>
@@ -170,7 +170,7 @@
                 <label for="Technician" class="form-label labels">Branch </label>
                 <select class="form-select" aria-label="Default select example" (change)='onSelectBranch(val.value)'
                     required #val>
-                    <option disabled selected value="null">Branchv</option>
+                    <option disabled selected value="null">Branch</option>
                     <option *ngFor="let item of BranchArray" [value]="item.id">
                         {{ item.branchName }}
                     </option>
@@ -182,7 +182,7 @@
             <div class="mb-3 cus-int-div">
                 <label for="ConnectionAddress" class="form-label labels">Connection Address </label>
                 <input type="text" formControlName="ConnectionAddress" class="form-control int" id="ConnectionAddress"
-                    placeholder="Amount" />
+                    placeholder="Address" />
                 <mat-error *ngIf="checkErrorUserForm('ConnectionAddress', 'required') && submitted ">
                     Connection Address is Required
                 </mat-error>
@@ -219,7 +219,7 @@
             <div class="mb-3 cus-int-div">
                 <label for="Arrears" class="form-label labels">Arrears </label>
                 <input type="text" formControlName="Arrears" class="form-control int" id="Arrears"
-                    placeholder="9999999999V" />
+                    placeholder="Amount" />
                 <mat-error *ngIf="checkErrorUserForm('Arrears', 'required') && submitted ">
                     Arrears is Required
                 </mat-error>
@@ -229,7 +229,7 @@
             <div class="mb-3 cus-int-div">
                 <label for="ConnectionFee" class="form-label labels">Connection Fee </label>
                 <input type="text" formControlName="ConnectionFee" class="form-control int" id="ConnectionFee"
-                    placeholder="9999999999V" />
+                    placeholder="Amount" />
                 <mat-error *ngIf="checkErrorUserForm('ConnectionFee', 'required') && submitted ">
                     Connection Fee is Required
                 </mat-error>

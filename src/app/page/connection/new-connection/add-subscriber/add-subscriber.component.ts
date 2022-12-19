@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { isEmpty } from 'rxjs';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
@@ -110,7 +111,18 @@ export class AddCSubsciberComponent implements OnInit {
       "password": "123456"
     }
     console.log(data);
-    if (this.userForm.valid) {
+    var checkData:boolean = this.technicianId =="" ||this.technicianId==undefined||
+    this.roadId =="" ||this.roadId==undefined||
+    this.areaId =="" ||this.areaId==undefined ||
+    this.branchId =="" ||this.branchId==undefined
+    console.log(this.technicianId =="" ,this.technicianId==undefined,
+    this.roadId =="" ,this.roadId==undefined,
+    this.areaId =="" ,this.areaId==undefined ,
+    this.branchId =="" ,this.branchId==undefined);
+    
+    console.log(checkData,this.userForm.valid,"this.this.userForm.valid");
+    
+    if (this.userForm.valid && !checkData ) {
       this.dataServise.postValue('customer', data).subscribe(
         (res: any) => {
           if (res.errorMessage) {
@@ -138,6 +150,7 @@ export class AddCSubsciberComponent implements OnInit {
             }
             console.log(obj,res,"obj");
             
+          
 
             this.dataServise.postValue('connection', obj).subscribe(
               (res: any) => {
@@ -165,6 +178,7 @@ export class AddCSubsciberComponent implements OnInit {
         }
       );
     } else {
+      this.isEmpty()
 
     }
 
@@ -175,6 +189,9 @@ export class AddCSubsciberComponent implements OnInit {
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
+  }
+  isEmpty() {
+    this.toastr.error('Please fill out all field', 'Error');
   }
 
 }

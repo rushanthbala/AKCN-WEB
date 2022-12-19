@@ -115,7 +115,11 @@ export class AddConnectionComponent implements OnInit  {
         branchID:this.branchId
       }
       console.log(data);
-      if (this.userForm.valid) {
+      var checkData = this.technicianId =="" ||this.technicianId==undefined||
+      this.roadId =="" ||this.roadId==undefined||
+      this.areaId =="" ||this.areaId==undefined ||
+      this.branchId =="" ||this.branchId==undefined
+      if (this.userForm.valid || !checkData  ) {
         this.dataServise.postValue('connection', data).subscribe(
           (res: any) => {
             if (res.errorMessage) {
@@ -133,7 +137,7 @@ export class AddConnectionComponent implements OnInit  {
           }
         );
       } else {
-
+alert("error")
       }
 
 
