@@ -1,0 +1,26 @@
+<form class="register-form" [formGroup]="loginForm" (ngSubmit)="login()">
+  <img src="../../assets/icons/logo1.png" class="fa fa-minus" aria-hidden="true" />
+  <br/>
+  <br/>
+  <h1 class="form-heading mb-4">Login in to dashboard</h1>
+  <br />
+  <div class="mb-3 int-main-div">
+    <input placeholder="Enter username or email" type="email" class="input-core" id="exampleInputEmail1"
+      aria-describedby="emailHelp" formControlName="email" required/>
+  </div>
+  <!-- <br /> -->
+
+  <div class="mb-3 int-main-div">
+    <input type="password" class="input-core" id="exampleInputPassword1" placeholder="Enter password"
+      formControlName="password" required />
+  </div>
+  <br />
+  <div class="mb-3" *ngIf="!loading">
+    <button type="submit" class="btn btn-primary form-btn">Login</button>
+  </div>
+  <div class="mb-3" *ngIf="loading">
+    <button type="submit" class="btn btn-primary form-btn" disabled>
+      Loading..
+    </button>
+  </div>
+</form>

@@ -1,0 +1,62 @@
+<form [formGroup]="chackRequest">
+  <div class="cus-model-c-div">
+    <div class="form-heading int-div card-head-h2">Update Road</div>
+    <p class="para">{{ ifData ? currentData.userID : "" }}</p>
+    <div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-12 mt-3">
+          <div class="para mt-3 ps-3">Road</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="road"
+            placeholder="Road"
+            formControlName="road"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-12 mt-3">          
+        <select class="form-select mt-2" aria-label="Default select example" (change)='onSelectarea(val.value)' required #val>
+            <option disabled selected value="null">Area</option>
+            <option *ngFor="let item of areaArray" [value]="item.id">
+                {{ item.area }}
+            </option>
+        </select>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <button
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="onNoClick()"
+            style="
+              background-color: #fff !important;
+              color: #027afe !important;
+              border: none !important;
+            "
+          >
+            Cancel
+          </button>
+        </div>
+        <div class="col-12 col-sm-6">
+          <button
+            *ngIf="!loading"
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="ReconnectionRequest()"
+          >
+            Update
+          </button>
+          <button
+            *ngIf="loading"
+            class="opacity-75 disabled input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="ReconnectionRequest()"
+          >
+            Loading ...
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

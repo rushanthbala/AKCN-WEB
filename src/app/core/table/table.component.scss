@@ -1,0 +1,16 @@
+svg > g[class^="raphael-group-"] > text{
+    display: none;
+}
+g[class$='creditgroup'] {
+    display:none !important;
+}
+g[class^='raphael-group-'][class$='-creditgroup'] {
+    display:none !important;
+}
+[pointer-events="bounding-box"] {
+    display: none
+}
+div[id^='fc-'] > span > svg > defs + g > g:nth-child(26) { display:none !important; }
+.raphael-group-NCTLARno{
+    color:red !important;
+}

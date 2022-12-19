@@ -1,0 +1,145 @@
+<div
+  class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
+>
+  <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
+
+  <div class="input-div">
+    <input
+      type="text"
+      (keyup)="applyFilter($event)"
+      class="form-control int mt-2"
+      id="ID"
+      placeholder="Search"
+      formControlName="address"
+    />
+  </div>
+  <div class="input-div">
+    <button
+      class="input-group-text cus-btn-down btn-c-1 mt-2"
+      id="basic-addon2"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      (click)="postData()"
+    >
+      Add New user
+    </button>
+  </div>
+</div>
+<br />
+<br />
+<div *ngIf="TICKET_DATA.length != 0">
+  <div *ngIf="showTable">
+    <div id="htmlData">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        id="ExampleNormalTable"
+        matSort
+        (matSortChange)="announceSortChange($event)"
+        class=""
+      >
+        <td mat-cell *matCellDef="let row"></td>
+        <!-- userID Column -->
+        <ng-container matColumnDef="userID">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by userID"
+          >
+            ID
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.userID }}</td>
+        </ng-container>
+
+        <!-- firstName Column -->
+        <ng-container matColumnDef="firstName">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by firstName"
+          >
+            NAME
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        </ng-container>
+
+        <!-- roleID Column -->
+        <ng-container matColumnDef="roleID">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by roleID"
+          >
+            ROLE
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.roleID }}</td>
+        </ng-container>
+
+        <!-- branchID Column -->
+        <ng-container matColumnDef="branchID">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by branchID"
+          >
+            BRANCH
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.branchID }}</td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by status"
+          >
+            Status
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <!-- createdDate Column -->
+        <ng-container matColumnDef="createdDate">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by createdDate"
+          >
+            Created At
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex">
+              <div
+                class="m-1 status-btn update-c"
+                (click)="viewDetails(element)"
+              >
+                UPDATE
+              </div>
+              <div class="m-1 status-btn password-c">PASSWORD</div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+  <div class="editData"></div>
+</div>
+
+<p class="head-2 p-5" *ngIf="TICKET_DATA.length == 0 && ifGetData">
+  No Data found
+</p>

@@ -1,0 +1,23 @@
+<form [formGroup]="Reconnection" (ngSubmit)="updateCancel()">
+  <div class=" cus-model-c-div">
+    <div class="form-heading int-div card-head-h2">
+      Cancel Tickets
+    </div>
+    <p class="para">{{data.TicketData.id}}</p>
+    <div class="">
+      <button *ngIf="!loading"  class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+       >
+        Close
+      </button>
+      <button *ngIf="loading" disabled class="opacity-75 input-group-text cus-btn-down cus-model-btn-down btn-c-1">
+        Close ...
+    </button>
+      <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" 
+        (click)="onNoClick()"
+        style="background-color: #fff !important; color: #027afe">
+        Cancel
+      </button>
+
+    </div>
+  </div>
+</form>

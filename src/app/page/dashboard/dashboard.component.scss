@@ -1,0 +1,38 @@
+.canva-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  flex-direction: column;
+  background: #fff;
+  max-width: 600px;
+}
+.tb-a-report{
+  padding: 5px;
+}
+.canava-heading {
+  width: 100%;
+  text-align: left;
+  font-weight: 700 !important;
+  font-size: 16px;
+}
+.table-heading {
+  width: 100%;
+  padding: 1rem 0rem 2rem 89px;
+  font-size: 28px;
+  color: #272d3b;
+}
+//
+.left-report-heading {
+  color: #000000;
+  font-size: 16px;
+}
+.left-report-content {
+  div {
+    padding: 5px;
+    border-bottom: 0.5px solid #8990ad33 !important;
+    color: #707070;
+  }
+  //   margin-top: ;
+}

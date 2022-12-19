@@ -1,0 +1,41 @@
+<form [formGroup]="chackRequest" >
+    <div class=" cus-model-c-div">
+        <div class="form-heading int-div card-head-h2">
+            Change Request
+        </div>
+        <p class="para">{{data.TicketData.id}}</p>
+        <div class="">
+            <select class="form-select" aria-label="Default select example" (change)='onSelectarea(val.value)' required #val>
+                <option disabled selected value="null">Area</option>
+                <option *ngFor="let item of areaArray" [value]="item.id">
+                    {{ item.area }}
+                </option>
+            </select>
+
+            <select class="form-select mt-2" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
+                <option disabled selected value="null">Road</option>
+                <option *ngFor="let item of roadArray" [value]="item.id">
+                    {{ item.road }}
+                </option>
+            </select>
+
+
+
+            <input type="text" class="form-control int mt-2" id="ID" placeholder="New Address" 
+                formControlName="address" />
+
+            <input type="text" class="form-control int mt-2" type="number" required id="ID" placeholder="Phone Number" 
+                formControlName="phoneNumber" />
+
+
+            <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"   (click)="ReconnectionRequest()">
+                Create
+            </button>
+            <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
+                style="background-color: #fff !important; color: #027afe">
+                Cancel
+            </button>
+
+        </div>
+    </div>
+</form>

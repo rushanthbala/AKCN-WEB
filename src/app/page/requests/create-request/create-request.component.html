@@ -1,0 +1,55 @@
+<p class="heading">Choose searching type and enter the value</p>
+<br />
+<app-filter-box (OnClick)="searching($event)"></app-filter-box>
+<!-- <app-custom-button text="'000000000'" btnClass="btn" (OnClick)="test()" ></app-custom-button> -->
+
+<br />
+<br />
+
+<div *ngIf="userData && userData.length != 0">
+  <p class="head-2" *ngIf="showTable">{{tableResult}} Results found</p>
+  <!-- table -->
+  <div class="main-div">
+    <!-- <div class="main-heading">User Information's</div> -->
+    <div class="table-div" *ngIf="showTable">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>SUBSCRIBER</th>
+          <th>PHONE</th>
+          <th>ADDRESS</th>
+          <th>STATUS</th>
+          <th>TV</th>
+          <th>TYPE</th>
+          <!-- <th style="text-align: center">ACTION</th> -->
+        </tr>
+        <tr *ngFor="
+          let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
+        " (click)="viewDetails(us)">
+          <td>{{ us.id }}</td>
+          <td>{{ us.firstName }} {{us.lastName}}</td>
+
+          <td>{{ us.primaryPhone }}</td>
+          <td>{{ us.connectionAddress }}</td>
+          <td>
+            <div class="status {{us.connectionStatus}}">
+              {{ us.connectionStatus }}
+            </div>
+          </td>
+          <td>{{ us.tvCount }}</td>
+          <td>{{ us.connectionType }}</td>
+        </tr>
+      </table>
+      <br />
+      <pagination-controls class="my-pagination" previousLabel="Previous" nextLabel="Next"
+        screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" (pageChange)="p = $event">
+      </pagination-controls>
+    </div>
+    <div *ngIf="isSubscriberdata">
+      <app-edit-request [object]='subscriberdata' text="text"></app-edit-request>
+    </div>
+  </div>
+</div>
+<div *ngIf="showTable && userData.length == 0" class="head-2 p-5">
+  No Data Found
+</div>

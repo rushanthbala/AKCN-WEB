@@ -1,0 +1,33 @@
+<form [formGroup]="chackRequest" >
+    <div class=" cus-model-c-div">
+        <div class="form-heading int-div card-head-h2">
+           Assign Ticket
+        </div>
+        <p class="para">{{data.TicketData.id}}</p>
+        <div class="">
+            <select class="form-select" aria-label="Default select example" required [(ngModel)]="selectedDeviceObj"
+                [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="onChangeObj(selectedDeviceObj)">
+                <option disabled selected value="null">Technician</option>
+                <option *ngFor="let item of TechnicianArray" [ngValue]="item">
+                    {{ item.firstName }}
+                </option>
+            </select>
+
+            <!-- <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
+                <option disabled selected value="null">Technician</option>
+                <option *ngFor="let item of TechnicianArray" [value]="item.area">
+                    {{ item.firstName }}
+                </option>
+            </select> -->
+            <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"   (click)="ReconnectionRequest()">
+                Update
+            </button>
+            <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
+                style="background-color: #fff !important; color: #027afe">
+                Cancel
+            </button>
+
+        </div>
+    </div>
+</form>

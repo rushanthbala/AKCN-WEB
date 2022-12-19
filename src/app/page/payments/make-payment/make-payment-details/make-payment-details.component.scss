@@ -1,0 +1,128 @@
+.heading {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .lbl {
+    padding-left: 20px;
+  }
+  .cus-form-check {
+    margin: 0px 14px 14px 1px;
+  }
+  .cus-btn {
+    background: #027afe !important;
+    color: #fff;
+    border-radius: 6px;
+  }
+  .int {
+    border-radius: 10px !important;
+    background-color: #99999917;
+  }
+  
+  // table
+  .main-div {
+    background-color: #fff;
+    // margin-top: 2rem;
+    border-radius: 24px;
+    // margin:1rem 4rem 0rem 4rem;
+  }
+  @media only screen and(max-width:900px) {
+    .main-div {
+      margin: auto !important;
+    }
+  }
+  .img {
+    width: 100%;
+    max-width: 32px;
+    border-radius: 4px;
+  }
+  .main-heading {
+    font-weight: 700 !important;
+    font-size: 26px !important;
+    padding: 2rem 0px 0px 2rem;
+  }
+  .table-div {
+    padding: 1rem;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    font-weight: 600;
+  }
+  td {
+    font-weight: 400;
+    color: #000;
+  }
+  tr:nth-child(even) {
+    background-color: #99999917;
+  }
+  .status {
+    border-radius: 24px;
+    background-color: #d63964;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 50%;
+    min-width: 60px;
+  }
+  .labels {
+    font-weight: 600;
+    margin: 0px 0px 3px 6px;
+  }
+  .int {
+    padding-left: 20px;
+    height: 50px;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 12px;
+    background: #99999911 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    color: #707070;
+  }
+  .cus-int-div {
+    max-width: 220px;
+    width: 100%;
+    margin: 0.8rem;
+  }
+  .main-input-content {
+    max-width: 1000px;
+    width: 100%;
+  }
+  .btn-div-set {
+    max-width: 495px;
+    margin-top: 1rem;
+  }
+  .cus-btn-down {
+    height: 50px;
+    color: #fff;
+    border-radius: 10px;
+    max-width: 220px;
+    width: 100%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 0rem 0rem 0rem 1rem;
+  }
+  .btn-c-1 {
+    background: #6468e7 !important;
+  }
+  .btn-c-2 {
+    background: #027afe !important;
+  }
+  .btn-c-3 {
+    background: #74bc78 !important;
+  }
+  

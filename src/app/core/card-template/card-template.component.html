@@ -1,0 +1,19 @@
+<div class="card">
+  <p class="card-heading">{{ title }}</p>
+  <div class="card-flex d-flex">
+    <p class="card-number">{{ number }}</p>
+    <!-- <img alt="number" class="image" *ngIf="img" /> -->
+    <img
+      src="../../../assets/icons/redAr.png"
+      alt="number"
+      class="image"
+      *ngIf="!img"
+    />
+    <img
+      src="../../../assets/icons/greenAr.png"
+      alt="number"
+      class="image"
+      *ngIf="img"
+    />
+  </div>
+</div>

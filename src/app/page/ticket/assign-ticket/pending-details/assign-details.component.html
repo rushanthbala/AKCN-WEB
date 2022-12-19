@@ -1,0 +1,94 @@
+<form [formGroup]="inputset">
+   <!-- {{object|json}}hihias
+   <br/>
+  {{allData|json}}hihias -->
+
+
+    <div
+      class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
+      <div class="mb-3 cus-int-div">
+        <label for="ID" class="form-label labels">ID </label>
+        <input type="text" class="form-control int" id="ID" placeholder="ID" value="{{allData.id}}"
+          readonly />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="NIC" class="form-label labels">NIC</label>
+        <input type="text" class="form-control int" id="NIC" value="{{allData.subscriberNIC}}" readonly
+          placeholder="NIC" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="SUBSCRIBER" class="form-label labels">SUBSCRIBER</label>
+        <input type="text" class="form-control int" id="SUBSCRIBER" value="{{allData.firstName}}" readonly
+          placeholder="SUBSCRIBER" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="PHONE" class="form-label labels">PHONE</label>
+        <input type="text" class="form-control int" id="PHONE" value="{{allData.primaryPhone}}" readonly
+          placeholder="PHONE" />
+      </div>
+  
+      <!-- 2 -->
+      <div class="mb-3 cus-int-div">
+        <label for="Ticket" class="form-label labels">Ticket</label>
+        <input type="text" class="form-control int" id="Ticket" value="{{object.ticketID}}" readonly
+          placeholder="Ticket" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="SUBJECT" class="form-label labels">SUBJECT</label>
+        <input type="text" class="form-control int" id="SUBJECT" value="{{object.subject}}" readonly
+          placeholder="SUBJECT" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="DESCRIPTION" class="form-label labels">DESCRIPTION</label>
+        <input type="text" class="form-control int" id="DESCRIPTION" value="{{object.description}}" readonly
+          placeholder="DESCRIPTION" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="Created At" class="form-label labels">Created At</label>
+        <input type="text" class="form-control int" id="Created At" value="{{object.createdAt | date:'yyyy-M-d hh:mm'}}" readonly
+          placeholder="Date" />
+      </div>
+  
+      <!-- 3 -->
+      <div class="mb-3 cus-int-div">
+        <label for="Connection Address" class="form-label labels">Connection Address</label>
+        <input type="text" class="form-control int" id="Connection Address" value="{{allData.connectionAddress}}" readonly
+          placeholder="Address" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="Status" class="form-label labels">Status</label>
+        <input type="text" class="form-control int" id="Status" value="{{allData.status}}" readonly
+          placeholder="Status" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="Due" class="form-label labels">Due</label>
+        <input type="text" class="form-control int" id="Due" value="{{allData.dueAmount}}" readonly placeholder="Due" />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="Type" class="form-label labels">Type</label>
+        <input type="text" class="form-control int" id="Type" value="{{allData.connectionType}}" readonly
+          placeholder="Type" />
+      </div>
+    </div>
+  
+    <div
+      class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
+  
+      <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="Back()">
+       Back To Pending Ticket 
+      </button>
+  
+      <button class="input-group-text cus-btn-down btn-c-2" (click)="CancelTicket()">
+        Cancel This Ticket
+      </button>
+      <button class="input-group-text cus-btn-down btn-c-4"  (click)="TransferTicket()">
+        Transfer This Ticket
+      </button>
+  
+      <button class="input-group-text cus-btn-down btn-c-3" (click)="CloseOpenDialog()">
+        Close This Ticket
+      </button>
+  
+    </div>
+  </form>
+  
