@@ -22,6 +22,10 @@ import { AssignRequestComponent } from './requests/assign-request/assign-request
 import { CloseRequestComponent } from './requests/closed-request/close-request.component';
 import { CancelledRequestComponent } from './requests/cancelled-request/cancel-request.component';
 import { AllConnectionComponent } from './connection/all-connection/all-connection.component';
+import { RoleSettingComponent } from './settings/role-settings/role-settings.component';
+import { RoadSettingsComponent } from './settings/road-settings/road-settings.component';
+import { AreaSettingsComponent } from './settings/area-settings/area-settings.component';
+import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
 
 const routes: Routes = [
   {
@@ -90,7 +94,6 @@ const routes: Routes = [
         component: UsersSettingComponent,
       },
 
-
       // request
       {
         path: 'create-request',
@@ -116,7 +119,22 @@ const routes: Routes = [
         path: 'all-connection',
         component: AllConnectionComponent,
       },
-
+      {
+        path: 'roles-setting',
+        component: RoleSettingComponent,
+      },
+      {
+        path: 'roads-setting',
+        component: RoadSettingsComponent,
+      },
+      {
+        path: 'areas-setting',
+        component: AreaSettingsComponent,
+      },
+      {
+        path:'branches-setting',
+        component: BranchSettingsComponent
+      }
     ],
   },
 ];
@@ -125,4 +143,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule { }
+export class PagesRoutingModule {}

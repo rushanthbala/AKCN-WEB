@@ -27,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(), 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -44,6 +44,7 @@ td.mat-cell,
 td.mat-footer-cell {
   border-bottom-width: 0px !important;
   border-bottom-style: none;
+  cursor: pointer;
 }
 
 td {
@@ -119,21 +120,4 @@ tr:nth-child(even) {
   width: 50%;
   min-width: 60px;
   // margin: 0 auto;
-}
-
-.status-btn {
-  width: 95px;
-  border-radius: 24px;
-  color: #fff;
-  text-align: center;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  cursor: pointer;
-}
-
-.password-c {
-  background-color: #d63964;
-}
-.update-c {
-  background-color: #74bc78;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from 'node_modules/chart.js';
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
@@ -140,75 +141,89 @@ export class DashboardComponent implements OnInit {
   p: number = 1;
 
   ngOnInit(): void {
-    this.getAllTableData();
+    // this.getAllTableData();
+    this.renderChart();
     this.userData = this.userArray;
 
     // this.getAllCardData();
   }
-  loadChart(): void {
-    new Chart(this.chart, {
+  renderChart() {
+    const myChart = new Chart('linechart', {
       type: 'line',
       data: {
+        labels: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
         datasets: [
           {
-            data: this.tableDatasetsData,
-            label: 'User',
-            backgroundColor: '#fff',
-            tension: 0.4,
-            borderColor: 'blue',
-            // pointBackgroundColor:"red"    //
+            data: [3, 4, 2, 4, 5, 6, 5, 4, 5, 3, 4, 6],
+            borderWidth: 2,
+            borderColor: '#2CD9C5',
+            backgroundColor: ['#2CD9C51A', '#2E5BFF00'],
+            fill: true,
+            pointBackgroundColor: ["white"],
+            pointBorderColor:["#2CD9C5"]
           },
         ],
-        labels: this.tableDatasetsDate,
       },
       options: {
-        responsive: true,
         scales: {
-          y: {
-            beginAtZero: true,
-          },
           x: {
-            ticks: {
-              autoSkip: false,
-              maxRotation: 90,
-              minRotation: 80,
+            grid: {
+              display: false,
             },
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
           },
         },
       },
     });
   }
-  getAllTableData() {
-    // this.dataServise.getAllData('api/userSummary').subscribe((res) => {
-    // console.log(res.value === 1 ? true : false, '====');
-    // console.log(res, 'res');
-    let res = [
-      { create_date: '2022-06-14', total: 10 },
-      { create_date: '2022-06-15', total: 48 },
-      { create_date: '2022-06-16', total: 80 },
-      { create_date: '2022-06-17', total: 65 },
-      { create_date: '2022-06-18', total: 43 },
-      { create_date: '2022-06-19', total: 40 },
-      { create_date: '2022-06-20', total: 40 },
-      { create_date: '2022-06-21', total: 44 },
-      { create_date: '2022-06-22', total: 47 },
-    ];
-    let last7Array = [];
-    last7Array = res.slice(-7);
-    console.log(last7Array);
-    let data: any = [];
-    let date: any = [];
-    last7Array.map((item: any) => {
-      data.push(item.total);
-      date.push(item.create_date);
-      console.log('==');
-    });
-    this.tableDatasetsData = data;
-    this.tableDatasetsDate = date;
-    console.log(data, '====================');
-    this.chart = document.getElementById('chart');
-    Chart.register(...registerables);
-    this.loadChart();
-    // });
-  }
+  // getAllTableData() {
+  //   // this.dataServise.getAllData('api/userSummary').subscribe((res) => {
+  //   // console.log(res.value === 1 ? true : false, '====');
+  //   // console.log(res, 'res');
+  //   let res = [
+  //     { create_date: '2022-06-14', total: 10 },
+  //     { create_date: '2022-06-15', total: 48 },
+  //     { create_date: '2022-06-16', total: 80 },
+  //     { create_date: '2022-06-17', total: 65 },
+  //     { create_date: '2022-06-18', total: 43 },
+  //     { create_date: '2022-06-19', total: 40 },
+  //     { create_date: '2022-06-20', total: 40 },
+  //     { create_date: '2022-06-21', total: 44 },
+  //     { create_date: '2022-06-22', total: 47 },
+  //   ];
+  //   let last7Array = [];
+  //   last7Array = res.slice(-7);
+  //   console.log(last7Array);
+  //   let data: any = [];
+  //   let date: any = [];
+  //   last7Array.map((item: any) => {
+  //     data.push(item.total);
+  //     date.push(item.create_date);
+  //     console.log('==');
+  //   });
+  //   this.tableDatasetsData = data;
+  //   this.tableDatasetsDate = date;
+  //   console.log(data, '====================');
+  //   this.chart = document.getElementById('chart');
+  //   Chart.register(...registerables);
+  //   this.loadChart();
+  //   // });
+  // }
 }

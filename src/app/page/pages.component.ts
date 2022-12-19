@@ -164,6 +164,29 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/users-setting'
       this.sublink = '/auth/users-setting'
       this.contentSubHeading = "Tickets > Users"
+    } else if (urlSpilite[2] === 'roles-setting') {
+      this.href = 'Settings';
+      this.link = '/auth/roles-setting'
+      this.sublink = '/auth/roles-setting'
+      this.contentSubHeading = "Tickets > Roles"
+    }
+    else if (urlSpilite[2] === 'roads-setting') {
+      this.href = 'Settings';
+      this.link = '/auth/roads-setting'
+      this.sublink = '/auth/roads-setting'
+      this.contentSubHeading = "Tickets > Roads"
+    }
+    else if (urlSpilite[2] === 'areas-setting') {
+      this.href = 'Settings';
+      this.link = '/auth/areas-setting'
+      this.sublink = '/auth/areas-setting'
+      this.contentSubHeading = "Tickets > Areas"
+    }
+    else if (urlSpilite[2] === 'branches-setting') {
+      this.href = 'Settings';
+      this.link = '/auth/branches-setting'
+      this.sublink = '/auth/branches-setting'
+      this.contentSubHeading = "Tickets > Branches"
     }
   }
   menuItems = [

@@ -73,6 +73,14 @@ import { DisconnectDialogBoxComponent } from '../core/dialogBox/disconnect-dialo
 import { AddCSubsciberComponent } from './connection/new-connection/add-subscriber/add-subscriber.component';
 import { AllConnectionComponent } from './connection/all-connection/all-connection.component';
 import { UserPostPut } from '../core/dialogBox/settings/user-dialog/user-dialog.component';
+import { RoleSettingComponent } from './settings/role-settings/role-settings.component';
+import { RoleDialogComponent } from '../core/dialogBox/settings/role-dialog/role-dialog.component';
+import { RoadDialogComponent } from '../core/dialogBox/settings/road-dialog/road-dialog.component';
+import { AreaDialogComponent } from '../core/dialogBox/settings/area-dialog/area-dialog.component';
+import { BranchDialogComponent } from '../core/dialogBox/settings/branch-dialog/branch-dialog.component';
+import { RoadSettingsComponent } from './settings/road-settings/road-settings.component';
+import { AreaSettingsComponent } from './settings/area-settings/area-settings.component';
+import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -91,7 +99,8 @@ import { UserPostPut } from '../core/dialogBox/settings/user-dialog/user-dialog.
         PendingRequestDetailsComponent,PendingRequestComponent,CloseRequestDetailsComponent,
         CloseRequestComponent,CancelledRequestDetailsComponent,CancelledRequestComponent,TicketCancelDialogBoxComponent,
         AssignTicketRequestDilogComponent,TicketCloseDialogBoxComponent,DisconnectDialogBoxComponent, ExtraRequestDialogBoxComponent,
-        AddCSubsciberComponent,AllConnectionComponent,UserPostPut
+        AddCSubsciberComponent,AllConnectionComponent,UserPostPut,RoleSettingComponent, RoleDialogComponent, RoadDialogComponent,
+        AreaDialogComponent, BranchDialogComponent, RoadSettingsComponent, AreaSettingsComponent, BranchSettingsComponent
       ],
   imports: [
     CommonModule,

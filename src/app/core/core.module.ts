@@ -13,11 +13,15 @@ import { ConnectionSearchComponent } from './connection-search/connection-search
 import { UpdateDataComponent } from './dialogBox/pending/update-data/update-data.component';
 import { UserReportUpdateComponent } from './user-report-update/user-report-update.component';
 import { ReconnectDialogComponent } from './dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
+import { RoleDialogComponent } from './dialogBox/settings/role-dialog/role-dialog.component';
+import { RoadDialogComponent } from './dialogBox/settings/road-dialog/road-dialog.component';
+import { AreaDialogComponent } from './dialogBox/settings/area-dialog/area-dialog.component';
+import { BranchDialogComponent } from './dialogBox/settings/branch-dialog/branch-dialog.component';
 
 @NgModule({
   declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, 
     FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent,
-     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent],
+     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent, RoleDialogComponent, RoadDialogComponent, AreaDialogComponent, BranchDialogComponent],
   imports: [CommonModule, BrowserModule],
   entryComponents: [CardTemplateComponent],
 })

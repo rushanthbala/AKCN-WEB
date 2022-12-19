@@ -28,13 +28,13 @@
       >
         <button
           mat-button
-          class="menu-button {{item.link==link &&  'sidebtnhover'}}"
+          class="menu-button {{ item.link == link && 'sidebtnhover' }}"
           routerLink="{{ item.link }}"
           routerLinkActive="active-side"
         >
           <div>
             <span class="icon {{ item.iconClass }}">&nbsp;</span>
-            <span class="menu-button-label" >{{ item.label }} </span>
+            <span class="menu-button-label">{{ item.label }} </span>
             <span class="col-icon-span">
               <span class="fa icon plus" *ngIf="!item.state">&nbsp;</span>
               <span class="fa icon minus" *ngIf="item.state">&nbsp;</span>
@@ -50,10 +50,20 @@
                 routerLink="{{ it.href }}"
                 routerLinkActive="active-side"
               >
-              <i *ngIf="it.href== sublink" class="fa fa-circle" style="color:#027AFE;" aria-hidden="true"></i>
-              <i *ngIf="!(it.href== sublink)" class="fa  fa-circle" style="color:none;width: 20px;" aria-hidden="true"></i>
-              <!-- <i class="fa fa-circl" style="color:red;" aria-hidden="true"></i> -->
-              <span>{{ it.name }}</span>
+                <i
+                  *ngIf="it.href == sublink"
+                  class="fa fa-circle"
+                  style="color: #027afe"
+                  aria-hidden="true"
+                ></i>
+                <i
+                  *ngIf="!(it.href == sublink)"
+                  class="fa fa-circle"
+                  style="color: none; width: 20px"
+                  aria-hidden="true"
+                ></i>
+                <!-- <i class="fa fa-circl" style="color:red;" aria-hidden="true"></i> -->
+                <span>{{ it.name }}</span>
               </button>
             </div>
           </div>
@@ -101,7 +111,7 @@
         >
           <div class="navbar-name">
             <div class="navbar-name" *ngIf="!sidenav.opened">
-              <div style="min-width: 180px; font-size: 24px;">
+              <div style="min-width: 180px; font-size: 24px">
                 {{ href }}
               </div>
             </div>
@@ -123,17 +133,48 @@
               <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
             </div>
             <div class="avathar">
-              <img
-                src="../../assets/sidebarIcon/jack.jpeg"
-                alt="logo"
-                srcset=""
-                class="main-user-avathar"
-              />
+              <button
+                class="btn dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src="../../assets/sidebarIcon/jack.jpeg"
+                  alt="logo"
+                  srcset=""
+                  class="main-user-avathar"
+                />
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-person"></i> Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-chat-dots"></i> Feedback</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-question-circle"></i> Help</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-box-arrow-right"></i> Logout</a
+                  >
+                </li>
+              </ul>
             </div>
             <div class="username">Alex Kumar</div>
           </div>
         </div>
-        <div class="welcome-username">{{contentSubHeading}}</div>
+        <div class="welcome-username">{{ contentSubHeading }}</div>
       </div>
 
       <br />
