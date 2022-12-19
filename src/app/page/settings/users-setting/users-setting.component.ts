@@ -8,6 +8,9 @@ import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UserPostPut } from 'src/app/core/dialogBox/settings/user-dialog/user-dialog.component';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-users-setting',
@@ -20,7 +23,7 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   dataSource: any;
   displayedColumns: string[] = ['userID','firstName','roleID','branchID','status','createdDate'];
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService,public dialog: MatDialog) { }
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
@@ -35,7 +38,8 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   showTable: boolean = true;
   subscriberdata:any={};
   isSubscriberdata:boolean=false;
-
+  ifGetData:boolean = false
+  sendtype:string ="POST"
   tableResult: any;
   p: number = 1;
   ngOnInit() {
@@ -48,7 +52,10 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(res);
+      this.ifGetData=true
+    },(err)=>{
+      this.ifGetData=true
+
     });
   }
 
@@ -69,6 +76,7 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+  // UserPostPut
   exportNormalTable() {
     console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] = this.dataSource.filteredData.map((x: TicketElement) => ({
@@ -88,7 +96,18 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
- 
+  UpadteUserDialogBox(): void {
+
+    const dialogRef = this.dialog.open(UserPostPut, {
+      width: '550px',
+      data: {subscriberdata:this.subscriberdata,sendtype:this.sendtype},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }  
 
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
@@ -110,12 +129,17 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
+postData(){
+  this.sendtype ="POST"
+  this.UpadteUserDialogBox();
+}
   viewDetails(us:any) {
-    this.showTable = false;
+    // this.showTable = false;
+    this.sendtype ="PUT"
     this.subscriberdata=us;
-    this.isSubscriberdata=true;
-    console.log(us);
+    this.UpadteUserDialogBox();
+    // this.isSubscriberdata=true;
+    // console.log(us);
     
   }
 }

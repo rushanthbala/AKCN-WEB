@@ -131,7 +131,7 @@ export class ConnectionDetailsComponent  implements OnInit {
     });
   }
   // DisconnectDialogBoxComponent
-  openDialog4(): void {
+  DisconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
       data:this.object,
