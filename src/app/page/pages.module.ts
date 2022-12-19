@@ -81,6 +81,7 @@ import { BranchDialogComponent } from '../core/dialogBox/settings/branch-dialog/
 import { RoadSettingsComponent } from './settings/road-settings/road-settings.component';
 import { AreaSettingsComponent } from './settings/area-settings/area-settings.component';
 import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
+import { ConnectDialogComponent } from '../core/dialogBox/connection/connect-dialog/connect-dialog.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -100,7 +101,7 @@ import { BranchSettingsComponent } from './settings/branch-settings/branch-setti
         CloseRequestComponent,CancelledRequestDetailsComponent,CancelledRequestComponent,TicketCancelDialogBoxComponent,
         AssignTicketRequestDilogComponent,TicketCloseDialogBoxComponent,DisconnectDialogBoxComponent, ExtraRequestDialogBoxComponent,
         AddCSubsciberComponent,AllConnectionComponent,UserPostPut,RoleSettingComponent, RoleDialogComponent, RoadDialogComponent,
-        AreaDialogComponent, BranchDialogComponent, RoadSettingsComponent, AreaSettingsComponent, BranchSettingsComponent
+        AreaDialogComponent, BranchDialogComponent, RoadSettingsComponent, AreaSettingsComponent, BranchSettingsComponent,ConnectDialogComponent
       ],
   imports: [
     CommonModule,

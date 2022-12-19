@@ -5,11 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
-  selector: 'app-reconnect-dialog',
-  templateUrl: './reconnect-dialog.component.html',
-  styleUrls: ['./reconnect-dialog.component.scss']
+  selector: 'app-connect-dialog',
+  templateUrl: './connect-dialog.component.html',
+  styleUrls: ['./connect-dialog.component.scss']
 })
-export class ReconnectDialogComponent implements OnInit {
+export class ConnectDialogComponent implements OnInit {
 
   public loading: Boolean = false;
   public areaArray: any = [];
@@ -29,7 +29,7 @@ export class ReconnectDialogComponent implements OnInit {
     this.getAll()
   }
   constructor(
-    public dialogRef: MatDialogRef<ReconnectDialogComponent>,
+    public dialogRef: MatDialogRef<ConnectDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
@@ -42,31 +42,31 @@ export class ReconnectDialogComponent implements OnInit {
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
       disconnectedDate: '',
-      remarks: ''
+      reconnectionFee: ''
     });
   }
   ReconnectionRequest() {
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
     var adminId = admin ? admin.id : null
     this.loading = true;
-
-    this.loading = true;
     console.log(this.chackRequest.value);
     let data = {
       actionDate: this.chackRequest.value.disconnectedDate,
-      remarks:this.chackRequest.value.remarks,
+      dueAmount:this.chackRequest.value.reconnectionFee,
       enteredBy:this.TechnicianId,
       conductdBy:adminId,
       connectionID:this.data.id,
+      // roadId:this.roadId,
+      // areaId:this.areaId
     };
-    if (data.actionDate == "" || data.remarks == "" ||
+    if (data.actionDate == "" || data.dueAmount == "" ||
       this.TechnicianId == "Technician" 
     ) {
       this.isEmpty();
       this.loading = false;
 
     } else {
-      this.dataServise.putValue(`connection/status/deactivate/${this.data.connectionID}`, data).subscribe(
+      this.dataServise.putValue(`connection/status/active/${this.data.connectionID}`, data).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;

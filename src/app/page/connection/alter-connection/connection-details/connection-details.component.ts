@@ -8,6 +8,7 @@ import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/c
 import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { DisconnectDialogBoxComponent } from 'src/app/core/dialogBox/disconnect-dialog-box/dialog-box.component';
+import { ConnectDialogComponent } from 'src/app/core/dialogBox/connection/connect-dialog/connect-dialog.component';
 
 @Component({
   selector: 'app-connection-details',
@@ -133,6 +134,17 @@ export class ConnectionDetailsComponent  implements OnInit {
   // DisconnectDialogBoxComponent
   DisconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
+      width: '250px',
+      data:this.object,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  ConnectDialog(): void {
+    const dialogRef = this.dialog.open(ConnectDialogComponent, {
       width: '250px',
       data:this.object,
     });

@@ -30,9 +30,10 @@
       </div>
       <div class="mb-3 cus-int-div">
         <label for="Status" class="form-label labels">Status</label>
-        <input type="text" class="form-control int" id="Status" value="{{object.connectionStatus}}" readonly
+        <input type="text" class="form-control int {{object.connectionStatus.toUpperCase()}} conStatus" id="Status" value="{{object.connectionStatus.toUpperCase()}}" readonly
           placeholder="Status" />
       </div>
+      <!-- Deactivate -->
       <div class="mb-3 cus-int-div">
         <label for="TV" class="form-label labels">TV</label>
         <input type="text" class="form-control int" id="TV" value="{{object.tvCount}}" readonly placeholder="TV" />
@@ -55,8 +56,11 @@
     <div
       class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
   <!-- openReconnectDialog -->
-      <button class="input-group-text cus-btn-down btn-c-4" id="basic-addon2" (click)="DisconnectDialog()">
+      <button  *ngIf="object.connectionStatus.toUpperCase()==='ACTIVE'" class="input-group-text cus-btn-down btn-c-4" id="basic-addon2" (click)="DisconnectDialog()">
         Disconnect
+      </button>
+      <button  *ngIf="object.connectionStatus.toUpperCase()==='DEACTIVATE'" class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" (click)="ConnectDialog()">
+        Connect
       </button>
       <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="openChangeLocationDialog()">
         Change Location
