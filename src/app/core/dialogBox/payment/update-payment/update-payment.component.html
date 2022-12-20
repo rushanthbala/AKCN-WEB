@@ -1,21 +1,22 @@
 <form [formGroup]="chackRequest" >
     <div class=" cus-model-c-div">
         <div class="form-heading int-div card-head-h2">
-           Assign Ticket
+           Make Ticket
         </div>
         <p class="para">{{data.id}}</p>
         <div class="">
             <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
-                <option disabled selected value="null">Technician</option>
-                <option *ngFor="let item of TechnicianArray" [value]="item.id">
-                    {{ item.firstName }}
+                <option disabled selected value="null">Payment Type</option>
+                <option *ngFor="let item of PaymentArray" [value]="item.value">
+                    {{ item.value }}
                 </option>
             </select>
              <!-- <div class="para mt-3 ps-3">House Number </div> -->
-             <div class="col-12 col-sm-6 ">
+             <div class="col-12 ">
                 <div class="para mt-3 ps-3">Amount </div>
                 <input type="text" class="form-control int" id="ID" placeholder="Amount"
                     formControlName="amount" />
+                    
             </div>
             <textarea type="text" class="form-control ints mt-2" type="number" required id="ID" placeholder="Description"
             formControlName="description" ></textarea>

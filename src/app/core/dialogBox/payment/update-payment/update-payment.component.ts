@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -15,10 +16,20 @@ export class UpdatePaymentComponent implements OnInit {
   public areaArray: any = [];
   public roadArray: any = [];
   public TechnicianArray: any = [];
+  public PaymentArray: any = [
+    {
+    id:1,
+    value:'MONTHLY PAYMENT'
+  }, {
+    id:2,
+    value:'FINE'
+  },
+];
 
   public roadId: any = 'Road';
   public areaId: any = 'Area';
   public  TechnicianId: any = 'Technician';
+  public  PaymentType: any = '';
   suburl2: string = "area"
   suburl1: string = "road"
 
@@ -26,7 +37,7 @@ export class UpdatePaymentComponent implements OnInit {
   chackRequest: FormGroup | any;
   ngOnInit(): void {
     this.initialReconnectionForm();
-    this.getAll()
+    // this.getAll()
   }
   constructor(
     public dialogRef: MatDialogRef<UpdatePaymentComponent>,
@@ -46,18 +57,26 @@ export class UpdatePaymentComponent implements OnInit {
     });
   }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
-    let data = {
-      amount: this.chackRequest.value.amount,
-      description: this.chackRequest.value.description,
-      TechnicianId:this.TechnicianId,
-      // areaId:this.areaId
-    };
-    if (this.chackRequest.value.amount == "" || this.chackRequest.value.description == ""
+    let todayDate =new Date()
+    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
+    var adminId = admin ? admin.id : null
+  
+    let dataObj ={
+      connectionID:this.data.id,
+      paidDateTime:formatDate(todayDate, 'yyyy-MM-dd', "en-US"),
+      description: this.chackRequest.value.Remark,
+      paymentType:this.PaymentType,
+      amount:this.chackRequest.value.amount,
+      enteredBy:adminId,
+      conductedBy:adminId
+    }
+    console.log(dataObj,"dataObj");
+
+    if (dataObj.amount == "" || dataObj.description == "" ||dataObj.paymentType == ""
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('admin/login', data).subscribe(
+      this.dataServise.postValue('payment', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -81,10 +100,12 @@ export class UpdatePaymentComponent implements OnInit {
   }
 
   onSelect(val: any) {
-    this.TechnicianId = val
+    this.PaymentType = val
   }
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully Finished', 'Sucessfully');
+    window.location.reload()
+
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
