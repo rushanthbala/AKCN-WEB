@@ -78,6 +78,24 @@
                     </select>
                 </div>
             </div>
+            <!-- branch & date -->
+            <div class="row mt-2">
+                <div class="col-12 col-sm-6 ">
+                    <div class="para mt-3 ps-3 "> </div>
+                    <select class="form-select mt-2" aria-label="Default select example"
+                        (change)='onSelectbranch(val3.value)' required #val3>
+                        <option disabled selected value="null">{{branchIDName}}</option>
+                        <option *ngFor="let item of branchArray" [value]="item.id">
+                            {{ item.branchName }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-12 col-sm-6  mt-3">
+                    <!-- <div class="para mt-3 ps-3">House Number </div> -->
+                    <input type="date" class="form-control int" id="ID" placeholder="House Number"
+                        formControlName="connectdDate" />
+                </div>
+            </div>
             <div class="row mt-2">
                 <div class="col-12 col-sm-6">
                     <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
