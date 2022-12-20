@@ -4,7 +4,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { ApplyDiscountDialogBoxComponent } from 'src/app/core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';
-import { UpdatePaymentComponent } from 'src/app/core/dialogBox/payment/update-payment/update-payment.component';
+import { UpdatePaymentComponent } from 'src/app/core/dialogBox/payment/make-payment/update-payment.component';
 
 @Component({
   selector: 'app-make-payment-details',

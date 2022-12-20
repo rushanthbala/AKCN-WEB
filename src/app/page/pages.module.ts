@@ -53,7 +53,7 @@ import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/change
 import { EditConnectionDialogComponent } from '../core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 import { EditSubscriberDialogComponent } from '../core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
 import { ApplyDiscountDialogBoxComponent } from '../core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';
-import { UpdatePaymentComponent } from '../core/dialogBox/payment/update-payment/update-payment.component';
+import { UpdatePaymentComponent } from '../core/dialogBox/payment/make-payment/update-payment.component';
 import { CreateTicketComponentDialog } from '../core/dialogBox/ticket/create-ticket/create-ticket.component';
 import { AssignRequestDetailsComponent } from './requests/assign-request/pending-details/assign-request-details.component';
 import { AssignRequestComponent } from './requests/assign-request/assign-request.component';
