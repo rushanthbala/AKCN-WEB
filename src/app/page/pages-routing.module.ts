@@ -26,6 +26,7 @@ import { RoleSettingComponent } from './settings/role-settings/role-settings.com
 import { RoadSettingsComponent } from './settings/road-settings/road-settings.component';
 import { AreaSettingsComponent } from './settings/area-settings/area-settings.component';
 import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
+import { AddRentalComponent } from './payments/add-rental/add-rental.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,10 @@ const routes: Routes = [
       {
         path: 'add-arrears',
         component: AddArrearsComponent,
+      },
+      {
+        path: 'add-rentals',
+        component: AddRentalComponent,
       },
       {
         path: 'user-report',

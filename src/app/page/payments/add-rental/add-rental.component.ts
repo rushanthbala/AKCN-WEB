@@ -8,11 +8,11 @@ import { UpdateDataComponent } from 'src/app/core/dialogBox/pending/update-data/
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
-  selector: 'app-add-arrears',
-  templateUrl: './add-arrears.component.html',
-  styleUrls: ['./add-arrears.component.scss']
+  selector: 'app-add-rental',
+  templateUrl: './add-rental.component.html',
+  styleUrls: ['./add-rental.component.scss']
 })
-export class AddArrearsComponent {
+export class AddRentalComponent{
   animal: string | any;
   name: string | any;
   userData: any;
@@ -39,7 +39,7 @@ let dataObj ={
   connectionID:connectionId,
   paidDateTime:formatDate(arreardate, 'yyyy-MM-dd', "en-US"),
   description: "Arrears Amount",
-  paymentType:"Arrears",
+  paymentType:"Rental",
   amount:amount,
   enteredBy:adminId,
   conductedBy:adminId

@@ -153,6 +153,11 @@ export class PagesComponent implements OnInit {
       this.link = '/auth/add-arrears'
       this.sublink = '/auth/add-arrears'
       this.contentSubHeading = "Tickets > Add Arrears"
+    }else if (urlSpilite[2] === 'add-rentals') {
+      this.href = 'Payments';
+      this.link = '/auth/add-rentals'
+      this.sublink = '/auth/add-rentals'
+      this.contentSubHeading = "Tickets > Add Rentals"
     }
     else if (urlSpilite[2] === 'user-report') {
       this.href = 'Reports';
@@ -271,7 +276,7 @@ export class PagesComponent implements OnInit {
           name: 'Add Arrears', href: '/auth/add-arrears'
         },
         {
-          name: 'Add Rental', href: '/auth/add-rental'
+          name: 'Add Rental', href: '/auth/add-rentals'
         },],
       link: '/auth/payments',
       icon: '../../assets/icons/currency-dollar.png',
