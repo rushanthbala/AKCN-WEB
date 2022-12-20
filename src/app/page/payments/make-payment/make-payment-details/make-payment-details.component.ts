@@ -84,7 +84,7 @@ export class MakePaymentDetailsComponent   implements OnInit {
   applyDiscount(): void {
     const dialogRef = this.dialog.open(ApplyDiscountDialogBoxComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -96,7 +96,7 @@ export class MakePaymentDetailsComponent   implements OnInit {
   makePayment(): void {
     const dialogRef = this.dialog.open(UpdatePaymentComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -107,7 +107,7 @@ export class MakePaymentDetailsComponent   implements OnInit {
   openDialog3(): void {
     const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -118,7 +118,7 @@ export class MakePaymentDetailsComponent   implements OnInit {
   openDialog4(): void {
     const dialogRef = this.dialog.open(ExtraRequestDialogBoxComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal},
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -11,7 +12,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 })
 export class ApplyDiscountDialogBoxComponent implements OnInit {
   public open: Boolean = true;
-  public loading: Boolean = true;
+  public loading: Boolean = false;
 
   Reconnection: FormGroup | any;
   ngOnInit(): void {
@@ -35,20 +36,28 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
     });
   }
   apply() {
+    let todayDate =new Date()
+    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
+    var adminId = admin ? admin.id : null
     console.log(this.Reconnection.value);
-    let data = {
-      Remark: this.Reconnection.value.Remark,
-      amount: this.Reconnection.value.amount,
-    };
-    console.log(data, "data");
-    console.log(data.Remark == "", data.amount == ""
-    );
+  
+    
+    let dataObj ={
+      connectionID:this.data.id,
+      paidDateTime:formatDate(todayDate, 'yyyy-MM-dd', "en-US"),
+      description: this.Reconnection.value.Remark,
+      paymentType:"DISCOUNT",
+      amount:this.Reconnection.value.amount,
+      enteredBy:adminId,
+      conductedBy:adminId
+    }
+    console.log(dataObj, "data");
 
-    if (data.Remark == "" || data.amount == ""
+    if (dataObj.description == "" || dataObj.amount == ""
     ) {
       this.isEmpty();
     } else {
-      this.dataServise.postValue('admin/login', data).subscribe(
+      this.dataServise.postValue('payment', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
@@ -65,7 +74,9 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
     }
   }
   showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
+    this.toastr.success('Sucessfully Make a Payment', 'Sucessfully');
+    window.location.reload()
+
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
