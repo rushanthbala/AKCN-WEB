@@ -21,6 +21,8 @@ export class ReconnectBigDialogComponent implements OnInit {
   public  TechnicianId: any = 'Technician';
   suburl2: string = "area"
   suburl1: string = "road"
+  areaCodeName =""
+  roadIDName=""
 
 
   chackRequest: FormGroup | any;
@@ -48,67 +50,43 @@ export class ReconnectBigDialogComponent implements OnInit {
   }
   ReconnectionRequest() {
     console.log(this.chackRequest.value);
-    let datas = {
-      disconnectedDate: this.chackRequest.value.disconnectedDate,
-      reconnectionFee: this.chackRequest.value.reconnectionFee,
-      TechnicianId:this.TechnicianId  ,
-      roadId:this.roadId,
-      areaId:this.areaId,
-      newAddress:this.chackRequest.value.newAddress,
-    };
+    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
+    var adminId = admin ? admin.id : null
+  
     let dataObj = {
-      connectionType: this.data.type,
-      tvCount: this.data.TV,
-      oldID: this.data.OldID,
       areaCode: this.areaId,
       roadID: this.roadId,
-      technicianId:this.TechnicianId,
       connectionAddress: this.data.ConnectionAddress,
-      dueAmount: datas.reconnectionFee,
-      ConnectionFee: this.data.ConnectionFee,
-      roadId:1,
-      customerID:this.data.customerID,
-      "status":"Active", 
-      "connectedDate": datas.disconnectedDate,
-      "connectionStatus":"ACTIVE", 
-      "actionDate" :  datas.disconnectedDate,
-      branchID:this.data.branchId
+      dueAmount: this.chackRequest.value.reconnectionFee,
+      "actionDate" :  this.chackRequest.value.disconnectedDate,
+      connectionID:this.data.id,
+      description:"sample,",
+      enteredBy:this.TechnicianId,
+      conductdBy:adminId,
     }
-    let locationAddress ={
-      "connectionLocation":datas.newAddress
+    // let locationAddress ={
+    //   "connectionLocation":this.chackRequest.value.newAddress
 
-    }
-    console.log(datas,"data");
-    console.log(datas.disconnectedDate == "" ,datas.reconnectionFee == "" ,
-    datas.TechnicianId == "Technician" ,datas.newAddress=="",   datas.roadId == "Road" ,  datas.areaId == "Area"
- );
+    // }
+    console.log(dataObj,"data");
+//     console.log(datas.disconnectedDate == "" ,datas.reconnectionFee == "" ,
+//     datas.TechnicianId == "Technician" ,datas.newAddress=="",   datas.roadId == "Road" ,  datas.areaId == "Area"
+//  );
     
-    if (datas.disconnectedDate == "" ||datas.reconnectionFee == "" ||
-    datas.TechnicianId == "Technician" ||datas.newAddress==""||   datas.roadId == "Road" ||  datas.areaId == "Area"
+    if (dataObj.areaCode == "Area" ||dataObj.roadID == "Road" ||
+    dataObj.connectionAddress == "" ||dataObj.dueAmount==""||   dataObj.actionDate == "" ||  dataObj.connectionID == ""
     ) {
       this.isEmpty();
     } else {
       // connection/location/JAF00012
       this.loading = true
-      this.dataServise.putValue(`connection/location/${this.data.connectionID}`, dataObj).subscribe(
+      this.dataServise.putValue(`connection/address/${this.data.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            this.dataServise.putValue(`connection/${this.data.connectionID}`, locationAddress).subscribe(
-              (res: any) => {
-                if (res.errorMessage) {
+             this.showSuccess()
                   this.loading = false;
-                } else {
-                  this.showSuccess()
-                  this.loading = false;
-                }
-              },
-              (e) => {
-                this.loading = false;
-                this.showError()
-              }
-            );
           }
         },
         (e) => {
@@ -126,23 +104,44 @@ export class ReconnectBigDialogComponent implements OnInit {
     });
     this.dataServise.getData(`area`).subscribe((res) => {
       this.areaArray = res;
+      res.map((item:any)=>{
+        if(item.id==this.data.areaCode){
+          this.areaCodeName=item.area
+          this.areaId = item.id
+        }
+        
+      })
     });
     this.dataServise.getData(`road`).subscribe((res) => {
       this.roadArray = res;
+      res.map((item:any)=>{
+        if(item.id==this.data.roadID){
+          this.roadIDName=item.road
+          this.roadId = item.id
+        }
+        
+      })
     });
   }
 
   onSelect(val: any) {
+    console.log(val);
     this.roadId = val
+    
   }
   onSelectTech(val: any) {
+    console.log(val);
+    console.log(this.TechnicianId)
     this.TechnicianId = val
   }
   onSelectarea(val: any) {
     this.areaId = val
+    console.log(val);
   }
   showSuccess() {
     this.toastr.success('Sucessfully Changed', 'Sucessfully');
+    window.location.reload()
+
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

@@ -8,14 +8,6 @@
         <div>
             <div class="row mt-2">
                 <div class="col-12 col-sm-6 d-flex align-items-end  mt-3">
-                    <!-- <div class="para mt-3 ps-3 "> </div> -->
-                    <select class="form-select" aria-label="Default select example" (change)='onSelectTech(val.value)'
-                        required #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.id">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
                 </div>
                 <div class="col-12 col-sm-6">
                     <div class="para mt-3 ps-3">Disconnected Date </div>
@@ -23,11 +15,20 @@
                         formControlName="disconnectedDate" />
                 </div>
             </div>
+            <!-- <div class="para mt-3 ps-3 "> </div> -->
+            <!-- <select class="form-select" aria-label="Default select example" (change)='onSelectTech(val.value)'
+                required #val>
+                <option disabled selected value="null">Technician</option>
+                <option *ngFor="let item of TechnicianArray" [value]="item.id">
+                    {{ item.firstName }}
+                </option>
+            </select> -->
             <div class="row mt-2">
                 <div class="col-12 col-sm-6 ">
                     <div class="para mt-3 ps-3 "> </div>
-                    <select class="form-select mt-2" aria-label="Default select example" (change)='onSelectarea(val.value)' required #val>
-                        <option disabled selected value="null">Area</option>
+                    <select class="form-select mt-2" aria-label="Default select example"
+                        (change)='onSelectarea(val3.value)' required #val3>
+                        <option disabled selected value="null">{{areaCodeName}}</option>
                         <option *ngFor="let item of areaArray" [value]="item.id">
                             {{ item.area }}
                         </option>
@@ -35,8 +36,9 @@
                 </div>
                 <div class="col-12 col-sm-6">
                     <div class="para mt-3 ps-3 "> </div>
-                    <select class="form-select mt-2" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
-                        <option disabled selected value="null">Road</option>
+                    <select class="form-select mt-2" aria-label="Default select example" (change)='onSelect(val.value)'
+                        required #val>
+                        <option disabled selected value="null">{{roadIDName}}</option>
                         <option *ngFor="let item of roadArray" [value]="item.id">
                             {{ item.road }}
                         </option>
@@ -50,15 +52,14 @@
                         formControlName="newAddress" />
                 </div>
                 <div class="col-12 col-sm-6">
-                    <div class="para mt-3 ps-3">Connection Fee  </div>
+                    <div class="para mt-3 ps-3">Connection Fee </div>
                     <input type="text" class="form-control int" id="ID" placeholder="Amount"
                         formControlName="reconnectionFee" />
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-12 col-sm-6">
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                        (click)="onNoClick()"
+                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="onNoClick()"
                         style="background-color:#fff  !important;color:#027afe !important;border: none !important;">
                         Cancel
                     </button>
