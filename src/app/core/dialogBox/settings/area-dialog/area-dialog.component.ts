@@ -26,6 +26,7 @@ export class AreaDialogComponent implements OnInit {
   public currentData :any={}
 
   chackRequest: FormGroup | any;
+  branchArray: any;
   ngOnInit(): void {
     this.getAll()
     console.log(this.data,"dtaaaa");
@@ -59,7 +60,7 @@ export class AreaDialogComponent implements OnInit {
     this.chackRequest = this.fb.group({
       area: this.ifData ?this.currentData.area: "",
       rental: this.ifData ?this.currentData.rental: "",
-     
+      branch:this.ifData ?this.currentData.branchName:null
     });
   }
   ReconnectionRequest() {
@@ -67,32 +68,58 @@ export class AreaDialogComponent implements OnInit {
     let datas = {
       area: this.chackRequest.value.area,
       rental: this.chackRequest.value.rental,
+      branch: this.chackRequest.value.branch
     };
     let sendObj ={
       "area":datas.area,
-      "rental": datas.rental
+      "rental": datas.rental,
+      "branchID":datas.branch
     }
 
    
-    if (datas.area == "" ||datas.rental == ""     ) {
+    if (datas.area == "" ||datas.rental == ""   ) {
       this.isEmpty();
     } else {
       this.loading = true
-      this.dataServise.putValue(`customer/${this.data.customerID}`, sendObj).subscribe(
-        (res: any) => {
-          if (res.errorMessage) {
-            this.loading = false;
-          } else {
-            this.showSuccess()
-            this.loading = false;
-          }
-        },
-        (e) => {
-          this.loading = false;
-          this.showError()
-        }
-      );
+      if (this.data.sendtype=='POST'){
+        this.postMethod(sendObj);
+      } else{
+        this.putMethod(sendObj);
+      }
     }
+  }
+
+  postMethod(sendObj: any){
+    this.dataServise.postValue(`area`, sendObj).subscribe(
+      (res: any) => {
+        if (res.errorMessage) {
+          this.loading = false;
+        } else {
+          this.showSuccessAdd()
+          this.loading = false;
+        }
+      },
+      (e) => {
+        this.loading = false;
+        this.showError()
+      }
+    );
+  }
+  putMethod(sendObj:any){
+    this.dataServise.putValue(`area/${this.currentData.id}`, sendObj).subscribe(
+      (res: any) => {
+        if (res.errorMessage) {
+          this.loading = false;
+        } else {
+          this.showSuccess()
+          this.loading = false;
+        }
+      },
+      (e) => {
+        this.loading = false;
+        this.showError()
+      }
+    );
   }
 
   getAll() {
@@ -100,8 +127,8 @@ export class AreaDialogComponent implements OnInit {
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.TechnicianArray = res;
     });
-    this.dataServise.getData(`area`).subscribe((res) => {
-      this.areaArray = res;
+    this.dataServise.getData(`branch`).subscribe((res) => {
+      this.branchArray = res;
     });
     this.dataServise.getData(`road`).subscribe((res) => {
       this.roadArray = res;
@@ -121,10 +148,14 @@ export class AreaDialogComponent implements OnInit {
     this.toastr.success('Sucessfully Edited', 'Sucessfully');
     window.location.reload()
   }
+  showSuccessAdd() {
+    this.toastr.success('Sucessfully Added', 'Sucessfully');
+    window.location.reload()
+  }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Feild', 'Error');
+    this.toastr.error('Fill All The Field', 'Error');
   }
 }

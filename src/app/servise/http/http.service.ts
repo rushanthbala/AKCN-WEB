@@ -4,14 +4,13 @@ import { Observable } from 'rxjs';
 import { DBURL } from '../_database/db';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpService {
   private apiURL = DBURL;
 
-
   constructor(private _http: HttpClient) {}
-// get data from database
+  // get data from database
   getData(url: String): Observable<any> {
     return this._http.get(this.apiURL + url);
   }
@@ -20,18 +19,17 @@ export class HttpService {
   DeleteData(url: String): Observable<any> {
     return this._http.delete(this.apiURL + url);
   }
-// post 
+  // post
   postValue(url: String, data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' };
     // console.log(this._http.put(this.apiURL + url, data, { headers: headers }));
     return this._http.post(this.apiURL + url, data, { headers: headers });
   }
-  // put 
+  // put
   putValue(url: String, data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' };
     // console.log(this._http.put(this.apiURL + url, data, { headers: headers }));
     return this._http.put(this.apiURL + url, data, { headers: headers });
   }
-
 
 }

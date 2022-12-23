@@ -16,13 +16,21 @@
         </div>
       </div>
       <div class="row mt-2">
-        <div class="col-12 col-sm-12 mt-3">          
-        <select class="form-select mt-2" aria-label="Default select example" (change)='onSelectarea(val.value)' required #val>
+        <div class="col-12 col-sm-12 mt-3">
+          <select
+            class="form-select mt-2"
+            aria-label="Default select example"
+            (change)="onSelectarea(val.value)"
+            required
+            #val
+            id="parentesco"
+            formControlName="area"
+          >
             <option disabled selected value="null">Area</option>
             <option *ngFor="let item of areaArray" [value]="item.id">
-                {{ item.area }}
+              {{ item.area }}
             </option>
-        </select>
+          </select>
         </div>
       </div>
 
@@ -46,7 +54,7 @@
             class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
             (click)="ReconnectionRequest()"
           >
-            Update
+            Submit
           </button>
           <button
             *ngIf="loading"

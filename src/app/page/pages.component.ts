@@ -163,41 +163,35 @@ export class PagesComponent implements OnInit {
       this.href = 'Reports';
       this.link = '/auth/user-report'
       this.sublink = '/auth/user-report'
-      this.contentSubHeading = "Tickets > User Report"
-    } else if (urlSpilite[2] === 'due-report') {
-      this.href = 'Reports';
-      this.link = '/auth/due-report'
-      this.sublink = '/auth/due-report'
-      this.contentSubHeading = "Tickets > Due Report"
-    }
-     else if (urlSpilite[2] === 'users-setting') {
+      this.contentSubHeading = "Tickets > user report"
+    } else if (urlSpilite[2] === 'users-setting') {
       this.href = 'Settings';
       this.link = '/auth/users-setting'
       this.sublink = '/auth/users-setting'
-      this.contentSubHeading = "Tickets > Users"
+      this.contentSubHeading = "Settings > Users"
     } else if (urlSpilite[2] === 'roles-setting') {
       this.href = 'Settings';
       this.link = '/auth/roles-setting'
       this.sublink = '/auth/roles-setting'
-      this.contentSubHeading = "Tickets > Roles"
+      this.contentSubHeading = "Settings > Roles"
     }
     else if (urlSpilite[2] === 'roads-setting') {
       this.href = 'Settings';
       this.link = '/auth/roads-setting'
       this.sublink = '/auth/roads-setting'
-      this.contentSubHeading = "Tickets > Roads"
+      this.contentSubHeading = "Settings > Roads"
     }
     else if (urlSpilite[2] === 'areas-setting') {
       this.href = 'Settings';
       this.link = '/auth/areas-setting'
       this.sublink = '/auth/areas-setting'
-      this.contentSubHeading = "Tickets > Areas"
+      this.contentSubHeading = "Settings > Areas"
     }
     else if (urlSpilite[2] === 'branches-setting') {
       this.href = 'Settings';
       this.link = '/auth/branches-setting'
       this.sublink = '/auth/branches-setting'
-      this.contentSubHeading = "Tickets > Branches"
+      this.contentSubHeading = "Settings > Branches"
     }
   }
   menuItems = [

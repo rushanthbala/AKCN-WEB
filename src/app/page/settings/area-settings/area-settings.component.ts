@@ -26,13 +26,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class AreaSettingsComponent implements AfterViewInit, OnInit {
   TICKET_DATA: any = [];
   dataSource: any;
-  displayedColumns: string[] = [
-    'id',
-    'branchID',
-    'areaCode',
-    'area',
-    'rental',
-  ];
+  displayedColumns: string[] = ['id', 'branchID', 'areaCode', 'area', 'rental'];
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -62,69 +56,20 @@ export class AreaSettingsComponent implements AfterViewInit, OnInit {
   }
   getPendingData() {
     console.log('okokok');
-    this.dataServise.getData(`user`).subscribe(
+    this.dataServise.getData(`area`).subscribe(
       (res) => {
-        // this.TICKET_DATA = res;
+        this.TICKET_DATA = res;
         this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }, 1);
         this.ifGetData = true;
       },
       (err) => {
         this.ifGetData = true;
       }
     );
-    this.TICKET_DATA = [
-      {
-        id: 4,
-        branchID: 1,
-        areaCode: 'WEL',
-        area: 'Wellawata',
-        rental: '750',
-      },
-      {
-        id: 5,
-        branchID: 1,
-        areaCode: 'WEL',
-        area: 'Wellawata',
-        rental: '750',
-      },
-      {
-        id: 6,
-        branchID: 1,
-        areaCode: 'WEL',
-        area: 'Wellawata',
-        rental: '750',
-      },
-      {
-        id: 7,
-        branchID: 1,
-        areaCode: 'WEL',
-        area: 'Wellawata',
-        rental: '750',
-      },
-      {
-        id: 8,
-        branchID: 1,
-        areaCode: 'WEL',
-        area: 'Wellawata',
-        rental: '750',
-      },
-      {
-        id: 9,
-        branchID: 1,
-        areaCode: 'WEL',
-        area: 'Wellawata',
-        rental: '750',
-      },
-      {
-        id: 10,
-        branchID: 1,
-        areaCode: 'WEL',
-        area: 'Wellawata',
-        rental: '750',
-      },
-    ];
   }
 
   ngAfterViewInit(): void {

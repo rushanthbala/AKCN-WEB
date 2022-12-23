@@ -57,52 +57,78 @@ export class RoadDialogComponent implements OnInit {
     console.log(this.data,"his.data");
     
     this.chackRequest = this.fb.group({
-      road: this.ifData ?this.currentData.road: ""
-     
+      road: this.ifData ?this.currentData.road: "",
+      area:this.ifData ?this.currentData.areaID:null
     });
   }
   ReconnectionRequest() {
     console.log(this.chackRequest.value);
     let datas = {
-      road: this.chackRequest.value.road
+      road: this.chackRequest.value.road,
+      area:this.chackRequest.value.area
     };
     let sendObj ={
-      "road":datas.road
+      "road":datas.road,
+      "areaID":datas.area
     }
 
    
-    if (datas.road == "") {
+    if (datas.road == "" ) {
       this.isEmpty();
     } else {
       this.loading = true
-      this.dataServise.putValue(`customer/${this.data.customerID}`, sendObj).subscribe(
-        (res: any) => {
-          if (res.errorMessage) {
-            this.loading = false;
-          } else {
-            this.showSuccess()
-            this.loading = false;
-          }
-        },
-        (e) => {
-          this.loading = false;
-          this.showError()
-        }
-      );
+      if (this.data.sendtype=='POST'){
+        this.postMethod(sendObj);
+      } else{
+        this.putMethod(sendObj);
+      }
     }
+  }
+
+  postMethod(sendObj: any){
+    this.dataServise.postValue(`road`, sendObj).subscribe(
+      (res: any) => {
+        if (res.errorMessage) {
+          this.loading = false;
+        } else {
+          this.showSuccessAdd()
+          this.loading = false;
+        }
+      },
+      (e) => {
+        this.loading = false;
+        this.showError()
+      }
+    );
+  }
+  putMethod(sendObj:any){
+    this.dataServise.putValue(`road/${this.currentData.id}`, sendObj).subscribe(
+      (res: any) => {
+        if (res.errorMessage) {
+          this.loading = false;
+        } else {
+          this.showSuccess()
+          this.loading = false;
+        }
+      },
+      (e) => {
+        this.loading = false;
+        this.showError()
+      }
+    );
   }
 
   getAll() {
     // get TechnicianArray
-    this.dataServise.getData(`employee`).subscribe((res) => {
-      this.TechnicianArray = res;
-    });
+    // this.dataServise.getData(`employee`).subscribe((res) => {
+    //   this.TechnicianArray = res;
+    // });
     this.dataServise.getData(`area`).subscribe((res) => {
       this.areaArray = res;
     });
-    this.dataServise.getData(`road`).subscribe((res) => {
-      this.roadArray = res;
-    });
+    // this.dataServise.getData(`road`).subscribe((res) => {
+    //   this.roadArray = res;
+    // });
   }
 
   onSelect(val: any) {
@@ -116,6 +142,10 @@ export class RoadDialogComponent implements OnInit {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Edited', 'Sucessfully');
+    window.location.reload()
+  }
+  showSuccessAdd() {
+    this.toastr.success('Sucessfully Added', 'Sucessfully');
     window.location.reload()
   }
   showError() {

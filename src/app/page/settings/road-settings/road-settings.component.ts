@@ -56,45 +56,21 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
   }
   getPendingData() {
     console.log('okokok');
-    this.dataServise.getData(`user`).subscribe(
+    this.dataServise.getData(`road`).subscribe(
       (res) => {
-        // this.TICKET_DATA = res;
+        this.TICKET_DATA = res;
         this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }, 1);
+
         this.ifGetData = true;
       },
       (err) => {
         this.ifGetData = true;
       }
     );
-    this.TICKET_DATA = [
-      {
-        id: 1,
-        areaID: 2,
-        road: 'Galle Road',
-      },
-      {
-        id: 2,
-        areaID: 2,
-        road: 'Galle Road',
-      },
-      {
-        id: 3,
-        areaID: 2,
-        road: 'Galle Road',
-      },
-      {
-        id: 4,
-        areaID: 2,
-        road: 'Galle Road',
-      },
-      {
-        id: 5,
-        areaID: 2,
-        road: 'Galle Road',
-      },
-    ];
   }
 
   ngAfterViewInit(): void {

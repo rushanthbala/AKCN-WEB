@@ -83,21 +83,45 @@ export class BranchDialogComponent implements OnInit {
       this.isEmpty();
     } else {
       this.loading = true
-      this.dataServise.putValue(`customer/${this.data.customerID}`, sendObj).subscribe(
-        (res: any) => {
-          if (res.errorMessage) {
-            this.loading = false;
-          } else {
-            this.showSuccess()
-            this.loading = false;
-          }
-        },
-        (e) => {
-          this.loading = false;
-          this.showError()
-        }
-      );
+      if (this.data.sendtype=='POST'){
+        this.postMethod(sendObj);
+      } else{
+        this.putMethod(sendObj);
+      }
     }
+  }
+
+  postMethod(sendObj: any){
+    this.dataServise.postValue(`branch`, sendObj).subscribe(
+      (res: any) => {
+        if (res.errorMessage) {
+          this.loading = false;
+        } else {
+          this.showSuccessAdd()
+          this.loading = false;
+        }
+      },
+      (e) => {
+        this.loading = false;
+        this.showError()
+      }
+    );
+  }
+  putMethod(sendObj:any){
+    this.dataServise.putValue(`branch/${this.currentData.id}`, sendObj).subscribe(
+      (res: any) => {
+        if (res.errorMessage) {
+          this.loading = false;
+        } else {
+          this.showSuccess()
+          this.loading = false;
+        }
+      },
+      (e) => {
+        this.loading = false;
+        this.showError()
+      }
+    );
   }
 
   getAll() {
@@ -124,6 +148,10 @@ export class BranchDialogComponent implements OnInit {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Edited', 'Sucessfully');
+    window.location.reload()
+  }
+  showSuccessAdd() {
+    this.toastr.success('Sucessfully Added', 'Sucessfully');
     window.location.reload()
   }
   showError() {

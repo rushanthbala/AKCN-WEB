@@ -23,10 +23,12 @@
             (change)="onSelectarea(val.value)"
             required
             #val
+            id="parentesco"
+            formControlName="branch"
           >
             <option disabled selected value="null">Branch</option>
-            <option *ngFor="let item of areaArray" [value]="item.id">
-              {{ item.branchID }}
+            <option *ngFor="let item of branchArray" [value]="item.id">
+              {{ item.branchName }}
             </option>
           </select>
         </div>
@@ -64,7 +66,7 @@
             class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
             (click)="ReconnectionRequest()"
           >
-            Update
+            Submit
           </button>
           <button
             *ngIf="loading"

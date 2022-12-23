@@ -11,7 +11,7 @@ import { ChangeRequestComponent } from './dialogBox/request/change-request/chang
 import { ExtraRequestDialogBoxComponent } from './dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { ConnectionSearchComponent } from './connection-search/connection-search.component';
 import { UpdateDataComponent } from './dialogBox/pending/update-data/update-data.component';
-import { UserReportUpdateComponent } from './report/user-report-update/user-report-update.component';
+import { UserReportUpdateComponent } from './user-report-update/user-report-update.component';
 import { ReconnectDialogComponent } from './dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
 import { RoleDialogComponent } from './dialogBox/settings/role-dialog/role-dialog.component';
 import { RoadDialogComponent } from './dialogBox/settings/road-dialog/road-dialog.component';

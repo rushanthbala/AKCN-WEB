@@ -46,7 +46,7 @@ import { AddArrearsComponent } from './payments/add-arrears/add-arrears.componen
 import { PaymentUpdateComponent } from '../core/payment-update/payment-update.component';
 import { UpdateDataComponent } from '../core/dialogBox/pending/update-data/update-data.component';
 import { UserReportComponent } from './reports/user-report/user-report.component';
-import { UserReportUpdateComponent } from '../core/report/user-report-update/user-report-update.component';
+import { UserReportUpdateComponent } from '../core/user-report-update/user-report-update.component';
 import { UsersSettingComponent } from './settings/users-setting/users-setting.component';
 import { ReconnectDialogComponent } from '../core/dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
 import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/change-location-big-dialog/reconnect-big-dialog.component';
@@ -83,8 +83,6 @@ import { AreaSettingsComponent } from './settings/area-settings/area-settings.co
 import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
 import { ConnectDialogComponent } from '../core/dialogBox/connection/connect-dialog/connect-dialog.component';
 import { AddRentalComponent } from './payments/add-rental/add-rental.component';
-import { DueReportComponent } from './reports/due-report/due-report.component';
-import { DueReportUpdateComponent } from '../core/report/due-report-update/due-report-update.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -105,7 +103,7 @@ import { DueReportUpdateComponent } from '../core/report/due-report-update/due-r
         AssignTicketRequestDilogComponent,TicketCloseDialogBoxComponent,DisconnectDialogBoxComponent, ExtraRequestDialogBoxComponent,
         AddCSubsciberComponent,AllConnectionComponent,UserPostPut,RoleSettingComponent, RoleDialogComponent, RoadDialogComponent,
         AreaDialogComponent, BranchDialogComponent, RoadSettingsComponent, AreaSettingsComponent, BranchSettingsComponent,
-        ConnectDialogComponent,AddRentalComponent,DueReportComponent,DueReportUpdateComponent
+        ConnectDialogComponent,AddRentalComponent
       ],
   imports: [
     CommonModule,

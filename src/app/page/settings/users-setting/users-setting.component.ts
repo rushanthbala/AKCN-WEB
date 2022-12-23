@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,52 +21,73 @@ import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-users-setting',
   templateUrl: './users-setting.component.html',
-  styleUrls: ['./users-setting.component.scss']
+  styleUrls: ['./users-setting.component.scss'],
 })
 export class UsersSettingComponent implements AfterViewInit, OnInit {
-
-  TICKET_DATA:any=[]
+  TICKET_DATA: any = [];
   dataSource: any;
-  displayedColumns: string[] = ['userID','firstName','roleID','branchID','status','createdDate'];
+  displayedColumns: string[] = [
+    'id',
+    'firstName',
+    'roleID',
+    'branchID',
+    'status',
+    'createdDate',
+  ];
+  object: any;
+  Result: any;
+  Model: any;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService,public dialog: MatDialog) { }
-  @ViewChild(MatSort) sort: MatSort | any;
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  constructor(
+    private _liveAnnouncer: LiveAnnouncer,
+    public dataServise: HttpService,
+    public dialog: MatDialog
+  ) {}
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   userData: any;
-  // 
+  //
   loading: boolean = true;
-  errmsg: string = ""
-  sucmsg: string = ""
-  suburl: string = "connection"
+  errmsg: string = '';
+  sucmsg: string = '';
+  suburl: string = 'connection';
   // table variable
   // change show table true
   showTable: boolean = true;
-  subscriberdata:any={};
-  isSubscriberdata:boolean=false;
-  ifGetData:boolean = false
-  sendtype:string ="POST"
+  subscriberdata: any = {};
+  isSubscriberdata: boolean = false;
+  ifGetData: boolean = false;
+  sendtype: string = 'POST';
   tableResult: any;
   p: number = 1;
   ngOnInit() {
     this.getPendingData();
   }
-  getPendingData() {
-    console.log("okokok");
-      this.dataServise.getData(`user`).subscribe((res) => {
-      this.TICKET_DATA = res;
-      this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.ifGetData=true
-    },(err)=>{
-      this.ifGetData=true
 
-    });
+  getPendingData() {
+    console.log('okokok');
+    this.dataServise.getData(`user`).subscribe(
+      (res) => {
+        this.TICKET_DATA = res;
+        this.dataSource = new MatTableDataSource(
+          this.TICKET_DATA
+        );
+        setTimeout(() =>{
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+        }, 1)
+        this.ifGetData = true;
+      },
+      (err) => {
+        this.ifGetData = true;
+      }
+    );
   }
 
   ngAfterViewInit(): void {
-    this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+    this.dataSource = new MatTableDataSource<TicketElement>(this.TICKET_DATA);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -79,35 +106,39 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   // UserPostPut
   exportNormalTable() {
     console.log('ko', this.dataSource.filteredData);
-    const onlyNameAndSymbolArr: Partial<TicketElement>[] = this.dataSource.filteredData.map((x: TicketElement) => ({
-      connectionID: x.connectionID,
-       "ticketID":x.ticketID,
-  "createdBy": x.createdBy, 
-  "assignedTo": x.assignedTo,
-  "assignedToID": x.assignedToID, "updatedBy": x.updatedBy,
-  "subject": x.subject, "description": x.description,
-  "reason": x.reason, "phone": x.phone,
-  "status": x.status, "createdAt": x.createdAt,
-  "updatedAt": x.updatedAt,
-
-    }));
+    const onlyNameAndSymbolArr: Partial<TicketElement>[] =
+      this.dataSource.filteredData.map((x: TicketElement) => ({
+        connectionID: x.connectionID,
+        ticketID: x.ticketID,
+        createdBy: x.createdBy,
+        assignedTo: x.assignedTo,
+        assignedToID: x.assignedToID,
+        updatedBy: x.updatedBy,
+        subject: x.subject,
+        description: x.description,
+        reason: x.reason,
+        phone: x.phone,
+        status: x.status,
+        createdAt: x.createdAt,
+        updatedAt: x.updatedAt,
+      }));
     // TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, "ExampleArray");
     // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
   UpadteUserDialogBox(): void {
-
     const dialogRef = this.dialog.open(UserPostPut, {
       width: '550px',
-      data: {subscriberdata:this.subscriberdata,sendtype:this.sendtype},
+      data: { subscriberdata: this.subscriberdata, sendtype: this.sendtype },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       // this.animal = result;
+      // this.getPendingData();
     });
-  }  
+  }
 
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
@@ -129,34 +160,50 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-postData(){
-  this.sendtype ="POST"
-  this.UpadteUserDialogBox();
-}
-  viewDetails(us:any) {
+  postData() {
+    this.sendtype = 'POST';
+    this.UpadteUserDialogBox();
+  }
+  viewDetails(us: any) {
     // this.showTable = false;
-    this.sendtype ="PUT"
-    this.subscriberdata=us;
+    this.sendtype = 'PUT';
+    this.subscriberdata = us;
     this.UpadteUserDialogBox();
     // this.isSubscriberdata=true;
     // console.log(us);
-    
   }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+// export interface UserSetting {
+//   userID: number;
+//   firstName: string;
+//   roleID: string;
+//   branchID: string;
+//   status: string;
+//   createdDate: string;
+// }
 export interface TicketElement {
-  "id": number,
-  "connectionID": number, "ticketID": string,
-  "createdBy": string, "assignedTo": string,
-  "assignedToID": string, "updatedBy": string,
-  "subject": string, "description": string,
-  "reason": string, "phone": string,
-  "status": string, "createdAt": string,
-  "updatedAt": string, "closedAt": string
+  id: number;
+  connectionID: number;
+  ticketID: string;
+  createdBy: string;
+  assignedTo: string;
+  assignedToID: string;
+  updatedBy: string;
+  subject: string;
+  description: string;
+  reason: string;
+  phone: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  closedAt: string;
+  name: string;
+  role: string;
+  branch: string;
+  userID: number;
+  firstName: string;
+  roleID: string;
+  branchID: string;
+  createdDate: string;
 }

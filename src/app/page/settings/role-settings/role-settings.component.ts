@@ -60,40 +60,21 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
   }
   getPendingData() {
     console.log('okokok');
-    this.dataServise.getData(`user`).subscribe(
+    this.dataServise.getData(`userrole`).subscribe(
       (res) => {
-        // this.TICKET_DATA = res;
+        this.TICKET_DATA = res;
         this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(()=>{
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }, 1)
+        
         this.ifGetData = true;
       },
       (err) => {
         this.ifGetData = true;
       }
     );
-    this.TICKET_DATA = [
-      {
-        id: 1,
-        role: 'Agent',
-      },
-      {
-        id: 2,
-        role: 'Agent',
-      },
-      {
-        id: 3,
-        role: 'Agent',
-      },
-      {
-        id: 4,
-        role: 'Agent',
-      },
-      {
-        id: 5,
-        role: 'Agent',
-      },
-    ];
   }
 
   ngAfterViewInit(): void {
