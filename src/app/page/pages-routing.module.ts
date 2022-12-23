@@ -28,6 +28,8 @@ import { AreaSettingsComponent } from './settings/area-settings/area-settings.co
 import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
 import { AddRentalComponent } from './payments/add-rental/add-rental.component';
 import { DueReportComponent } from './reports/due-report/due-report.component';
+import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
+import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
 
 const routes: Routes = [
   {
@@ -98,6 +100,14 @@ const routes: Routes = [
       {
         path: 'due-report',
         component: DueReportComponent,
+      },
+      {
+        path:'collection-report',
+        component: CollectionReportComponent
+      },
+      {
+        path:'unpaid-report',
+        component: UnpaidReportsComponent
       },
       {
         path: 'users-setting',

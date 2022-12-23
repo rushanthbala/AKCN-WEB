@@ -17,11 +17,13 @@ import { RoleDialogComponent } from './dialogBox/settings/role-dialog/role-dialo
 import { RoadDialogComponent } from './dialogBox/settings/road-dialog/road-dialog.component';
 import { AreaDialogComponent } from './dialogBox/settings/area-dialog/area-dialog.component';
 import { BranchDialogComponent } from './dialogBox/settings/branch-dialog/branch-dialog.component';
+import { CollectionReportUpdateComponent } from './report/collection-report-update/collection-report-update.component';
+import { UnpaidReportUpdateComponent } from './report/unpaid-report-update/unpaid-report-update.component';
 
 @NgModule({
   declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, 
     FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent,
-     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent, RoleDialogComponent, RoadDialogComponent, AreaDialogComponent, BranchDialogComponent],
+     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent, RoleDialogComponent, RoadDialogComponent, AreaDialogComponent, BranchDialogComponent, CollectionReportUpdateComponent, UnpaidReportUpdateComponent],
   imports: [CommonModule, BrowserModule],
   entryComponents: [CardTemplateComponent],
 })
