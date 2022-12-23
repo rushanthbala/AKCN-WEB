@@ -46,7 +46,7 @@ import { AddArrearsComponent } from './payments/add-arrears/add-arrears.componen
 import { PaymentUpdateComponent } from '../core/payment-update/payment-update.component';
 import { UpdateDataComponent } from '../core/dialogBox/pending/update-data/update-data.component';
 import { UserReportComponent } from './reports/user-report/user-report.component';
-import { UserReportUpdateComponent } from '../core/user-report-update/user-report-update.component';
+import { UserReportUpdateComponent } from '../core/report/user-report-update/user-report-update.component';
 import { UsersSettingComponent } from './settings/users-setting/users-setting.component';
 import { ReconnectDialogComponent } from '../core/dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
 import { ReconnectBigDialogComponent } from '../core/dialogBox/connection/change-location-big-dialog/reconnect-big-dialog.component';

@@ -23,8 +23,8 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   suburl2: string = "area"
   suburl1: string = "employee"
 
-  public selectedDeviceObj: any = {}
   public storedToken: any = localStorage.getItem('auth');
+  public selectedDeviceObj: any = {}
   onChangeObj(newObj: any) {
     console.log(newObj.firstName);
     console.log(newObj.id);
