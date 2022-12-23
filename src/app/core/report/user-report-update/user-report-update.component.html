@@ -11,7 +11,7 @@
                 <select class="form-select" aria-label="Default select example" required [(ngModel)]="selectedDeviceObj"
                 [ngModelOptions]="{standalone: true}"
                 (ngModelChange)="onChangeObj(selectedDeviceObj)">
-                <option disabled selected value="null">Technician</option>
+                <option disabled selected value="null">User</option>
                 <option *ngFor="let item of TechnicianArray" [ngValue]="item">
                     {{ item.firstName }}
                 </option>
