@@ -163,8 +163,14 @@ export class PagesComponent implements OnInit {
       this.href = 'Reports';
       this.link = '/auth/user-report'
       this.sublink = '/auth/user-report'
-      this.contentSubHeading = "Tickets > user report"
-    } else if (urlSpilite[2] === 'users-setting') {
+      this.contentSubHeading = "Tickets > User Report"
+    } else if (urlSpilite[2] === 'due-report') {
+      this.href = 'Reports';
+      this.link = '/auth/due-report'
+      this.sublink = '/auth/due-report'
+      this.contentSubHeading = "Tickets > Due Report"
+    }  
+    else if (urlSpilite[2] === 'users-setting') {
       this.href = 'Settings';
       this.link = '/auth/users-setting'
       this.sublink = '/auth/users-setting'

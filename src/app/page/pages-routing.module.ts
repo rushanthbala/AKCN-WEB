@@ -27,6 +27,7 @@ import { RoadSettingsComponent } from './settings/road-settings/road-settings.co
 import { AreaSettingsComponent } from './settings/area-settings/area-settings.component';
 import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
 import { AddRentalComponent } from './payments/add-rental/add-rental.component';
+import { DueReportComponent } from './reports/due-report/due-report.component';
 
 const routes: Routes = [
   {
@@ -93,6 +94,10 @@ const routes: Routes = [
       {
         path: 'user-report',
         component: UserReportComponent,
+      },
+      {
+        path: 'due-report',
+        component: DueReportComponent,
       },
       {
         path: 'users-setting',

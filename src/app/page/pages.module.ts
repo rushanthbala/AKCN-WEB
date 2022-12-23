@@ -83,6 +83,8 @@ import { AreaSettingsComponent } from './settings/area-settings/area-settings.co
 import { BranchSettingsComponent } from './settings/branch-settings/branch-settings.component';
 import { ConnectDialogComponent } from '../core/dialogBox/connection/connect-dialog/connect-dialog.component';
 import { AddRentalComponent } from './payments/add-rental/add-rental.component';
+import { DueReportComponent } from './reports/due-report/due-report.component';
+import { DueReportUpdateComponent } from '../core/report/due-report-update/due-report-update.component';
 
 @NgModule({
   declarations: [ CardTemplateComponent, TableComponent, DashboardComponent,
@@ -103,7 +105,7 @@ import { AddRentalComponent } from './payments/add-rental/add-rental.component';
         AssignTicketRequestDilogComponent,TicketCloseDialogBoxComponent,DisconnectDialogBoxComponent, ExtraRequestDialogBoxComponent,
         AddCSubsciberComponent,AllConnectionComponent,UserPostPut,RoleSettingComponent, RoleDialogComponent, RoadDialogComponent,
         AreaDialogComponent, BranchDialogComponent, RoadSettingsComponent, AreaSettingsComponent, BranchSettingsComponent,
-        ConnectDialogComponent,AddRentalComponent
+        ConnectDialogComponent,AddRentalComponent,DueReportComponent,DueReportUpdateComponent
       ],
   imports: [
     CommonModule,
