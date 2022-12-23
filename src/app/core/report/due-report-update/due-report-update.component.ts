@@ -9,13 +9,18 @@ import { HttpService } from 'src/app/servise/http/http.service';
   styleUrls: ['./due-report-update.component.scss']
 })
 export class DueReportUpdateComponent implements OnInit {
-  @Output() OnClick = new EventEmitter<{ user: any, fromdate: any, todate: any }>()
+  @Output() OnClick = new EventEmitter<{ user: any}>()
   errmsg = '';
   sucmsg = '';
   loading = false;
   public TechnicianName: any = 'Technician';;
   public TechnicianId: any;
   public TechnicianArray: any = [];
+  public selectedDeviceObj: any = {}
+  public selectedAreaObj: any = {}
+  public selectedRoadObj: any = {}
+  public selectedBranchObj: any = {}
+  public selectedStatusObj: any = {}
 
   public BranchName: any = 'All';;
   public BranchId: any;
@@ -31,15 +36,9 @@ export class DueReportUpdateComponent implements OnInit {
 
   public StatusName: any = 'All';;
   public StatusId: any;
-  public StatusArray: any = [{
-    id: "Active",
-    value: "Active"
-  },{
-    id: "Inactive",
-    value: "Inactive"
-  }]
+  public StatusArray: any = [
+   ]
 
-  public selectedDeviceObj: any = {}
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
@@ -61,7 +60,7 @@ export class DueReportUpdateComponent implements OnInit {
     // ... do other stuff here ...
   }
   onChangeObjStatus(newObj: any) {
-    this.StatusName = newObj.id;
+    this.StatusName = newObj.value;
     this.StatusId = newObj.id;
     // ... do other stuff here ...
   }
@@ -75,13 +74,17 @@ export class DueReportUpdateComponent implements OnInit {
     this.getAll()
   }
   getAll() {
-    console.log("0009");
-    
+    this.StatusArray =[ 
+    {
+    id: "Active",
+    value: "Active"
+  },{
+    id: "Inactive",
+    value: "Inactive"
+  }]
     // get TechnicianArray
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
-      console.log(res,"res");
-      
       // if(res.length >0){
       //   this.TechnicianName=res[0].firstName
       //   this.TechnicianId=res[0].id
@@ -106,32 +109,34 @@ export class DueReportUpdateComponent implements OnInit {
   initialForm() {
     this.loginForm = this.fb.group({
       fromdate: "",
-      todate: "",
+      minAmount: "",
     });
   }
 
-  searching() {
-    console.log(this.loginForm.value);
-  }
   emitEvent() {
-    alert("okok")
     console.log("mic01");
     
-    console.log(this.BranchId,this.RoadName,this.AreaName,this.StatusName);
-    
+    console.log(this.BranchName,this.RoadName,this.AreaName,this.StatusName);
+    console.log(this.BranchId,this.RoadId,this.AreaId,this.StatusName);
+    let detailObj ={
+      branchID:this.BranchId,
+      RoadID:this.RoadId,
+      AreaID:this.AreaId,
+      StatusName:this.StatusName
+    }
     // this.loading = true;
 
     let fromdate = this.loginForm.value.fromdate;
-    let todate = this.loginForm.value.todate;
+    let minAmount = this.loginForm.value.minAmount;
 
-    // if (fromdate == "" || todate == "") {
-    //   this.isEmpty();
-    //   this.loading = false;
-    // } else {
-    //   this.OnClick.emit({ user: this.TechnicianId, fromdate: fromdate, todate: todate })
+    if ( minAmount == "") {
+      this.isEmpty();
+      this.loading = false;
+    } else {
+      this.OnClick.emit({ user: detailObj})
 
-    //   this.loading = false;
-    // }
+      this.loading = false;
+    }
   }
   showSuccess() {
     this.toastr.success('Sucessfully Login', 'Sucessfully');

@@ -20,10 +20,12 @@ export class DueReportComponent {
   constructor(private fb: FormBuilder, public dataServise: HttpService, public dialog: MatDialog
   ) { }
   searching(first: Object | any) {
-    var connectionId = first.connectionId
-    var amount = first.amount
-    var arreardate = first.arreardate
-    console.log(connectionId, amount, arreardate);
+    console.log(first,"first");
+    
+    // var connectionId = first.connectionId
+    // var amount = first.amount
+    // var arreardate = first.arreardate
+    // console.log(connectionId, amount, arreardate);
 
     // connectionId: connectionId, amount: amount,arreardate:arreardate
     // var Ctype: string = first.type
@@ -31,6 +33,7 @@ export class DueReportComponent {
 
     // var cInput: String = first.searchinginput
     this.dataServise.getData(`animal`).subscribe((res) => {
+      
       this.userData = res[0];
       this.tableResult = this.userData.length
       this.showTable = true;
