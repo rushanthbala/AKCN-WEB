@@ -8,6 +8,13 @@
         <div>
             <div class="row mt-2">
                 <div class="col-12 col-sm-6 d-flex align-items-end  mt-3">
+                    <select class="form-select" aria-label="Default select example" (change)='onSelectTech(val.value)'
+                        required #val>
+                        <option disabled selected value="null">Technician</option>
+                        <option *ngFor="let item of TechnicianArray" [value]="item.id">
+                            {{ item.firstName }}
+                        </option>
+                    </select>
                 </div>
                 <div class="col-12 col-sm-6">
                     <div class="para mt-3 ps-3">Disconnected Date </div>
@@ -16,13 +23,7 @@
                 </div>
             </div>
             <!-- <div class="para mt-3 ps-3 "> </div> -->
-            <!-- <select class="form-select" aria-label="Default select example" (change)='onSelectTech(val.value)'
-                required #val>
-                <option disabled selected value="null">Technician</option>
-                <option *ngFor="let item of TechnicianArray" [value]="item.id">
-                    {{ item.firstName }}
-                </option>
-            </select> -->
+            <!--  -->
             <div class="row mt-2">
                 <div class="col-12 col-sm-6 ">
                     <div class="para mt-3 ps-3 "> </div>
