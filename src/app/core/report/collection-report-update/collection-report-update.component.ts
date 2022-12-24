@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { from } from 'rxjs';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -21,11 +21,16 @@ export class CollectionReportUpdateComponent {
   public TechnicianName: any = 'Technician';
   public TechnicianId: any;
   public TechnicianArray: any = [];
+  
 
   public selectedDeviceObj: any = {};
   BranchName: any;
   BranchId: any;
   BranchArray: any;
+  validationError: string | undefined;
+  startDate: any;
+  endDate: any;
+d: any;
   onChangeObj(newObj: any) {
     console.log(newObj.firstName);
     console.log(newObj.id);
@@ -62,11 +67,20 @@ export class CollectionReportUpdateComponent {
       }
     });
   }
+
   initialForm() {
     this.loginForm = this.fb.group({
       fromdate: "",
-      todate: "",
+      todate: ""
   })
+  }
+
+  validateDates() {
+    if (this.startDate > this.endDate) {
+      this.validationError = 'From date must be greater than to date';
+    } else {
+      this.validationError = '';
+    }
   }
 
   searching() {
@@ -80,6 +94,12 @@ export class CollectionReportUpdateComponent {
   emitEvent() {
     this.loading = true;
 
+    console.log(this.BranchName);
+    console.log(this.BranchId);
+    let detailObj = {
+      branchID :this.BranchId
+    }
+
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
 
@@ -88,7 +108,7 @@ export class CollectionReportUpdateComponent {
       this.loading = false;
     } else {
       this.OnClick.emit({
-        user: this.TechnicianId,
+        user: detailObj,
         fromdate: fromdate,
         todate: todate,
       });

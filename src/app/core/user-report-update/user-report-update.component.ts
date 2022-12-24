@@ -12,6 +12,9 @@ export class UserReportUpdateComponent implements OnInit {
   errmsg = '';
   sucmsg = '';
   loading = false;
+  startDate: any;
+  endDate: any;
+  validationError: string | undefined;
   constructor(private fb: FormBuilder, private toastr: ToastrService,
   ) { }
   loginForm: FormGroup | any;
@@ -26,6 +29,14 @@ export class UserReportUpdateComponent implements OnInit {
       fromdate: "",
       todate: "",
     });
+  }
+
+  validateDates() {
+    if (this.startDate > this.endDate) {
+      this.validationError = 'Start date must be greater than end date';
+    } else {
+      this.validationError = '';
+    }
   }
 
   searching() {

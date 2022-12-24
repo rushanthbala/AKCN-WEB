@@ -118,27 +118,30 @@ export class UnpaidReportUpdateComponent {
   emitEvent() {
     console.log('mic01');
 
-    console.log(this.BranchName, this.RoadName, this.AreaName, this.StatusName);
-    console.log(this.BranchId, this.RoadId, this.AreaId, this.StatusName);
+    console.log(this.BranchName, this.RoadName, this.AreaName);
+    console.log(this.BranchId, this.RoadId, this.AreaId);
     let detailObj = {
       branchID: this.BranchId,
       RoadID: this.RoadId,
-      AreaID: this.AreaId,
-      StatusName: this.StatusName,
+      AreaID: this.AreaId
     };
     // this.loading = true;
 
-    let fromdate = this.loginForm.value.fromdate;
-    let minAmount = this.loginForm.value.minAmount;
+    // let fromdate = this.loginForm.value.fromdate;
+    // let minAmount = this.loginForm.value.minAmount;
 
-    if (minAmount == '') {
-      this.isEmpty();
-      this.loading = false;
-    } else {
-      this.OnClick.emit({ user: detailObj });
+    // if (minAmount == '') {
+    //   this.isEmpty();
+    //   this.loading = false;
+    // } else {
+    //   this.OnClick.emit({ user: detailObj });
+
+    //   this.loading = false;
+    // }
+
+    this.OnClick.emit({ user: detailObj });
 
       this.loading = false;
-    }
   }
   showSuccess() {
     this.toastr.success('Sucessfully Login', 'Sucessfully');

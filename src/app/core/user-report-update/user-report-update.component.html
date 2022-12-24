@@ -1,29 +1,76 @@
 <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-    <p class="heading">Fill the feild and hit report</p>
-    <br />
-    <div class="input-group mb-3">
-
-        <div
-            class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
-            <div class="mb-3 cus-int-div">
-                <input type="text" class="form-control int" id="user" placeholder="User" formControlName="user"  />
-            </div>
-            <div class="mb-3 cus-int-div">
-                <input type="date" class="form-control int" id="fromdate" placeholder="Form" formControlName="fromdate"  />
-            </div>
-            <div class="mb-3 cus-int-div">
-                <input type="date" class="form-control int" id="todate" placeholder="To" formControlName="todate"  />
-            </div>
-            <div class="cus-int-div">
-                <span class="input-group-text cus-btn align-items-center justify-content-center" id="basic-addon2"
-                    (click)="emitEvent()" *ngIf="!loading">
-                    Update</span>
-                <span class="input-group-text cus-btn align-items-center justify-content-center disabled"
-                    id="basic-addon2" (click)="emitEvent()" *ngIf="loading" style="opacity: 0.7;">Update
-                    ...</span>
-            </div>
+  <p class="heading">Fill the feild and hit report</p>
+  <br />
+  <div class="input-group mb-3">
+    <div
+      class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
+    >
+      <div class="mb-3 cus-int-div">
+        <input
+          type="text"
+          class="form-control int"
+          id="user"
+          placeholder="User"
+          formControlName="user"
+        />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <input
+          type="date"
+          class="form-control int"
+          required
+          placeholder="Form"
+          formControlName="fromdate"
+          style="
+            font: normal normal normal 13px/21px Poppins;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 1;
+          "
+          [(ngModel)]="startDate"
+          (ngModelChange)="validateDates()"
+        />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <input
+          type="date"
+          class="form-control int"
+          required
+          placeholder="To"
+          formControlName="todate"
+          style="
+            font: normal normal normal 13px/21px Poppins;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 1;
+          "
+          [(ngModel)]="endDate"
+          (ngModelChange)="validateDates()"
+        />
+        <div *ngIf="validationError" class="text-small">
+          {{ validationError }}
         </div>
-        <!-- <div class="row w-100">
+      </div>
+      <div class="cus-int-div">
+        <span
+          class="input-group-text cus-btn align-items-center justify-content-center"
+          id="basic-addon2"
+          (click)="emitEvent()"
+          *ngIf="!loading"
+        >
+          Update</span
+        >
+        <span
+          class="input-group-text cus-btn align-items-center justify-content-center disabled"
+          id="basic-addon2"
+          (click)="emitEvent()"
+          *ngIf="loading"
+          style="opacity: 0.7"
+          >Update ...</span
+        >
+      </div>
+    </div>
+    <!-- <div class="row w-100">
             <div class="col12 sm-col-6 col-md-8  mt-1">
                 <input type=" " class="form-control me-2 int" placeholder="Subscriber's NIC"
                     aria-label="Recipient's username" aria-describedby="basic-addon2"
@@ -37,7 +84,6 @@
             </div>
         </div> -->
 
-        <br />
-
-    </div>
+    <br />
+  </div>
 </form>

@@ -14,7 +14,7 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjBranch(selectedDeviceObj)"
         >
-          <option disabled selected value="null">Branch</option>
+          <option disabled selected [value]="">Branch</option>
           <option value="All" [ngValue]="{ id: 0, branchName: 'All' }">
             All
           </option>
@@ -28,10 +28,7 @@
         <input
           type="date"
           class="form-control int"
-          #evtDate
           required
-          name="evtDate"
-          id="evtDate"
           placeholder="Form"
           formControlName="fromdate"
           style="
@@ -40,16 +37,15 @@
             color: #707070;
             opacity: 1;
           "
+          [(ngModel)]="startDate"
+          (ngModelChange)="validateDates()"
         />
       </div>
       <div class="mb-3 cus-int-div">
         <input
           type="date"
           class="form-control int"
-          #evtDate
           required
-          name="toDate"
-          id="todate"
           placeholder="To"
           formControlName="todate"
           style="
@@ -58,8 +54,10 @@
             color: #707070;
             opacity: 1;
           "
+          [(ngModel)]="endDate"
+          (ngModelChange)="validateDates()"
         />
-
+        <div *ngIf="validationError" class="text-small">{{validationError}}</div>
       </div>
       <div class="cus-int-div">
         <span

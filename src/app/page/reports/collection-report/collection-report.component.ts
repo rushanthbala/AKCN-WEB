@@ -22,16 +22,17 @@ export class CollectionReportComponent {
   constructor(private fb: FormBuilder, public dataServise: HttpService, public dialog: MatDialog
   ) { }
   searching(first: Object | any) {
-    var connectionId = first.connectionId
-    var amount = first.amount
-    var arreardate = first.arreardate
-    console.log(connectionId, amount, arreardate);
+    // var connectionId = first.connectionId
+    // var amount = first.amount
+    // var arreardate = first.arreardate
+    // console.log(connectionId, amount, arreardate);
 
     // connectionId: connectionId, amount: amount,arreardate:arreardate
     // var Ctype: string = first.type
     // var url = findTypeUrl(Ctype)
 
     // var cInput: String = first.searchinginput
+    console.log(first, 'first')
     this.dataServise.getData(`animal`).subscribe((res) => {
       this.userData = res[0];
       this.tableResult = this.userData.length

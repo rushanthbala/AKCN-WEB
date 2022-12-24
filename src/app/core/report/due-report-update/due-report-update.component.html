@@ -1,71 +1,108 @@
 <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-    <p class="heading">Fill the feild and hit report</p>
-    <br />
-    <div class="input-group mb-3">
+  <p class="heading">Fill the feild and hit report</p>
+  <br />
+  <div class="input-group mb-3">
+    <div
+      class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
+    >
+      <div class="mb-3 cus-int-div">
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          required
+          [(ngModel)]="selectedDeviceObj"
+          [ngModelOptions]="{ standalone: true }"
+          (ngModelChange)="onChangeObjBranch(selectedDeviceObj)"
+        >
+          <option disabled selected value="null">Branch</option>
+          <option value="All" [ngValue]="{ id: 0, branchName: 'All' }">
+            All
+          </option>
 
-        <div
-            class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
+          <option *ngFor="let item of BranchArray" [ngValue]="item">
+            {{ item.branchName }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 cus-int-div">
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          required
+          [(ngModel)]="selectedAreaObj"
+          [ngModelOptions]="{ standalone: true }"
+          (ngModelChange)="onChangeObjArea(selectedAreaObj)"
+        >
+          <option disabled selected value="null">Area</option>
+          <option value="All" [ngValue]="{ id: 0, area: 'All' }">All</option>
 
+          <option *ngFor="let item of AreaArray" [ngValue]="item">
+            {{ item.area }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 cus-int-div">
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          required
+          [(ngModel)]="selectedRoadObj"
+          [ngModelOptions]="{ standalone: true }"
+          (ngModelChange)="onChangeObjRoad(selectedRoadObj)"
+        >
+          <option disabled selected value="null">Road</option>
+          <option value="All" [ngValue]="{ id: 0, road: 'All' }">All</option>
+          <option *ngFor="let item of RoadArray" [ngValue]="item">
+            {{ item.road }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 cus-int-div">
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          required
+          [(ngModel)]="selectedStatusObj"
+          [ngModelOptions]="{ standalone: true }"
+          (ngModelChange)="onChangeObjStatus(selectedStatusObj)"
+        >
+          <option disabled selected value="null">Status</option>
+          <option value="All" [ngValue]="{ id: 0, value: 'All' }">All</option>
 
-            <div class="mb-3 cus-int-div">
-                <select class="form-select" aria-label="Default select example" required [(ngModel)]="selectedDeviceObj"
-                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeObjBranch(selectedDeviceObj)">
-                    <option disabled selected value="null">Branch</option>
-                    <option value="All" [ngValue]="{id:0,branchName:'All'}">All</option>
-
-                    <option *ngFor="let item of BranchArray" [ngValue]="item">
-                        {{ item.branchName }}
-                    </option>
-                </select>
-            </div>
-        <div class="mb-3 cus-int-div">
-                <select class="form-select" aria-label="Default select example" required [(ngModel)]="selectedAreaObj"
-                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeObjArea(selectedAreaObj)">
-                    <option disabled selected value="null">Area</option>
-                    <option value="All" [ngValue]="{id:0,area:'All'}">All</option>
-
-                    <option *ngFor="let item of AreaArray" [ngValue]="item">
-                        {{ item.area }}
-                    </option>
-                </select>
-            </div>
-        <div class="mb-3 cus-int-div">
-                <select class="form-select" aria-label="Default select example" required [(ngModel)]="selectedRoadObj"
-                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeObjRoad(selectedRoadObj)">
-                    <option disabled selected value="null">Road</option>
-                    <option value="All" [ngValue]="{id:0,road:'All'}">All</option>
-                    <option *ngFor="let item of RoadArray" [ngValue]="item">
-                        {{ item.road }}
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3 cus-int-div">
-                <select class="form-select" aria-label="Default select example" required [(ngModel)]="selectedStatusObj"
-                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeObjStatus(selectedStatusObj)">
-                    <option disabled selected value="null">Status</option>
-                    <option value="All" [ngValue]="{id:0,value:'All'}">All</option>
-
-                    <option *ngFor="let item of StatusArray" [ngValue]="item">
-                        {{ item.id }}
-                    </option>
-                </select>
-            </div> 
-            <div class="mb-3 cus-int-div">
-                <input type="text" class="form-control int" id="minAmount" placeholder="Minimum Due"
-                    formControlName="minAmount" />
-            </div>
-            <div class="cus-int-div">
-                <span class="input-group-text cus-btn align-items-center justify-content-center" id="basic-addon2"
-                    (click)="emitEvent()" *ngIf="!loading">
-                    Update</span>
-                <span class="input-group-text cus-btn align-items-center justify-content-center disabled"
-                    id="basic-addon2" (click)="emitEvent()" *ngIf="loading" style="opacity: 0.7;">Update
-                    ...</span>
-            </div>
-        </div>
-
-
-        <br />
-
+          <option *ngFor="let item of StatusArray" [ngValue]="item">
+            {{ item.id }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 cus-int-div">
+        <input
+          type="text"
+          class="form-control int"
+          id="minAmount"
+          placeholder="Minimum Due"
+          formControlName="minAmount"
+        />
+      </div>
+      <div class="cus-int-div">
+        <span
+          class="input-group-text cus-btn align-items-center justify-content-center"
+          id="basic-addon2"
+          (click)="emitEvent()"
+          *ngIf="!loading"
+        >
+          Update</span
+        >
+        <span
+          class="input-group-text cus-btn align-items-center justify-content-center disabled"
+          id="basic-addon2"
+          (click)="emitEvent()"
+          *ngIf="loading"
+          style="opacity: 0.7"
+          >Update ...</span
+        >
+      </div>
     </div>
+
+    <br />
+  </div>
 </form>

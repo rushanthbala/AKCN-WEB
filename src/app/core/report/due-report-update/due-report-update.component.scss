@@ -42,6 +42,7 @@
     background: #99999917 0% 0% no-repeat padding-box;
     border-radius: 10px !important;
     color: #707070;
+    cursor: pointer;
 }
 
 // table
@@ -131,8 +132,12 @@ tr:nth-child(even) {
     max-width: 220px;
     width: 100%;
     margin: 0.8rem;
+    cursor: pointer;
   }
   .main-input-content {
     max-width: 1000px;
     width: 100%;
+  }
+  .form-select{
+    cursor: pointer;
   }
