@@ -27,10 +27,11 @@
     box-shadow: 0px 5px 33px #00000014;
     border-radius: 10px !important;
     color: #fff;
-    height: 50px;
+    height: 35px;
     font-size: 14px;
     max-width: 220px;
     width: 100%;
+    margin-top: 8%;
 }
 
 .int {
@@ -153,4 +154,18 @@ tr:nth-child(even) {
   input[type="date"]:focus::before,
   input[type="date"]:valid::before {
     display: none;
+  }
+
+  .form-select{
+    cursor: pointer;
+    height: 30px;
+  }
+  .form-control{
+    height: 35px;
+    margin-top: 8%;
+  }
+  .user::before{
+    content: 'User';
+    font-size: 12px;
+    color: #707070;
   }

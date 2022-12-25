@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -46,6 +46,7 @@ export class UnpaidReportUpdateComponent {
   onChangeObjBranch(newObj: any) {
     this.BranchName = newObj.branchName;
     this.BranchId = newObj.id;
+    this.findArea(newObj.id)
     // ... do other stuff here ...
   }
   onChangeObjRoad(newObj: any) {
@@ -56,6 +57,7 @@ export class UnpaidReportUpdateComponent {
   onChangeObjArea(newObj: any) {
     this.AreaName = newObj.area;
     this.AreaId = newObj.id;
+    this.findRoad(newObj.id)
     // ... do other stuff here ...
   }
   onChangeObjStatus(newObj: any) {
@@ -93,14 +95,28 @@ export class UnpaidReportUpdateComponent {
       //   this.TechnicianId=res[0].id
       // }
     });
-    this.dataServise.getData(`area`).subscribe((res) => {
+  }
+
+  // if(AreaID = 0){
+
+  // } else{
+    
+  // }
+
+  findArea(id: any){
+    console.log("findArea", id)
+    this.dataServise.getData(`areaBybranchId/${id}`).subscribe((res) => {
       this.AreaArray = res;
       // if(res.length >0){
       //   this.TechnicianName=res[0].firstName
       //   this.TechnicianId=res[0].id
       // }
     });
-    this.dataServise.getData(`road`).subscribe((res) => {
+  }
+
+  findRoad(id: any){
+    console.log('find road', id)
+    this.dataServise.getData(`road/roadByAreaID/${id}`).subscribe((res) => {
       this.RoadArray = res;
       // if(res.length >0){
       //   this.TechnicianName=res[0].firstName
@@ -108,11 +124,12 @@ export class UnpaidReportUpdateComponent {
       // }
     });
   }
+
   initialForm() {
-    this.loginForm = this.fb.group({
-      fromdate: '',
-      minAmount: '',
-    });
+    // this.loginForm = this.fb.group({
+    //   branch : new FormControl('', Validators.required),
+
+    // });
   }
 
   emitEvent() {
@@ -130,7 +147,7 @@ export class UnpaidReportUpdateComponent {
     // let fromdate = this.loginForm.value.fromdate;
     // let minAmount = this.loginForm.value.minAmount;
 
-    // if (minAmount == '') {
+    // if (this.BranchId =="" || this.RoadId == "" || this.AreaId == "") {
     //   this.isEmpty();
     //   this.loading = false;
     // } else {
@@ -142,6 +159,8 @@ export class UnpaidReportUpdateComponent {
     this.OnClick.emit({ user: detailObj });
 
       this.loading = false;
+
+    
   }
   showSuccess() {
     this.toastr.success('Sucessfully Login', 'Sucessfully');

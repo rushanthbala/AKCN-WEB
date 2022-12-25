@@ -5,16 +5,15 @@
     <div
       class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
     >
-      <div class="mb-3 cus-int-div">
+      <div class="mb-3 cus-int-div branch">
         <select
           class="form-select"
           aria-label="Default select example"
-          required
           [(ngModel)]="selectedDeviceObj"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjBranch(selectedDeviceObj)"
         >
-          <option disabled selected value="null">Branch</option>
+          <!-- <option disabled selected value="null">Branch</option> -->
           <option value="All" [ngValue]="{ id: 0, branchName: 'All' }">
             All
           </option>
@@ -24,7 +23,7 @@
           </option>
         </select>
       </div>
-      <div class="mb-3 cus-int-div">
+      <div class="mb-3 cus-int-div area">
         <select
           class="form-select"
           aria-label="Default select example"
@@ -33,7 +32,7 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjArea(selectedAreaObj)"
         >
-          <option disabled selected value="null">Area</option>
+          <!-- <option disabled selected value="null">Area</option> -->
           <option value="All" [ngValue]="{ id: 0, area: 'All' }">All</option>
 
           <option *ngFor="let item of AreaArray" [ngValue]="item">
@@ -41,7 +40,7 @@
           </option>
         </select>
       </div>
-      <div class="mb-3 cus-int-div">
+      <div class="mb-3 cus-int-div road">
         <select
           class="form-select"
           aria-label="Default select example"
@@ -50,14 +49,14 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjRoad(selectedRoadObj)"
         >
-          <option disabled selected value="null">Road</option>
+          <!-- <option disabled selected value="null">Road</option> -->
           <option value="All" [ngValue]="{ id: 0, road: 'All' }">All</option>
           <option *ngFor="let item of RoadArray" [ngValue]="item">
             {{ item.road }}
           </option>
         </select>
       </div>
-      <div class="mb-3 cus-int-div">
+      <div class="mb-3 cus-int-div status">
         <select
           class="form-select"
           aria-label="Default select example"
@@ -66,7 +65,7 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjStatus(selectedStatusObj)"
         >
-          <option disabled selected value="null">Status</option>
+          <!-- <option disabled selected value="null">Status</option> -->
           <option value="All" [ngValue]="{ id: 0, value: 'All' }">All</option>
 
           <option *ngFor="let item of StatusArray" [ngValue]="item">
@@ -90,7 +89,7 @@
           (click)="emitEvent()"
           *ngIf="!loading"
         >
-          Update</span
+          Run Report</span
         >
         <span
           class="input-group-text cus-btn align-items-center justify-content-center disabled"
@@ -98,7 +97,7 @@
           (click)="emitEvent()"
           *ngIf="loading"
           style="opacity: 0.7"
-          >Update ...</span
+          >Running ...</span
         >
       </div>
     </div>

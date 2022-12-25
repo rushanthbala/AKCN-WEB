@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.loading = true;
     let data = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-      phone:"077123456"
+      // email: this.loginForm.value.email,
+      hash: this.loginForm.value.password,
+      phone:this.loginForm.value.email
     };
-    if (data.email == "" || data.password == "") {
+    if (data.phone == "" || data.hash == "") {
       this.isEmpty();
       this.loading = false;
     } else {

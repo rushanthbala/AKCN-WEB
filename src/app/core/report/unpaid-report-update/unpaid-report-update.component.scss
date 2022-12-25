@@ -27,12 +27,12 @@
     box-shadow: 0px 5px 33px #00000014;
     border-radius: 10px !important;
     color: #fff;
-    height: 50px;
+    height: 33px;
     font-size: 14px;
     max-width: 220px;
     width: 100%;
+    margin-top: 8%;
 }
-
 .int {
     height: 50px;
     padding-left: 20px;
@@ -100,17 +100,17 @@ tr:nth-child(even) {
     // opacity: 9%;
 }
 
-.status {
-    border-radius: 24px;
-    background-color: #d63964;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    width: 50%;
-    min-width: 60px;
-    // margin: 0 auto;
-}
+// .status {
+//     border-radius: 24px;
+//     background-color: #d63964;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     color: #fff;
+//     width: 50%;
+//     min-width: 60px;
+//     // margin: 0 auto;
+// }
 
 .labels {
     font-weight: 600;
@@ -139,4 +139,20 @@ tr:nth-child(even) {
   }
   .form-select{
     cursor: pointer;
+    height: 30px;
   }
+  .branch::before{
+    content: 'Branch';
+    font-size: 12px;
+    color: #707070;
+  }
+  .area::before{
+    content: 'Area';
+    font-size: 12px;
+    color: #707070;
+}
+.road::before{
+    content: 'Road';
+    font-size: 12px;
+    color: #707070;
+}

@@ -19,11 +19,15 @@ import { AreaDialogComponent } from './dialogBox/settings/area-dialog/area-dialo
 import { BranchDialogComponent } from './dialogBox/settings/branch-dialog/branch-dialog.component';
 import { CollectionReportUpdateComponent } from './report/collection-report-update/collection-report-update.component';
 import { UnpaidReportUpdateComponent } from './report/unpaid-report-update/unpaid-report-update.component';
+import { CollectionReportTableComponent } from './reportTable/collection-report-table/collection-report-table.component';
+import { DueReportTableComponent } from './reportTable/due-report-table/due-report-table.component';
+import { UserReportTableComponent } from './reportTable/user-report-table/user-report-table.component';
+import { UnpaidReportTableComponent } from './reportTable/unpaid-report-table/unpaid-report-table.component';
 
 @NgModule({
   declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, 
     FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent,
-     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent, RoleDialogComponent, RoadDialogComponent, AreaDialogComponent, BranchDialogComponent, CollectionReportUpdateComponent, UnpaidReportUpdateComponent],
+     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent, RoleDialogComponent, RoadDialogComponent, AreaDialogComponent, BranchDialogComponent, CollectionReportUpdateComponent, UnpaidReportUpdateComponent, CollectionReportTableComponent, DueReportTableComponent, UserReportTableComponent, UnpaidReportTableComponent],
   imports: [CommonModule, BrowserModule],
   entryComponents: [CardTemplateComponent],
 })

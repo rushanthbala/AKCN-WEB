@@ -9,11 +9,12 @@ import { HttpService } from 'src/app/servise/http/http.service';
   styleUrls: ['./due-report-update.component.scss']
 })
 export class DueReportUpdateComponent implements OnInit {
-  @Output() OnClick = new EventEmitter<{ user: any}>()
+  @Output() OnClick = new EventEmitter<{ user: any, minAmount: any}>()
   errmsg = '';
   sucmsg = '';
   loading = false;
-  public TechnicianName: any = 'Technician';;
+  public TechnicianName: any = 'Technician';
+;
   public TechnicianId: any;
   public TechnicianArray: any = [];
   public selectedDeviceObj: any = {}
@@ -36,8 +37,9 @@ export class DueReportUpdateComponent implements OnInit {
 
   public StatusName: any = 'All';;
   public StatusId: any;
-  public StatusArray: any = [
-   ]
+  public StatusArray: any = []
+
+  public minAmount:any 
 
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
@@ -47,6 +49,7 @@ export class DueReportUpdateComponent implements OnInit {
   onChangeObjBranch(newObj: any) {
     this.BranchName = newObj.branchName;
     this.BranchId = newObj.id;
+    this.findArea(newObj.id);
     // ... do other stuff here ...
   }
   onChangeObjRoad(newObj: any) {
@@ -57,6 +60,7 @@ export class DueReportUpdateComponent implements OnInit {
   onChangeObjArea(newObj: any) {
     this.AreaName = newObj.area;
     this.AreaId = newObj.id;
+    this.findRoad(newObj.id)
     // ... do other stuff here ...
   }
   onChangeObjStatus(newObj: any) {
@@ -82,7 +86,7 @@ export class DueReportUpdateComponent implements OnInit {
     id: "Inactive",
     value: "Inactive"
   }]
-    // get TechnicianArray
+    // get branch
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
       // if(res.length >0){
@@ -90,22 +94,33 @@ export class DueReportUpdateComponent implements OnInit {
       //   this.TechnicianId=res[0].id
       // }
     });
-    this.dataServise.getData(`area`).subscribe((res) => {
+    
+    
+
+  }
+
+  findArea(id: any){
+    console.log("findArea", id)
+    this.dataServise.getData(`areaBybranchId/${id}`).subscribe((res) => {
       this.AreaArray = res;
       // if(res.length >0){
       //   this.TechnicianName=res[0].firstName
       //   this.TechnicianId=res[0].id
       // }
     });
-    this.dataServise.getData(`road`).subscribe((res) => {
+  }
+
+  findRoad(id: any){
+    console.log('find road', id)
+    this.dataServise.getData(`road/roadByAreaID/${id}`).subscribe((res) => {
       this.RoadArray = res;
       // if(res.length >0){
       //   this.TechnicianName=res[0].firstName
       //   this.TechnicianId=res[0].id
       // }
     });
-
   }
+
   initialForm() {
     this.loginForm = this.fb.group({
       fromdate: "",
@@ -133,7 +148,7 @@ export class DueReportUpdateComponent implements OnInit {
       this.isEmpty();
       this.loading = false;
     } else {
-      this.OnClick.emit({ user: detailObj})
+      this.OnClick.emit({ user: detailObj, minAmount:minAmount})
 
       this.loading = false;
     }

@@ -89,6 +89,10 @@ import { CollectionReportComponent } from './reports/collection-report/collectio
 import { CollectionReportUpdateComponent } from '../core/report/collection-report-update/collection-report-update.component';
 import { UnpaidReportUpdateComponent } from '../core/report/unpaid-report-update/unpaid-report-update.component';
 import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
+import { CollectionReportTableComponent } from '../core/reportTable/collection-report-table/collection-report-table.component';
+import { UnpaidReportTableComponent } from '../core/reportTable/unpaid-report-table/unpaid-report-table.component';
+import { DueReportTableComponent } from '../core/reportTable/due-report-table/due-report-table.component';
+import { UserReportTableComponent } from '../core/reportTable/user-report-table/user-report-table.component';
 
 @NgModule({
   declarations: [
@@ -168,7 +172,11 @@ import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.
     CollectionReportComponent,
     CollectionReportUpdateComponent,
     UnpaidReportUpdateComponent,
-    UnpaidReportsComponent
+    UnpaidReportsComponent,
+    CollectionReportTableComponent,
+    UnpaidReportTableComponent,
+    DueReportTableComponent,
+    UserReportTableComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { from } from 'rxjs';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -11,7 +19,6 @@ import { HttpService } from 'src/app/servise/http/http.service';
 })
 export class CollectionReportUpdateComponent {
   @Output() OnClick = new EventEmitter<{
-    user: any;
     fromdate: any;
     todate: any;
   }>();
@@ -21,7 +28,6 @@ export class CollectionReportUpdateComponent {
   public TechnicianName: any = 'Technician';
   public TechnicianId: any;
   public TechnicianArray: any = [];
-  
 
   public selectedDeviceObj: any = {};
   BranchName: any;
@@ -30,7 +36,7 @@ export class CollectionReportUpdateComponent {
   validationError: string | undefined;
   startDate: any;
   endDate: any;
-d: any;
+  d: any;
   onChangeObj(newObj: any) {
     console.log(newObj.firstName);
     console.log(newObj.id);
@@ -70,9 +76,9 @@ d: any;
 
   initialForm() {
     this.loginForm = this.fb.group({
-      fromdate: "",
-      todate: ""
-  })
+      fromdate: new FormControl('', [Validators.required]),
+      todate: new FormControl('', [Validators.required]),
+    });
   }
 
   validateDates() {
@@ -94,21 +100,14 @@ d: any;
   emitEvent() {
     this.loading = true;
 
-    console.log(this.BranchName);
-    console.log(this.BranchId);
-    let detailObj = {
-      branchID :this.BranchId
-    }
-
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
 
-    if (fromdate == '' || todate == '') {
+    if (!this.loginForm.valid) {
       this.isEmpty();
       this.loading = false;
     } else {
       this.OnClick.emit({
-        user: detailObj,
         fromdate: fromdate,
         todate: todate,
       });

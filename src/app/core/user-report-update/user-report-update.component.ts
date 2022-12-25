@@ -1,39 +1,69 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
   selector: 'app-user-report-update',
   templateUrl: './user-report-update.component.html',
-  styleUrls: ['./user-report-update.component.scss']
+  styleUrls: ['./user-report-update.component.scss'],
 })
 export class UserReportUpdateComponent implements OnInit {
-  @Output() OnClick = new EventEmitter<{ user: any, fromdate: any, todate: any }>()
+  @Output() OnClick = new EventEmitter<{
+    user: any;
+    fromdate: any;
+    todate: any;
+  }>();
   errmsg = '';
   sucmsg = '';
   loading = false;
-  startDate: any;
+  public TechnicianName: any = 'Technician';
   endDate: any;
+  startDate: any;
   validationError: string | undefined;
-  constructor(private fb: FormBuilder, private toastr: ToastrService,
-  ) { }
+  public TechnicianId: any;
+  public TechnicianArray: any = [];
+
+  public selectedDeviceObj: any = {};
+  onChangeObj(newObj: any) {
+    console.log(newObj.firstName);
+    console.log(newObj.id);
+    this.TechnicianName = newObj.firstName;
+    this.TechnicianId = newObj.id;
+    // ... do other stuff here ...
+  }
+  constructor(
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    public dataServise: HttpService
+  ) {}
   loginForm: FormGroup | any;
 
   ngOnInit(): void {
     this.initialForm();
+    this.getAll();
+  }
+  getAll() {
+    // get TechnicianArray
 
+    this.dataServise.getData(`employee`).subscribe((res) => {
+      this.TechnicianArray = res;
+      if (res.length > 0) {
+        this.TechnicianName = res[0].firstName;
+        this.TechnicianId = res[0].id;
+      }
+    });
   }
   initialForm() {
     this.loginForm = this.fb.group({
-      user: "",
-      fromdate: "",
-      todate: "",
+      fromdate: '',
+      todate: '',
     });
   }
 
   validateDates() {
     if (this.startDate > this.endDate) {
-      this.validationError = 'Start date must be greater than end date';
+      this.validationError = 'From date must be greater than to date';
     } else {
       this.validationError = '';
     }
@@ -45,15 +75,18 @@ export class UserReportUpdateComponent implements OnInit {
   emitEvent() {
     this.loading = true;
 
-    let user = this.loginForm.value.user;
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
 
-    if (user == "" || fromdate == "" || todate == "") {
+    if (fromdate == '' || todate == '') {
       this.isEmpty();
       this.loading = false;
     } else {
-      this.OnClick.emit({ user: user, fromdate: fromdate, todate: todate })
+      this.OnClick.emit({
+        user: this.TechnicianId,
+        fromdate: fromdate,
+        todate: todate,
+      });
 
       this.loading = false;
     }
