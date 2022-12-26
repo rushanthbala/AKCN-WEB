@@ -18,7 +18,7 @@ export class AssignTicketComponent implements AfterViewInit, OnInit {
 
   TICKET_DATA=[]
   dataSource: any;
-  displayedColumns: string[] = ['ticketID','connectionID','description','phone','createdBy','createdAt'];
+  displayedColumns: string[] = ['ticketID','createdBy','assignedTo','description','phone','createdAt'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService) { }
   @ViewChild(MatSort) sort: MatSort | any;
