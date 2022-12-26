@@ -80,7 +80,7 @@ export class DisconnectDialogBoxComponent implements OnInit {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
+    this.toastr.error('Fill All The Feild', 'Error');
   }
 }
 export interface DialogData {

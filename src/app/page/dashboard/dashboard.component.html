@@ -1,10 +1,11 @@
 <div class="row">
   <div
     *ngFor="let it of sdata; let i = index"
-    class="col-6 col-sm-6 col-md-4 col-xl-3"
+    class="col-6 col-sm-6 col-md-4 col-xl-3 mt-2"
   >
     <app-card-template
       title="{{ it.name }}"
+      color="{{ it.color }}"
       number="{{ it.number }}"
       [img]="it.img"
     ></app-card-template>
@@ -13,7 +14,7 @@
 
 <br />
 <br />
-<div class="row tb-a-report">
+<!-- <div class="row tb-a-report">
   <div class="col-12 col-sm-12 col-md-12 col-lg-6">
     <div class="canva-chart">
       <div class="canava-heading">Annual Report</div>
@@ -51,6 +52,58 @@
       <div class="col-4">SANOJAN</div>
       <div class="col-4">0 BILL</div>
       <div class="col-4">55200.00</div>
+    </div>
+  </div>
+</div> -->
+<div class="container-7">
+  <div class="card-2">
+    <div class="card-text-2">Annual Report</div>
+    <canvas id="linechart"></canvas>
+  </div>
+  <div class="card-3">
+    <div class="card-text-2">Today Collection Report</div>
+    <div
+      class="table-responsive table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl"
+    >
+      <table class="table mt-2">
+        <tbody>
+          <tr>
+            <td>SANOJAN</td>
+            <td>0 Bills</td>
+            <td>55200.00</td>
+          </tr>
+          <tr>
+            <td>PRASANTH</td>
+            <td>80 Bills</td>
+            <td>44345.00</td>
+          </tr>
+          <tr>
+            <td>ARULAN</td>
+            <td>80 Bills</td>
+            <td>44345.00</td>
+          </tr>
+          <tr>
+            <td>MURALI</td>
+            <td>80 Bills</td>
+            <td>44345.00</td>
+          </tr>
+          <tr>
+            <td>NIRUSHAN</td>
+            <td>80 Bills</td>
+            <td>44345.00</td>
+          </tr>
+          <tr>
+            <td>KARTHEESAN</td>
+            <td>80 Bills</td>
+            <td>44345.00</td>
+          </tr>
+          <tr>
+            <td>KARTHEESAN</td>
+            <td>80 Bills</td>
+            <td>44345.00</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

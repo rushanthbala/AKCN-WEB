@@ -96,7 +96,7 @@ export class CreateTicketComponentDialog implements OnInit {
 
 
   showSuccess() {
-    this.toastr.success('Sucessfully created', 'successful');
+    this.toastr.success('Sucessfully created !', 'successful');
     this.onNoClick()
     window.location.reload();
 
@@ -105,6 +105,6 @@ export class CreateTicketComponentDialog implements OnInit {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
+    this.toastr.error('Fill All The Feild', 'Error');
   }
 }

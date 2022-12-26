@@ -67,8 +67,9 @@ export class UpdatePaymentComponent implements OnInit {
       description: this.chackRequest.value.Remark,
       paymentType:this.PaymentType,
       amount:this.chackRequest.value.amount,
-      enteredBy:adminId,
-      conductedBy:adminId
+      enteredBy:"ADMIN",
+      conductedBy:adminId,
+      phoneNo:this.data.primaryPhone
     }
     console.log(dataObj,"dataObj");
 
@@ -104,13 +105,13 @@ export class UpdatePaymentComponent implements OnInit {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Finished', 'Sucessfully');
-    window.location.reload()
+    // window.location.reload()
 
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
+    this.toastr.error('Fill All The Feild', 'Error');
   }
 }

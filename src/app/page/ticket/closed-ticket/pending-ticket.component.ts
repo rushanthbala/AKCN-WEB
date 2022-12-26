@@ -18,7 +18,7 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
 
   TICKET_DATA=[]
   dataSource: any;
-  displayedColumns: string[] = ['ticketID','createdBy','description','phone','createdBy','createdAt'];
+  displayedColumns: string[] = ['ticketID','connectionID','description','phone','createdBy','createdAt'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService) { }
   @ViewChild(MatSort) sort: MatSort | any;

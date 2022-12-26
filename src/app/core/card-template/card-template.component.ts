@@ -9,6 +9,8 @@ export class CardTemplateComponent implements OnInit {
   @Input() title: string | undefined;
   @Input() number: string | undefined;
   @Input() img: Boolean | undefined;
+  @Input() color: string | undefined;
+
 
   ngOnInit(): void {}
 }

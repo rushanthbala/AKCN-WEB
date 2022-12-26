@@ -1,5 +1,5 @@
 <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-  <p class="heading">Fill the Field and hit report</p>
+  <p class="heading">Fill the feild and hit report</p>
   <br />
   <div class="input-group mb-3">
     <div
@@ -14,8 +14,8 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
         >
-          <option disabled selected value="null">User</option>
-          <option *ngFor="let item of TechnicianArray" [ngValue]="item">
+          <!-- <option disabled selected value="null">User</option> -->
+          <option *ngFor="let item of UserArray" [ngValue]="item">
             {{ item.firstName }}
           </option>
         </select>
@@ -33,8 +33,7 @@
             color: #707070;
             opacity: 1;
           "
-          [(ngModel)]="startDate"
-          (ngModelChange)="validateDates()"
+          useValueAsDate
         />
       </div>
       <div class="mb-3 cus-int-div">
@@ -50,11 +49,10 @@
             color: #707070;
             opacity: 1;
           "
-          [(ngModel)]="endDate"
-          (ngModelChange)="validateDates()"
+          useValueAsDate
         />
-        <div *ngIf="validationError" class="text-small">
-          {{ validationError }}
+        <div *ngIf="loginForm.errors" class="text-small">
+          {{ loginForm.errors?.dates }}
         </div>
       </div>
       <div class="cus-int-div">

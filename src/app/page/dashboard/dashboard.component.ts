@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
@@ -22,48 +23,56 @@ export class DashboardComponent implements OnInit {
       name: 'COLLECTION',
       number: '143350',
       img: true,
+      color: 'green',
     },
     {
       id: 2,
       name: 'NEW CONNECTION',
       number: '143350',
       img: false,
+      color: 'red',
     },
     {
       id: 3,
       name: 'RECONNECTION',
       number: '143350',
-      img: true,
+      img: false,
+      color: 'red',
     },
     {
       id: 4,
       name: 'LINE CHANGE',
       number: '143350',
       img: true,
+      color: 'green',
     },
     {
       id: 1,
       name: 'MONTHLY COLLECTION',
       number: '143350',
       img: true,
+      color: 'green',
     },
     {
       id: 2,
       name: 'MONTHLY NEW CONNECTION',
       number: '143350',
-      img: true,
+      img: false,
+      color: 'red',
     },
     {
       id: 3,
       name: 'PROFITS',
       number: '143350',
-      img: true,
+      img: false,
+      color: 'red',
     },
     {
       id: 4,
       name: 'MONTHLY RECONNECTION',
       number: '143350',
       img: true,
+      color: 'green',
     },
   ];
   userArray: any = [
@@ -172,8 +181,8 @@ export class DashboardComponent implements OnInit {
             borderColor: '#2CD9C5',
             backgroundColor: ['#2CD9C51A', '#2E5BFF00'],
             fill: true,
-            pointBackgroundColor: ["white"],
-            pointBorderColor:["#2CD9C5"]
+            pointBackgroundColor: ['white'],
+            pointBorderColor: ['#2CD9C5'],
           },
         ],
       },
