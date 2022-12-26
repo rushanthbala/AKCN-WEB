@@ -138,9 +138,9 @@ export class UnpaidReportUpdateComponent {
     console.log(this.BranchName, this.RoadName, this.AreaName);
     console.log(this.BranchId, this.RoadId, this.AreaId);
     let detailObj = {
-      branchID: this.BranchId,
-      RoadID: this.RoadId,
-      AreaID: this.AreaId
+      branchID: this.BranchId ?this.BranchId :"ALL" ,
+      RoadID: this.RoadId?this.RoadId :"ALL" ,
+      AreaID: this.AreaId?this.AreaId :"ALL" ,
     };
     // this.loading = true;
 

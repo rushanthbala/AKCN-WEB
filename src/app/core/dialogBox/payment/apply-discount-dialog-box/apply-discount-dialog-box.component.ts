@@ -51,7 +51,6 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
       enteredBy:adminId,
       conductedBy:adminId,
       phoneNo:this.data.primaryPhone
-
     }
     console.log(dataObj, "data");
 

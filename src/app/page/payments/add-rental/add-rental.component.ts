@@ -42,7 +42,8 @@ let dataObj ={
   paymentType:"Rental",
   amount:amount,
   enteredBy:adminId,
-  conductedBy:adminId
+  conductedBy:adminId,
+  phoneNo:"0776450707"
 }
 console.log(dataObj,"dataObj");
 
