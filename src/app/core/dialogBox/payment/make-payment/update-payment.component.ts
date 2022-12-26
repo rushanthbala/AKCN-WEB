@@ -105,7 +105,7 @@ export class UpdatePaymentComponent implements OnInit {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Finished', 'Sucessfully');
-    // window.location.reload()
+    window.location.reload()
 
   }
   showError() {
