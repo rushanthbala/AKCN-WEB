@@ -37,8 +37,7 @@
             color: #707070;
             opacity: 1;
           "
-          [(ngModel)]="startDate"
-          (ngModelChange)="validateDates()"
+         useValueAsDate
         />
       </div>
       <div class="mb-3 cus-int-div">
@@ -54,10 +53,9 @@
             color: #707070;
             opacity: 1;
           "
-          [(ngModel)]="endDate"
-          (ngModelChange)="validateDates()"
+         useValueAsDate
         />
-        <div *ngIf="validationError" class="text-small">{{validationError}}</div>
+        <div *ngIf="loginForm.errors" class="text-small">{{ loginForm.errors?.dates}}</div>
       </div>
       <div class="cus-int-div ">
         <span
@@ -76,6 +74,7 @@
           style="opacity: 0.7"
           >Running ...</span
         >
+        <!-- <label *ngIf="loginForm.errors">{{ loginForm.errors?.dates | json }}</label> -->
       </div>
     </div>
 

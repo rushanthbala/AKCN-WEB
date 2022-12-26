@@ -48,11 +48,13 @@ export class CollectionReportUpdateComponent {
     private fb: FormBuilder,
     private toastr: ToastrService,
     public dataServise: HttpService
-  ) {}
+  ) {
+    this.initialForm();
+  }
   loginForm: FormGroup | any;
 
   ngOnInit(): void {
-    this.initialForm();
+    
     this.getAll();
   }
   getAll() {
@@ -78,14 +80,26 @@ export class CollectionReportUpdateComponent {
     this.loginForm = this.fb.group({
       fromdate: new FormControl('', [Validators.required]),
       todate: new FormControl('', [Validators.required]),
-    });
+    }, {validator: this.dateLessThan('fromdate', 'todate')});
   }
 
-  validateDates() {
-    if (this.startDate > this.endDate) {
-      this.validationError = 'From date must be greater than to date';
-    } else {
-      this.validationError = '';
+  // validateDates() {
+  //   if (this.startDate > this.endDate) {
+  //     this.validationError = 'From date must be greater than to date';
+  //   } else {
+  //     this.validationError = '';
+  //   }
+  // }
+  dateLessThan(from: string, to: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+     let f = group.controls[from];
+     let t = group.controls[to];
+     if (f.value > t.value) {
+       return {
+         dates: "Date from should be less than Date to"
+       };
+     }
+     return {};
     }
   }
 
@@ -122,6 +136,6 @@ export class CollectionReportUpdateComponent {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Feild', 'Error');
+    this.toastr.error('Pleace Recheck your Details', 'Error');
   }
 }

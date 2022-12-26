@@ -14,7 +14,7 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
         >
-          <!-- <option disabled selected value="null">User</option> -->
+          <option disabled selected value="null">User</option>
           <option *ngFor="let item of TechnicianArray" [ngValue]="item">
             {{ item.firstName }}
           </option>
