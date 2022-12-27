@@ -1,68 +1,108 @@
 <form [formGroup]="chackRequest">
-    <div class=" cus-model-c-div">
-        <div class="form-heading int-div card-head-h2">
-            Edit Subscriper
+  <div class="cus-model-c-div">
+    <div class="form-heading int-div card-head-h2">Edit Subscriper</div>
+    <p class="para">{{ data.id }}</p>
+    <div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6 mt-3">
+          <div class="para mt-3 ps-3">NIC</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="NIC"
+            placeholder="NIC"
+            formControlName="NIC"
+          />
         </div>
-        <p class="para">{{data.id}}</p>
-        <div>
-            <div class="row mt-2 ">
-                <div class="col-12 col-sm-6  mt-3">
-                    <div class="para mt-3 ps-3">NIC </div>
-                    <input type="text" class="form-control int" id="NIC" placeholder="NIC"
-                        formControlName="NIC" />
-                </div>
-                <div class="col-12 col-sm-6  mt-3">
-                    <div class="para mt-3 ps-3">First Name </div>
-                    <input type="text" class="form-control int" id="firstName" placeholder="First Name"
-                        formControlName="firstName" />
-                </div>
-            </div>
-            <div class="row mt-2 ">
-                <div class="col-12 col-sm-6  mt-3">
-                    <div class="para mt-3 ps-3">Last Name </div>
-                    <input type="text" class="form-control int" id="lastName" placeholder="Last Name"
-                        formControlName="lastName" />
-                </div>
-                <div class="col-12 col-sm-6  mt-3">
-                    <div class="para mt-3 ps-3">Primary Phone </div>
-                    <input type="text" class="form-control int" id="primaryNo" placeholder="Primary Phone"
-                        formControlName="primaryNo" />
-                </div>
-            </div>
-            <div class="row mt-2 ">
-                <div class="col-12 col-sm-6  mt-3">
-                    <div class="para mt-3 ps-3">Secoundary Phone </div>
-                    <input type="text" class="form-control int" id="secoundaryNo" placeholder="Secoundary Phone"
-                        formControlName="secoundaryNo" />
-                </div>
-                <div class="col-12 col-sm-6  mt-3">
-                    <div class="para mt-3 ps-3">Email </div>
-                    <input type="email" class="form-control int" id="email" placeholder="Email"
-                        formControlName="email" />
-                </div>
-            </div>
+        <div class="col-12 col-sm-6 mt-3">
+          <div class="para mt-3 ps-3">First Name</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="firstName"
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6 mt-3">
+          <div class="para mt-3 ps-3">Last Name</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="lastName"
+            placeholder="Last Name"
+            formControlName="lastName"
+          />
+        </div>
+        <div class="col-12 col-sm-6 mt-3">
+          <div class="para mt-3 ps-3">Primary Phone</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="primaryNo"
+            placeholder="Primary Phone"
+            formControlName="primaryNo"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6 mt-3">
+          <div class="para mt-3 ps-3">Secoundary Phone</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="secoundaryNo"
+            placeholder="Secoundary Phone"
+            formControlName="secoundaryNo"
+          />
+        </div>
+        <div class="col-12 col-sm-6 mt-3">
+          <div class="para mt-3 ps-3">Email</div>
+          <input
+            type="email"
+            class="form-control int"
+            id="email"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </div>
+      </div>
 
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6">
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                        (click)="onNoClick()"
-                        style="background-color:#fff  !important;color:#027afe !important;border: none !important;">
-                        Cancel
-                    </button>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <button *ngIf="!loading" class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                        (click)="ReconnectionRequest()">
-                        Update
-                    </button>
-                    <button *ngIf="loading" class="opacity-75 disabled input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                    (click)="ReconnectionRequest()">
-                    Loading ...
-                </button>
-                </div>
-            </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <button
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="onNoClick()"
+            style="
+              background-color: #fff !important;
+              color: #027afe !important;
+              border: none !important;
+            "
+          >
+            Cancel
+          </button>
         </div>
-        <!-- <div class="row">
+        <div class="col-12 col-sm-6">
+          <button
+            *ngIf="!loading"
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="ReconnectionRequest()"
+          >
+            Update
+          </button>
+          <button
+            *ngIf="loading"
+            class="opacity-75 disabled input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="ReconnectionRequest()"
+          >
+            Loading ...
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
             <div class="col-6">
                 <div>
                     <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
@@ -116,5 +156,5 @@
                 </div>
             </div>
         </div> -->
-    </div>
+  </div>
 </form>

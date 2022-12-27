@@ -1,3 +1,6 @@
+.card{
+  border: none;
+}
 .heading {
     color: #000000;
     font-size: 14px;
@@ -146,9 +149,18 @@
   .mat-footer-cell:last-of-type {
     padding-right: 0px;
   }
+  td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 90px; 
+    border-bottom-left-radius: 90px;
+  }
+  td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 90px; 
+    border-top-right-radius: 90px; 
+  }
   .mat-row:nth-child(odd) {
     background: #f8f8f8;
-    border-radius: 10px;
   }
   ::ng-deep .mat-sort-header-arrow {
     color: #027afe;

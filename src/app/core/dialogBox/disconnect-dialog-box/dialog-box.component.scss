@@ -2,6 +2,13 @@
   padding: 10px;
   max-width: 500px;
 }
+.form-select{
+  border-radius: 10px;
+  border: 0px solid #99999911;
+  background-color: #99999911;
+  cursor: pointer;
+  height: 40px;
+}
 
 .int {
   padding-left: 20px;
@@ -11,25 +18,27 @@
   width: 100%;
   font-size: 12px;
   background: #99999911 0% 0% no-repeat padding-box;
-  border-radius: 10px;
+  border-radius: 29px;
   color: #707070;
 }
 
 .cus-model-btn-down {
   color: #fff !important;
-  border-radius: 10px;
+  border-radius: 30px;
   max-width: 220px;
-  width: 100%;
+  width: 50%;
   font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  margin: 1rem 0rem 0rem 0rem;
   background-color: #027afe !important;
-  height: 50px;
+  height: 40px;
+  margin-left: 25%;
+  cursor: pointer;
 }
 .btn-cancel{
   margin-top: 8px;
   font-size: 12px !important;
+  cursor: pointer;
 }

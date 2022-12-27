@@ -46,8 +46,10 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
     this.dataServise.getData(`ticket/status/pending`).subscribe((res) => {
       this.TICKET_DATA = res;
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-      this.dataSource.paginator = this.paginator;
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      }, 1)
       console.log(res);
       this.ifGetData=true
     },(err)=>{

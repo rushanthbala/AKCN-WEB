@@ -1,29 +1,67 @@
 <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-    <p class="heading">Enter the Connection ID & arrears amount to update the due</p>
-    <br />
-    <div class="input-group mb-3">
-
-        <div
-            class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
-            <div class="mb-3 cus-int-div">
-                <input type="text" class="form-control int" id="connectionId" placeholder="Connection ID" formControlName="connectionId"  />
-            </div>
-            <div class="mb-3 cus-int-div">
-                <input type="text" class="form-control int" id="amount" placeholder="Amount" formControlName="amount"  />
-            </div>
-            <div class="mb-3 cus-int-div">
-                <input type="date" class="form-control int" id="arreardate" placeholder="Arrear Date" formControlName="arreardate"  />
-            </div>
-            <div class="cus-int-div">
-                <span class="input-group-text cus-btn align-items-center justify-content-center" id="basic-addon2"
-                    (click)="emitEvent()" *ngIf="!loading">
-                    Update</span>
-                <span class="input-group-text cus-btn align-items-center justify-content-center disabled"
-                    id="basic-addon2" (click)="emitEvent()" *ngIf="loading" style="opacity: 0.7;">Update
-                    ...</span>
-            </div>
-        </div>
-        <!-- <div class="row w-100">
+  <p class="heading">
+    Enter the Connection ID & arrears amount to update the due
+  </p>
+  <br />
+  <div class="input-group mb-3">
+    <div
+      class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
+    >
+      <div class="mb-3 cus-int-div">
+        <input
+          type="text"
+          class="form-control int"
+          id="connectionId"
+          placeholder="Connection ID"
+          formControlName="connectionId"
+        />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <input
+          type="text"
+          class="form-control int"
+          id="amount"
+          placeholder="Amount"
+          formControlName="amount"
+        />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <input
+          type="date"
+          class="form-control int"
+          required
+          id="arreardate"
+          placeholder="Arrears Date"
+          formControlName="arreardate"
+          style="
+            font: normal normal normal 13px/21px Poppins;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 1;
+          "
+          useValueAsDate
+        />
+      </div>
+      <div class="cus-int-div">
+        <span
+          class="input-group-text cus-btn align-items-center justify-content-center"
+          id="basic-addon2"
+          (click)="emitEvent()"
+          *ngIf="!loading"
+        >
+          Update</span
+        >
+        <span
+          class="input-group-text cus-btn align-items-center justify-content-center disabled"
+          id="basic-addon2"
+          (click)="emitEvent()"
+          *ngIf="loading"
+          style="opacity: 0.7"
+          >Update ...</span
+        >
+      </div>
+    </div>
+    <!-- <div class="row w-100">
             <div class="col12 sm-col-6 col-md-8  mt-1">
                 <input type=" " class="form-control me-2 int" placeholder="Subscriber's NIC"
                     aria-label="Recipient's username" aria-describedby="basic-addon2"
@@ -37,7 +75,6 @@
             </div>
         </div> -->
 
-        <br />
-
-    </div>
+    <br />
+  </div>
 </form>

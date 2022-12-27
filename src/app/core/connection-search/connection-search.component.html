@@ -1,24 +1,44 @@
 <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-    <p class="heading">Enter subscriber's NIC to check exist or not</p>
+  <div class="card">
+    <p class="card-text">Enter subscriber's NIC to check exist or not</p>
     <br />
-    <div class="para">Type new NIC number or old NIC number without last text</div>
+    <div class="para">
+      Type new NIC number or old NIC number without last text
+    </div>
 
     <div class="input-group mb-3">
-        <div class="row w-100">
-            <div class="col12 sm-col-6 col-md-8  mt-1">
-                <input type=" " class="form-control me-2 int" placeholder="Subscriber's NIC"
-                    aria-label="Recipient's username" aria-describedby="basic-addon2"
-                    formControlName="searchinginput" />
-            </div>
-            <div class="col12 sm-col-6 col-md-4 mt-1">
-                <span class="input-group-text cus-btn align-items-center justify-content-center" id="basic-addon2" (click)="emitEvent()" *ngIf="!loading">
-                    Check Subscriber</span>
-                <span class="input-group-text cus-btn align-items-center justify-content-center disabled" id="basic-addon2" (click)="emitEvent()" *ngIf="loading"
-                    style="opacity: 0.7;">Check Subscriber ...</span>
-            </div>
+      <div class="row w-100">
+        <div class="col12 sm-col-6 col-md-8 mt-1">
+          <input
+            type=" "
+            class="form-control me-2 int"
+            placeholder="Subscriber's NIC"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            formControlName="searchinginput"
+          />
         </div>
+        <div class="col12 sm-col-6 col-md-4 mt-1">
+          <span
+            class="input-group-text cus-btn align-items-center justify-content-center"
+            id="basic-addon2"
+            (click)="emitEvent()"
+            *ngIf="!loading"
+          >
+            Check Subscriber</span
+          >
+          <span
+            class="input-group-text cus-btn align-items-center justify-content-center disabled"
+            id="basic-addon2"
+            (click)="emitEvent()"
+            *ngIf="loading"
+            style="opacity: 0.7"
+            >Check Subscriber ...</span
+          >
+        </div>
+      </div>
 
-        <br />
-
+      <br />
     </div>
+  </div>
 </form>

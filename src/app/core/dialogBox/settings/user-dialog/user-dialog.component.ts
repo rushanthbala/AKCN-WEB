@@ -67,8 +67,8 @@ export class UserPostPut implements OnInit {
     this.chackRequest = this.fb.group({
       firstName: this.ifData ? this.currentData.firstName : '',
       lastName: this.ifData ? this.currentData.lastName : '',
-      role: this.ifData ? this.currentData.role : null,
-      branch: this.ifData ? this.currentData.branchName : null,
+      role: this.ifData ? this.currentData.roleID : null,
+      branch: this.ifData ? this.currentData.branchID : null,
     });
   }
   ReconnectionRequest() {

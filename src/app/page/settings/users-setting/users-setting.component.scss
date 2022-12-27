@@ -1,3 +1,6 @@
+.card{
+  border: none;
+}
 .input-div {
   width: 220px;
 }
@@ -6,11 +9,12 @@
   height: 50px;
   border: none;
   outline: none;
-  width: 100%;
+  width: 120%;
   font-size: 12px;
   background: #99999911 0% 0% no-repeat padding-box;
-  border-radius: 10px;
+  border-radius: 36px;
   color: #707070;
+  padding: 0px 0px 0px 20px;
 }
 
 .cus-btn-down {
@@ -18,7 +22,7 @@
   padding: 4px 16px;
   height: 50px;
   color: #fff;
-  border-radius: 10px;
+  border-radius: 90px;
   width: 100%;
   font-size: 14px;
   display: flex;
@@ -78,9 +82,18 @@
 .mat-footer-cell:last-of-type {
   padding-right: 0px;
 }
+td:first-child {
+  border-left-style: solid;
+  border-top-left-radius: 90px; 
+  border-bottom-left-radius: 90px;
+}
+td:last-child {
+  border-right-style: solid;
+  border-bottom-right-radius: 90px; 
+  border-top-right-radius: 90px; 
+}
 .mat-row:nth-child(odd) {
   background: #f8f8f8;
-  border-radius: 10px;
 }
 ::ng-deep .mat-sort-header-arrow {
   color: #027afe;

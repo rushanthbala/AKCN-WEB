@@ -49,8 +49,7 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
       paymentType:"DISCOUNT",
       amount:this.Reconnection.value.amount,
       enteredBy:adminId,
-      conductedBy:adminId,
-      phoneNo:this.data.primaryPhone
+      conductedBy:adminId
     }
     console.log(dataObj, "data");
 

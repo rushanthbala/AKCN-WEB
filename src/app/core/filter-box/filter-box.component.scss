@@ -9,7 +9,7 @@
 }
 
 .cus-form-check {
-    margin: 0px 14px 14px 1px;
+    margin: 0px 60px 14px 1px;
     label{
         padding-left: 5px !important;
         padding-top: 2px;
@@ -20,11 +20,12 @@
     background: #027afe 0% 0% no-repeat padding-box;
     background: #027AFE 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 33px #00000014;
-    border-radius: 10px !important;
+    border-radius: 36px !important;
     color: #fff;
     height: 50px;
     font-size: 14px;
-
+    width: 70%;
+    cursor: pointer;
 }
 
 .int {
@@ -34,9 +35,10 @@
     outline: none;
     font-size: 14px;
     background: #99999917 0% 0% no-repeat padding-box;
-    border-radius: 10px !important;
     color: #707070;
+    border-radius: 36px !important;
 }
+
 
 // table
 .main-div {

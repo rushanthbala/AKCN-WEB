@@ -1,118 +1,175 @@
 <form [formGroup]="chackRequest">
-    <div class=" cus-model-c-div">
-        <div class="form-heading int-div card-head-h2">
-            Edit Connection
+  <div class="cus-model-c-div">
+    <div class="form-heading int-div card-head-h2">Edit Connection</div>
+    <!-- {{data |json}} -->
+    <p class="para">{{ data.id }}</p>
+    <div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6 d-flex align-items-center">
+          <div class="d-flex flex-wrap">
+            <div class="form-check cus-form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="Normal"
+                formControlName="type"
+                value="Normal"
+                name="type"
+              />
+              <label class="form-check-label para lbl" for="Normal">
+                Normal
+              </label>
+            </div>
+
+            <div class="form-check cus-form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="powerPass"
+                formControlName="type"
+                value="powerPass"
+                name="type"
+              />
+              <label class="form-check-label para lbl" for="powerPass">
+                power Pass
+              </label>
+            </div>
+
+            <div class="form-check cus-form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="FreeLine"
+                formControlName="type"
+                value="FreeLine"
+                name="type"
+              />
+              <label class="form-check-label para lbl" for="FreeLine">
+                Free Line
+              </label>
+            </div>
+          </div>
         </div>
-        <!-- {{data |json}} -->
-        <p class="para">{{data.id}}</p>
-        <div>
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6 d-flex align-items-center">
 
-                    <div class="d-flex flex-wrap  ">
-                        <div class="form-check cus-form-check">
-                            <input class="form-check-input" type="radio" id="Normal" formControlName="type"
-                                value="Normal" name="type" />
-                            <label class="form-check-label para lbl" for="Normal">
-                                Normal
-                            </label>
-                        </div>
-
-                        <div class="form-check cus-form-check">
-                            <input class="form-check-input" type="radio" id="powerPass" formControlName="type"
-                                value="powerPass" name="type" />
-                            <label class="form-check-label para lbl" for="powerPass">
-                                power Pass
-                            </label>
-                        </div>
-
-                        <div class="form-check cus-form-check">
-                            <input class="form-check-input" type="radio" id="FreeLine" formControlName="type"
-                                value="FreeLine" name="type" />
-                            <label class="form-check-label para lbl" for="FreeLine">
-                                Free Line
-                            </label>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6  mt-3">
-                    <!-- <div class="para mt-3 ps-3">Old ID </div> -->
-                    <input type="text" class="form-control int" id="ID" placeholder="Old Id" formControlName="oldId" />
-                </div>
-
-            </div>
-
-            <div class="row mt-2 ">
-                <div class="col-12 col-sm-6  mt-3">
-                    <!-- <div class="para mt-3 ps-3">Number Of TVs </div> -->
-                    <input type="text" class="form-control int" id="ID" placeholder="Number Of TVs"
-                        formControlName="NoOfTV" />
-                </div>
-                <div class="col-12 col-sm-6  mt-3">
-                    <!-- <div class="para mt-3 ps-3">House Number </div> -->
-                    <input type="text" class="form-control int" id="ID" placeholder="House Number"
-                        formControlName="houseNo" />
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6 ">
-                    <div class="para mt-3 ps-3 "> </div>
-                    <select class="form-select mt-2" aria-label="Default select example"
-                        (change)='onSelectarea(val.value)' required #val>
-                        <option disabled selected value="null">{{areaCodeName}}</option>
-                        <option *ngFor="let item of areaArray" [value]="item.id">
-                            {{ item.area }}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="para mt-3 ps-3 "> </div>
-                    <select class="form-select mt-2" aria-label="Default select example" (change)='onSelect(val.value)'
-                        required #val>
-                        <option disabled selected value="null">{{roadIDName}}</option>
-                        <option *ngFor="let item of roadArray" [value]="item.id">
-                            {{ item.road }}
-                        </option>
-                    </select>
-                </div>
-            </div>
-            <!-- branch & date -->
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6 ">
-                    <div class="para mt-3 ps-3 "> </div>
-                    <select class="form-select mt-2" aria-label="Default select example"
-                        (change)='onSelectbranch(val3.value)' required #val3>
-                        <option disabled selected value="null">{{branchIDName}}</option>
-                        <option *ngFor="let item of branchArray" [value]="item.id">
-                            {{ item.branchName }}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-12 col-sm-6  mt-3">
-                    <!-- <div class="para mt-3 ps-3">House Number </div> -->
-                    <input type="date" class="form-control int" id="ID" placeholder="House Number"
-                        formControlName="connectdDate" />
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6">
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                        (click)="onNoClick()"
-                        style="background-color:#fff  !important;color:#027afe !important;border: none !important;">
-                        Cancel
-                    </button>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                        (click)="ReconnectionRequest()">
-                        Update
-                    </button>
-                </div>
-            </div>
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">Old ID </div> -->
+          <input
+            type="text"
+            class="form-control int"
+            id="ID"
+            placeholder="Old Id"
+            formControlName="oldId"
+          />
         </div>
-        <!-- <div class="row">
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">Number Of TVs </div> -->
+          <input
+            type="text"
+            class="form-control int"
+            id="ID"
+            placeholder="Number Of TVs"
+            formControlName="NoOfTV"
+          />
+        </div>
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">House Number </div> -->
+          <input
+            type="text"
+            class="form-control int"
+            id="ID"
+            placeholder="House Number"
+            formControlName="houseNo"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3"></div>
+          <select
+            class="form-select mt-2"
+            aria-label="Default select example"
+            (change)="onSelectarea(val.value)"
+            required
+            #val
+          >
+            <option disabled selected value="null">{{ areaCodeName }}</option>
+            <option *ngFor="let item of areaArray" [value]="item.id">
+              {{ item.area }}
+            </option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3"></div>
+          <select
+            class="form-select mt-2"
+            aria-label="Default select example"
+            (change)="onSelect(val.value)"
+            required
+            #val
+          >
+            <option disabled selected value="null">{{ roadIDName }}</option>
+            <option *ngFor="let item of roadArray" [value]="item.id">
+              {{ item.road }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- branch & date -->
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3"></div>
+          <select
+            class="form-select mt-2"
+            aria-label="Default select example"
+            (change)="onSelectbranch(val3.value)"
+            required
+            #val3
+          >
+            <option disabled selected value="null">{{ branchIDName }}</option>
+            <option *ngFor="let item of branchArray" [value]="item.id">
+              {{ item.branchName }}
+            </option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">House Number </div> -->
+          <input
+            type="date"
+            class="form-control int"
+            id="ID"
+            placeholder="House Number"
+            formControlName="connectdDate"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <button
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="onNoClick()"
+            style="
+              background-color: #fff !important;
+              color: #027afe !important;
+              border: none !important;
+            "
+          >
+            Cancel
+          </button>
+        </div>
+        <div class="col-12 col-sm-6">
+          <button
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="ReconnectionRequest()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
             <div class="col-6">
                 <div>
                     <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
@@ -166,5 +223,5 @@
                 </div>
             </div>
         </div> -->
-    </div>
+  </div>
 </form>

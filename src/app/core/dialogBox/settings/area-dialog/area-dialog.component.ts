@@ -60,7 +60,7 @@ export class AreaDialogComponent implements OnInit {
     this.chackRequest = this.fb.group({
       area: this.ifData ?this.currentData.area: "",
       rental: this.ifData ?this.currentData.rental: "",
-      branch:this.ifData ?this.currentData.branchName:null
+      branch:this.ifData ?this.currentData.branchID:null
     });
   }
   ReconnectionRequest() {

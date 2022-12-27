@@ -2,6 +2,13 @@
   padding: 10px;
   max-width: 500px;
 }
+.text-small {
+  text-align: left;
+  font: normal normal normal 12px/16px Poppins;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
 
 .int {
   padding-top: 16px;
@@ -18,9 +25,9 @@
 
 .cus-model-btn-down {
   color: #fff !important;
-  border-radius: 10px;
+  border-radius: 30px;
   max-width: 220px;
-  width: 100%;
+  width: 50%;
   font-size: 12px;
   display: flex;
   align-items: center;
@@ -28,9 +35,10 @@
   padding: 10px;
   margin: 1rem 0rem 0rem 0rem;
   background-color: #027afe !important;
-  height: 50px;
+  height: 40px;
+  margin-left: 25%;
 }
-.btn-cancel{
+.btn-cancel {
   margin-top: 8px;
   font-size: 12px !important;
 }

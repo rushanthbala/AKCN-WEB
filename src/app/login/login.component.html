@@ -1,26 +1,73 @@
-<form class="register-form" [formGroup]="loginForm" (ngSubmit)="login()">
-  <img src="../../assets/icons/logo1.png" class="fa fa-minus" aria-hidden="true" />
-  <br/>
-  <br/>
-  <h1 class="form-heading mb-4">Login in to dashboard</h1>
-  <br />
-  <div class="mb-3 int-main-div">
-    <input placeholder="Phone Number" type="email" class="input-core" id="exampleInputEmail1"
-      aria-describedby="emailHelp" formControlName="email" required/>
-  </div>
-  <!-- <br /> -->
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <form
+          class="register-form"
+          [formGroup]="loginForm"
+          (ngSubmit)="login()"
+        >
+          <img
+            src="../../assets/icons/logo1.png"
+            class="fa fa-minus"
+            aria-hidden="true"
+          />
+          <br />
+          <br />
+          <h1 class="form-heading mb-4">Login in to dashboard</h1>
+          <br />
+          <div class="mb-3 int-main-div">
+            <input
+              placeholder="Phone Number"
+              type="email"
+              class="input-core"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="email"
+              required
+            />
+          </div>
+          <!-- <br /> -->
 
-  <div class="mb-3 int-main-div">
-    <input type="password" class="input-core" id="exampleInputPassword1" placeholder="Password"
-      formControlName="password" required />
+          <div class="mb-3 int-main-div">
+            <input
+              type="password"
+              class="input-core"
+              id="exampleInputPassword1"
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
+          </div>
+          <br />
+          <div class="mb-3" *ngIf="!loading">
+            <button type="submit" class="btn btn-primary form-btn">
+              Login
+            </button>
+          </div>
+          <div class="mb-3" *ngIf="loading">
+            <button type="submit" class="btn btn-primary form-btn" disabled>
+              Loading..
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- <div class="col-md-6">
+        <img
+          src="../../assets/login.png"
+          alt="Login image"
+          class="img-thumbnail"
+          style="object-fit: cover;"
+        />
+      </div> -->
+      <div class="col-md-6 d-none px-0 d-md-block" style="background-color: #469dfe;">
+        <img
+          src="../../assets/login.png"
+          alt="Login image"
+          class="vh-100 w-100 img-fluid"
+          style="object-fit: cover;"
+        />
+      </div>
+    </div>
   </div>
-  <br />
-  <div class="mb-3" *ngIf="!loading">
-    <button type="submit" class="btn btn-primary form-btn">Login</button>
-  </div>
-  <div class="mb-3" *ngIf="loading">
-    <button type="submit" class="btn btn-primary form-btn" disabled>
-      Loading..
-    </button>
-  </div>
-</form>
+</section>

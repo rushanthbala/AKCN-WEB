@@ -1,3 +1,7 @@
+.card{
+  border: none;
+  margin-top: -5%;
+}
 .heading {
     color: #000000;
     font-size: 14px;
@@ -14,10 +18,10 @@
     color: #fff;
     border-radius: 6px;
   }
-  .int {
-    border-radius: 10px !important;
-    background-color: #99999917;
-  }
+  // .int {
+  //   border-radius: 10px !important;
+  //   background-color: #99999917;
+  // }
   
   // table
   .main-div {
@@ -64,6 +68,7 @@
   }
   tr:nth-child(even) {
     background-color: #99999917;
+    border-radius: 20px;
   }
   .status {
     border-radius: 24px;
@@ -81,13 +86,13 @@
   }
   .int {
     padding-left: 20px;
-    height: 50px;
+    height: 40px;
     border: none;
     outline: none;
     width: 100%;
     font-size: 12px;
     background: #99999911 0% 0% no-repeat padding-box;
-    border-radius: 10px;
+    border-radius: 90px;
     color: #707070;
   }
   .cus-int-div {
@@ -100,13 +105,14 @@
     width: 100%;
   }
   .btn-div-set {
-    max-width: 985px;
+    max-width: 730px;
     margin-top: 1rem;
+    margin-bottom: 5%;
   }
   .cus-btn-down {
-    height: 50px;
+    height: 40px;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 30px;
     max-width: 220px;
     width: 100%;
     font-size: 12px;

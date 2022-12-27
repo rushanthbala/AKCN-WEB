@@ -48,8 +48,11 @@ export class AssignTicketComponent implements AfterViewInit, OnInit {
       this.dataServise.getData(`ticket/status/assigned`).subscribe((res) => {
       this.TICKET_DATA = res;
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-      this.dataSource.paginator = this.paginator;
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      })
+      
       console.log(res);
       this.ifGetData=true
     },(err)=>{

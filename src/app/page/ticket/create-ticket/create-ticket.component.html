@@ -1,50 +1,150 @@
-<p class="heading">Choose searching type and enter the value</p>
-<br />
-<app-filter-box (OnClick)="searching($event)"></app-filter-box>
-<!-- <app-custom-button text="'000000000'" btnClass="btn" (OnClick)="test()" ></app-custom-button> -->
-
-<br />
-<br />
-<!-- <div *ngIf="!isFetchDataFail"> -->
-
-  <p class="head-2" *ngIf="showTable && !isFetchDataFail">{{tableResult}} Results found</p>
-  <p class="head-2 p-5"  *ngIf="isFetchDataFail">No Data found</p>
-  <!-- table -->
-  <div class="main-div">
-    <div class="table-div" *ngIf="showTable && !isFetchDataFail">
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>SUBSCRIBER</th>
-          <th>PHONE</th>
-          <th>ADDRESS</th>
-          <th>STATUS</th>
-          <th>TV</th>
-          <th>TYPE</th>
-        </tr>
-        <tr *ngFor="
-          let us of userData | paginate: { itemsPerPage: 5, currentPage: p }
-        " (click)="viewDetails(us)">
-          <td>{{ us.id }}</td>
-          <td>{{ us.firstName }} {{us.lastName}}</td>
-
-          <td>{{ us.primaryPhone }}</td>
-          <td>{{ us.connectionAddress }}</td>
-          <td>
-            <div class="status {{us.connectionStatus.toUpperCase()}}">
-              {{ us.connectionStatus }}
-            </div>
-          </td>
-          <td>{{ us.tvCount }}</td>
-          <td>{{ us.connectionType }}</td>
-        </tr>
-      </table>
-      <br />
-      <pagination-controls class="my-pagination" previousLabel="Previous" nextLabel="Next"
-        screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" (pageChange)="p = $event">
-      </pagination-controls>
-    </div>
-    <div *ngIf="isSubscriberdata && !isFetchDataFail && !showTable ">
-      <app-edit-ticket [object]='subscriberdata' text="text"></app-edit-ticket>
-    </div>
+<div class="card">
+  <div class="card-text">Choose searching type and enter the value</div>
+  <br />
+  <div class="card-body">
+    <app-filter-box (OnClick)="searching($event)"></app-filter-box>
   </div>
+  <!-- <app-custom-button text="'000000000'" btnClass="btn" (OnClick)="test()" ></app-custom-button> -->
+</div>
+
+<br />
+<br />
+<p class="head-2" *ngIf="showTable && !isFetchDataFail">
+  {{ tableResult }} Results found
+</p>
+<!-- <p class="head-2 p-5" *ngIf="isFetchDataFail">No Data found</p> -->
+
+<div class="main-div">
+  <div class="container-6" *ngIf="showTable && !isFetchDataFail">
+    <div id="htmlData">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="announceSortChange($event)"
+        class=""
+      >
+        <td mat-cell *matCellDef="let row"></td>
+        <!-- userID Column -->
+        <ng-container matColumnDef="id">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by id"
+          >
+            ID
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+            {{ element.id }}
+          </td>
+        </ng-container>
+
+        <!-- firstName Column -->
+        <ng-container matColumnDef="firstName">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by firstName"
+          >
+            SUBSCRIBER
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+            {{ element.firstName }} {{ element.lastName }}
+          </td>
+        </ng-container>
+
+        <!-- roleID Column -->
+        <ng-container matColumnDef="primaryPhone">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by primaryPhone"
+          >
+            PHONE
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+            {{ element.primaryPhone }}
+          </td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="connectionAddress">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by connectionAddress"
+          >
+            ADDRESS
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+            {{ element.connectionAddress }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="connectionStatus">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by connectionStatus"
+          >
+            STATUS
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngStyle]="{
+              color: element.status == 'Active' ? '#31AB25' : '#B50A00'
+            }"
+            (click)="viewDetails(element)"
+          >
+            {{ element.connectionStatus }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="tvCount">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by tvCount"
+          >
+            TV
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+            {{ element.tvCount }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="connectionType">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by connectionType"
+          >
+            TYPE
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+            {{ element.connectionType }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+  <div *ngIf="isSubscriberdata">
+    <app-edit-ticket [object]='subscriberdata' text="text"></app-edit-ticket>
+  </div>
+</div>
+<div *ngIf="showTable && userData.length == 0" class="head-2 p-5">
+  No Data Found
+</div>

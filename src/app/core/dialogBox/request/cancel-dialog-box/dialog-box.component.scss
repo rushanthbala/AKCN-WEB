@@ -1,24 +1,42 @@
+.cdk-overlay-pane {
+  width: 500px !important;
+}
+.cus-form-check {
+  margin: 0px 6px 10px 1px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.lbl {
+  padding-left: 12px;
+}
 .mat-dialog-container {
   padding: 10px;
   max-width: 500px;
 }
+.form-select{
+  border-radius: 90px;
+  border: 0px solid #99999911;
+  background-color: #99999911;
+  cursor: pointer;
+  height: 40px;
+}
 
 .int {
-  padding-top: 16px;
   padding-left: 20px;
-  height: 100px;
+  height: 50px;
   border: none;
   outline: none;
   width: 100%;
   font-size: 12px;
   background: #99999911 0% 0% no-repeat padding-box;
-  border-radius: 10px;
+  border-radius: 90px;
   color: #707070;
 }
 
 .cus-model-btn-down {
   color: #fff !important;
-  border-radius: 10px;
+  border-radius: 30px;
   max-width: 220px;
   width: 100%;
   font-size: 12px;
@@ -26,9 +44,8 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
-  margin: 1rem 0rem 0rem 0rem;
   background-color: #027afe !important;
-  height: 50px;
+  height: 40px;
 }
 .btn-cancel{
   margin-top: 8px;

@@ -1,75 +1,162 @@
+<div class="card">
 <form [formGroup]="inputset">
   <div
-    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content">
+    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
+  >
     <div class="mb-3 cus-int-div">
       <label for="NIC" class="form-label labels">NIC </label>
-      <input type="text" class="form-control int" id="NIC" placeholder="9999999999V" value="{{object.subscriberNIC}}"
-        readonly />
+      <input
+        type="text"
+        class="form-control int"
+        id="NIC"
+        placeholder="9999999999V"
+        value="{{ object.subscriberNIC }}"
+        readonly
+      />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="SUBSCRIBER" class="form-label labels">SUBSCRIBER</label>
-      <input type="text" class="form-control int" id="SUBSCRIBER" value="{{object.firstName}}" readonly
-        placeholder="SUBSCRIBER" />
+      <input
+        type="text"
+        class="form-control int"
+        id="SUBSCRIBER"
+        value="{{ object.firstName }}"
+        readonly
+        placeholder="SUBSCRIBER"
+      />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="PHONE" class="form-label labels">PHONE</label>
-      <input type="text" class="form-control int" id="PHONE" value="{{object.primaryPhone}}" readonly
-        placeholder="PHONE" />
+      <input
+        type="text"
+        class="form-control int"
+        id="PHONE"
+        value="{{ object.primaryPhone }}"
+        readonly
+        placeholder="PHONE"
+      />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="PHONE" class="form-label labels">PHONE</label>
-      <input type="text" class="form-control int" id="PHONE" value="{{object.secondaryPhone}}" readonly
-        placeholder="PHONE" />
+      <input
+        type="text"
+        class="form-control int"
+        id="PHONE"
+        value="{{ object.secondaryPhone }}"
+        readonly
+        placeholder="PHONE"
+      />
     </div>
 
     <!-- 2 -->
     <div class="mb-3 cus-int-div">
-      <label for="Pending Requests" class="form-label labels">Pending Requests</label>
-      <input type="text" class="form-control int" id="Pending Requests" value="{{pendingRequest}}" readonly
-        placeholder="9999999999V" />
+      <label for="Pending Requests" class="form-label labels"
+        >Pending Requests</label
+      >
+      <input
+        type="text"
+        class="form-control int"
+        id="Pending Requests"
+        value="{{ pendingRequest }}"
+        readonly
+        placeholder="9999999999V"
+      />
     </div>
     <div class="mb-3 cus-int-div">
-      <label for="Assigned Requests" class="form-label labels">Assigned Requests</label>
-      <input type="text" class="form-control int" id="Assigned Requests" value="{{assignRequest}}" readonly
-        placeholder="Assigned Requests" />
+      <label for="Assigned Requests" class="form-label labels"
+        >Assigned Requests</label
+      >
+      <input
+        type="text"
+        class="form-control int"
+        id="Assigned Requests"
+        value="{{ assignRequest }}"
+        readonly
+        placeholder="Assigned Requests"
+      />
     </div>
     <div class="mb-3 cus-int-div">
-      <label for="Closed Requests" class="form-label labels">Closed Requests</label>
-      <input type="text" class="form-control int" id="Closed Requests" value="{{closeRequest}}" readonly
-        placeholder="Closed Requests" />
+      <label for="Closed Requests" class="form-label labels"
+        >Closed Requests</label
+      >
+      <input
+        type="text"
+        class="form-control int"
+        id="Closed Requests"
+        value="{{ closeRequest }}"
+        readonly
+        placeholder="Closed Requests"
+      />
     </div>
     <div class="mb-3 cus-int-div">
-      <label for="Cancelled Requests" class="form-label labels">Cancelled Requests</label>
-      <input type="text" class="form-control int" id="Cancelled Requests" value="{{cancelRequest}}" readonly
-        placeholder="Cancelled Requests" />
+      <label for="Cancelled Requests" class="form-label labels"
+        >Cancelled Requests</label
+      >
+      <input
+        type="text"
+        class="form-control int"
+        id="Cancelled Requests"
+        value="{{ cancelRequest }}"
+        readonly
+        placeholder="Cancelled Requests"
+      />
     </div>
 
     <!-- 3 -->
     <div class="mb-3 cus-int-div">
       <label for="ID" class="form-label labels">ID</label>
-      <input type="text" class="form-control int" id="ID" value="{{object.connectionID}}" readonly
-        placeholder="9999999999V" />
+      <input
+        type="text"
+        class="form-control int"
+        id="ID"
+        value="{{ object.connectionID }}"
+        readonly
+        placeholder="9999999999V"
+      />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="Status" class="form-label labels">Status</label>
-      <input type="text" class="form-control int" id="Status" value="{{object.connectionStatus}}" readonly
-        placeholder="Status" />
+      <input
+        type="text"
+        class="form-control int"
+        id="Status"
+        value="{{ object.connectionStatus }}"
+        readonly
+        placeholder="Status"
+      />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="TV" class="form-label labels">TV</label>
-      <input type="text" class="form-control int" id="TV" value="{{object.tvCount}}" readonly placeholder="TV" />
+      <input
+        type="text"
+        class="form-control int"
+        id="TV"
+        value="{{ object.tvCount }}"
+        readonly
+        placeholder="TV"
+      />
     </div>
     <div class="mb-3 cus-int-div">
       <label for="Type" class="form-label labels">Type</label>
-      <input type="text" class="form-control int" id="Type" value="{{object.connectionType}}" readonly
-        placeholder="Type" />
+      <input
+        type="text"
+        class="form-control int"
+        id="Type"
+        value="{{ object.connectionType }}"
+        readonly
+        placeholder="Type"
+      />
     </div>
   </div>
 
   <div
-    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set">
-
-    <button class="input-group-text cus-btn-down btn-c-1" id="basic-addon2" (click)="createTicket()">
+    class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap btn-div-set"
+  >
+    <button
+      class="input-group-text cus-btn-down btn-c-1"
+      id="basic-addon2"
+      (click)="createTicket()"
+    >
       Create Ticket
     </button>
 
@@ -80,6 +167,6 @@
     <button class="input-group-text cus-btn-down btn-c-3" (click)="openDialog3()">
       Extra TV Request
     </button> -->
-
   </div>
 </form>
+</div>

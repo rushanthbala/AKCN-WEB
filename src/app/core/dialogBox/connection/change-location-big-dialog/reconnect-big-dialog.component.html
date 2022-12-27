@@ -1,85 +1,124 @@
 <form [formGroup]="chackRequest">
-    <div class=" cus-model-c-div">
-        <div class="form-heading int-div card-head-h2">
-            Change Location
+  <div class="cus-model-c-div">
+    <div class="form-heading int-div card-head-h2">Change Location</div>
+    <!-- {{data|json}} -->
+    <p class="para">{{ data.connectionID }}</p>
+    <div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6 d-flex align-items-end mt-3">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            (change)="onSelectTech(val.value)"
+            required
+            #val
+          >
+            <option disabled selected value="null">Technician</option>
+            <option *ngFor="let item of TechnicianArray" [value]="item.id">
+              {{ item.firstName }}
+            </option>
+          </select>
         </div>
-        <!-- {{data|json}} -->
-        <p class="para">{{data.connectionID}}</p>
-        <div>
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6 d-flex align-items-end  mt-3">
-                    <select class="form-select" aria-label="Default select example" (change)='onSelectTech(val.value)'
-                        required #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.id">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="para mt-3 ps-3">Disconnected Date </div>
-                    <input type="date" class="form-control int" id="ID" placeholder="12-12-2022"
-                        formControlName="disconnectedDate" />
-                </div>
-            </div>
-            <!-- <div class="para mt-3 ps-3 "> </div> -->
-            <!--  -->
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6 ">
-                    <div class="para mt-3 ps-3 "> </div>
-                    <select class="form-select mt-2" aria-label="Default select example"
-                        (change)='onSelectarea(val3.value)' required #val3>
-                        <option disabled selected value="null">{{areaCodeName}}</option>
-                        <option *ngFor="let item of areaArray" [value]="item.id">
-                            {{ item.area }}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="para mt-3 ps-3 "> </div>
-                    <select class="form-select mt-2" aria-label="Default select example" (change)='onSelect(val.value)'
-                        required #val>
-                        <option disabled selected value="null">{{roadIDName}}</option>
-                        <option *ngFor="let item of roadArray" [value]="item.id">
-                            {{ item.road }}
-                        </option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6">
-                    <div class="para mt-3 ps-3">New Address </div>
-                    <input type="text" class="form-control int" id="ID" placeholder="New Address"
-                        formControlName="newAddress" />
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="para mt-3 ps-3">Connection Fee </div>
-                    <input type="text" class="form-control int" id="ID" placeholder="Amount"
-                        formControlName="reconnectionFee" />
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-12 col-sm-6">
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="onNoClick()"
-                        style="background-color:#fff  !important;color:#027afe !important;border: none !important;">
-                        Cancel
-                    </button>
-                </div>
-                <div *ngIf="!loading" class="col-12 col-sm-6">
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                        (click)="ReconnectionRequest()">
-                        Update
-                    </button>
-                </div>
-                <div *ngIf="loading" class="col-12 col-sm-6">
-                    <button class="opacity-75 disabled input-group-text cus-btn-down cus-model-btn-down btn-c-1"
-                        (click)="ReconnectionRequest()">
-                        loading ...
-                    </button>
-                </div>
-            </div>
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3">Disconnected Date</div>
+          <input
+            type="date"
+            class="form-control int"
+            id="ID"
+            placeholder="12-12-2022"
+            formControlName="disconnectedDate"
+          />
         </div>
-        <!-- <div class="row">
+      </div>
+      <!-- <div class="para mt-3 ps-3 "> </div> -->
+      <!--  -->
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3"></div>
+          <select
+            class="form-select mt-2"
+            aria-label="Default select example"
+            (change)="onSelectarea(val3.value)"
+            required
+            #val3
+          >
+            <option disabled selected value="null">{{ areaCodeName }}</option>
+            <option *ngFor="let item of areaArray" [value]="item.id">
+              {{ item.area }}
+            </option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3"></div>
+          <select
+            class="form-select mt-2"
+            aria-label="Default select example"
+            (change)="onSelect(val.value)"
+            required
+            #val
+          >
+            <option disabled selected value="null">{{ roadIDName }}</option>
+            <option *ngFor="let item of roadArray" [value]="item.id">
+              {{ item.road }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3">New Address</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="ID"
+            placeholder="New Address"
+            formControlName="newAddress"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3">Connection Fee</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="ID"
+            placeholder="Amount"
+            formControlName="reconnectionFee"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <button
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="onNoClick()"
+            style="
+              background-color: #fff !important;
+              color: #027afe !important;
+              border: none !important;
+            "
+          >
+            Cancel
+          </button>
+        </div>
+        <div *ngIf="!loading" class="col-12 col-sm-6">
+          <button
+            class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="ReconnectionRequest()"
+          >
+            Update
+          </button>
+        </div>
+        <div *ngIf="loading" class="col-12 col-sm-6">
+          <button
+            class="opacity-75 disabled input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+            (click)="ReconnectionRequest()"
+          >
+            loading ...
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
             <div class="col-6">
                 <div>
                     <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
@@ -133,5 +172,5 @@
                 </div>
             </div>
         </div> -->
-    </div>
+  </div>
 </form>
