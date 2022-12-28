@@ -157,7 +157,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   }
 
   viewDetails(id: any){
-    // this.router.navigate([`auth/alter-connection/history/${id}`])
+    this.router.navigate([`auth/alter-connection/history/${id.id}`])
     console.log(id.id)
     console.log('component chnaged')
   }
