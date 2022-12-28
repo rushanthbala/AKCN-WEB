@@ -5,7 +5,7 @@
     <div
       class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
     >
-      <div class="mb-3 cus-int-div">
+      <div class="mb-3 cus-int-div user">
         <select
           class="form-select"
           aria-label="Default select example"
@@ -14,8 +14,8 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
         >
-          <option disabled selected value="null">User</option>
-          <option *ngFor="let item of TechnicianArray" [ngValue]="item">
+          <!-- <option disabled selected value="null">User</option> -->
+          <option *ngFor="let item of UserArray" [ngValue]="item">
             {{ item.firstName }}
           </option>
         </select>
@@ -24,19 +24,36 @@
         <input
           type="date"
           class="form-control int"
-          id="fromdate"
-          placeholder="Form"
+          required
+          placeholder="From"
           formControlName="fromdate"
+          style="
+            font: normal normal normal 13px/21px Poppins;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 1;
+          "
+          useValueAsDate
         />
       </div>
       <div class="mb-3 cus-int-div">
         <input
           type="date"
           class="form-control int"
-          id="todate"
+          required
           placeholder="To"
           formControlName="todate"
+          style="
+            font: normal normal normal 13px/21px Poppins;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 1;
+          "
+          useValueAsDate
         />
+        <div *ngIf="loginForm.errors" class="text-small">
+          {{ loginForm.errors?.dates }}
+        </div>
       </div>
       <div class="cus-int-div">
         <span
@@ -45,7 +62,7 @@
           (click)="emitEvent()"
           *ngIf="!loading"
         >
-          Update</span
+          Run Report</span
         >
         <span
           class="input-group-text cus-btn align-items-center justify-content-center disabled"
@@ -53,10 +70,23 @@
           (click)="emitEvent()"
           *ngIf="loading"
           style="opacity: 0.7"
-          >Update ...</span
+          >Running ...</span
         >
       </div>
     </div>
+    <!-- <div class="row w-100">
+            <div class="col12 sm-col-6 col-md-8  mt-1">
+                <input type=" " class="form-control me-2 int" placeholder="Subscriber's NIC"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                    formControlName="searchinginput" />
+            </div>
+            <div class="col12 sm-col-6 col-md-4 mt-1">
+                <span class="input-group-text cus-btn align-items-center justify-content-center" id="basic-addon2" (click)="emitEvent()" *ngIf="!loading">
+                    Check Subscriber</span>
+                <span class="input-group-text cus-btn align-items-center justify-content-center disabled" id="basic-addon2" (click)="emitEvent()" *ngIf="loading"
+                    style="opacity: 0.7;">Check Subscriber ...</span>
+            </div>
+        </div> -->
 
     <br />
   </div>
