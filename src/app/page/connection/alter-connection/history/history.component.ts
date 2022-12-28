@@ -1,34 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/servise/http/http.service';
+import { findTypeUrl } from 'src/app/servise/utils/function';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss'],
 })
-export class HistoryComponent implements OnInit {
-  userID: string | null | undefined;
+export class HistoryComponent implements OnInit{
   loginForm: any;
   inputset: any;
   Change: any;
   Extra: any;
   Reconnection: any;
-object: any;
+  object: any;
+  userData: any = [];
+  ifGetdata: boolean = false;
+  suburl: string = 'connection';
 
   constructor(
     private activateRouter: ActivatedRoute,
-    public dataSerice: HttpService,
-    private fb: FormBuilder,
-    public dialog: MatDialog,
-    private router: Router
+    public dataServise: HttpService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.userID = this.activateRouter.snapshot.paramMap.get('id');
-    // this.dataSerice.getData(x => x.id == this.userID)
+    // this.openReconnectBigDialog()
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();
@@ -67,4 +67,17 @@ object: any;
       road: '',
     });
   }
+
+  details(id: any) {
+    this.dataServise.getData(`connection/id/${id}`).subscribe((res) => {
+      this.userData = res;
+      console.log(this.userData)
+      this.ifGetdata = true;
+    },(err)=>{
+      this.ifGetdata = true;
+    });
+  }
+
+ 
+ 
 }

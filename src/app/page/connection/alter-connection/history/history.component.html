@@ -49,6 +49,7 @@
                   id="NIC"
                   placeholder="9999999999V"
                   readonly
+                  value="{{ userData.subscriberNIC }}"
                 />
               </div>
               <div class="mb-3 cus-int-div">
@@ -61,6 +62,7 @@
                   id="SUBSCRIBER"
                   readonly
                   placeholder="SUBSCRIBER"
+                  value="{{ userData.firstName }}"
                 />
               </div>
               <div class="mb-3 cus-int-div">
@@ -71,6 +73,7 @@
                   id="PHONE"
                   readonly
                   placeholder="PHONE"
+                  value="{{ userData.primaryPhone }}"
                 />
               </div>
               <div class="mb-3 cus-int-div">
@@ -81,6 +84,7 @@
                   id="Address"
                   readonly
                   placeholder="Address"
+                  value="{{ userData.connectionAddress }}"
                 />
               </div>
 
@@ -93,14 +97,15 @@
                   id="ID"
                   readonly
                   placeholder="9999999999V"
+                  value="{{ userData.connectionID }}"
                 />
               </div>
               <div class="mb-3 cus-int-div">
                 <label for="Status" class="form-label labels">Status</label>
                 <input
                   type="text"
-                 
                   id="Status"
+                  value="{{ userData.connectionStatus}}"
                   readonly
                   placeholder="Status"
                 />
@@ -117,6 +122,7 @@
                   id="TV"
                   readonly
                   placeholder="TV"
+                  value="{{ userData.tvCount }}"
                 />
               </div>
               <div class="mb-3 cus-int-div">
@@ -127,6 +133,7 @@
                   id="Type"
                   readonly
                   placeholder="Type"
+                  value="{{ userData.connectionType }}"
                 />
               </div>
 
@@ -139,6 +146,7 @@
                   id="DUE"
                   readonly
                   placeholder="00.00"
+                  value="{{ userData.dueAmount }}"
                 />
               </div>
             </div>

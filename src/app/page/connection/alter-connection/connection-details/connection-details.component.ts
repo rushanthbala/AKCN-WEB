@@ -92,7 +92,7 @@ export class ConnectionDetailsComponent  implements OnInit {
       data:this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       console.log('The dialog was closed');
       this.animal = result;
     });
@@ -103,7 +103,7 @@ export class ConnectionDetailsComponent  implements OnInit {
       data:this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       console.log('The dialog was closed');
       this.animal = result;
     });
