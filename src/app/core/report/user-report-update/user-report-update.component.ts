@@ -69,14 +69,6 @@ export class UserReportUpdateComponent implements OnInit {
     }, {validator: this.dateLessThan('fromdate', 'todate')});
   }
 
-  // validateDates() {
-  //   if (this.startDate > this.endDate) {
-  //     this.validationError = 'From date must be greater than to date';
-  //   } else {
-  //     this.validationError = '';
-  //   }
-  // }
-
   dateLessThan(from: string, to: string) {
     return (group: FormGroup): {[key: string]: any} => {
      let f = group.controls[from];

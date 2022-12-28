@@ -120,7 +120,7 @@ export class CollectionReportUpdateComponent {
     if (!this.loginForm.valid) {
       this.isEmpty();
       this.loading = false;
-    } else {
+    }else {
       this.OnClick.emit({
         fromdate: fromdate,
         todate: todate,
@@ -137,5 +137,8 @@ export class CollectionReportUpdateComponent {
   }
   isEmpty() {
     this.toastr.error('Pleace Recheck your Details', 'Error');
+  }
+  showmsg(){
+    this.toastr.error('From date must be less than to date')
   }
 }

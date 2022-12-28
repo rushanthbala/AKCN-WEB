@@ -14,6 +14,7 @@ import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-connection',
@@ -34,7 +35,8 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
-    public dataServise: HttpService
+    public dataServise: HttpService,
+    private router: Router
   ) {}
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -137,11 +139,11 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
     }
   }
 
-  viewDetails(us: any) {
-    // this.showTable = false;
-    // this.subscriberdata=us;
-    // this.isSubscriberdata=true;
-    // console.log(us);
+  viewDetails(id: any) {
+    this.router.navigate([`auth/alter-connection/history/${id.id}`]);
+    console.log(id.id);
+    console.log('component chnaged');
+    // this.connectionId = id.id;
   }
 }
 

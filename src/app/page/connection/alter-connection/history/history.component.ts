@@ -1,16 +1,19 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/servise/http/http.service';
-import { findTypeUrl } from 'src/app/servise/utils/function';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss'],
 })
-export class HistoryComponent implements OnInit{
+export class HistoryComponent implements OnInit {
   loginForm: any;
   inputset: any;
   Change: any;
@@ -18,14 +21,28 @@ export class HistoryComponent implements OnInit{
   Reconnection: any;
   object: any;
   userData: any = [];
-  ifGetdata: boolean = false;
-  suburl: string = 'connection';
+  ifGetData: boolean = false;
 
-  constructor(
-    private activateRouter: ActivatedRoute,
-    public dataServise: HttpService,
-    private fb: FormBuilder
-  ) {}
+  TICKET_DATA: any = [];
+  dataSource: any;
+  displayedColumns: string[] = [
+    'paidDateTime',
+    'conductedBy',
+    'description',
+    'RENTAL',
+    'amount',
+    'due',
+    'enteredBy',
+    'paymentType',
+  ];
+  ifGetdata1: boolean = false;
+  private _liveAnnouncer: any;
+  showTable: any;
+
+  constructor(public dataServise: HttpService, private fb: FormBuilder) {}
+
+  @ViewChild(MatSort) sort: MatSort | any;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   ngOnInit(): void {
     // this.openReconnectBigDialog()
@@ -69,15 +86,53 @@ export class HistoryComponent implements OnInit{
   }
 
   details(id: any) {
-    this.dataServise.getData(`connection/id/${id}`).subscribe((res) => {
-      this.userData = res;
-      console.log(this.userData)
-      this.ifGetdata = true;
-    },(err)=>{
-      this.ifGetdata = true;
-    });
+    // var connectionId = first.connectionid.id;
+    // console.log(connectionId)
+
+    this.dataServise.getData(`connection/id/${id.id}`).subscribe(
+      (res) => {
+        this.userData = res;
+        console.log(res);
+        this.ifGetdata1 = true;
+      },
+      (err) => {
+        this.ifGetdata1 = true;
+      }
+    );
+  }
+  history(id: any) {
+    console.log('okokok');
+    this.dataServise.getData(`payment/connectionid/${id}`).subscribe(
+      (res) => {
+        this.TICKET_DATA = res;
+        this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+        this.showTable = true;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }, 1);
+        this.ifGetData = true;
+      },
+      (err) => {
+        this.ifGetData = true;
+      }
+    );
+  }
+  ngAfterViewInit(): void {
+    this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
- 
- 
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
 }

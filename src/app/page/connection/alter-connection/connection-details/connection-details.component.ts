@@ -1,6 +1,10 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
 import { EditConnectionDialogComponent } from 'src/app/core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 import { EditSubscriberDialogComponent } from 'src/app/core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
@@ -14,16 +18,24 @@ import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-connection-details',
   templateUrl: './connection-details.component.html',
-  styleUrls: ['./connection-details.component.scss']
+  styleUrls: ['./connection-details.component.scss'],
 })
-export class ConnectionDetailsComponent  implements OnInit {
+export class ConnectionDetailsComponent implements OnInit {
+  // @Output() OnClick = new EventEmitter<{
+  //   connectionid: any;
+  // }>();
   // model
   animal: string | any;
   name: string | any;
-  constructor(private fb: FormBuilder,public dialog: MatDialog, private router: Router) {}
-  @Input() object:object | any;
-  @Input() text:string | any;
-  
+  connectionId: any;
+  constructor(
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
+  @Input() object: object | any;
+  @Input() text: string | any;
+
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -31,7 +43,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   Reconnection: FormGroup | any;
   Change: FormGroup | any;
   Extra: FormGroup | any;
-  
+
   ngOnInit(): void {
     // this.openReconnectBigDialog()
     this.initialForm();
@@ -72,7 +84,7 @@ export class ConnectionDetailsComponent  implements OnInit {
       road: '',
     });
   }
-  
+
   searching() {
     console.log(this.loginForm.value);
   }
@@ -89,7 +101,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   openReconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
-      data:this.object,
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
@@ -100,7 +112,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   openChangeLocationDialog(): void {
     const dialogRef = this.dialog.open(ReconnectBigDialogComponent, {
       width: '550px',
-      data:this.object,
+      data: this.object,
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
@@ -112,10 +124,10 @@ export class ConnectionDetailsComponent  implements OnInit {
   editSubscriber(): void {
     const dialogRef = this.dialog.open(EditSubscriberDialogComponent, {
       width: '550px',
-      data:this.object,
+      data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       this.animal = result;
     });
@@ -123,11 +135,10 @@ export class ConnectionDetailsComponent  implements OnInit {
   editConnection(): void {
     const dialogRef = this.dialog.open(EditConnectionDialogComponent, {
       width: '600px',
-      data:this.object,
-
+      data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       this.animal = result;
     });
@@ -136,10 +147,10 @@ export class ConnectionDetailsComponent  implements OnInit {
   DisconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
-      data:this.object,
+      data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       this.animal = result;
     });
@@ -147,19 +158,28 @@ export class ConnectionDetailsComponent  implements OnInit {
   ConnectDialog(): void {
     const dialogRef = this.dialog.open(ConnectDialogComponent, {
       width: '250px',
-      data:this.object,
+      data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       this.animal = result;
     });
   }
 
-  viewDetails(id: any){
-    this.router.navigate([`auth/alter-connection/history/${id.id}`])
-    console.log(id.id)
-    console.log('component chnaged')
+  viewDetails(id: any) {
+    this.router.navigate([`auth/alter-connection/history/${id.id}`]);
+    console.log(id.id);
+    console.log('component chnaged');
+    // this.connectionId = id.id;
   }
-  
+
+  // emitEvent() {
+  //   let detailObj = {
+  //     id: this.connectionId,
+  //   };
+  //   this.OnClick.emit({
+  //     connectionid: detailObj,
+  //   });
+  // }
 }

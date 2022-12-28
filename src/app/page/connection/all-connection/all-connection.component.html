@@ -54,13 +54,6 @@
         (matSortChange)="announceSortChange($event)"
         class=""
       >
-        <td mat-cell *matCellDef="let row" (click)="viewDetails(row)">
-          <!-- <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
-          </mat-checkbox> -->
-        </td>
 
         <!-- connectionID Column -->
         <ng-container matColumnDef="connectionID">
@@ -72,8 +65,8 @@
           >
             ID
           </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.connectionID }}
+          <td mat-cell *matCellDef="let element"  (click)="viewDetails(element)">
+            <a style="color: #027AFE; cursor: pointer;">{{ element.connectionID }}</a>
           </td>
         </ng-container>
 
@@ -87,7 +80,7 @@
           >
             Subscriber
           </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+          <td mat-cell *matCellDef="let element">
             {{ element.firstName }}
           </td>
         </ng-container>
@@ -102,7 +95,7 @@
           >
             Phone
           </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+          <td mat-cell *matCellDef="let element">
             {{ element.primaryPhone }}
           </td>
         </ng-container>
@@ -117,7 +110,7 @@
           >
             Address
           </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+          <td mat-cell *matCellDef="let element">
             {{ element.connectionAddress }}
           </td>
         </ng-container>
@@ -135,7 +128,7 @@
           <td
             mat-cell
             *matCellDef="let element"
-            (click)="viewDetails(element)"
+           
             class="{{ element.connectionStatus.toUpperCase() }}"
           >
             {{ element.connectionStatus }}
@@ -152,7 +145,7 @@
           >
             Date
           </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
+          <td mat-cell *matCellDef="let element">
             {{ element.connectedDate | date : "yyyy-M-d hh:mm" }}
           </td>
         </ng-container>

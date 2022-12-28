@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -46,7 +51,7 @@ export class UnpaidReportUpdateComponent {
   onChangeObjBranch(newObj: any) {
     this.BranchName = newObj.branchName;
     this.BranchId = newObj.id;
-    this.findArea(newObj.id)
+    this.findArea(newObj.id);
     // ... do other stuff here ...
   }
   onChangeObjRoad(newObj: any) {
@@ -57,7 +62,7 @@ export class UnpaidReportUpdateComponent {
   onChangeObjArea(newObj: any) {
     this.AreaName = newObj.area;
     this.AreaId = newObj.id;
-    this.findRoad(newObj.id)
+    this.findRoad(newObj.id);
     // ... do other stuff here ...
   }
   onChangeObjStatus(newObj: any) {
@@ -100,11 +105,11 @@ export class UnpaidReportUpdateComponent {
   // if(AreaID = 0){
 
   // } else{
-    
+
   // }
 
-  findArea(id: any){
-    console.log("findArea", id)
+  findArea(id: any) {
+    console.log('findArea', id);
     this.dataServise.getData(`areaBybranchId/${id}`).subscribe((res) => {
       this.AreaArray = res;
       // if(res.length >0){
@@ -114,8 +119,8 @@ export class UnpaidReportUpdateComponent {
     });
   }
 
-  findRoad(id: any){
-    console.log('find road', id)
+  findRoad(id: any) {
+    console.log('find road', id);
     this.dataServise.getData(`road/roadByAreaID/${id}`).subscribe((res) => {
       this.RoadArray = res;
       // if(res.length >0){
@@ -128,7 +133,6 @@ export class UnpaidReportUpdateComponent {
   initialForm() {
     // this.loginForm = this.fb.group({
     //   branch : new FormControl('', Validators.required),
-
     // });
   }
 
@@ -140,27 +144,32 @@ export class UnpaidReportUpdateComponent {
     let detailObj = {
       branchID: this.BranchId,
       RoadID: this.RoadId,
-      AreaID: this.AreaId
+      AreaID: this.AreaId,
     };
     // this.loading = true;
 
     // let fromdate = this.loginForm.value.fromdate;
     // let minAmount = this.loginForm.value.minAmount;
 
-    // if (this.BranchId =="" || this.RoadId == "" || this.AreaId == "") {
-    //   this.isEmpty();
-    //   this.loading = false;
-    // } else {
-    //   this.OnClick.emit({ user: detailObj });
-
-    //   this.loading = false;
-    // }
-
-    this.OnClick.emit({ user: detailObj });
+    if (
+      this.BranchId == undefined ||
+      this.RoadId == undefined ||
+      this.AreaId == undefined
+    ) {
+      this.isEmpty();
+      this.loading = false;
+    } else if (this.BranchId == 0 || this.RoadId == 0 || this.AreaId == 0) {
+      this.showmsg();
+      this.loading = false;
+    } else {
+      this.OnClick.emit({ user: detailObj });
 
       this.loading = false;
+    }
 
-    
+    // this.OnClick.emit({ user: detailObj });
+
+    //   this.loading = false;
   }
   showSuccess() {
     this.toastr.success('Sucessfully Login', 'Sucessfully');
@@ -170,5 +179,8 @@ export class UnpaidReportUpdateComponent {
   }
   isEmpty() {
     this.toastr.error('Fill All The Feild', 'Error');
+  }
+  showmsg() {
+    this.toastr.error(`Can't be All fields are All`, 'Error');
   }
 }
