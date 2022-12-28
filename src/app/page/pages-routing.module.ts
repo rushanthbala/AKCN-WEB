@@ -30,6 +30,7 @@ import { AddRentalComponent } from './payments/add-rental/add-rental.component';
 import { DueReportComponent } from './reports/due-report/due-report.component';
 import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
 import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
+import { HistoryComponent } from './connection/alter-connection/history/history.component';
 
 const routes: Routes = [
   {
@@ -79,7 +80,7 @@ const routes: Routes = [
       },
       {
         path: 'alter-connection',
-        component: AlterConnectionComponent,
+        component: AlterConnectionComponent
       },
       {
         path: 'make-payment',
@@ -154,6 +155,10 @@ const routes: Routes = [
       {
         path:'branches-setting',
         component: BranchSettingsComponent
+      },
+      {
+        path:'alter-connection/history/:id',
+        component:HistoryComponent
       }
     ],
   },

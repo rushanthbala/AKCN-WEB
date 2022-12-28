@@ -1,5 +1,7 @@
 .row {
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
 }
 .register-form {
   display: flex;
@@ -44,20 +46,56 @@
   max-width: 420px;
   width: 100%;
 }
-// .px-0 {
-//   background-color: #469dfe;
-// }
-// .img-fluid {
-//   top: 0%;
-//   height: 100%;
-//   width: 97%;
-// }
-// @media (max-width: 768px) {
-//   .px-0 {
-//     margin-top: 100%;
-//   }
-//   .img-fluid {
-//     margin-top: 50%;
-//     height: 20%;
-//   }
-// }
+.container {
+  background-color: #469dfe;
+}
+.img-fluid{
+  border: none;
+  height: 95%;
+  width: fit-content;
+}
+@media (max-width: 992px) {
+ .row{
+  display: flex;
+  flex-direction: column-reverse;
+ }
+ .container{
+  background-color: #027afe;
+ }
+ .img-fluid{
+  height: 500px;
+  margin-left: 20%;
+ }
+ .register-form{
+  height: 60vh;
+ }
+}
+@media (max-width: 776px) {
+  .row{
+   display: flex;
+   flex-direction: column-reverse;
+  }
+  .container{
+   background-color: #027afe;
+  }
+  .img-fluid{
+   height: 500px;
+   margin-left: 6%;
+  }
+  .register-form{
+   height: 70vh;
+  }
+ }
+@media (max-width: 576px) {
+  .row{
+   display: flex;
+   flex-direction: column-reverse;
+  }
+  .container{
+   background-color: #027afe;
+  }
+  .img-fluid{
+   height: 400px;
+   margin-left: 6%;
+  }
+ }

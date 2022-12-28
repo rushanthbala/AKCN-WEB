@@ -278,7 +278,7 @@ export class PagesComponent implements OnInit {
         { name: 'New Connection', href: '/auth/new-connection' },
         {
           name: 'Alter Connection', href: '/auth/alter-connection'
-        },],
+        }],
       link: '/auth/connection',
       icon: '../../assets/icons/Swap.png',
     },

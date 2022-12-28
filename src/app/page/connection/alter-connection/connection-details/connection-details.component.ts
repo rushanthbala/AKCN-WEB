@@ -9,6 +9,7 @@ import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/disc
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { DisconnectDialogBoxComponent } from 'src/app/core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { ConnectDialogComponent } from 'src/app/core/dialogBox/connection/connect-dialog/connect-dialog.component';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-connection-details',
@@ -19,7 +20,7 @@ export class ConnectionDetailsComponent  implements OnInit {
   // model
   animal: string | any;
   name: string | any;
-  constructor(private fb: FormBuilder,public dialog: MatDialog) {}
+  constructor(private fb: FormBuilder,public dialog: MatDialog, private router: Router) {}
   @Input() object:object | any;
   @Input() text:string | any;
   
@@ -153,6 +154,12 @@ export class ConnectionDetailsComponent  implements OnInit {
       console.log('The dialog was closed');
       this.animal = result;
     });
+  }
+
+  viewDetails(id: any){
+    // this.router.navigate([`auth/alter-connection/history/${id}`])
+    console.log(id.id)
+    console.log('component chnaged')
   }
   
 }

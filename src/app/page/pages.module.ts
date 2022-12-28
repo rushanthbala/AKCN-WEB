@@ -93,6 +93,7 @@ import { CollectionReportTableComponent } from '../core/reportTable/collection-r
 import { UnpaidReportTableComponent } from '../core/reportTable/unpaid-report-table/unpaid-report-table.component';
 import { DueReportTableComponent } from '../core/reportTable/due-report-table/due-report-table.component';
 import { UserReportTableComponent } from '../core/reportTable/user-report-table/user-report-table.component';
+import { HistoryComponent } from './connection/alter-connection/history/history.component';
 
 @NgModule({
   declarations: [
@@ -176,7 +177,8 @@ import { UserReportTableComponent } from '../core/reportTable/user-report-table/
     CollectionReportTableComponent,
     UnpaidReportTableComponent,
     DueReportTableComponent,
-    UserReportTableComponent
+    UserReportTableComponent,
+    HistoryComponent
   ],
   imports: [
     CommonModule,
