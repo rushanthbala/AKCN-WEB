@@ -153,13 +153,6 @@ export class DueReportUpdateComponent implements OnInit {
     ) {
       this.isEmpty();
       this.loading = false;
-    }else if(
-      this.BranchId == 0 ||
-        this.RoadId == 0 ||
-        this.AreaId == 0
-    ){
-      this.showmsg();
-      this.loading = false;
     }else {
       this.OnClick.emit({ user: detailObj, minAmount: minAmount });
 

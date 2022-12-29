@@ -90,6 +90,7 @@ import { CollectionReportUpdateComponent } from '../core/report/collection-repor
 import { UnpaidReportUpdateComponent } from '../core/report/unpaid-report-update/unpaid-report-update.component';
 import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
 import { HistoryComponent } from './connection/alter-connection/history/history.component';
+import { ShowDataComponent } from './connection/alter-connection/show-data/show-data.component';
 
 @NgModule({
   declarations: [
@@ -170,7 +171,8 @@ import { HistoryComponent } from './connection/alter-connection/history/history.
     CollectionReportUpdateComponent,
     UnpaidReportUpdateComponent,
     UnpaidReportsComponent,
-    HistoryComponent
+    HistoryComponent,
+    ShowDataComponent
   ],
   imports: [
     CommonModule,

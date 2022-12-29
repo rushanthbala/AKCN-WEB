@@ -32,17 +32,32 @@ export class HistoryComponent implements OnInit {
     'RENTAL',
     'amount',
     'due',
-    'enteredBy',
-    'paymentType',
+    // 'enteredBy',
+    // 'paymentType',
   ];
   ifGetdata1: boolean = false;
   private _liveAnnouncer: any;
   showTable: any;
+  tableResult: any;
+  ConnectionData: any = [];
+  dataSource1: any;
+  displayedColumns1: string[] = [
+    'paidDateTime',
+    'enteredBy',
+    'conductedBy',
+    'paymentType',
+    'description',
+    'amount',
+  ];
+  paymentType: any;
 
   constructor(public dataServise: HttpService, private fb: FormBuilder) {}
 
-  @ViewChild(MatSort) sort: MatSort | any;
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild('sort') sort: MatSort | any;
+  @ViewChild('paginator') paginator: MatPaginator | any;
+
+  @ViewChild('sort1') sort1: MatSort | any;
+  @ViewChild('paginator1') paginator1: MatPaginator | any;
 
   ngOnInit(): void {
     var url = window.location.pathname;
@@ -53,8 +68,9 @@ export class HistoryComponent implements OnInit {
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
-    this.getAllDetails(id)
-    this.history(id)
+    this.getAllDetails(id);
+    this.getPaymentHistory(id);
+    // this.getConnectionHistory(id);
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -92,41 +108,108 @@ export class HistoryComponent implements OnInit {
   getAllDetails(id: any) {
     // var connectionId = first.connectionid.id;
     // console.log(connectionId)
-    console.log("1", id)
+    console.log('1', id);
     this.dataServise.getData(`connection/id/${id}`).subscribe(
       (res) => {
-        this.userData = res;
+        this.userData = res[0];
+        this.tableResult = this.userData.length;
+        this.showTable = true;
         console.log(res);
-        this.ifGetdata1 = true;
       },
       (err) => {
-        this.ifGetdata1 = true;
-        console.log(err)
+        console.log(err);
       }
     );
   }
-  history(id: any) {
+  getPaymentHistory(id: any) {
     console.log('okokok');
     this.dataServise.getData(`payment/connectionid/${id}`).subscribe(
       (res) => {
-        this.TICKET_DATA = res;
-        this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-        this.showTable = true;
-        setTimeout(() => {
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        }, 1);
-        this.ifGetData = true;
+        let array = [res];
+        // console.log("2", array)
+
+        // var ConnectionData = [];
+        // var TICKET_DATA = [];
+
+        array.map((item) => {
+          if (
+            item.paymentType == "FINE" ||
+            item.paymentType == "RECONNECT" ||
+            item.paymentType == "CHANGE LOCATION" ||
+            item.paymentType == "DISCONNECT" ||
+            item.paymentType == "NEW CONNECTION"
+          ) {
+            // console.log('works')
+            this.ConnectionData = res;
+            this.dataSource1 = new MatTableDataSource(this.ConnectionData);
+            this.showTable = true;
+            setTimeout(() => {
+              this.dataSource1.paginator = this.paginator1;
+              this.dataSource1.sort = this.sort1;
+            }, 1);
+          } else {
+            // console.log('woooss')
+            this.TICKET_DATA = res;
+            this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+            this.showTable = true;
+            setTimeout(() => {
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            }, 1);
+            this.ifGetData = true;
+          }
+        });
+
+        // this.ConnectionData = res;
+        // this.dataSource1 = new MatTableDataSource(this.ConnectionData);
+        // this.showTable = true;
+        // setTimeout(() => {
+        //   this.dataSource1.paginator = this.paginator1;
+        //   this.dataSource1.sort = this.sort1;
+        // }, 1);
+
+        // this.TICKET_DATA = res;
+        // this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+        // this.showTable = true;
+        // setTimeout(() => {
+        //   this.dataSource.paginator = this.paginator;
+        //   this.dataSource.sort = this.sort;
+        // }, 1);
+        // this.ifGetData = true;
       },
       (err) => {
         this.ifGetData = true;
       }
     );
   }
+
+  // getConnectionHistory(id: any) {
+  //   console.log('okokok');
+  //   this.dataServise.getData(`payment/connectionid/${id}`).subscribe(
+  //     (res) => {
+  //       this.ConnectionData = res;
+  //       this.dataSource1 = new MatTableDataSource(this.ConnectionData);
+  //       this.showTable = true;
+  //       setTimeout(() => {
+  //         this.dataSource1.paginator = this.paginator1;
+  //         this.dataSource1.sort = this.sort1;
+  //       }, 1);
+  //       this.ifGetData = true;
+  //     },
+  //     (err) => {
+  //       this.ifGetData = true;
+  //     }
+  //   );
+  // }
+
   ngAfterViewInit(): void {
     this.dataSource = new MatTableDataSource(this.TICKET_DATA);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    // this.dataSource1 = new MatTableDataSource(this.ConnectionData);
+    // this.dataSource1.paginator1 = this.paginator1;
+    // this.dataSource1.sort1 = this.sort1;
   }
 
   announceSortChange(sortState: Sort) {
