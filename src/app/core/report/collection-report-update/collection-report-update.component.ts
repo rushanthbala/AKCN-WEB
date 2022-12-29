@@ -78,8 +78,8 @@ export class CollectionReportUpdateComponent {
 
   initialForm() {
     this.loginForm = this.fb.group({
-      fromdate: new FormControl('', [Validators.required]),
-      todate: new FormControl('', [Validators.required]),
+      fromdate: new FormControl(''),
+      todate: new FormControl(''),
     }, {validator: this.dateLessThan('fromdate', 'todate')});
   }
 
@@ -117,10 +117,14 @@ export class CollectionReportUpdateComponent {
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
 
-    if (!this.loginForm.valid) {
+    if (fromdate == "" || todate == "") {
       this.isEmpty();
       this.loading = false;
-    }else {
+    }else if(!this.loginForm.valid){
+      this.showmsg();
+      this.loading = false;
+    }
+    else {
       this.OnClick.emit({
         fromdate: fromdate,
         todate: todate,
@@ -136,9 +140,9 @@ export class CollectionReportUpdateComponent {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Pleace Recheck your Details', 'Error');
+    this.toastr.error('Fill All The Feild', 'Error');
   }
   showmsg(){
-    this.toastr.error('From date must be less than to date')
+    this.toastr.error('From date must be less than to date', 'Error')
   }
 }

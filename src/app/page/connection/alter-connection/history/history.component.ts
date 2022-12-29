@@ -88,7 +88,7 @@ export class HistoryComponent implements OnInit {
   details(id: any) {
     // var connectionId = first.connectionid.id;
     // console.log(connectionId)
-
+    console.log("1", id.id)
     this.dataServise.getData(`connection/id/${id.id}`).subscribe(
       (res) => {
         this.userData = res;
@@ -97,6 +97,7 @@ export class HistoryComponent implements OnInit {
       },
       (err) => {
         this.ifGetdata1 = true;
+        console.log(err)
       }
     );
   }
