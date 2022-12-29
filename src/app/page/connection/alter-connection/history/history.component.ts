@@ -45,12 +45,16 @@ export class HistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   ngOnInit(): void {
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
     // this.openReconnectBigDialog()
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
+    this.getAllDetails(id)
+    this.history(id)
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -85,11 +89,11 @@ export class HistoryComponent implements OnInit {
     });
   }
 
-  details(id: any) {
+  getAllDetails(id: any) {
     // var connectionId = first.connectionid.id;
     // console.log(connectionId)
-    console.log("1", id.id)
-    this.dataServise.getData(`connection/id/${id.id}`).subscribe(
+    console.log("1", id)
+    this.dataServise.getData(`connection/id/${id}`).subscribe(
       (res) => {
         this.userData = res;
         console.log(res);
