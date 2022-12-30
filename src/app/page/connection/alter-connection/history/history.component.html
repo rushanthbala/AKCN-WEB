@@ -29,7 +29,7 @@
                       Date & Time
                     </th>
                     <td mat-cell *matCellDef="let element">
-                      {{ element.paidDateTime ? element.paidDateTime : "--" }}
+                      {{ element.paidDateTime | date : "yyyy-M-d hh:mm" }}
                     </td>
                   </ng-container>
 
@@ -57,7 +57,7 @@
                       Description
                     </th>
                     <td mat-cell *matCellDef="let element">
-                      {{ element.description ? element.description : "--" }}
+                      {{ element.description ? element.description : "--" }} {{element.paymentType}} {{element.amount}}
                     </td>
                   </ng-container>
 
@@ -117,7 +117,7 @@
                       Arrears
                     </th>
                     <td mat-cell *matCellDef="let element">
-                      {{ element.due ? element.due : "--" }}
+                      {{ element.CalculateArrear ? element.CalculateArrear : "--" }}
                     </td>
                   </ng-container>
 
