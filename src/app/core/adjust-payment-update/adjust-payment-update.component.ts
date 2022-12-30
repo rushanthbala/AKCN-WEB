@@ -28,6 +28,38 @@ export class AdjustPaymentUpdateComponent {
       id: 2,
       value: 'FINE',
     },
+    {
+      id: 3,
+      value: 'RENTAL',
+    },
+    {
+      id: 4,
+      value: 'ARREARS',
+    },
+    {
+      id: 5,
+      value: 'DISCOUNT',
+    },
+    {
+      id: 6,
+      value: 'RECONNECTION',
+    },
+    {
+      id: 7,
+      value: 'NEW CONNECTION',
+    },
+    {
+      id: 8,
+      value: 'DISCONNECT',
+    },
+    {
+      id: 9,
+      value: 'EXTRA TV',
+    },
+    {
+      id: 10,
+      value: 'CHANGE LOCATION',
+    },
   ];
 
   public roadId: any = 'Road';
@@ -76,14 +108,16 @@ export class AdjustPaymentUpdateComponent {
   }
 
   ReconnectionRequest() {
+    let dateVal=this.chackRequest.value.paidDateTime
     let datas = {
-      paidDateTime: this.chackRequest.value.paidDateTime,
       paymentType: this.chackRequest.value.paymentType,
+      paidDateTime: formatDate(dateVal, 'yyyy-MM-dd', "en-US"),
       amount: this.chackRequest.value.amount,
       description: this.chackRequest.value.description,
     }
 
     let dataObj = {
+      
       paidDateTime: datas.paidDateTime,
       paymentType: datas.paymentType,
       amount: datas.amount,
