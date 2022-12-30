@@ -1,8 +1,6 @@
 <div class="card">
   <div class="card-body">
-    <div *ngIf="showTable">
       <app-show-data [object]="userData" text="text"> </app-show-data>
-    </div>
     <div class="container-2">
       <mat-tab-group>
         <mat-tab label="PAYMENT HISTORY">
@@ -142,7 +140,7 @@
         </mat-tab>
         <mat-tab label="CONNECTION HISTORY">
           <div *ngIf="ConnectionData.length != 0" class="container-6">
-            <div *ngIf="showTable">
+            <div *ngIf="showTable1">
               <div id="htmlData">
                 <table
                   mat-table

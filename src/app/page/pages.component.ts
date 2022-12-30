@@ -19,7 +19,7 @@ export class PagesComponent implements OnInit {
     private observer: BreakpointObserver,
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {}
   public href: string = '';
   public link: string = '';
   public sublink: string = '';
@@ -69,147 +69,140 @@ export class PagesComponent implements OnInit {
     var urlSpilite = url.split('/');
     if (urlSpilite[2] === 'dashboard') {
       this.href = 'Dashboard';
-      this.link = '/auth/dashboard'
-      this.contentSubHeading = 'Welcome back, Alex'
+      this.link = '/auth/dashboard';
+      this.contentSubHeading = 'Welcome back, Alex';
     } else if (urlSpilite[2] === 'create-ticket') {
       this.href = 'Tickets';
-      this.link = '/auth/create-ticket'
-      this.sublink = '/auth/create-ticket'
-      this.contentSubHeading = "Tickets > Create Tickets"
+      this.link = '/auth/create-ticket';
+      this.sublink = '/auth/create-ticket';
+      this.contentSubHeading = 'Tickets > Create Tickets';
     } else if (urlSpilite[2] === 'pending-ticket') {
       this.href = 'Tickets';
-      this.link = '/auth/pending-ticket'
-      this.sublink = '/auth/pending-ticket'
-      this.contentSubHeading = "Tickets > Pending Tickets"
+      this.link = '/auth/pending-ticket';
+      this.sublink = '/auth/pending-ticket';
+      this.contentSubHeading = 'Tickets > Pending Tickets';
     } else if (urlSpilite[2] === 'assign-ticket') {
       this.href = 'Tickets';
-      this.link = '/auth/assign-ticket'
-      this.sublink = '/auth/assign-ticket'
-      this.contentSubHeading = "Tickets > Assign Tickets"
+      this.link = '/auth/assign-ticket';
+      this.sublink = '/auth/assign-ticket';
+      this.contentSubHeading = 'Tickets > Assign Tickets';
     } else if (urlSpilite[2] === 'closed-ticket') {
       this.href = 'Tickets';
-      this.link = '/auth/closed-ticket'
-      this.sublink = '/auth/closed-ticket'
-      this.contentSubHeading = "Tickets > Closed Tickets"
-    }
-    else if (urlSpilite[2] === 'cancelled-ticket') {
+      this.link = '/auth/closed-ticket';
+      this.sublink = '/auth/closed-ticket';
+      this.contentSubHeading = 'Tickets > Closed Tickets';
+    } else if (urlSpilite[2] === 'cancelled-ticket') {
       this.href = 'Tickets';
-      this.link = '/auth/cancelled-ticket'
-      this.sublink = '/auth/cancelled-ticket'
-      this.contentSubHeading = "Tickets > Cancelled Tickets"
-    } 
+      this.link = '/auth/cancelled-ticket';
+      this.sublink = '/auth/cancelled-ticket';
+      this.contentSubHeading = 'Tickets > Cancelled Tickets';
+    }
     // request
     else if (urlSpilite[2] === 'create-request') {
       this.href = 'Requests';
-      this.link = '/auth/create-request'
-      this.sublink = '/auth/create-request'
-      this.contentSubHeading = "Requests > Create Requests"
+      this.link = '/auth/create-request';
+      this.sublink = '/auth/create-request';
+      this.contentSubHeading = 'Requests > Create Requests';
     } else if (urlSpilite[2] === 'pending-request') {
       this.href = 'Requests';
-      this.link = '/auth/pending-request'
-      this.sublink = '/auth/pending-request'
-      this.contentSubHeading = "Requests > Pending Requests"
+      this.link = '/auth/pending-request';
+      this.sublink = '/auth/pending-request';
+      this.contentSubHeading = 'Requests > Pending Requests';
     } else if (urlSpilite[2] === 'assign-request') {
       this.href = 'Requests';
-      this.link = '/auth/assign-request'
-      this.sublink = '/auth/assign-request'
-      this.contentSubHeading = "Requests > Assign Requests"
+      this.link = '/auth/assign-request';
+      this.sublink = '/auth/assign-request';
+      this.contentSubHeading = 'Requests > Assign Requests';
     } else if (urlSpilite[2] === 'closed-request') {
       this.href = 'Requests';
-      this.link = '/auth/closed-request'
-      this.sublink = '/auth/closed-request'
-      this.contentSubHeading = "Requests > Closed Requests"
-    }
-    else if (urlSpilite[2] === 'cancelled-request') {
+      this.link = '/auth/closed-request';
+      this.sublink = '/auth/closed-request';
+      this.contentSubHeading = 'Requests > Closed Requests';
+    } else if (urlSpilite[2] === 'cancelled-request') {
       this.href = 'Requests';
-      this.link = '/auth/cancelled-request'
-      this.sublink = '/auth/cancelled-request'
-      this.contentSubHeading = "Requests > Cancelled Requests"
-    } 
-
-
-    else if (urlSpilite[2] === 'all-connection') {
+      this.link = '/auth/cancelled-request';
+      this.sublink = '/auth/cancelled-request';
+      this.contentSubHeading = 'Requests > Cancelled Requests';
+    } else if (urlSpilite[2] === 'all-connection') {
       this.href = 'Connections';
-      this.link = '/auth/all-connection'
-      this.sublink = '/auth/all-connection'
-      this.contentSubHeading = "Tickets > All Connection"
+      this.link = '/auth/all-connection';
+      this.sublink = '/auth/all-connection';
+      this.contentSubHeading = 'Tickets > All Connection';
     } else if (urlSpilite[2] === 'new-connection') {
       this.href = 'Connections';
-      this.link = '/auth/new-connection'
-      this.sublink = '/auth/new-connection'
-      this.contentSubHeading = "Tickets > New Connection"
+      this.link = '/auth/new-connection';
+      this.sublink = '/auth/new-connection';
+      this.contentSubHeading = 'Tickets > New Connection';
     } else if (urlSpilite[2] === 'alter-connection') {
       this.href = 'Connections';
-      this.link = '/auth/alter-connection'
-      this.sublink = '/auth/alter-connection'
-      this.contentSubHeading = "Tickets > Alter Connection"
+      this.link = '/auth/alter-connection';
+      this.sublink = '/auth/alter-connection';
+      this.contentSubHeading = 'Tickets > Alter Connection';
     } else if (urlSpilite[2] === 'make-payment') {
       this.href = 'Payments';
-      this.link = '/auth/make-payment'
-      this.sublink = '/auth/make-payment'
-      this.contentSubHeading = "Tickets > Make Payment"
+      this.link = '/auth/make-payment';
+      this.sublink = '/auth/make-payment';
+      this.contentSubHeading = 'Tickets > Make Payment';
+    } else if (urlSpilite[2] === 'adjust-payment') {
+      this.href = 'Payments';
+      this.link = '/auth/adjust-payment';
+      this.sublink = '/auth/adjust-payment';
+      this.contentSubHeading = 'Tickets > Adjust Payment';
     } else if (urlSpilite[2] === 'add-arrears') {
       this.href = 'Payments';
-      this.link = '/auth/add-arrears'
-      this.sublink = '/auth/add-arrears'
-      this.contentSubHeading = "Tickets > Add Arrears"
-    }else if (urlSpilite[2] === 'add-rentals') {
+      this.link = '/auth/add-arrears';
+      this.sublink = '/auth/add-arrears';
+      this.contentSubHeading = 'Tickets > Add Arrears';
+    } else if (urlSpilite[2] === 'add-rentals') {
       this.href = 'Payments';
-      this.link = '/auth/add-rentals'
-      this.sublink = '/auth/add-rentals'
-      this.contentSubHeading = "Tickets > Add Rentals"
-    }
-    else if (urlSpilite[2] === 'user-report') {
+      this.link = '/auth/add-rentals';
+      this.sublink = '/auth/add-rentals';
+      this.contentSubHeading = 'Tickets > Add Rentals';
+    } else if (urlSpilite[2] === 'user-report') {
       this.href = 'Reports';
-      this.link = '/auth/user-report'
-      this.sublink = '/auth/user-report'
-      this.contentSubHeading = "Tickets > User Report"
+      this.link = '/auth/user-report';
+      this.sublink = '/auth/user-report';
+      this.contentSubHeading = 'Tickets > User Report';
     } else if (urlSpilite[2] === 'due-report') {
       this.href = 'Reports';
-      this.link = '/auth/due-report'
-      this.sublink = '/auth/due-report'
-      this.contentSubHeading = "Tickets > Due Report"
-    } 
-    else if (urlSpilite[2] === 'collection-report') {
+      this.link = '/auth/due-report';
+      this.sublink = '/auth/due-report';
+      this.contentSubHeading = 'Tickets > Due Report';
+    } else if (urlSpilite[2] === 'collection-report') {
       this.href = 'Reports';
-      this.link = '/auth/collection-report'
-      this.sublink = '/auth/collection-report'
-      this.contentSubHeading = "Tickets > Collection Report"
-    }  
-    else if (urlSpilite[2] === 'unpaid-report') {
+      this.link = '/auth/collection-report';
+      this.sublink = '/auth/collection-report';
+      this.contentSubHeading = 'Tickets > Collection Report';
+    } else if (urlSpilite[2] === 'unpaid-report') {
       this.href = 'Reports';
-      this.link = '/auth/unpaid-report'
-      this.sublink = '/auth/unpaid-report'
-      this.contentSubHeading = "Tickets > Unpaid Report"
-    }  
-    else if (urlSpilite[2] === 'users-setting') {
+      this.link = '/auth/unpaid-report';
+      this.sublink = '/auth/unpaid-report';
+      this.contentSubHeading = 'Tickets > Unpaid Report';
+    } else if (urlSpilite[2] === 'users-setting') {
       this.href = 'Settings';
-      this.link = '/auth/users-setting'
-      this.sublink = '/auth/users-setting'
-      this.contentSubHeading = "Settings > Users"
+      this.link = '/auth/users-setting';
+      this.sublink = '/auth/users-setting';
+      this.contentSubHeading = 'Settings > Users';
     } else if (urlSpilite[2] === 'roles-setting') {
       this.href = 'Settings';
-      this.link = '/auth/roles-setting'
-      this.sublink = '/auth/roles-setting'
-      this.contentSubHeading = "Settings > Roles"
-    }
-    else if (urlSpilite[2] === 'roads-setting') {
+      this.link = '/auth/roles-setting';
+      this.sublink = '/auth/roles-setting';
+      this.contentSubHeading = 'Settings > Roles';
+    } else if (urlSpilite[2] === 'roads-setting') {
       this.href = 'Settings';
-      this.link = '/auth/roads-setting'
-      this.sublink = '/auth/roads-setting'
-      this.contentSubHeading = "Settings > Roads"
-    }
-    else if (urlSpilite[2] === 'areas-setting') {
+      this.link = '/auth/roads-setting';
+      this.sublink = '/auth/roads-setting';
+      this.contentSubHeading = 'Settings > Roads';
+    } else if (urlSpilite[2] === 'areas-setting') {
       this.href = 'Settings';
-      this.link = '/auth/areas-setting'
-      this.sublink = '/auth/areas-setting'
-      this.contentSubHeading = "Settings > Areas"
-    }
-    else if (urlSpilite[2] === 'branches-setting') {
+      this.link = '/auth/areas-setting';
+      this.sublink = '/auth/areas-setting';
+      this.contentSubHeading = 'Settings > Areas';
+    } else if (urlSpilite[2] === 'branches-setting') {
       this.href = 'Settings';
-      this.link = '/auth/branches-setting'
-      this.sublink = '/auth/branches-setting'
-      this.contentSubHeading = "Settings > Branches"
+      this.link = '/auth/branches-setting';
+      this.sublink = '/auth/branches-setting';
+      this.contentSubHeading = 'Settings > Branches';
     }
   }
   menuItems = [
@@ -226,23 +219,25 @@ export class PagesComponent implements OnInit {
       iconClass: 'icon-Ticket',
       label: 'Tickets',
       text: 'Lorem Ipsum',
-      state:false,
+      state: false,
       link: '/auth/ticket',
       item: [
         { name: 'Create Tickets', href: '/auth/create-ticket' },
         { name: 'Pending Tickets', href: '/auth/pending-ticket' },
         {
-          name: 'Assigned Tickets', href: '/auth/assign-ticket'
+          name: 'Assigned Tickets',
+          href: '/auth/assign-ticket',
         },
         {
-          name: 'Closed Tickets', href: '/auth/closed-ticket'
+          name: 'Closed Tickets',
+          href: '/auth/closed-ticket',
         },
         // {
         //   name: 'Closed Tickets', href: '/auth/cancelled-ticket'
         // },
         {
-          name: 'Cancelled Tickets'
-          , href: '/auth/cancelled-ticket'
+          name: 'Cancelled Tickets',
+          href: '/auth/cancelled-ticket',
         },
       ],
       icon: '../../assets/icons/Bookmark png (2).png',
@@ -256,16 +251,19 @@ export class PagesComponent implements OnInit {
         { name: 'Create Requests', href: '/auth/create-request' },
         { name: 'Pending Requests', href: '/auth/pending-request' },
         {
-          name: 'Assigned Requests', href: '/auth/assign-request'
+          name: 'Assigned Requests',
+          href: '/auth/assign-request',
         },
         {
-          name: 'Closed Requests', href: '/auth/closed-request'
+          name: 'Closed Requests',
+          href: '/auth/closed-request',
         },
         {
-          name: 'Cancelled Requests'
-          , href: '/auth/cancelled-request'
+          name: 'Cancelled Requests',
+          href: '/auth/cancelled-request',
         },
-      ], link: '/auth/requests',
+      ],
+      link: '/auth/requests',
       icon: '../../assets/icons/adduser.png',
     },
     {
@@ -277,8 +275,10 @@ export class PagesComponent implements OnInit {
         { name: 'All Connection', href: '/auth/all-connection' },
         { name: 'New Connection', href: '/auth/new-connection' },
         {
-          name: 'Alter Connection', href: '/auth/alter-connection'
-        }],
+          name: 'Alter Connection',
+          href: '/auth/alter-connection',
+        },
+      ],
       link: '/auth/connection',
       icon: '../../assets/icons/Swap.png',
     },
@@ -291,11 +291,14 @@ export class PagesComponent implements OnInit {
         { name: 'Make Payment', href: '/auth/make-payment' },
         { name: 'Adjust Payment', href: '/auth/adjust-payment' },
         {
-          name: 'Add Arrears', href: '/auth/add-arrears'
+          name: 'Add Arrears',
+          href: '/auth/add-arrears',
         },
         {
-          name: 'Add Rental', href: '/auth/add-rentals'
-        },],
+          name: 'Add Rental',
+          href: '/auth/add-rentals',
+        },
+      ],
       link: '/auth/payments',
       icon: '../../assets/icons/currency-dollar.png',
     },
@@ -308,10 +311,12 @@ export class PagesComponent implements OnInit {
         { name: 'User Report', href: '/auth/user-report' },
         { name: 'Collection Report', href: '/auth/collection-report' },
         {
-          name: 'Due Report', href: '/auth/due-report'
+          name: 'Due Report',
+          href: '/auth/due-report',
         },
         {
-          name: 'Unpaid Report', href: '/auth/unpaid-report'
+          name: 'Unpaid Report',
+          href: '/auth/unpaid-report',
         },
       ],
 
@@ -327,13 +332,16 @@ export class PagesComponent implements OnInit {
         { name: 'Users', href: '/auth/users-setting' },
         { name: 'Roles', href: '/auth/roles-setting' },
         {
-          name: 'Roads', href: '/auth/roads-setting'
+          name: 'Roads',
+          href: '/auth/roads-setting',
         },
         {
-          name: 'Areas', href: '/auth/areas-setting'
+          name: 'Areas',
+          href: '/auth/areas-setting',
         },
         {
-          name: 'Branches', href: '/auth/branches-setting'
+          name: 'Branches',
+          href: '/auth/branches-setting',
         },
       ],
 
@@ -351,7 +359,6 @@ export class PagesComponent implements OnInit {
         item.state = false;
       } else {
         item.state = true;
-
       }
     }
     // the for loop goes through the array and sets each item to false *if* its not the item that was clicked

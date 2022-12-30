@@ -91,6 +91,10 @@ import { UnpaidReportUpdateComponent } from '../core/report/unpaid-report-update
 import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
 import { HistoryComponent } from './connection/alter-connection/history/history.component';
 import { ShowDataComponent } from './connection/alter-connection/show-data/show-data.component';
+import { AdjustPaymentComponent } from './payments/adjust-payment/adjust-payment.component';
+import { PaymentFilterComponent } from '../core/payment-filter/payment-filter.component';
+import { ShowPaymentComponent } from './payments/adjust-payment/show-payment/show-payment.component';
+import { AdjustPaymentUpdateComponent } from '../core/adjust-payment-update/adjust-payment-update.component';
 
 @NgModule({
   declarations: [
@@ -172,7 +176,11 @@ import { ShowDataComponent } from './connection/alter-connection/show-data/show-
     UnpaidReportUpdateComponent,
     UnpaidReportsComponent,
     HistoryComponent,
-    ShowDataComponent
+    ShowDataComponent,
+    AdjustPaymentComponent,
+    PaymentFilterComponent,
+    ShowPaymentComponent,
+    AdjustPaymentUpdateComponent
   ],
   imports: [
     CommonModule,

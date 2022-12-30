@@ -30,8 +30,6 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
     'id',
     'firstName',
     'roleID',
-    'branchID',
-    'status',
     'createdDate',
   ];
   object: any;
@@ -67,7 +65,7 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
 
   getPendingData() {
     console.log('okokok');
-    this.dataServise.getData(`user`).subscribe(
+    this.dataServise.getData(`employee`).subscribe(
       (res) => {
         this.TICKET_DATA = res;
         this.dataSource = new MatTableDataSource(

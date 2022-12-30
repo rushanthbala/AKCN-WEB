@@ -1,6 +1,6 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
-    <div class="form-heading int-div card-head-h2">Update Branch</div>
+    <div class="form-heading int-div card-head-h2">{{ ifData ? "Edit Branch" : "Add Branch" }}</div>
     <p class="para">{{ ifData ? currentData.userID : "" }}</p>
     <div>
       <div class="row mt-2">

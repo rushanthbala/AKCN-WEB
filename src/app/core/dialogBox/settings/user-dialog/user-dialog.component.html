@@ -1,11 +1,13 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
-    <div class="form-heading int-div card-head-h2">Edit User</div>
+    <div class="form-heading int-div card-head-h2">
+      {{ ifData ? "Edit User" : "Add User" }}
+    </div>
     <p class="para">{{ ifData ? currentData.userID : "" }}</p>
     <div>
       <div class="row mt-2">
         <div class="col-12 col-sm-6 mt-3">
-          <div class="para mt-3 ps-3">First Name</div>
+          <!-- <div class="para mt-3 ps-3">First Name</div> -->
           <input
             type="text"
             class="form-control int"
@@ -15,7 +17,7 @@
           />
         </div>
         <div class="col-12 col-sm-6 mt-3">
-          <div class="para mt-3 ps-3">Last Name</div>
+          <!-- <div class="para mt-3 ps-3">Last Name</div> -->
           <input
             type="text"
             class="form-control int"
@@ -26,7 +28,31 @@
         </div>
       </div>
       <div class="row mt-2">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">
+            Email
+          </div> -->
+          <input
+            type="email"
+            class="form-control int"
+            id="email"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </div>
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">Phone Number</div> -->
+          <input
+            type="text"
+            class="form-control int"
+            id="primaryPhone"
+            placeholder="Phone Number"
+            formControlName="primaryPhone"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <!-- <div class="col-12 col-sm-6">
           <div class="para mt-3 ps-3"></div>
 
           <select
@@ -43,7 +69,7 @@
               {{ item.branchName }}
             </option>
           </select>
-        </div>
+        </div> -->
         <div class="col-12 col-sm-6">
           <div class="para mt-3 ps-3"></div>
           <select
@@ -61,26 +87,29 @@
           </select>
         </div>
       </div>
-
-      <!-- <div class="row mt-2">
-        <div class="col-12 col-sm-6">
-          <div class="para mt-3 ps-3"></div>
-
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            (change)="onSelectarea(val.value)"
-            required
-            #val
-            formControlName="branch"
-          >
-            <option disabled selected value="null">Branch</option>
-            <option *ngFor="let item of areaArray" [value]="item.id">
-              {{ item.branchID }}
-            </option>
-          </select>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">Password</div> -->
+          <input
+            type="password"
+            class="form-control int"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+            [readonly]="ifData? true: false"
+          />
         </div>
-      </div> -->
+        <div class="col-12 col-sm-6 mt-3" *ngIf="!ifData">
+          <!-- <div class="para mt-3 ps-3">Confirm Pawwsord</div> -->
+          <input
+            type="password"
+            class="form-control int"
+            id="password"
+            placeholder="Confirm Password"
+            formControlName="cpassword"
+          />
+        </div>
+      </div>
 
       <div class="row mt-2">
         <div class="col-12 col-sm-6">
@@ -114,59 +143,5 @@
         </div>
       </div>
     </div>
-    <!-- <div class="row">
-            <div class="col-6">
-                <div>
-                    <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
-                        #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.area">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
-                    <div class="para mt-3 ps-3">Disconnected Date </div>
-                    <input type="date" class="form-control int" id="ID" placeholder="12-12-2022" formControlName="disconnectedDate" />
-        
-                    <div class="para mt-3 ps-3">Reconnection Fee </div>
-        
-                    <input type="text" class="form-control int" type="number" required id="ID" placeholder="Amount"
-                        formControlName="reconnectionFee" />
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
-                        Create
-                    </button>
-                    <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
-                        style="background-color: #fff !important; color: #027afe">
-                        Cancel
-                    </button>
-        
-                </div>
-            </div>
-            <div class="col-6">
-                <div>
-                    <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
-                        #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.area">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
-                    <div class="para mt-3 ps-3">Disconnected Date </div>
-                    <input type="date" class="form-control int" id="ID" placeholder="12-12-2022" formControlName="disconnectedDate" />
-        
-                    <div class="para mt-3 ps-3">Reconnection Fee </div>
-        
-                    <input type="text" class="form-control int" type="number" required id="ID" placeholder="Amount"
-                        formControlName="reconnectionFee" />
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
-                        Create
-                    </button>
-                    <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
-                        style="background-color: #fff !important; color: #027afe">
-                        Cancel
-                    </button>
-        
-                </div>
-            </div>
-        </div> -->
   </div>
 </form>

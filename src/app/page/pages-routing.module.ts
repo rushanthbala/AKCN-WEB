@@ -31,6 +31,7 @@ import { DueReportComponent } from './reports/due-report/due-report.component';
 import { CollectionReportComponent } from './reports/collection-report/collection-report.component';
 import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
 import { HistoryComponent } from './connection/alter-connection/history/history.component';
+import { AdjustPaymentComponent } from './payments/adjust-payment/adjust-payment.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,10 @@ const routes: Routes = [
       {
         path: 'add-arrears',
         component: AddArrearsComponent,
+      },
+      {
+        path: 'adjust-payment',
+        component: AdjustPaymentComponent,
       },
       {
         path: 'add-rentals',

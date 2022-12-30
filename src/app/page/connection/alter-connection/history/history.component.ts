@@ -50,6 +50,7 @@ export class HistoryComponent implements OnInit {
     'amount',
   ];
   paymentType: any;
+  showTable1: any;
 
   constructor(public dataServise: HttpService, private fb: FormBuilder) {}
 
@@ -142,7 +143,7 @@ export class HistoryComponent implements OnInit {
             // console.log('works')
             this.ConnectionData = res;
             this.dataSource1 = new MatTableDataSource(this.ConnectionData);
-            this.showTable = true;
+            this.showTable1 = true;
             setTimeout(() => {
               this.dataSource1.paginator = this.paginator1;
               this.dataSource1.sort = this.sort1;

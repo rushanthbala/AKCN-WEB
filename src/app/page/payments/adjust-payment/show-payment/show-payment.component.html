@@ -1,0 +1,36 @@
+<form [formGroup]="inputset">
+    <div
+      class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
+    >
+      <div class="mb-3 cus-int-div">
+        <label for="NIC" class="form-label labels">NIC </label>
+        <input
+          type="text"
+          class="form-control int"
+          id="NIC"
+          value="{{ object.subscriberNIC }}"
+          readonly
+        />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="SUBSCRIBER" class="form-label labels">SUBSCRIBER</label>
+        <input
+          type="text"
+          class="form-control int"
+          id="SUBSCRIBER"
+          value="{{ object.firstName }}"
+          readonly
+        />
+      </div>
+      <div class="mb-3 cus-int-div">
+        <label for="PHONE" class="form-label labels">PHONE</label>
+        <input
+          type="text"
+          class="form-control int"
+          id="PHONE"
+          value="{{ object.primaryPhone }}"
+          readonly
+        />
+      </div>
+    </div>
+  </form>

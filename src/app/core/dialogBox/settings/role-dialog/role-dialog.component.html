@@ -1,7 +1,7 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
-    <div class="form-heading int-div card-head-h2">Update Role</div>
-    <p class="para">{{ ifData ? currentData.userID : "" }}</p>
+    <div class="form-heading int-div card-head-h2">{{ ifData ? "Edit Role" : "Add Role" }}</div>
+    <!-- <p class="para">{{ ifData ? currentData.userID : "" }}</p> -->
     <div>
       <div class="row mt-2">
         <div class="col-12 col-sm-12 mt-3">

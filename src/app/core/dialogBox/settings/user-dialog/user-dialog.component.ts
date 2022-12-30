@@ -67,8 +67,11 @@ export class UserPostPut implements OnInit {
     this.chackRequest = this.fb.group({
       firstName: this.ifData ? this.currentData.firstName : '',
       lastName: this.ifData ? this.currentData.lastName : '',
+      email: this.ifData ? this.currentData.email : '',
+      primaryPhone: this.ifData ? this.currentData.primaryPhone : '',
+      password: this.ifData ? this.currentData.password : '',
       role: this.ifData ? this.currentData.roleID : null,
-      branch: this.ifData ? this.currentData.branchID : null,
+      // branch: this.ifData ? this.currentData.branchID : null,
     });
   }
   ReconnectionRequest() {
@@ -77,19 +80,31 @@ export class UserPostPut implements OnInit {
       firstName: this.chackRequest.value.firstName,
       lastName: this.chackRequest.value.lastName,
       role: this.chackRequest.value.role,
-      branch: this.chackRequest.value.branch,
+      // branch: this.chackRequest.value.branch,
+      email: this.chackRequest.value.email,
+      primaryPhone: this.chackRequest.value.primaryPhone,
+      password: this.chackRequest.value.password,
     };
     let sendObj = {
       firstName: datas.firstName,
       lastName: datas.lastName,
-      password: datas.lastName,
+      password: datas.password,
+      email: datas.email,
+      primaryPhone: datas.primaryPhone,
       roleID: datas.role,
-      branchID: datas.branch,
+      // branchID: datas.branch,
       ppVerified: '1',
-      status: 1,
+      status: '1',
     };
 
-    if (datas.firstName == '' || datas.lastName == '') {
+    if (
+      datas.firstName == '' ||
+      datas.lastName == '' ||
+      datas.email == '' ||
+      datas.password == '' ||
+      datas.primaryPhone == '' ||
+      datas.role == ''
+    ) {
       this.isEmpty();
     } else {
       this.loading = true;
@@ -102,7 +117,7 @@ export class UserPostPut implements OnInit {
   }
 
   postMethod(sendObj: any) {
-    this.dataServise.postValue(`user`, sendObj).subscribe(
+    this.dataServise.postValue(`auth/employee/register`, sendObj).subscribe(
       (res: any) => {
         if (res.errorMessage) {
           this.loading = false;
@@ -119,7 +134,7 @@ export class UserPostPut implements OnInit {
   }
 
   putMethod(sendObj: any) {
-    this.dataServise.putValue(`user/${this.currentData.id}`, sendObj).subscribe(
+    this.dataServise.putValue(`employee/${this.currentData.id}`, sendObj).subscribe(
       (res: any) => {
         console.log(this.data);
         if (res.errorMessage) {
