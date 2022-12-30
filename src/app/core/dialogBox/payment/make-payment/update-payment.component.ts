@@ -64,7 +64,7 @@ export class UpdatePaymentComponent implements OnInit {
     let dataObj ={
       connectionID:this.data.id,
       paidDateTime:formatDate(todayDate, 'yyyy-MM-dd', "en-US"),
-      description: this.chackRequest.value.Remark,
+      description: this.chackRequest.value.description,
       paymentType:this.PaymentType,
       amount:this.chackRequest.value.amount,
       enteredBy:"ADMIN",
@@ -105,7 +105,7 @@ export class UpdatePaymentComponent implements OnInit {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Finished', 'Sucessfully');
-    window.location.reload()
+    // window.location.reload()
 
   }
   showError() {
