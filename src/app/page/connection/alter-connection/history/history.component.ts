@@ -128,7 +128,7 @@ export class HistoryComponent implements OnInit {
       (res) => {
         let reverse = res.reverse()
         let array = reverse;
-        array.map((item:any) => {
+        array.map((item: any) => {
           if (
             item.paymentType == "FINE" ||
             item.paymentType == "RECONNECT" ||
@@ -139,12 +139,36 @@ export class HistoryComponent implements OnInit {
             this.ConnectionData.push(item);
           } else {
             console.log(item.paymentType);
-            
+
             this.TICKET_DATA.push(item);
           }
         });
         console.log(this.TICKET_DATA, "TICKET_DATA");
         console.log(this.ConnectionData, "ConnectionData");
+
+        // payment history arrear handling
+        withArrear = this.TICKET_DATA
+        var CalculateArrear: any;
+        withArrear.map((it: any, i: any) => {
+          if (it.amount) {
+            if (i == 0) {
+              CalculateArrear = Number(this.userData.dueAmount)
+              it['CalculateArrear'] = CalculateArrear
+            } else {
+              // for payment column
+              if (it.paymentType == "DISCOUNT" || it.paymentType == "MONTHLY PAYMENT") {
+                CalculateArrear = Number(CalculateArrear) - Number(it.amount)
+                it['CalculateArrear'] = ` ${Number(CalculateArrear)}`
+
+              } else {
+                // if()
+                CalculateArrear = Number(Number(CalculateArrear) + Number(it.amount))
+                it['CalculateArrear'] =` ${Number(CalculateArrear)} `
+              }
+            }
+          }
+        })
+
         this.dataSource = new MatTableDataSource(this.TICKET_DATA);
         this.dataSource1 = new MatTableDataSource(this.ConnectionData);
         this.showTable = true;
@@ -154,7 +178,7 @@ export class HistoryComponent implements OnInit {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           this.dataSource1.paginator = this.paginator1;
-      this.dataSource1.sort = this.sort1;
+          this.dataSource1.sort = this.sort1;
         }, 1);
         this.ifGetData = true;
 
@@ -164,7 +188,7 @@ export class HistoryComponent implements OnInit {
       }
     );
     this.showTable = true;
-   
+
 
     // withArrear = this.TICKET_DATA
     // var CalculateArrear: any;

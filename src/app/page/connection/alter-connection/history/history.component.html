@@ -75,9 +75,9 @@
                       *matCellDef="let element"
                       style="color: #31ab25"
                     >
-                      {{
-                        element.paymentType == "RENTAL" ||
-                        element.paymentType == "ARREAR"
+                       {{
+                       !( element.paymentType == "DISCOUNT" ||
+                        element.paymentType == "MONTHLY PAYMENT")
                           ? element.amount
                           : "--"
                       }}
