@@ -185,13 +185,13 @@
                 </option>
             </select> -->
         <div class="mb-3 cus-int-div">
-          <label for="Area" class="form-label labels">Area </label>
+          <label for="Area" class="form-label labels">Area</label>
           <select
             class="form-select"
             aria-label="Default select example"
-            (change)="onSelectarea(val.value)"
+            (change)="onSelectarea(val1.value)"
             required
-            #val
+            #val1
           >
             <option disabled selected value="null">Area</option>
             <option *ngFor="let item of areaArray" [value]="item.id">
@@ -205,7 +205,7 @@
       </div>
       <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
         <div class="mb-3 cus-int-div">
-          <label for="Road" class="form-label labels">Road </label>
+          <label for="Road" class="form-label labels">Road</label>
           <select
             class="form-select"
             aria-label="Default select example"
@@ -229,9 +229,9 @@
           <select
             class="form-select"
             aria-label="Default select example"
-            (change)="onSelectBranch(val.value)"
+            (change)="onSelectBranch(val3.value)"
             required
-            #val
+            #val3
           >
             <option disabled selected value="null">Branchv</option>
             <option *ngFor="let item of BranchArray" [value]="item.id">

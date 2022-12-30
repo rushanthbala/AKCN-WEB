@@ -106,7 +106,7 @@ export class AddConnectionComponent implements OnInit  {
         technicianId:this.technicianId,
         dueAmount: this.userForm.value.Arrears,
         ConnectionFee: this.userForm.value.ConnectionFee,
-        roadId:1,
+        // roadId:1,
         customerID:this.object.customerID,
         "status":"Active", 
         "connectedDate": this.userForm.value.ConnectionDate,
@@ -116,7 +116,7 @@ export class AddConnectionComponent implements OnInit  {
       }
       console.log(data);
       var checkData = this.technicianId =="" ||this.technicianId==undefined||
-      this.roadId =="" ||this.roadId==undefined||
+      this.roadId =="" ||
       this.areaId =="" ||this.areaId==undefined ||
       this.branchId =="" ||this.branchId==undefined
       if (this.userForm.valid || !checkData  ) {
@@ -137,13 +137,14 @@ export class AddConnectionComponent implements OnInit  {
           }
         );
       } else {
-alert("error")
+        this.showError()
       }
 
 
     }
   showSuccess() {
     this.toastr.success('Sucessfully Created', 'Sucessfull');
+    
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
