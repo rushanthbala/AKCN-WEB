@@ -52,7 +52,7 @@ export class HistoryComponent implements OnInit {
   paymentType: any;
   showTable1: any;
 
-  constructor(public dataServise: HttpService, private fb: FormBuilder) {}
+  constructor(public dataServise: HttpService, private fb: FormBuilder) { }
 
   @ViewChild('sort') sort: MatSort | any;
   @ViewChild('paginator') paginator: MatPaginator | any;
@@ -70,7 +70,6 @@ export class HistoryComponent implements OnInit {
     this.initialExtraForm();
     this.initialChangeForm();
     this.getAllDetails(id);
-    this.getPaymentHistory(id);
     // this.getConnectionHistory(id);
   }
   initialForm() {
@@ -111,11 +110,12 @@ export class HistoryComponent implements OnInit {
     // console.log(connectionId)
     console.log('1', id);
     this.dataServise.getData(`connection/id/${id}`).subscribe(
-      (res) => {
-        this.userData = res[0];
+      (respon) => {
+        this.userData = respon[0];
         this.tableResult = this.userData.length;
         this.showTable = true;
-        console.log(res);
+        // console.log(respon);
+        this.getPaymentHistory(id);
       },
       (err) => {
         console.log(err);
@@ -123,16 +123,13 @@ export class HistoryComponent implements OnInit {
     );
   }
   getPaymentHistory(id: any) {
+    var withArrear = []
     console.log('okokok');
     this.dataServise.getData(`payment/connectionid/${id}`).subscribe(
       (res) => {
-        let array = [res];
-        // console.log("2", array)
-
-        // var ConnectionData = [];
-        // var TICKET_DATA = [];
-
-        array.map((item) => {
+        let reverse = res.reverse()
+        let array = reverse;
+        array.map((item: any) => {
           if (
             item.paymentType == "FINE" ||
             item.paymentType == "RECONNECT" ||
@@ -140,48 +137,85 @@ export class HistoryComponent implements OnInit {
             item.paymentType == "DISCONNECT" ||
             item.paymentType == "NEW CONNECTION"
           ) {
-            // console.log('works')
-            this.ConnectionData = res;
-            this.dataSource1 = new MatTableDataSource(this.ConnectionData);
-            this.showTable1 = true;
-            setTimeout(() => {
-              this.dataSource1.paginator = this.paginator1;
-              this.dataSource1.sort = this.sort1;
-            }, 1);
+            this.ConnectionData.push(item);
           } else {
-            // console.log('woooss')
-            this.TICKET_DATA = res;
-            this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-            this.showTable = true;
-            setTimeout(() => {
-              this.dataSource.paginator = this.paginator;
-              this.dataSource.sort = this.sort;
-            }, 1);
-            this.ifGetData = true;
+            console.log(item.paymentType);
+
+            this.TICKET_DATA.push(item);
           }
         });
+        console.log(this.TICKET_DATA, "TICKET_DATA");
+        console.log(this.ConnectionData, "ConnectionData");
 
-        // this.ConnectionData = res;
-        // this.dataSource1 = new MatTableDataSource(this.ConnectionData);
-        // this.showTable = true;
-        // setTimeout(() => {
-        //   this.dataSource1.paginator = this.paginator1;
-        //   this.dataSource1.sort = this.sort1;
-        // }, 1);
+        // payment history arrear handling
+        withArrear = this.TICKET_DATA
+        var CalculateArrear: any;
+        withArrear.map((it: any, i: any) => {
+          if (it.amount) {
+            if (i == 0) {
+              CalculateArrear = Number(this.userData.dueAmount)
+              it['CalculateArrear'] = CalculateArrear
+            } else {
+              // for payment column
+              if (it.paymentType == "DISCOUNT" || it.paymentType == "MONTHLY PAYMENT") {
+                CalculateArrear = Number(CalculateArrear) - Number(it.amount)
+                it['CalculateArrear'] = ` ${Number(CalculateArrear)}`
 
-        // this.TICKET_DATA = res;
-        // this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-        // this.showTable = true;
-        // setTimeout(() => {
-        //   this.dataSource.paginator = this.paginator;
-        //   this.dataSource.sort = this.sort;
-        // }, 1);
-        // this.ifGetData = true;
+              } else {
+                // if()
+                CalculateArrear = Number(Number(CalculateArrear) + Number(it.amount))
+                it['CalculateArrear'] =` ${Number(CalculateArrear)} `
+              }
+            }
+          }
+        })
+
+        this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+        this.dataSource1 = new MatTableDataSource(this.ConnectionData);
+        this.showTable = true;
+
+
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.dataSource1.paginator = this.paginator1;
+          this.dataSource1.sort = this.sort1;
+        }, 1);
+        this.ifGetData = true;
+
       },
       (err) => {
         this.ifGetData = true;
       }
     );
+    this.showTable = true;
+
+
+    // withArrear = this.TICKET_DATA
+    // var CalculateArrear: any;
+    // withArrear.map((it: any, i: any) => {
+    //   if (it.amount) {
+    //     if (i == 0) {
+    //       CalculateArrear = Number(this.userData.dueAmount)
+    //       it['CalculateArrear'] = CalculateArrear
+    //     } else {
+    //       // for payment column
+    //       if (it.paymentType == "DISCOUNT" || it.paymentType == "MONTHLY PAYMENT") {
+    //         it['CalculateArrear'] = Number(CalculateArrear) - Number(it.amount)
+    //         CalculateArrear = Number(CalculateArrear) - Number(it.amount)
+
+    //       } else {
+    //         // if()
+    //         CalculateArrear = Number(CalculateArrear) - Number(it.amount)
+    //         it['CalculateArrear'] = Number(CalculateArrear) - Number(it.amount)
+    //       }
+    //     }
+    //   }
+    // })
+    // console.log(withArrear, "withArrear");
+    // this.TICKET_DATA = withArrear;
+
+
   }
 
   // getConnectionHistory(id: any) {

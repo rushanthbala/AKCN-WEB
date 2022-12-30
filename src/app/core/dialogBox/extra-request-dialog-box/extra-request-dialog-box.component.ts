@@ -72,7 +72,7 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Sucessfully created !', 'successful');
     this.onNoClick()
-    // window.location.reload();
+    window.location.reload();
 
   }
   showError() {

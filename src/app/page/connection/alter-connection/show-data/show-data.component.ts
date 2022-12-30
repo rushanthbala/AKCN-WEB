@@ -14,6 +14,8 @@ import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-req
 import { DisconnectDialogBoxComponent } from 'src/app/core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { ConnectDialogComponent } from 'src/app/core/dialogBox/connection/connect-dialog/connect-dialog.component';
 import { Route, Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-show-data',
@@ -28,14 +30,22 @@ export class ShowDataComponent implements OnInit {
   animal: string | any;
   name: string | any;
   connectionId: any;
+  public longitude : any
+  public lattitute : any
+   url : any =`https://maps.google.com/maps?q=9.6778336,80.0034365&hl=es;z=14`
+
+  // this.url =`https://maps.google.com/maps?q=9.6778336,80.0034365&hl=es;z=14&amp;output=embed`
+
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    public sanitizer: DomSanitizer
   ) {}
   @Input() object: object | any;
   @Input() text: string | any;
-
+  // url: string = "https://maps.google.com/maps?q=9.6778336,80.0034365&hl=es;z=14&amp;output=embed";
+  urlSafe: SafeResourceUrl |any;
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -51,6 +61,13 @@ export class ShowDataComponent implements OnInit {
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
+    let xy=this.object.connectionLocation
+    var split_str = xy.split(",");
+    console.log(split_str);
+    this.longitude= split_str[0]
+    this.lattitute= split_str[1]
+    this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+
   }
   initialForm() {
     this.loginForm = this.fb.group({
