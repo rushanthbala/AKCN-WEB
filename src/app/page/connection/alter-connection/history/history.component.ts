@@ -173,6 +173,7 @@ export class HistoryComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.TICKET_DATA);
         this.dataSource1 = new MatTableDataSource(this.ConnectionData);
         this.showTable = true;
+        this.showTable1 = true;
 
 
         setTimeout(() => {
