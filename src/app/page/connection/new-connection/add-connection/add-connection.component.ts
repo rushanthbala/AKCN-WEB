@@ -144,6 +144,10 @@ alert("error")
     }
   showSuccess() {
     this.toastr.success('Sucessfully Created', 'Sucessfull');
+
+
+    window.location.reload()
+
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

@@ -15,6 +15,9 @@
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
         >
           <!-- <option disabled selected value="null">User</option> -->
+          <option  [ngValue]="{id:1,firstName:'ADMIN'}">
+           ADMIN
+          </option>
           <option *ngFor="let item of UserArray" [ngValue]="item">
             {{ item.firstName }}
           </option>

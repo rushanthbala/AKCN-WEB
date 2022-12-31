@@ -167,7 +167,7 @@ export class AdjustPaymentUpdateComponent {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Updated', 'Sucessfully');
-    // window.location.reload()
+    window.location.reload()
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

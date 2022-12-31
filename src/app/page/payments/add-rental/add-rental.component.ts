@@ -43,7 +43,7 @@ let dataObj ={
   amount:amount,
   enteredBy:adminId,
   conductedBy:adminId,
-  phoneNumber:"076171675"
+  phoneNo:"0761711675"
 }
 console.log(dataObj,"dataObj");
 

@@ -42,7 +42,9 @@ let dataObj ={
   paymentType:"Arrears",
   amount:amount,
   enteredBy:adminId,
-  conductedBy:adminId
+  conductedBy:adminId,
+  phoneNo:"0761711675"
+
 }
 console.log(dataObj,"dataObj");
 
