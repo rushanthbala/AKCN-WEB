@@ -28,8 +28,9 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
     'connectionID',
     'description',
     'phone',
-    'createdBy',
+    'assignedTo',
     'createdAt',
+    'updatedAt'
   ];
 
   constructor(
