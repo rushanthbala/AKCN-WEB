@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   tableDatasetsData: any;
   tableDatasetsDate: any;
   userData: any;
+  maxDate: any;
 
   constructor() {}
 
@@ -45,17 +46,19 @@ export class DashboardComponent implements OnInit {
       number: '143350',
       img: true,
       color: 'green',
-    },
+    }
+  ];
+  mData = [
     {
       id: 1,
-      name: 'MONTHLY COLLECTION',
+      name: 'COLLECTION',
       number: '143350',
       img: true,
       color: 'green',
     },
     {
       id: 2,
-      name: 'MONTHLY NEW CONNECTION',
+      name: 'NEW CONNECTION',
       number: '143350',
       img: false,
       color: 'red',
@@ -69,12 +72,12 @@ export class DashboardComponent implements OnInit {
     },
     {
       id: 4,
-      name: 'MONTHLY RECONNECTION',
+      name: 'RECONNECTION',
       number: '143350',
       img: true,
       color: 'green',
     },
-  ];
+  ]
   userArray: any = [
     {
       id: 1,
@@ -153,7 +156,7 @@ export class DashboardComponent implements OnInit {
     // this.getAllTableData();
     this.renderChart();
     this.userData = this.userArray;
-
+    this.futureDateDisable();
     // this.getAllCardData();
   }
   renderChart() {
@@ -202,37 +205,19 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
-  // getAllTableData() {
-  //   // this.dataServise.getAllData('api/userSummary').subscribe((res) => {
-  //   // console.log(res.value === 1 ? true : false, '====');
-  //   // console.log(res, 'res');
-  //   let res = [
-  //     { create_date: '2022-06-14', total: 10 },
-  //     { create_date: '2022-06-15', total: 48 },
-  //     { create_date: '2022-06-16', total: 80 },
-  //     { create_date: '2022-06-17', total: 65 },
-  //     { create_date: '2022-06-18', total: 43 },
-  //     { create_date: '2022-06-19', total: 40 },
-  //     { create_date: '2022-06-20', total: 40 },
-  //     { create_date: '2022-06-21', total: 44 },
-  //     { create_date: '2022-06-22', total: 47 },
-  //   ];
-  //   let last7Array = [];
-  //   last7Array = res.slice(-7);
-  //   console.log(last7Array);
-  //   let data: any = [];
-  //   let date: any = [];
-  //   last7Array.map((item: any) => {
-  //     data.push(item.total);
-  //     date.push(item.create_date);
-  //     console.log('==');
-  //   });
-  //   this.tableDatasetsData = data;
-  //   this.tableDatasetsDate = date;
-  //   console.log(data, '====================');
-  //   this.chart = document.getElementById('chart');
-  //   Chart.register(...registerables);
-  //   this.loadChart();
-  //   // });
-  // }
+  futureDateDisable(){
+    var date :any = new Date();
+    var todayDate: any = date.getDate();
+    var month: any = date.getMonth() + 1;
+    var year: any = date.getFullYear();
+
+    if(todayDate < 10){
+      todayDate = "0" + todayDate; //1,2..9
+    }
+    if(month < 10){
+      month = "0" + month;
+    }
+    this.maxDate = year + "-" + month + "-" + todayDate;  //2022-12-31
+
+  }
 }
