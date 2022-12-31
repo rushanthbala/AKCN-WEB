@@ -86,12 +86,21 @@ export class AddCSubsciberComponent implements OnInit {
       type: ['Normal', Validators.required],
       TV: ['', Validators.required],
       OldID: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      cPassword: ['', Validators.required],
+      
 
       ConnectionAddress: ['', Validators.required],
       ConnectionDate: ['', Validators.required],
       Arrears: ['', Validators.required],
       ConnectionFee: ['', Validators.required],
-    });
+
+
+    }, {validator: this.passwordMatchValidator});
+  }
+  passwordMatchValidator(frm: FormGroup) {
+    console.log("hihih",frm.controls['password'].value === frm.controls['cPassword'].value ? null : {'mismatch': true});
+    return frm.controls['password'].value === frm.controls['cPassword'].value ? null : {'mismatch': true};
   }
   inputset: FormGroup | any;
   addEventClick() {
@@ -107,8 +116,8 @@ export class AddCSubsciberComponent implements OnInit {
       email: this.userForm.value.email,
       firstName: this.userForm.value.firstName,
       lastName: this.userForm.value.lastName,
+      hash: this.userForm.value.password,
       "ppVerified": 1,
-      "password": "123456"
     }
     console.log(data);
     var checkData:boolean = this.technicianId =="" ||this.technicianId==undefined||
@@ -123,13 +132,13 @@ export class AddCSubsciberComponent implements OnInit {
     console.log(checkData,this.userForm.valid,"this.this.userForm.valid");
     
     if (this.userForm.valid && !checkData ) {
-      this.dataServise.postValue('customer', data).subscribe(
+      this.dataServise.postValue('auth/register', data).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.errmsg = res.message || 'Something Went wrong.';
             this.loading = false;
           } else {
-            var cid =res.id 
+            var cid =res.msg.id 
             let obj = {
               connectionType: this.userForm.value.type,
               tvCount: this.userForm.value.TV,

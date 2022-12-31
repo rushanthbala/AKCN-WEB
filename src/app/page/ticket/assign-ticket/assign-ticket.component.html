@@ -89,7 +89,7 @@
             ID
           </th>
           <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.connectionID }}
+            {{ element.connectionOrgId }}
           </td>
         </ng-container>
 
@@ -123,18 +123,18 @@
           </td>
         </ng-container>
 
-        <!-- createdBy Column -->
-        <ng-container matColumnDef="createdBy">
+        <!-- assignedTo Column -->
+        <ng-container matColumnDef="assignedTo">
           <th
             mat-header-cell
             *matHeaderCellDef
             mat-sort-header
-            sortActionDescription="Sort by createdBy"
+            sortActionDescription="Sort by assignedTo"
           >
-            Created By
+            Assigned TO
           </th>
           <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.createdBy }}
+            {{ element.assignedTo }}
           </td>
         </ng-container>
 
