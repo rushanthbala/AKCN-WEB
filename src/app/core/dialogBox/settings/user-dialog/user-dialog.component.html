@@ -51,6 +51,28 @@
           />
         </div>
       </div>
+      <div class="row mt-2" *ngIf="!ifData">
+        <div class="col-12 col-sm-6 mt-3">
+          <!-- <div class="para mt-3 ps-3">Password</div> -->
+          <input
+            type="password"
+            class="form-control int"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+        <div class="col-12 col-sm-6 mt-3" *ngIf="!ifData">
+          <!-- <div class="para mt-3 ps-3">Confirm Pawwsord</div> -->
+          <input
+            type="password"
+            class="form-control int"
+            id="password"
+            placeholder="Confirm Password"
+            formControlName="cpassword"
+          />
+        </div>
+      </div>
       <div class="row mt-2">
         <!-- <div class="col-12 col-sm-6">
           <div class="para mt-3 ps-3"></div>
@@ -70,6 +92,7 @@
             </option>
           </select>
         </div> -->
+        <div class="col-sm-3"></div>
         <div class="col-12 col-sm-6">
           <div class="para mt-3 ps-3"></div>
           <select
@@ -85,29 +108,6 @@
               {{ item.role }}
             </option>
           </select>
-        </div>
-      </div>
-      <div class="row mt-2">
-        <div class="col-12 col-sm-6 mt-3">
-          <!-- <div class="para mt-3 ps-3">Password</div> -->
-          <input
-            type="password"
-            class="form-control int"
-            id="password"
-            placeholder="Password"
-            formControlName="password"
-            [readonly]="ifData? true: false"
-          />
-        </div>
-        <div class="col-12 col-sm-6 mt-3" *ngIf="!ifData">
-          <!-- <div class="para mt-3 ps-3">Confirm Pawwsord</div> -->
-          <input
-            type="password"
-            class="form-control int"
-            id="password"
-            placeholder="Confirm Password"
-            formControlName="cpassword"
-          />
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -41,6 +41,12 @@ export class AreaDialogComponent implements OnInit {
       // console.log(this.data.sendtype=="PUT" &&this.data.subscriberdata,this.data.sendtype ,this.data.subscriberdata);
     }
     this.initialReconnectionForm();
+    //  this.chackRequest=this.fb.group({
+    //   areaCode: new FormControl('', [Validators.required,Validators.minLength(3), Validators.maxLength(3)]),
+    //   area: new FormControl('', [Validators.required]),
+    //   branch: new FormControl('', [Validators.required]),
+    //   rental: new FormControl('', [Validators.required])
+    // })
 
     }
   constructor(
@@ -56,14 +62,11 @@ export class AreaDialogComponent implements OnInit {
   }
   initialReconnectionForm() {
     console.log(this.data,"his.data");
-    
     this.chackRequest = this.fb.group({
       area: this.ifData ?this.currentData.area: "",
       rental: this.ifData ?this.currentData.rental: "",
       branch:this.ifData ?this.currentData.branchID:null,
-      areaCode: this.ifData ?this.currentData.areaCode: "",
-
-      
+      areaCode: this.ifData ?this.currentData.areaCode: new FormControl("", [Validators.minLength(3), Validators.maxLength(3)]),
     });
   }
   ReconnectionRequest() {
@@ -83,9 +86,9 @@ export class AreaDialogComponent implements OnInit {
 
    console.log(sendObj,"sendObj");
    
-    if (datas.area == "" ||datas.rental == "" ||datas.areaCode == ""     ) {
+    if (!this.chackRequest.valid) {
       this.isEmpty();
-    } else {
+    }else {
       this.loading = true
       if (this.data.sendtype=='POST'){
         this.postMethod(sendObj);
@@ -162,6 +165,9 @@ export class AreaDialogComponent implements OnInit {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
+    this.toastr.error('Please recheck your details', 'Error');
+  }
+  showMsg(){
+    this.toastr.error('Area Code must be in 3 letters', 'Error')
   }
 }

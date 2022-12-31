@@ -27,6 +27,7 @@ export class HistoryComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = [
     'paidDateTime',
+    'invoiceID',
     'conductedBy',
     'description',
     'RENTAL',
@@ -43,6 +44,7 @@ export class HistoryComponent implements OnInit {
   dataSource1: any;
   displayedColumns1: string[] = [
     'paidDateTime',
+    'invoiceID',
     'enteredBy',
     'conductedBy',
     'paymentType',

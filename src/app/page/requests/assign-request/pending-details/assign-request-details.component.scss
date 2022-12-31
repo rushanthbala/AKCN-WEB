@@ -110,17 +110,20 @@
     margin-bottom: 5%;
   }
   .cus-btn-down {
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
     height: 40px;
     color: #fff;
     border-radius: 30px;
-    max-width: 220px;
-    width: 100%;
+    // max-width: 220px;
+    width: 22%;
     font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
-    margin: 0rem 0rem 0rem 1rem;
+    margin-left: 2%;
   }
   .btn-c-1 {
     background: #6468e7 !important;

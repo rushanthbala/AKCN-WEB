@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body">
-      <app-show-data [object]="userData" text="text"> </app-show-data>
+    <app-show-data [object]="userData" text="text"> </app-show-data>
     <div class="container-2">
       <mat-tab-group>
         <mat-tab label="PAYMENT HISTORY">
@@ -31,6 +31,20 @@
                     </td>
                   </ng-container>
 
+                  <ng-container matColumnDef="invoiceID">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      mat-sort-header
+                      sortActionDescription="Sort by invoiceID"
+                    >
+                      Invoice ID
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.invoiceID }}
+                    </td>
+                  </ng-container>
+
                   <ng-container matColumnDef="conductedBy">
                     <th
                       mat-header-cell
@@ -55,7 +69,7 @@
                       Description
                     </th>
                     <td mat-cell *matCellDef="let element">
-                      {{ element.description ? element.description : "--" }} 
+                      {{ element.description ? element.description : "--" }}
                     </td>
                   </ng-container>
 
@@ -73,9 +87,11 @@
                       *matCellDef="let element"
                       style="color: #31ab25"
                     >
-                       {{
-                       !( element.paymentType == "DISCOUNT" ||
-                        element.paymentType == "MONTHLY PAYMENT")
+                      {{
+                        !(
+                          element.paymentType == "DISCOUNT" ||
+                          element.paymentType == "MONTHLY PAYMENT"
+                        )
                           ? element.amount
                           : "--"
                       }}
@@ -115,7 +131,9 @@
                       Arrears
                     </th>
                     <td mat-cell *matCellDef="let element">
-                      {{ element.CalculateArrear ? element.CalculateArrear : "--" }}
+                      {{
+                        element.CalculateArrear ? element.CalculateArrear : "--"
+                      }}
                     </td>
                   </ng-container>
 
@@ -163,6 +181,19 @@
                     </th>
                     <td mat-cell *matCellDef="let element">
                       {{ element.paidDateTime ? element.paidDateTime : "--" }}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="invoiceID">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      mat-sort-header
+                      sortActionDescription="Sort by invoiceID"
+                    >
+                      Invoice ID
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.invoiceID }}
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="enteredBy">
