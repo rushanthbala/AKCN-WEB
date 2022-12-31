@@ -54,17 +54,31 @@
         </ng-container>
 
         <!-- roleID Column -->
-        <ng-container matColumnDef="ConnectionStatus">
+        <ng-container matColumnDef="tvCount">
           <th
             mat-header-cell
             *matHeaderCellDef
             mat-sort-header
-            sortActionDescription="Sort by ConnectionStatus"
+            sortActionDescription="Sort by tvCount"
           >
-            Connection Status
+            Tv Count
           </th>
           <td mat-cell *matCellDef="let element">
-            {{ element.connectionStatus }}
+            {{ element.tvCount }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dueAmount">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by dueAmount"
+          >
+            Arrears
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.dueAmount }}
           </td>
         </ng-container>
 

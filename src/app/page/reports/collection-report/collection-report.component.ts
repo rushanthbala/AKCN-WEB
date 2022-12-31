@@ -27,6 +27,7 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
   userData: any = [];
   dataSource: any;
   displayedColumns: string[] = [
+    // 'invoiceID',
     'ConnectionID',
     'ConnectionAddress',
     'ConnectionStatus',
@@ -58,6 +59,7 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
       .subscribe(
         (res) => {
           this.userData = res;
+          console.log(res)
           this.tableResult = this.userData.length;
 
           this.dataSource = new MatTableDataSource(this.userData);

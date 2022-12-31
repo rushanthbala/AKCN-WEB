@@ -67,6 +67,7 @@ export class UserReportComponent {
       .subscribe(
         (res) => {
           this.userData = res;
+          console.log(res)
           this.tableResult = this.userData.length;
 
           this.dataSource = new MatTableDataSource(this.userData);

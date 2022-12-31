@@ -28,8 +28,9 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'ConnectionID',
     'ConnectionAddress',
-    'ConnectionStatus',
+    'tvCount',
     'ConnectionDate',
+    'dueAmount'
   ];
   ifGetData: boolean = false;
 
@@ -74,6 +75,7 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
       .subscribe(
         (res) => {
           this.userData = res;
+          console.log(res)
           this.tableResult = this.userData.length;
 
           this.dataSource = new MatTableDataSource(this.userData);
