@@ -4,18 +4,6 @@
     <p class="para">{{ ifData ? currentData.userID : "" }}</p>
     <div>
       <div class="row mt-2">
-        <div class="col-12 col-sm-12 mt-2">
-          <div class="para mt-3 ps-3">Area</div>
-          <input
-            type="text"
-            class="form-control int"
-            id="area"
-            placeholder="Area"
-            formControlName="area"
-          />
-        </div>
-      </div>
-      <div class="row mt-2">
         <div class="col-12 col-sm-12 mt-3">
           <select
             class="form-select"
@@ -34,6 +22,33 @@
         </div>
       </div>
       <div class="row mt-2">
+        <div class="col-12 col-sm-12 mt-2">
+          <div class="para mt-3 ps-3">Area</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="area"
+            placeholder="Area"
+            formControlName="area"
+          />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-12 mt-3">
+          <div class="para ps-3">Area Code</div>
+          <input
+            type="text"
+            class="form-control int"
+            id="rental"
+            placeholder="Area Code"
+            formControlName="areaCode"
+            minlength="3"
+            maxlength="3"
+          />
+        </div>
+      </div>
+      
+      <div class="row mt-2">
         <div class="col-12 col-sm-12 mt-3">
           <div class="para ps-3">Rental</div>
           <input
@@ -45,6 +60,8 @@
           />
         </div>
       </div>
+
+      
 
       <div class="row mt-2">
         <div class="col-12 col-sm-6">

@@ -60,7 +60,10 @@ export class AreaDialogComponent implements OnInit {
     this.chackRequest = this.fb.group({
       area: this.ifData ?this.currentData.area: "",
       rental: this.ifData ?this.currentData.rental: "",
-      branch:this.ifData ?this.currentData.branchID:null
+      branch:this.ifData ?this.currentData.branchID:null,
+      areaCode: this.ifData ?this.currentData.areaCode: "",
+
+      
     });
   }
   ReconnectionRequest() {
@@ -68,16 +71,19 @@ export class AreaDialogComponent implements OnInit {
     let datas = {
       area: this.chackRequest.value.area,
       rental: this.chackRequest.value.rental,
-      branch: this.chackRequest.value.branch
+      branch: this.chackRequest.value.branch,
+      areaCode: this.chackRequest.value.areaCode
     };
     let sendObj ={
       "area":datas.area,
       "rental": datas.rental,
-      "branchID":datas.branch
+      "branchID":datas.branch,
+      "areaCode":datas.areaCode
     }
 
+   console.log(sendObj,"sendObj");
    
-    if (datas.area == "" ||datas.rental == ""   ) {
+    if (datas.area == "" ||datas.rental == "" ||datas.areaCode == ""     ) {
       this.isEmpty();
     } else {
       this.loading = true
