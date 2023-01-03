@@ -24,7 +24,6 @@ export class ConnectionSearchComponent  implements OnInit  {
   initialForm() {
     this.loginForm = this.fb.group({
       searchinginput: ['', Validators.required],
-      type: ['', Validators.required],
     });
   }
 
@@ -45,7 +44,7 @@ export class ConnectionSearchComponent  implements OnInit  {
       this.loading = false;
       return
     } else {
-      this.OnClick.emit({ searchinginput: sInput, type: sType })
+      this.OnClick.emit({ searchinginput: sInput, type: 'sType' })
 
       this.loading = false;
     }
@@ -57,6 +56,6 @@ export class ConnectionSearchComponent  implements OnInit  {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Feild', 'Error');
+    this.toastr.error('Fill All The Field', 'Error');
   }
 }

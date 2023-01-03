@@ -173,6 +173,6 @@ export class AdjustPaymentUpdateComponent {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Feild', 'Error');
+    this.toastr.error('Fill All The Field', 'Error');
   }
 }

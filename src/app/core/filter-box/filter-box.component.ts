@@ -35,6 +35,21 @@ export class FilterBoxComponent implements OnInit {
   searching() {
     console.log(this.loginForm.value);
   }
+  rename(name:string){
+    if(name=='ConnectionID'){
+      return 'Connection ID'
+    }else  if(name=='PhoneNo'){
+      return 'Phone Number'
+    }else  if(name=='NIC'){
+      return 'NIC'
+    }else  if(name=='OldID'){
+      return 'Old ID'
+    }else  if(name=='name'){
+      return 'Name'
+    }else{
+      return 'Value'
+    }
+  }
   emitEvent() {
     this.submitted = true
     this.loading = true;
@@ -46,6 +61,8 @@ export class FilterBoxComponent implements OnInit {
       this.loading = false;
       return
     } else {
+      console.log("okoko",this.loginForm);
+      
       this.OnClick.emit({ searchinginput: sInput, type: sType })
 
       this.loading = false;
@@ -58,6 +75,6 @@ export class FilterBoxComponent implements OnInit {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Feild', 'Error');
+    this.toastr.error('Fill All The Field', 'Error');
   }
 }

@@ -140,7 +140,7 @@ export class CollectionReportUpdateComponent {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Feild', 'Error');
+    this.toastr.error('Fill All The Field', 'Error');
   }
   showmsg(){
     this.toastr.error('From date must be less than to date', 'Error')

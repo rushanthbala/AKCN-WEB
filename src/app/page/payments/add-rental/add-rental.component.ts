@@ -114,6 +114,6 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Fill All The Feild', 'Error');
+    this.toastr.error('Fill All The Field', 'Error');
   }
 }

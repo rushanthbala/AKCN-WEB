@@ -36,6 +36,7 @@ export class PagesComponent implements OnInit {
       console.log('false');
       window.location.href = '/login';
     }
+    // this.menuStart()
   }
   ngAfterViewInit() {
     this.observer
@@ -246,7 +247,7 @@ export class PagesComponent implements OnInit {
       iconClass: 'icon-Requests',
       label: 'Requests',
       text: 'Lorem Ipsum',
-      state: true,
+      state: false,
       item: [
         { name: 'Create Requests', href: '/auth/create-request' },
         { name: 'Pending Requests', href: '/auth/pending-request' },
@@ -362,6 +363,12 @@ export class PagesComponent implements OnInit {
       }
     }
     // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
+  }
+  menuStart(){
+    var url = this.router.url;
+    var urlSpilite = url.split('/');
+    // console.log(this.href,"href",urlSpilite[2],"urlSpilite[2]");
+    
   }
 
   // elem = document.documentElement;
