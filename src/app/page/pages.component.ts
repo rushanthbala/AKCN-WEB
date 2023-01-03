@@ -363,6 +363,23 @@ export class PagesComponent implements OnInit {
     }
     // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
   }
+
+  // elem = document.documentElement;
+  fullScreen() {
+    var isInFullScreen =
+      document.fullscreenElement && document.fullscreenElement !== null;
+
+    var docElm = document.documentElement;
+    if (!isInFullScreen) {
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
 }
 
 export interface CollapsibleItem {

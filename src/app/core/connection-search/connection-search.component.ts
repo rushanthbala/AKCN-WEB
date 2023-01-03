@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -15,6 +15,7 @@ export class ConnectionSearchComponent  implements OnInit  {
   constructor(private fb: FormBuilder, private toastr: ToastrService,
   ) { }
   loginForm: FormGroup | any;
+  submitted = false
 
   ngOnInit(): void {
     this.initialForm();
@@ -22,9 +23,13 @@ export class ConnectionSearchComponent  implements OnInit  {
   }
   initialForm() {
     this.loginForm = this.fb.group({
-      searchinginput: '',
-      type: '',
+      searchinginput: ['', Validators.required],
+      type: ['', Validators.required],
     });
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
   }
 
   searching() {
@@ -35,9 +40,10 @@ export class ConnectionSearchComponent  implements OnInit  {
 
     let sInput = this.loginForm.value.searchinginput;
     let sType = this.loginForm.value.type;
-    if (sInput == "" ) {
-      this.isEmpty();
+    if (!this.loginForm.valid ) {
+      this.submitted = true
       this.loading = false;
+      return
     } else {
       this.OnClick.emit({ searchinginput: sInput, type: sType })
 

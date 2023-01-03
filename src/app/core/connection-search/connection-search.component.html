@@ -16,7 +16,18 @@
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             formControlName="searchinginput"
+            [ngClass]="{
+              'is-invalid': submitted && f['searchinginput'].errors
+            }"
           />
+          <div
+            *ngIf="submitted && f['searchinginput'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['searchinginput'].errors['required']">
+              Fill The Feild
+            </div>
+          </div>
         </div>
         <div class="col12 sm-col-6 col-md-4 mt-1">
           <span

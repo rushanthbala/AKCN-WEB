@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -16,6 +16,7 @@ export class PaymentFilterComponent {
   constructor(private fb: FormBuilder, private toastr: ToastrService,
   ) { }
   loginForm: FormGroup | any;
+  submitted = false
 
   ngOnInit(): void {
     this.initialForm();
@@ -23,8 +24,12 @@ export class PaymentFilterComponent {
   }
   initialForm() {
     this.loginForm = this.fb.group({
-      searchinginput: ''
+      searchinginput: ['', Validators.required]
     });
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
   }
 
   searching() {
@@ -34,9 +39,11 @@ export class PaymentFilterComponent {
     this.loading = true;
 
     let sInput = this.loginForm.value.searchinginput;
-    if (sInput == "") {
-      this.isEmpty();
+    if (!this.loginForm.valid) {
+      //this.isEmpty();
+      this.submitted = true
       this.loading = false;
+      return
     } else {
       this.OnClick.emit({ searchinginput: sInput })
 

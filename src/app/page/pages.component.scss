@@ -110,10 +110,15 @@ mat-sidenav-container {
 
   span {
     opacity: 0.7;
-    font-size: 14px;
+    font-size: 15px;
     // padding-left: 12px;
     color: #027afe;
   }
+}
+.menu-button span {
+  opacity: 0.7;
+  font-size: 15px;
+  color: #8990ad;
 }
 
 .menu-button:hover {
@@ -184,6 +189,7 @@ mat-sidenav-container {
   }
   span {
     opacity: 1;
+    font-size: 15px;
   }
 }
 .col-icon-span {
@@ -201,7 +207,10 @@ mat-sidenav-container {
   align-items: flex-start;
   // height: 80vh;
 }
-
+.i1{
+ border: none;
+ background-color:#FCFCFC;
+}
 .avatar {
   margin-top: 16px;
   width: 100px;
