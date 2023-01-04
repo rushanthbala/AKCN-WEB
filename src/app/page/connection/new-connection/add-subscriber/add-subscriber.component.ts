@@ -79,16 +79,16 @@ export class AddCSubsciberComponent implements OnInit {
 
       subscriberNIC: ['', Validators.required],
       primaryPhone: ['', Validators.required],
-      secondaryPhone: ['', Validators.required],
+      secondaryPhone: '',
       email: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       type: ['Normal', Validators.required],
       TV: ['', Validators.required],
-      OldID: ['', Validators.required],
+      OldID: '',
       password: ['', [Validators.required, Validators.minLength(6)]],
       cPassword: ['', Validators.required],
-      
+
 
       ConnectionAddress: ['', Validators.required],
       ConnectionDate: ['', Validators.required],
@@ -96,11 +96,11 @@ export class AddCSubsciberComponent implements OnInit {
       ConnectionFee: ['', Validators.required],
 
 
-    }, {validator: this.passwordMatchValidator});
+    }, { validator: this.passwordMatchValidator });
   }
   passwordMatchValidator(frm: FormGroup) {
-    console.log("hihih",frm.controls['password'].value === frm.controls['cPassword'].value ? null : {'mismatch': true});
-    return frm.controls['password'].value === frm.controls['cPassword'].value ? null : {'mismatch': true};
+    console.log("hihih", frm.controls['password'].value === frm.controls['cPassword'].value ? null : { 'mismatch': true });
+    return frm.controls['password'].value === frm.controls['cPassword'].value ? null : { 'mismatch': true };
   }
   inputset: FormGroup | any;
   addEventClick() {
@@ -108,37 +108,51 @@ export class AddCSubsciberComponent implements OnInit {
     console.log(this.userForm.valid, "userForm.check sub");
     console.log(this.userForm, "userForm.check sub");
 
-
-    let data = {
-      subscriberNIC: this.userForm.value.subscriberNIC,
-      primaryPhone: this.userForm.value.primaryPhone,
-      secondaryPhone: this.userForm.value.secondaryPhone,
-      email: this.userForm.value.email,
-      firstName: this.userForm.value.firstName,
-      lastName: this.userForm.value.lastName,
-      hash: this.userForm.value.password,
-      "ppVerified": 1,
+    var data;
+    if (this.userForm.value.secondaryPhone) {
+      data = {
+        subscriberNIC: this.userForm.value.subscriberNIC,
+        primaryPhone: this.userForm.value.primaryPhone,
+        secondaryPhone: this.userForm.value.secondaryPhone,
+        email: this.userForm.value.email,
+        firstName: this.userForm.value.firstName,
+        lastName: this.userForm.value.lastName,
+        hash: this.userForm.value.password,
+        "ppVerified": 1,
+      }
+    } else {
+      data = {
+        subscriberNIC: this.userForm.value.subscriberNIC,
+        primaryPhone: this.userForm.value.primaryPhone,
+        email: this.userForm.value.email,
+        firstName: this.userForm.value.firstName,
+        lastName: this.userForm.value.lastName,
+        hash: this.userForm.value.password,
+        "ppVerified": 1,
+      }
     }
+
+
     console.log(data);
-    var checkData:boolean = this.technicianId =="" ||this.technicianId==undefined||
-    this.roadId =="" ||this.roadId==undefined||
-    this.areaId =="" ||this.areaId==undefined ||
-    this.branchId =="" ||this.branchId==undefined
-    console.log(this.technicianId =="" ,this.technicianId==undefined,
-    this.roadId =="" ,this.roadId==undefined,
-    this.areaId =="" ,this.areaId==undefined ,
-    this.branchId =="" ,this.branchId==undefined);
-    
-    console.log(checkData,this.userForm.valid,"this.this.userForm.valid");
-    
-    if (this.userForm.valid && !checkData ) {
+    var checkData: boolean = this.technicianId == "" || this.technicianId == undefined ||
+      this.roadId == "" || this.roadId == undefined ||
+      this.areaId == "" || this.areaId == undefined ||
+      this.branchId == "" || this.branchId == undefined
+    console.log(this.technicianId == "", this.technicianId == undefined,
+      this.roadId == "", this.roadId == undefined,
+      this.areaId == "", this.areaId == undefined,
+      this.branchId == "", this.branchId == undefined);
+
+    console.log(checkData, this.userForm.valid, "this.this.userForm.valid");
+
+    if (this.userForm.valid && !checkData) {
       this.dataServise.postValue('auth/register', data).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.errmsg = res.message || 'Something Went wrong.';
             this.loading = false;
           } else {
-            var cid =res.msg.id 
+            var cid = res.msg.id
             let obj = {
               connectionType: this.userForm.value.type,
               tvCount: this.userForm.value.TV,
@@ -157,9 +171,9 @@ export class AddCSubsciberComponent implements OnInit {
               "actionDate": this.userForm.value.ConnectionDate,
               branchID: this.branchId
             }
-            console.log(obj,res,"obj");
-            
-          
+            console.log(obj, res, "obj");
+
+
 
             this.dataServise.postValue('connection', obj).subscribe(
               (res: any) => {
