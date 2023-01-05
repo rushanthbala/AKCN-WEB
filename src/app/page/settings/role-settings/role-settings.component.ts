@@ -17,6 +17,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RoleDialogComponent } from 'src/app/core/dialogBox/settings/role-dialog/role-dialog.component';
 import { ThisReceiver } from '@angular/compiler';
+import { RolePermissionDialogComponent } from 'src/app/core/dialogBox/settings/role-permission-dialog/role-permission-dialog.component';
 
 @Component({
   selector: 'app-users-setting',
@@ -130,6 +131,18 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
     });
   }
 
+  UpadtePermissionDialogBox(): void {
+    const dialogRef = this.dialog.open(RolePermissionDialogComponent, {
+      width: '750px',
+      data: { subscriberdata: this.subscriberdata, sendtype: this.sendtype },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
+
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
     html2canvas(DATA).then((canvas) => {
@@ -162,6 +175,15 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
     // this.isSubscriberdata=true;
     // console.log(us);
   }
+  viewPermission(us: any) {
+    // this.showTable = false;
+    this.sendtype = 'PUT';
+    this.subscriberdata = us;
+    this.UpadtePermissionDialogBox();
+    // this.isSubscriberdata=true;
+    // console.log(us);
+  }
+  
 }
 
 export interface PeriodicElement {
