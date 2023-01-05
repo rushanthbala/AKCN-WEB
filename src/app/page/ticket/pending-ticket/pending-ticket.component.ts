@@ -19,6 +19,7 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
   TICKET_DATA = []
   dataSource: any;
   displayedColumns: string[] = ['ticketID', 'connectionID', 'description', 'phone', 'createdBy', 'createdAt'];
+  EmployeeData: any;
 
   constructor(private _liveAnnouncer: LiveAnnouncer, public dataServise: HttpService) { }
   @ViewChild(MatSort) sort: MatSort | any;
@@ -41,6 +42,7 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
   p: number = 1;
   ngOnInit() {
     this.getPendingData();
+    this.getEmployee();
   }
   getPendingData() {
     this.dataServise.getData(`ticket/status/pending`).subscribe((res) => {
@@ -56,6 +58,36 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
       this.ifGetData=true
 
     });
+  }
+
+  getEmployee() {
+    this.dataServise.getData(`employee`).subscribe(
+      (res) => {
+        let array = res;
+
+        // array.map((item: any) => {
+        // console.log(item.firstName)
+        this.EmployeeData = res
+        // })
+        // console.log("1", res)
+        this.ifGetData = true;
+      },
+      (err) => {
+        this.ifGetData = true;
+      }
+    );
+  }
+
+  convertIdToName(name: any) {
+    let employeeName = "";
+    this.EmployeeData.map((item: any) => {
+      if (item.id == name) {
+        employeeName = item.firstName
+      } else {
+        employeeName = '--'
+      }
+    })
+    return employeeName
   }
 
   ngAfterViewInit(): void {
