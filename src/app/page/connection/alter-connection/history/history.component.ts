@@ -168,7 +168,7 @@ export class HistoryComponent implements OnInit {
               } else {
                 // if()
                 CalculateArrear = Number(Number(CalculateArrear) + Number(it.amount))
-                it['CalculateArrear'] =` ${Number(CalculateArrear)} `
+                it['CalculateArrear'] = ` ${Number(CalculateArrear)} `
               }
             }
           }
@@ -223,16 +223,16 @@ export class HistoryComponent implements OnInit {
 
   }
 
- 
 
-  getEmployee(){
+
+  getEmployee() {
     this.dataServise.getData(`employee`).subscribe(
       (res) => {
         let array = res;
 
         // array.map((item: any) => {
-          // console.log(item.firstName)
-          this.EmployeeData = res
+        // console.log(item.firstName)
+        this.EmployeeData = res
         // })
         // console.log("1", res)
         this.ifGetData = true;
@@ -243,16 +243,15 @@ export class HistoryComponent implements OnInit {
     );
   }
 
-  convertIdToName(name: any){
-    let employeeName = ""
+  convertIdToName(name: any) {
+    let employeeName = "";
     this.EmployeeData.map((item: any) => {
-      if(item.id == name){
+      if (item.id == name) {
         employeeName = item.firstName
-      }else{
+      } else {
         employeeName = '--'
       }
     })
-    console.log(employeeName)
     return employeeName
   }
 

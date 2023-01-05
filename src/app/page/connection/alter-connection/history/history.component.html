@@ -6,9 +6,7 @@
         <mat-tab label="PAYMENT HISTORY">
           <div *ngIf="TICKET_DATA.length != 0" class="container-6 table-responsive">
             <div *ngIf="showTable">
-              <div id="htmlData">
-                <p>jdfdjd</p>
-                {{convertIdToName("2")}}
+              <div id="htmlData">                
                 <table
                   mat-table
                   [dataSource]="dataSource"
@@ -57,7 +55,8 @@
                       Conducted By
                     </th>
                     <td mat-cell *matCellDef="let element">
-                      {{ element.conductedBy ? element.conductedBy : "--" }}
+                      <!-- {{convertIdToName("2")}} -->
+                      {{ element.conductedBy ? convertIdToName(element.conductedBy) : "--" }}
                     </td>
                   </ng-container>
 
