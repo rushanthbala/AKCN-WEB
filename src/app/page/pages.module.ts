@@ -95,6 +95,7 @@ import { AdjustPaymentComponent } from './payments/adjust-payment/adjust-payment
 import { PaymentFilterComponent } from '../core/payment-filter/payment-filter.component';
 import { ShowPaymentComponent } from './payments/adjust-payment/show-payment/show-payment.component';
 import { AdjustPaymentUpdateComponent } from '../core/adjust-payment-update/adjust-payment-update.component';
+import { RolePermissionDialogComponent } from '../core/dialogBox/settings/role-permission-dialog/role-permission-dialog.component';
 
 @NgModule({
   declarations: [
@@ -180,7 +181,8 @@ import { AdjustPaymentUpdateComponent } from '../core/adjust-payment-update/adju
     AdjustPaymentComponent,
     PaymentFilterComponent,
     ShowPaymentComponent,
-    AdjustPaymentUpdateComponent
+    AdjustPaymentUpdateComponent,
+    RolePermissionDialogComponent
   ],
   imports: [
     CommonModule,
