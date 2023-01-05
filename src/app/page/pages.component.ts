@@ -27,6 +27,7 @@ export class PagesComponent implements OnInit {
   public navName: string = '';
   logout() {
     localStorage.clear();
+    window.location.reload()
   }
   ngOnInit(): void {
     if (this.authService.isUserLoggedIn()) {
