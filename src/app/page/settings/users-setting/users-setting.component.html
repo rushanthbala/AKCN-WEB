@@ -4,17 +4,18 @@
       class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
     >
       <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
-
-      <div class="input-div col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
-        <input
-          type="text"
-          (keyup)="applyFilter($event)"
-          class="form-control int mt-2"
-          id="ID"
-          placeholder="Search"
-          formControlName="address"
-        />
-      </div>
+      <form [formGroup]="submit">
+        <div class="input-div col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+          <input
+            type="text"
+            (keyup)="applyFilter($event)"
+            class="form-control int mt-2"
+            id="ID"
+            placeholder="Search"
+            formControlName="address"
+          />
+        </div>
+      </form>
       <div class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-6"></div>
       <div class="input-div col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
         <button
@@ -64,22 +65,22 @@
                   mat-sort-header
                   sortActionDescription="Sort by firstName"
                 >
-                 FIRST NAME
+                  FIRST NAME
                 </th>
                 <td mat-cell *matCellDef="let element">
                   {{ element.firstName }}
                 </td>
               </ng-container>
 
-               <!-- lastName Column -->
-               <ng-container matColumnDef="lastName">
+              <!-- lastName Column -->
+              <ng-container matColumnDef="lastName">
                 <th
                   mat-header-cell
                   *matHeaderCellDef
                   mat-sort-header
                   sortActionDescription="Sort by lastName"
                 >
-                 LAST NAME
+                  LAST NAME
                 </th>
                 <td mat-cell *matCellDef="let element">
                   {{ element.lastName }}
@@ -137,12 +138,7 @@
 
               <!-- createdDate Column -->
               <ng-container matColumnDef="createdDate">
-                <th
-                  mat-header-cell
-                  *matHeaderCellDef
-                >
-                  Created At
-                </th>
+                <th mat-header-cell *matHeaderCellDef>Created At</th>
                 <td mat-cell *matCellDef="let element">
                   <div class="d-flex">
                     <div

@@ -14,6 +14,7 @@ import {
 } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
+import Validation from 'src/Validation/password.validation';
 
 @Component({
   selector: 'app-user-dialog',
@@ -87,6 +88,8 @@ export class UserPostPut implements OnInit {
       role: this.ifData ? this.currentData.roleID : new FormControl(null, [Validators.required]), 
       cpassword: new FormControl('', [Validators.required]),
       // branch: this.ifData ? this.currentData.branchID : null,
+    }, {
+      validators: [Validation.match('password', 'cpassword')],
     });
   }
 

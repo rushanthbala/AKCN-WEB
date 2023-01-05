@@ -17,6 +17,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserPostPut } from 'src/app/core/dialogBox/settings/user-dialog/user-dialog.component';
 import { ThisReceiver } from '@angular/compiler';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-users-setting',
@@ -40,7 +41,8 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
     public dataServise: HttpService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder
   ) {}
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -60,8 +62,15 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   sendtype: string = 'POST';
   tableResult: any;
   p: number = 1;
+  submit: FormGroup | any;
   ngOnInit() {
     this.getPendingData();
+    this.initialForm();
+  }
+  initialForm() {
+    this.submit = this.fb.group({
+      address: '',
+    });
   }
 
   getPendingData() {

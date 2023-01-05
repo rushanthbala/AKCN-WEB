@@ -63,7 +63,7 @@
         <div *ngIf="submitted && f['todate'].errors" class="invalid-feedback">
           <div *ngIf="f['todate'].errors['required']">Fill The Field</div>
         </div>
-        <div *ngIf="loginForm.get('todate').errors" class="text-small">
+        <div *ngIf="loginForm.errors" class="text-small">
           {{ loginForm.errors?.dates }}
         </div>
       </div>

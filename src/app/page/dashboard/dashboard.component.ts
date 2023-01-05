@@ -1,5 +1,6 @@
 import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 
@@ -15,8 +16,9 @@ export class DashboardComponent implements OnInit {
   tableDatasetsDate: any;
   userData: any;
   maxDate: any;
+  submitForm: FormGroup | any
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   sdata = [
     {
@@ -158,7 +160,15 @@ export class DashboardComponent implements OnInit {
     this.userData = this.userArray;
     this.futureDateDisable();
     // this.getAllCardData();
+    this.initialForm()
   }
+
+  initialForm(){
+    this.submitForm = this.fb.group({
+      fromdate:''
+    })
+  }
+
   renderChart() {
     const myChart = new Chart('linechart', {
       type: 'line',

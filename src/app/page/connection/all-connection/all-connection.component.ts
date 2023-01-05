@@ -15,6 +15,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { Route, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-all-connection',
@@ -36,7 +37,8 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
     public dataServise: HttpService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -56,8 +58,15 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
 
   tableResult: any;
   p: number = 1;
+  submit: FormGroup | any;
   ngOnInit() {
     this.getPendingData();
+    this.initialForm();
+  }
+  initialForm() {
+    this.submit = this.fb.group({
+      address: '',
+    });
   }
   getPendingData() {
     this.dataServise.getData(`connection/subscriber`).subscribe(

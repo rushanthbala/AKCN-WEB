@@ -14,6 +14,7 @@ import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-closed-ticket',
@@ -35,7 +36,8 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
-    public dataServise: HttpService
+    public dataServise: HttpService,
+    private fb: FormBuilder
   ) {}
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -56,8 +58,10 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
   tableResult: any;
 
   p: number = 1;
+  submit: FormGroup | any;
   ngOnInit() {
     this.getPendingData();
+    this.initialForm();
   }
   getPendingData() {
     this.dataServise.getData(`ticket/status/closed`).subscribe(
@@ -75,6 +79,11 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
         this.ifGetData = true;
       }
     );
+  }
+  initialForm() {
+    this.submit = this.fb.group({
+      address: '',
+    });
   }
 
   ngAfterViewInit(): void {

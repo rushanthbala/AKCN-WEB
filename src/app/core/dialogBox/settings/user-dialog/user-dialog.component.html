@@ -112,6 +112,9 @@
             class="invalid-feedback"
           >
             <div *ngIf="f['cpassword'].errors['required']">Fill The Field</div>
+            <div *ngIf="f['cpassword'].errors['matching']">
+              Confirm Password does not match
+            </div>
           </div>
         </div>
       </div>

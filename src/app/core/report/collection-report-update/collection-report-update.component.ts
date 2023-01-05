@@ -82,27 +82,21 @@ export class CollectionReportUpdateComponent {
     }, {validator: this.dateLessThan('fromdate', 'todate')});
   }
 
-  // validateDates() {
-  //   if (this.startDate > this.endDate) {
-  //     this.validationError = 'From date must be greater than to date';
-  //   } else {
-  //     this.validationError = '';
-  //   }
-  // }
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
+  }
+
   dateLessThan(from: string, to: string) {
     return (group: FormGroup): {[key: string]: any} => {
      let f = group.controls[from];
      let t = group.controls[to];
      if (f.value > t.value) {
        return {
-         dates: "Date from should be less than Date to"
+         dates: "From date should be less than to date"
        };
      }
      return {};
     }
-  }
-  get f(): { [key: string]: AbstractControl } {
-    return this.loginForm.controls;
   }
 
   searching() {

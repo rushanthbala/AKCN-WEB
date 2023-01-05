@@ -3,16 +3,18 @@
 >
   <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
 
-  <div class="input-div col-12 col-md-4">
-    <input
-      type="text"
-      (keyup)="applyFilter($event)"
-      class="form-control int mt-2"
-      id="ID"
-      placeholder="Search"
-      formControlName="address"
-    />
-  </div>
+  <form [formGroup]="submit">
+    <div class="input-div col-12 col-md-4">
+      <input
+        type="text"
+        (keyup)="applyFilter($event)"
+        class="form-control int mt-2"
+        id="ID"
+        placeholder="Search"
+        formControlName="address"
+      />
+    </div>
+  </form>
   <div class="mb-3 col-12 col-md-4"></div>
   <div class="col-5 col-md-4">
     <div class="btn-set d-flex m-1">
