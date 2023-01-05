@@ -42,7 +42,6 @@ export class AdminsComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    console.log('dataServise', 'this.dataServise.count');
     // this.userData = this.dataServise.userArray;
     // getting real API
     this.getAllData();
@@ -57,28 +56,22 @@ export class AdminsComponent implements OnInit {
     this.dataServise
       .getAllData('admin', { headers: header })
       .subscribe((res) => {
-        console.log(res, 'response');
         this.userData = res;
-        console.log(this.userData, '-userdara');
       });
   }
   handleDelete(id: any) {
-    console.log(id, '=====');
   }
   AdminLogin() {
     this.loading = true;
-    console.log(this.AdminLoginForm.value);
     let data = {
       email: this.AdminLoginForm.value.email,
       password: this.AdminLoginForm.value.password,
       name: this.AdminLoginForm.value.name,
       phone: this.AdminLoginForm.value.number,
     };
-    console.log(data, 'data');
 
     this.dataServise.postValue('admin/register', data).subscribe(
       (res: any) => {
-        console.log('Post created successfully!', res);
         if (res.errorMessage) {
           this.errmsg = res.message || 'These credentials do not match !!.';
           // localStorage.setItem('auth', 'res.token');

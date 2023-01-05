@@ -27,8 +27,6 @@ export class PendingChangeRequestComponent implements OnInit {
   public storedToken: any = localStorage.getItem('auth');
   submitted = false;
   onChangeObj(newObj: any) {
-    console.log(newObj.firstName);
-    console.log(newObj.id);
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
     // ... do other stuff here ...

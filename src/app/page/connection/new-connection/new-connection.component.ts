@@ -38,7 +38,6 @@ export class NewConnectionComponent {
     // alert(cInput)
     this.dataServise.getData(`connection/nic/${cInput}`).subscribe((res) => {
       let result = res.length;
-      console.log(result, "result");
       this.userData = res[0];
       this.tableResult = this.userData.length
       this.isNotUserData = false;
@@ -54,7 +53,6 @@ export class NewConnectionComponent {
   afterSubCreated(){
     this.dataServise.getData(`connection/nic/${this.searchtext}`).subscribe((res) => {
       let result = res.length;
-      console.log(result, "result");
       this.userData = res[0];
       this.tableResult = this.userData.length
       this.isNotUserData = false;
@@ -73,7 +71,6 @@ export class NewConnectionComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

@@ -49,7 +49,6 @@ export class ReconnectBigDialogComponent implements OnInit {
     });
   }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
     var adminId = admin ? admin.id : null
   
@@ -68,8 +67,6 @@ export class ReconnectBigDialogComponent implements OnInit {
     //   "connectionLocation":this.chackRequest.value.newAddress
 
     // }
-    console.log(dataObj,"data");
-//     console.log(datas.disconnectedDate == "" ,datas.reconnectionFee == "" ,
 //     datas.TechnicianId == "Technician" ,datas.newAddress=="",   datas.roadId == "Road" ,  datas.areaId == "Area"
 //  );
     
@@ -125,18 +122,14 @@ export class ReconnectBigDialogComponent implements OnInit {
   }
 
   onSelect(val: any) {
-    console.log(val);
     this.roadId = val
     
   }
   onSelectTech(val: any) {
-    console.log(val);
-    console.log(this.TechnicianId)
     this.TechnicianId = val
   }
   onSelectarea(val: any) {
     this.areaId = val
-    console.log(val);
   }
   showSuccess() {
     this.toastr.success('Sucessfully Changed', 'Sucessfully');

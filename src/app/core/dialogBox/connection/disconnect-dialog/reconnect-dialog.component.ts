@@ -51,7 +51,6 @@ export class ReconnectDialogComponent implements OnInit {
     this.loading = true;
 
     this.loading = true;
-    console.log(this.chackRequest.value);
     let data = {
       actionDate: this.chackRequest.value.disconnectedDate,
       remarks:this.chackRequest.value.remarks,

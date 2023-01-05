@@ -33,7 +33,6 @@ export class FilterBoxComponent implements OnInit {
   }
 
   searching() {
-    console.log(this.loginForm.value);
   }
   rename(name:string){
     if(name=='ConnectionID'){
@@ -61,7 +60,6 @@ export class FilterBoxComponent implements OnInit {
       this.loading = false;
       return
     } else {
-      console.log("okoko",this.loginForm);
       
       this.OnClick.emit({ searchinginput: sInput, type: sType })
 

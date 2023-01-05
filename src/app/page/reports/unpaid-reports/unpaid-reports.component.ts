@@ -46,7 +46,6 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {}
 
   searching(first: Object | any) {
-    console.log(first, 'first');
 
     //   {
     //     "branchID": 1,
@@ -58,7 +57,6 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
     var RoadID = first.user.RoadID == 0 ? 'All' : first.user.RoadID;
     var AreaID = first.user.AreaID == 0 ? 'All' : first.user.AreaID;
 
-    console.log(branchID, RoadID, AreaID);
 
     // var connectionId = first.connectionId
     // var amount = first.amount
@@ -75,7 +73,6 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
       .subscribe(
         (res) => {
           this.userData = res;
-          console.log(res)
           this.tableResult = this.userData.length;
 
           this.dataSource = new MatTableDataSource(this.userData);
@@ -106,7 +103,6 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -117,7 +113,6 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

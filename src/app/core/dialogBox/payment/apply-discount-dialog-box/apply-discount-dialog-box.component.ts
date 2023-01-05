@@ -43,7 +43,6 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
     let todayDate =new Date()
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
     var adminId = admin ? admin.id : null
-    console.log(this.Reconnection.value);
   
     
     let dataObj ={
@@ -56,7 +55,6 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
       conductedBy:adminId,
       phoneNo:this.data.primaryPhone
     }
-    console.log(dataObj, "data");
 
     // if (dataObj.description == "" || dataObj.amount == ""
     // ) {

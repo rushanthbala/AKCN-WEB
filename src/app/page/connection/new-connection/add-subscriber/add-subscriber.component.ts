@@ -46,7 +46,6 @@ export class AddCSubsciberComponent implements OnInit {
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
     });
-    console.log(this.roadArray, this.areaArray);
 
   }
 
@@ -99,14 +98,11 @@ export class AddCSubsciberComponent implements OnInit {
     }, { validator: this.passwordMatchValidator });
   }
   passwordMatchValidator(frm: FormGroup) {
-    console.log("hihih", frm.controls['password'].value === frm.controls['cPassword'].value ? null : { 'mismatch': true });
     return frm.controls['password'].value === frm.controls['cPassword'].value ? null : { 'mismatch': true };
   }
   inputset: FormGroup | any;
   addEventClick() {
     this.submitted = true;
-    console.log(this.userForm.valid, "userForm.check sub");
-    console.log(this.userForm, "userForm.check sub");
 
     var data;
     if (this.userForm.value.secondaryPhone) {
@@ -133,17 +129,11 @@ export class AddCSubsciberComponent implements OnInit {
     }
 
 
-    console.log(data);
     var checkData: boolean = this.technicianId == "" || this.technicianId == undefined ||
       this.roadId == "" || this.roadId == undefined ||
       this.areaId == "" || this.areaId == undefined ||
       this.branchId == "" || this.branchId == undefined
-    console.log(this.technicianId == "", this.technicianId == undefined,
-      this.roadId == "", this.roadId == undefined,
-      this.areaId == "", this.areaId == undefined,
-      this.branchId == "", this.branchId == undefined);
 
-    console.log(checkData, this.userForm.valid, "this.this.userForm.valid");
 
     if (this.userForm.valid && !checkData) {
       this.dataServise.postValue('auth/register', data).subscribe(
@@ -171,7 +161,6 @@ export class AddCSubsciberComponent implements OnInit {
               "actionDate": this.userForm.value.ConnectionDate,
               branchID: this.branchId
             }
-            console.log(obj, res, "obj");
 
 
 

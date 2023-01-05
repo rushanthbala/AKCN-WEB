@@ -112,7 +112,6 @@ export class UnpaidReportUpdateComponent {
   // }
 
   findArea(id: any) {
-    console.log('findArea', id);
     this.dataServise.getData(`areaBybranchId/${id}`).subscribe((res) => {
       this.AreaArray = res;
       // if(res.length >0){
@@ -123,7 +122,6 @@ export class UnpaidReportUpdateComponent {
   }
 
   findRoad(id: any) {
-    console.log('find road', id);
     this.dataServise.getData(`road/roadByAreaID/${id}`).subscribe((res) => {
       this.RoadArray = res;
       // if(res.length >0){
@@ -146,10 +144,6 @@ export class UnpaidReportUpdateComponent {
   }
 
   emitEvent() {
-    console.log('mic01');
-
-    console.log(this.BranchName, this.RoadName, this.AreaName);
-    console.log(this.BranchId, this.RoadId, this.AreaId);
     let detailObj = {
       branchID: this.BranchId,
       RoadID: this.RoadId,

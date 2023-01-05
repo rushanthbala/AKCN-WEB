@@ -45,7 +45,6 @@ export class PendingRequestComponent implements AfterViewInit, OnInit {
     this.getPendingData();
   }
   getPendingData() {
-    console.log("okokok");
     this.dataServise.getData(`request/status/pending`).subscribe((res) => {
       this.TICKET_DATA = res;
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
@@ -76,7 +75,6 @@ export class PendingRequestComponent implements AfterViewInit, OnInit {
     }
   }
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] = this.dataSource.filteredData.map((x: TicketElement) => ({
       connectionID: x.connectionID,
       "requestID": x.requestID,
@@ -121,7 +119,6 @@ export class PendingRequestComponent implements AfterViewInit, OnInit {
     this.showTable = false;
     this.subscriberdata = us;
     this.isSubscriberdata = true;
-    console.log(us);
 
   }
   detailhide() {

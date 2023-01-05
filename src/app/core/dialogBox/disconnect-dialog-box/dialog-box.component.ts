@@ -51,7 +51,6 @@ export class DisconnectDialogBoxComponent implements OnInit {
       createdBy: adminId,
       "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
     };
-    console.log(this.data, dataObj);
     // if (dataObj.description == "" || dataObj.phone == ""
     // ) {
     //   this.isEmpty();

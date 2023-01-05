@@ -81,17 +81,13 @@ export class PendingRequestDetailsComponent {
   }
   
   searching() {
-    console.log(this.loginForm.value);
   }
   // model form function
   ReconnectionRequest() {
-    console.log(this.Reconnection.value);
   }
   ChangeRequest() {
-    console.log(this.Reconnection.value);
   }
   ExtraRequest() {
-    console.log(this.Reconnection.value);
   }
    AssignOpenDialog(): void {
     const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
@@ -100,7 +96,6 @@ export class PendingRequestDetailsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -112,7 +107,6 @@ export class PendingRequestDetailsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }  

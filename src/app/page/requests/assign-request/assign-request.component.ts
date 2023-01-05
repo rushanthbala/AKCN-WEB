@@ -43,7 +43,6 @@ export class AssignRequestComponent implements AfterViewInit, OnInit {
     this.getPendingData();
   }
   getPendingData() {
-    console.log("okokok");
     this.dataServise.getData(`request/status/assigned`).subscribe((res) => {
       this.TICKET_DATA = res;
       this.dataSource = new MatTableDataSource(this.TICKET_DATA);
@@ -74,7 +73,6 @@ export class AssignRequestComponent implements AfterViewInit, OnInit {
     }
   }
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] = this.dataSource.filteredData.map((x: TicketElement) => ({
       connectionID: x.connectionID,
       "requestID": x.requestID,
@@ -119,7 +117,6 @@ export class AssignRequestComponent implements AfterViewInit, OnInit {
     this.showTable = false;
     this.subscriberdata = us;
     this.isSubscriberdata = true;
-    console.log(us);
 
   }
   detailhide() {

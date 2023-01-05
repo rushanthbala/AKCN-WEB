@@ -27,7 +27,6 @@ export class DialogBoxComponent  implements OnInit  {
     });
   }
   ReconnectionRequest() {
-    console.log(this.Reconnection.value);
   }
 }
 

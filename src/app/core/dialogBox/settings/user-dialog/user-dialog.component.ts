@@ -42,7 +42,6 @@ export class UserPostPut implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    console.log(this.data, 'dtaaaa');
     if (this.data.sendtype == 'POST') {
       // alert("cool")
       this.ifData = false;
@@ -54,7 +53,6 @@ export class UserPostPut implements OnInit {
       this.currentData = this.data.subscriberdata;
       // alert("oko")
     } else {
-      // console.log(this.data.sendtype=="PUT" &&this.data.subscriberdata,this.data.sendtype ,this.data.subscriberdata);
     }
     this.initialReconnectionForm();
   }
@@ -69,7 +67,6 @@ export class UserPostPut implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-    console.log(this.data, 'his.data');
 
     // this.chackRequest = this.fb.group({
     //   firstName: new FormControl('', [Validators.required]),
@@ -99,7 +96,6 @@ export class UserPostPut implements OnInit {
 
   ReconnectionRequest() {
     this.submitted = true;
-    console.log(this.chackRequest.value);
     let datas = {
       firstName: this.chackRequest.value.firstName,
       lastName: this.chackRequest.value.lastName,
@@ -157,7 +153,6 @@ export class UserPostPut implements OnInit {
       .putValue(`employee/${this.currentData.id}`, sendObj)
       .subscribe(
         (res: any) => {
-          console.log(this.data);
           if (res.errorMessage) {
             this.loading = false;
           } else {

@@ -76,8 +76,6 @@ export class UpdatePaymentComponent implements OnInit {
       conductedBy:adminId,
       phoneNo:this.data.primaryPhone
     }
-    console.log(dataObj,"dataObj");
-
     // if (dataObj.amount == "" || dataObj.description == "" ||dataObj.paymentType == ""
     // ) {
     //   this.isEmpty();

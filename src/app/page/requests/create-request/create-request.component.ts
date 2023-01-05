@@ -85,7 +85,6 @@ export class CreateRequestComponent implements OnInit {
     this.showTable = false;
     this.subscriberdata = us;
     this.isSubscriberdata = true;
-    console.log(us);
   }
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports

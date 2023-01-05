@@ -65,7 +65,6 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   }
 
   getPendingData() {
-    console.log('okokok');
     this.dataServise.getData(`employee`).subscribe(
       (res) => {
         this.TICKET_DATA = res;
@@ -104,7 +103,6 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   }
   // UserPostPut
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] =
       this.dataSource.filteredData.map((x: TicketElement) => ({
         connectionID: x.connectionID,
@@ -133,7 +131,6 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       // this.animal = result;
       // this.getPendingData();
     });
@@ -169,7 +166,6 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
     this.subscriberdata = us;
     this.UpadteUserDialogBox();
     // this.isSubscriberdata=true;
-    // console.log(us);
   }
 }
 

@@ -63,7 +63,6 @@ export class ShowDataComponent implements OnInit {
     this.initialChangeForm();
     let xy=this.object.connectionLocation
     var split_str = xy.split(",");
-    console.log(split_str);
     this.longitude= split_str[0]
     this.lattitute= split_str[1]
     this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
@@ -102,19 +101,7 @@ export class ShowDataComponent implements OnInit {
     });
   }
 
-  searching() {
-    console.log(this.loginForm.value);
-  }
-  // model form function
-  ReconnectionRequest() {
-    console.log(this.Reconnection.value);
-  }
-  ChangeRequest() {
-    console.log(this.Reconnection.value);
-  }
-  ExtraRequest() {
-    console.log(this.Reconnection.value);
-  }
+  
   openReconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
@@ -122,7 +109,6 @@ export class ShowDataComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -133,7 +119,6 @@ export class ShowDataComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -145,7 +130,6 @@ export class ShowDataComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -156,7 +140,6 @@ export class ShowDataComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -168,7 +151,6 @@ export class ShowDataComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -179,15 +161,12 @@ export class ShowDataComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
 
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    console.log(id.id);
-    console.log('component chnaged');
     // this.connectionId = id.id;
   }
 

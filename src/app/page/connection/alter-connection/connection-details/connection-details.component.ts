@@ -86,17 +86,13 @@ export class ConnectionDetailsComponent implements OnInit {
   }
 
   searching() {
-    console.log(this.loginForm.value);
   }
   // model form function
   ReconnectionRequest() {
-    console.log(this.Reconnection.value);
   }
   ChangeRequest() {
-    console.log(this.Reconnection.value);
   }
   ExtraRequest() {
-    console.log(this.Reconnection.value);
   }
   openReconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
@@ -105,7 +101,6 @@ export class ConnectionDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -116,7 +111,6 @@ export class ConnectionDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -128,7 +122,6 @@ export class ConnectionDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -139,7 +132,6 @@ export class ConnectionDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -151,7 +143,6 @@ export class ConnectionDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -162,15 +153,12 @@ export class ConnectionDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
 
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    console.log(id.id);
-    console.log('component chnaged');
     // this.connectionId = id.id;
   }
 

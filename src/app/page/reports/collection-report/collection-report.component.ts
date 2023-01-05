@@ -47,19 +47,15 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
   }
 
   searching(first: Object | any) {
-    console.log(first, 'first');
 
     var fromdate = first.fromdate;
     var todate = first.todate;
-
-    console.log(fromdate, todate);
 
     this.dataServise
       .getData(`connectionReport/byDate/${fromdate}/${todate}`)
       .subscribe(
         (res) => {
           this.userData = res;
-          console.log(res)
           this.tableResult = this.userData.length;
 
           this.dataSource = new MatTableDataSource(this.userData);
@@ -89,7 +85,6 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -100,7 +95,6 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

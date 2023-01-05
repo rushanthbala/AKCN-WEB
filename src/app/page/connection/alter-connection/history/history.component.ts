@@ -111,24 +111,20 @@ export class HistoryComponent implements OnInit {
   getAllDetails(id: any) {
     // var connectionId = first.connectionid.id;
     // console.log(connectionId)
-    console.log('1', id);
     this.dataServise.getData(`connection/id/${id}`).subscribe(
       (respon) => {
         this.userData = respon[0];
         this.tableResult = this.userData.length;
         this.showTable = true;
-        // console.log(respon);
         this.getPaymentHistory(id);
         this.getEmployee();
       },
       (err) => {
-        console.log(err);
       }
     );
   }
   getPaymentHistory(id: any) {
     var withArrear = []
-    console.log('okokok');
     this.dataServise.getData(`payment/connectionid/${id}`).subscribe(
       (res) => {
         let reverse = res.reverse()
@@ -143,13 +139,10 @@ export class HistoryComponent implements OnInit {
           ) {
             this.ConnectionData.push(item);
           } else {
-            console.log(item.paymentType);
 
             this.TICKET_DATA.push(item);
           }
         });
-        console.log(this.TICKET_DATA, "TICKET_DATA");
-        console.log(this.ConnectionData, "ConnectionData");
 
         // payment history arrear handling
         withArrear = this.TICKET_DATA
@@ -217,7 +210,6 @@ export class HistoryComponent implements OnInit {
     //     }
     //   }
     // })
-    // console.log(withArrear, "withArrear");
     // this.TICKET_DATA = withArrear;
 
 
@@ -231,10 +223,8 @@ export class HistoryComponent implements OnInit {
         let array = res;
 
         // array.map((item: any) => {
-        // console.log(item.firstName)
         this.EmployeeData = res
         // })
-        // console.log("1", res)
         this.ifGetData = true;
       },
       (err) => {
@@ -257,7 +247,6 @@ export class HistoryComponent implements OnInit {
 
 
   // getConnectionHistory(id: any) {
-  //   console.log('okokok');
   //   this.dataServise.getData(`payment/connectionid/${id}`).subscribe(
   //     (res) => {
   //       this.ConnectionData = res;

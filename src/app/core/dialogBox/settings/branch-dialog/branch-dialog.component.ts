@@ -29,7 +29,6 @@ export class BranchDialogComponent implements OnInit {
   submitted = false
   ngOnInit(): void {
     this.getAll()
-    console.log(this.data,"dtaaaa");
     if(this.data.sendtype=="POST"){
       // alert("cool")
       this.ifData=false
@@ -38,7 +37,6 @@ export class BranchDialogComponent implements OnInit {
       this.currentData =this.data.subscriberdata
       // alert("oko")
     }else{
-      // console.log(this.data.sendtype=="PUT" &&this.data.subscriberdata,this.data.sendtype ,this.data.subscriberdata);
     }
     this.initialReconnectionForm();
 
@@ -55,8 +53,6 @@ export class BranchDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-    console.log(this.data,"his.data");
-    
     this.chackRequest = this.fb.group({
       branchName: this.ifData ?this.currentData.branchName: new FormControl('', [Validators.required]),
       branchAddress: this.ifData ?this.currentData.branchAddress: new FormControl('', [Validators.required]),
@@ -68,7 +64,6 @@ export class BranchDialogComponent implements OnInit {
     return this.chackRequest.controls;
   }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
     this,this.submitted = true
     let datas = {
       branchName: this.chackRequest.value.branchName,

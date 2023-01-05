@@ -32,7 +32,6 @@ export class AppComponent {
 
   save() {
     console.log('saving form ===');
-
     // this.preview = JSON.stringify(this.jobForm.value);
   }
 }

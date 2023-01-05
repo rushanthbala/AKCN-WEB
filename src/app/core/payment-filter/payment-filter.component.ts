@@ -33,7 +33,6 @@ export class PaymentFilterComponent {
   }
 
   searching() {
-    console.log(this.loginForm.value);
   }
   emitEvent() {
     this.loading = true;

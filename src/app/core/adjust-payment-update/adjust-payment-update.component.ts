@@ -84,7 +84,6 @@ export class AdjustPaymentUpdateComponent {
       this.currentData = this.data.subscriberdata;
       // alert("oko")
     } else {
-      // console.log(this.data.sendtype=="PUT" &&this.data.subscriberdata,this.data.sendtype ,this.data.subscriberdata);
     }
     this.initialReconnectionForm();
     // this.getAll()
@@ -124,7 +123,6 @@ export class AdjustPaymentUpdateComponent {
       description: datas.description
     }
 
-    console.log(dataObj, 'dataObj');
 
     if (
       dataObj.amount == '' ||

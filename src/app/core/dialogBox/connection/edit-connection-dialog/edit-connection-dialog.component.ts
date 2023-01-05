@@ -57,7 +57,6 @@ export class EditConnectionDialogComponent implements OnInit {
     });
   }
   ReconnectionRequest() {
-    // console.log(this.chackRequest.value);
     let todayDate = new Date()
     let dataSet = {
       branchID:this.branchId,
@@ -73,9 +72,6 @@ export class EditConnectionDialogComponent implements OnInit {
       tvCount: this.chackRequest.value.NoOfTV,
       actionDate: formatDate(todayDate, 'yyyy-MM-dd', "en-US"),
     };
-    console.log(dataSet,"dataSet");
-   
-    console.log(dataSet,"dataSet");
     
     if (dataSet.oldID == "" ||dataSet.tvCount == "" ||
     dataSet.connectionAddress==""||   dataSet.roadID == "Road" ||  dataSet.areaCode == "Area" ||  dataSet.branchID == "Branch"
@@ -145,7 +141,6 @@ export class EditConnectionDialogComponent implements OnInit {
     this.areaId = val
   }
   onSelectbranch(val: any) {
-    console.log(val);
     
     this.branchId = val
   }

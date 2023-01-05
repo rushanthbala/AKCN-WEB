@@ -74,7 +74,6 @@ export class CreateTicketComponentDialog implements OnInit {
       createdBy: this.data.firstName,
       "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
     };
-    console.log(this.data, dataObj);
     // if (dataObj.description == "" || dataObj.phone == "" || dataObj.subject == 'Subject'
     // ) {
     //   this.isEmpty();
