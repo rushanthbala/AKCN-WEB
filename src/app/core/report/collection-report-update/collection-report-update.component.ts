@@ -132,8 +132,7 @@ export class CollectionReportUpdateComponent {
     if(!this.loginForm.valid){
       this.loading = false;
       return
-    }
-    else {
+    } else {
       this.OnClick.emit({
         fromdate: fromdate,
         todate: todate,

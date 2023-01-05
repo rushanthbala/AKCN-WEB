@@ -223,14 +223,17 @@ export class HistoryComponent implements OnInit {
 
   }
 
+ 
+
   getEmployee(){
     this.dataServise.getData(`employee`).subscribe(
       (res) => {
         let array = res;
-        array.map((item: any) => {
-          console.log(item.firstName)
-          this.EmployeeData = item.firstName
-        })
+
+        // array.map((item: any) => {
+          // console.log(item.firstName)
+          this.EmployeeData = res
+        // })
         // console.log("1", res)
         this.ifGetData = true;
       },
@@ -238,6 +241,19 @@ export class HistoryComponent implements OnInit {
         this.ifGetData = true;
       }
     );
+  }
+
+  convertIdToName(name: any){
+    let employeeName = ""
+    this.EmployeeData.map((item: any) => {
+      if(item.id == name){
+        employeeName = item.firstName
+      }else{
+        employeeName = '--'
+      }
+    })
+    console.log(employeeName)
+    return employeeName
   }
 
 
