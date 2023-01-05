@@ -60,7 +60,6 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
     this.getPendingData();
   }
   getPendingData() {
-    console.log('okokok');
     this.dataServise.getData(`ticket/status/closed`).subscribe(
       (res) => {
         this.TICKET_DATA = res;
@@ -70,7 +69,6 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
           this.dataSource.sort = this.sort;
         });
 
-        console.log(res);
         this.ifGetData = true;
       },
       (err) => {
@@ -97,7 +95,6 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
     }
   }
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] =
       this.dataSource.filteredData.map((x: TicketElement) => ({
         connectionID: x.connectionID,
@@ -145,7 +142,6 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
     // this.showTable = false;
     // this.subscriberdata=us;
     // this.isSubscriberdata=true;
-    // console.log(us);
   }
 }
 
