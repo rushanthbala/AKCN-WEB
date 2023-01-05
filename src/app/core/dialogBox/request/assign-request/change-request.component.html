@@ -4,18 +4,22 @@
     <p class="para">{{ data.TicketData.id }}</p>
     <div class="">
       <select
-        class="form-select"
+        class="form-select mt-2"
         aria-label="Default select example"
         required
-        [(ngModel)]="selectedDeviceObj"
+        [(ngModel)]="selectedDeviceObj.tech"
         [ngModelOptions]="{ standalone: true }"
         (ngModelChange)="onChangeObj(selectedDeviceObj)"
+        [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }"
       >
         <option disabled selected value="null">Technician</option>
         <option *ngFor="let item of TechnicianArray" [ngValue]="item">
           {{ item.firstName }}
         </option>
       </select>
+      <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
+        <div *ngIf="f['tech'].errors['required']">Select the technician</div>
+      </div>
 
       <!-- <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
                 <option disabled selected value="null">Technician</option>
@@ -24,7 +28,7 @@
                 </option>
             </select> -->
       <button
-        class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+        class="input-group-text cus-btn-down cus-model-btn-down btn-c-1 mt-4"
         (click)="ReconnectionRequest()"
       >
         Update

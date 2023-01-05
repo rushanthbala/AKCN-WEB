@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="overflow: hidden;">
   <div class="card-text">Choose searching type and enter the value</div>
   <br />
   <div class="card-body">
@@ -15,7 +15,7 @@
 <!-- <p class="head-2 p-5" *ngIf="isFetchDataFail">No Data found</p> -->
 
 <div class="main-div">
-  <div class="container-6" *ngIf="showTable && !isFetchDataFail">
+  <div class="container-6 table-responsive" *ngIf="showTable && !isFetchDataFail">
     <div id="htmlData">
       <table
         mat-table

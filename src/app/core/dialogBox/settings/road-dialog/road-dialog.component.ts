@@ -1,6 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -26,6 +26,7 @@ export class RoadDialogComponent implements OnInit {
   public currentData :any={}
 
   chackRequest: FormGroup | any;
+  submitted= false
   ngOnInit(): void {
     this.getAll()
     console.log(this.data,"dtaaaa");
@@ -57,11 +58,17 @@ export class RoadDialogComponent implements OnInit {
     console.log(this.data,"his.data");
     
     this.chackRequest = this.fb.group({
-      road: this.ifData ?this.currentData.road: "",
-      area:this.ifData ?this.currentData.areaID:null
+      road: this.ifData ?this.currentData.road:new FormControl('', [Validators.required]) ,
+      area:this.ifData ?this.currentData.areaID:new FormControl(null, [Validators.required])
     });
   }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
+  }
+
   ReconnectionRequest() {
+    this.submitted = true
     console.log(this.chackRequest.value);
     let datas = {
       road: this.chackRequest.value.road,
@@ -73,8 +80,10 @@ export class RoadDialogComponent implements OnInit {
     }
 
    
-    if (datas.road == "" ) {
-      this.isEmpty();
+    if (!this.chackRequest.valid) {
+      // this.isEmpty();
+     
+      return;
     } else {
       this.loading = true
       if (this.data.sendtype=='POST'){

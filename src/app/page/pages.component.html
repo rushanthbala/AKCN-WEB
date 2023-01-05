@@ -109,6 +109,7 @@
         <div
           class="d-flex justify-content-lg-between justify-content-sm-center flex-column flex-lg-row secound-nav"
         >
+        <div class="container-1 d-flex mt-4">
           <div class="navbar-name">
             <div class="navbar-name" *ngIf="!sidenav.opened">
               <div style="min-width: 180px; font-size: 24px">
@@ -119,6 +120,8 @@
               <div>{{ href }}</div>
             </div>
           </div>
+          <div class="welcome-username mt-3">{{ contentSubHeading }}</div>
+        </div>
           <div
             class="navbar-avartar-div d-flex align-items-center justify-content-start justify-content-lg-end"
             style="margin: 6px"
@@ -174,7 +177,6 @@
             <div class="username">Alex Kumar</div>
           </div>
         </div>
-        <div class="welcome-username">{{ contentSubHeading }}</div>
       </div>
 
       <br />

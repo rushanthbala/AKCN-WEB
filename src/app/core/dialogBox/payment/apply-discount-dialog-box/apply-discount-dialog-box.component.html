@@ -1,7 +1,7 @@
 <form [formGroup]="Reconnection" (ngSubmit)="apply()">
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Apply Discount</div>
-    <p class="para">{{ data.id }}</p>
+    <!-- <p class="para">{{ data.id }}</p> -->
     <div class="">
       <input
         type="text"
@@ -11,7 +11,14 @@
         id="amount"
         placeholder="Amount"
         formControlName="amount"
-      />
+        [ngClass]="{ 'is-invalid': submitted && f['amount'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['amount'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['amount'].errors['required']">Fill The Field</div>
+        </div>
       <textarea
         type="text"
         class="form-control ints mt-4"
@@ -20,8 +27,15 @@
         id="ID"
         placeholder="Description"
         formControlName="Remark"
+      [ngClass]="{ 'is-invalid': submitted && f['Remark'].errors }"
       ></textarea>
-      <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1">
+        <div
+          *ngIf="submitted && f['Remark'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['Remark'].errors['required']">Fill The Field</div>
+        </div>
+      <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1 mt-4">
         Update
       </button>
       <button

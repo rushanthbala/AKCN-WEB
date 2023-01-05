@@ -1,127 +1,157 @@
 <div class="card">
   <div class="card-body">
     <div
-  class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
->
-  <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
-
-  <div class="input-div">
-    <input
-      type="text"
-      (keyup)="applyFilter($event)"
-      class="form-control int mt-2"
-      id="ID"
-      placeholder="Search"
-      formControlName="address"
-    />
-  </div>
-  <div class="input-div">
-    <button
-      class="input-group-text cus-btn-down btn-c-1 mt-2"
-      id="basic-addon2"
-      data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
-      (click)="postData()"
+      class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
     >
-      Add New Area
-    </button>
-  </div>
-</div>
-<br />
-<br />
-<div *ngIf="TICKET_DATA.length != 0" class="container-6">
-  <div *ngIf="showTable">
-    <div id="htmlData">
-      <table
-        mat-table
-        [dataSource]="dataSource"
-        id="ExampleNormalTable"
-        matSort
-        (matSortChange)="announceSortChange($event)"
-        class=""
-      >
-        <td mat-cell *matCellDef="let row"></td>
-        <!-- userID Column -->
-        <ng-container matColumnDef="id">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by id"
-          >
-            #
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">{{ element.id }}</td>
-        </ng-container>
+      <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
 
-        <!-- firstName Column -->
-        <ng-container matColumnDef="areaCode">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by areaCode"
+      <div class="input-div col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+        <input
+          type="text"
+          (keyup)="applyFilter($event)"
+          class="form-control int mt-2"
+          id="ID"
+          placeholder="Search"
+          formControlName="address"
+        />
+      </div>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-6"></div>
+      <div class="input-div col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+        <button
+          class="input-group-text cus-btn-down btn-c-1 mt-2"
+          id="basic-addon2"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          (click)="postData()"
+        >
+          Add New Area
+        </button>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div *ngIf="TICKET_DATA.length != 0" class="container-6 table-responsive">
+      <div *ngIf="showTable">
+        <div id="htmlData">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            id="ExampleNormalTable"
+            matSort
+            (matSortChange)="announceSortChange($event)"
+            class=""
           >
-            Code
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">{{ element.areaCode }}</td>
-        </ng-container>
+            <td mat-cell *matCellDef="let row"></td>
+            <!-- userID Column -->
+            <ng-container matColumnDef="id">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by id"
+              >
+                #
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.id }}
+              </td>
+            </ng-container>
 
-        <!-- roleID Column -->
-        <ng-container matColumnDef="area">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by area"
-          >
-            Area
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">{{ element.area }}</td>
-        </ng-container>
+            <!-- firstName Column -->
+            <ng-container matColumnDef="areaCode">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by areaCode"
+              >
+                Code
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.areaCode }}
+              </td>
+            </ng-container>
 
-        <!-- branchID Column -->
-        <ng-container matColumnDef="branchID">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by branchID"
-          >
-            BRANCH
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">{{ element.branchName }}</td>
-        </ng-container>
+            <!-- roleID Column -->
+            <ng-container matColumnDef="area">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by area"
+              >
+                Area
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.area }}
+              </td>
+            </ng-container>
 
-        <!-- status Column -->
-        <ng-container matColumnDef="rental">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by rental"
-          >
-            Rental
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">{{ element.rental }}</td>
-        </ng-container>
+            <!-- branchID Column -->
+            <ng-container matColumnDef="branchID">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by branchID"
+              >
+                BRANCH
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.branchName }}
+              </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+            <!-- status Column -->
+            <ng-container matColumnDef="rental">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by rental"
+              >
+                Rental
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.rental }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
+      </div>
+      <div class="editData"></div>
     </div>
 
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page of users"
-    ></mat-paginator>
-  </div>
-  <div class="editData"></div>
-</div>
-
-<p class="head-2 p-5" *ngIf="TICKET_DATA.length == 0 && ifGetData">
-  No Data found
-</p>
-
+    <p class="head-2 p-5" *ngIf="TICKET_DATA.length == 0 && ifGetData">
+      No Data found
+    </p>
   </div>
 </div>

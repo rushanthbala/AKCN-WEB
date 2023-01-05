@@ -9,22 +9,36 @@
         (change)="onSelect(val.value)"
         required
         #val
+        formControlName="payment"
+        [ngClass]="{ 'is-invalid': submitted && f['payment'].errors }"
       >
         <option disabled selected value="null">Payment Type</option>
         <option *ngFor="let item of PaymentArray" [value]="item.value">
           {{ item.value }}
         </option>
       </select>
+      <div
+      *ngIf="submitted && f['payment'].errors"
+      class="invalid-feedback"
+    >
+      <div *ngIf="f['payment'].errors['required']">Select the type</div>
+    </div>
       <!-- <div class="para mt-3 ps-3">House Number </div> -->
       <div class="col-12">
-        <div class="para mt-4 ps-3">Amount</div>
         <input
           type="text"
-          class="form-control int"
+          class="form-control int mt-4"
           id="ID"
           placeholder="Amount"
           formControlName="amount"
-        />
+          [ngClass]="{ 'is-invalid': submitted && f['amount'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['amount'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['amount'].errors['required']">Fill The Field</div>
+          </div>
       </div>
       <textarea
         type="text"
@@ -34,10 +48,17 @@
         id="ID"
         placeholder="Description"
         formControlName="description"
+        [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
       ></textarea>
+        <div
+          *ngIf="submitted && f['description'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['description'].errors['required']">Fill The Field</div>
+        </div>
 
       <button
-        class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"
+        class="input-group-text cus-btn-down cus-model-btn-down btn-c-1 mt-4"
         (click)="ReconnectionRequest()"
       >
         Create

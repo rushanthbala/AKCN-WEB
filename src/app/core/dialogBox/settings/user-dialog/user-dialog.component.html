@@ -14,7 +14,14 @@
             id="firstName"
             placeholder="First Name"
             formControlName="firstName"
+            [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
           />
+          <div
+            *ngIf="submitted && f['firstName'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['firstName'].errors['required']">Fill The Field</div>
+          </div>
         </div>
         <div class="col-12 col-sm-6 mt-3">
           <!-- <div class="para mt-3 ps-3">Last Name</div> -->
@@ -24,7 +31,14 @@
             id="lastName"
             placeholder="Last Name"
             formControlName="lastName"
+            [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
           />
+          <div
+            *ngIf="submitted && f['lastName'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['lastName'].errors['required']">Fill The Field</div>
+          </div>
         </div>
       </div>
       <div class="row mt-2">
@@ -38,7 +52,12 @@
             id="email"
             placeholder="Email"
             formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
           />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Fill The Field</div>
+            <div *ngIf="f['email'].errors['email']">Email type is invalid</div>
+          </div>
         </div>
         <div class="col-12 col-sm-6 mt-3">
           <!-- <div class="para mt-3 ps-3">Phone Number</div> -->
@@ -48,7 +67,16 @@
             id="primaryPhone"
             placeholder="Phone Number"
             formControlName="primaryPhone"
+            [ngClass]="{ 'is-invalid': submitted && f['primaryPhone'].errors }"
           />
+          <div
+            *ngIf="submitted && f['primaryPhone'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['primaryPhone'].errors['required']">
+              Fill The Field
+            </div>
+          </div>
         </div>
       </div>
       <div class="row mt-2" *ngIf="!ifData">
@@ -60,7 +88,14 @@
             id="password"
             placeholder="Password"
             formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
           />
+          <div
+            *ngIf="submitted && f['password'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['password'].errors['required']">Fill The Field</div>
+          </div>
         </div>
         <div class="col-12 col-sm-6 mt-3" *ngIf="!ifData">
           <!-- <div class="para mt-3 ps-3">Confirm Pawwsord</div> -->
@@ -70,7 +105,14 @@
             id="password"
             placeholder="Confirm Password"
             formControlName="cpassword"
+            [ngClass]="{ 'is-invalid': submitted && f['cpassword'].errors }"
           />
+          <div
+            *ngIf="submitted && f['cpassword'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['cpassword'].errors['required']">Fill The Field</div>
+          </div>
         </div>
       </div>
       <div class="row mt-2">
@@ -95,19 +137,25 @@
         <div class="col-sm-3"></div>
         <div class="col-12 col-sm-6">
           <div class="para mt-3 ps-3"></div>
-          <select
-            class="form-select mt-2"
-            aria-label="Default select example"
-            (change)="onSelect(val.value)"
-            required
-            #val
-            formControlName="role"
-          >
-            <option disabled selected value="null">Role</option>
-            <option *ngFor="let item of roleArray" [value]="item.id">
-              {{ item.role }}
-            </option>
-          </select>
+          <div class="form-group">
+            <select
+              class="form-select mt-2"
+              aria-label="Default select example"
+              (change)="onSelect(val.value)"
+              required
+              #val
+              formControlName="role"
+              [ngClass]="{ 'is-invalid': submitted && f['role'].errors }"
+            >
+              <option disabled selected value="null">Role</option>
+              <option *ngFor="let item of roleArray" [value]="item.id">
+                {{ item.role }}
+              </option>
+            </select>
+            <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
+              <div *ngIf="f['role'].errors['required']">Select the role</div>
+            </div>
+          </div>
         </div>
       </div>
 

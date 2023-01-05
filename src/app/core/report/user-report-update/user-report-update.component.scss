@@ -15,7 +15,10 @@
         padding-top: 2px;
     }
 }
-
+.invalid-feedback{
+  padding: 0px 0px 0px 10px;
+  font-size: 14px;
+}
 .cus-btn {
     background: #027afe !important;
     color: #fff;
@@ -30,7 +33,7 @@
     height: 45px;
     font-size: 14px;
     max-width: 220px;
-    width: 60%;
+    width: 100%;
     margin-top: 8%;
 }
 

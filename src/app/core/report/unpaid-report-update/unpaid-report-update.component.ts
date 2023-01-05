@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -42,6 +43,8 @@ export class UnpaidReportUpdateComponent {
   public StatusName: any = 'All';
   public StatusId: any;
   public StatusArray: any = [];
+
+  submitted = false
 
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
@@ -131,9 +134,15 @@ export class UnpaidReportUpdateComponent {
   }
 
   initialForm() {
-    // this.loginForm = this.fb.group({
-    //   branch : new FormControl('', Validators.required),
-    // });
+    this.loginForm = this.fb.group({
+      branch : new FormControl('', Validators.required),
+      area : new FormControl('', Validators.required),
+      road : new FormControl('', Validators.required),
+    });
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
   }
 
   emitEvent() {
@@ -152,11 +161,13 @@ export class UnpaidReportUpdateComponent {
     // let minAmount = this.loginForm.value.minAmount;
 
     if (
-      this.BranchId == undefined ||
-      this.RoadId == undefined ||
-      this.AreaId == undefined
+      // this.BranchId == undefined ||
+      // this.RoadId == undefined ||
+      // this.AreaId == undefined
+      !this.loginForm.valid
     ) {
-      this.isEmpty();
+      // this.isEmpty();
+      this.submitted = true
       this.loading = false;
     } else {
       this.OnClick.emit({ user: detailObj });

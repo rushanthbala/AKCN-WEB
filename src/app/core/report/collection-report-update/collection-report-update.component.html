@@ -1,5 +1,5 @@
 <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-  <p class="heading">Fill the feild and hit report</p>
+  <p class="heading">Fill the field and hit report</p>
   <br />
   <div class="input-group mb-3">
     <div
@@ -37,8 +37,12 @@
             color: #707070;
             opacity: 1;
           "
-         useValueAsDate
+          useValueAsDate
+          [ngClass]="{ 'is-invalid': submitted && f['fromdate'].errors }"
         />
+        <div *ngIf="submitted && f['fromdate'].errors" class="invalid-feedback">
+          <div *ngIf="f['fromdate'].errors['required']">Fill The Field</div>
+        </div>
       </div>
       <div class="mb-3 cus-int-div">
         <input
@@ -53,11 +57,18 @@
             color: #707070;
             opacity: 1;
           "
-         useValueAsDate
+          useValueAsDate
+          [ngClass]="{ 'is-invalid': submitted && f['todate'].errors }"
         />
-        <!-- <div *ngIf="loginForm.errors" class="text-small">{{ loginForm.errors?.dates}}</div> -->
+        <div *ngIf="submitted && f['todate'].errors" class="invalid-feedback">
+          <div *ngIf="f['todate'].errors['required']">Fill The Field</div>
+        </div>
+        <div *ngIf="loginForm.errors" class="text-small">
+          {{ loginForm.errors?.dates }}
+        </div>
       </div>
-      <div class="cus-int-div ">
+
+      <div class="cus-int-div">
         <span
           class="input-group-text cus-btn align-items-center justify-content-center"
           id="basic-addon2"

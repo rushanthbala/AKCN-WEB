@@ -10,17 +10,31 @@
         id="description"
         placeholder="Description"
         formControlName="description"
-      />
+        [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['description'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['description'].errors['required']">Fill The Field</div>
+        </div>
       <input
         type="text"
-        class="form-control int mt-2"
+        class="form-control int mt-4"
         type="number"
         required
         id="ID"
         placeholder="Phone Number"
         formControlName="phoneNumber"
-      />
-      <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1">
+        [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['phoneNumber'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['phoneNumber'].errors['required']">Fill The Field</div>
+        </div>
+      <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1 mt-4">
         Create
       </button>
       <button

@@ -14,7 +14,16 @@
           id="connectionId"
           placeholder="Connection ID"
           formControlName="connectionId"
-        />
+          [ngClass]="{ 'is-invalid': submitted && f['connectionId'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['connectionId'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['connectionId'].errors['required']">
+              Fill The Field
+            </div>
+          </div>
       </div>
       <div class="mb-3 cus-int-div">
         <input
@@ -23,7 +32,16 @@
           id="amount"
           placeholder="Amount"
           formControlName="amount"
-        />
+          [ngClass]="{ 'is-invalid': submitted && f['amount'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['amount'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['amount'].errors['required']">
+              Fill The Field
+            </div>
+          </div>
       </div>
       <div class="mb-3 cus-int-div">
         <input
@@ -40,7 +58,16 @@
             opacity: 1;
           "
           useValueAsDate
-        />
+          [ngClass]="{ 'is-invalid': submitted && f['arreardate'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['arreardate'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['arreardate'].errors['required']">
+              Fill The Field
+            </div>
+          </div>
       </div>
       <div class="cus-int-div">
         <span

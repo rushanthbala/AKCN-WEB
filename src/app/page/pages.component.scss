@@ -26,7 +26,10 @@ mat-sidenav {
   text-align: center;
   box-shadow: 5px 5px 55px #0000000d !important;
 }
-
+.container-1{
+  display: flex;
+  flex-direction: column;
+}
 .content {
   height: 100%;
   overflow: auto;
@@ -456,4 +459,15 @@ hr {
 }
 .bi {
   padding: 0px 20px 0px 0px;
+}
+@media(max-width: 991px){
+  .i1{
+    display: none;
+  }
+  .main-user-avathar{
+     margin: 0px 0px; 
+}
+.username{
+  padding: 0px 0px 0px 15px;
+}
 }

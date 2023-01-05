@@ -1,20 +1,23 @@
 <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-  <p class="heading">Fill the feild and hit report</p>
+  <p class="heading">Fill the field and hit report</p>
   <br />
   <div class="input-group mb-3">
     <div
       class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
     >
       <div class="mb-3 cus-int-div branch">
+        <!-- {{BranchId}} -->
         <select
           class="form-select"
           aria-label="Default select example"
           required
           id="branch"
-          [(ngModel)]="selectedDeviceObj"
+          [(ngModel)]="selectedDeviceObj.branch"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjBranch(selectedDeviceObj)"
-        >
+          [ngClass]="{ 'is-invalid': submitted && f['branch'].errors }"
+          >
+          
           <!-- <option disabled selected value="null">Branch</option> -->
           <option value="All" [ngValue]="{ id: 0, branchName: 'All' }">
             All
@@ -23,7 +26,13 @@
           <option *ngFor="let item of BranchArray" [ngValue]="item">
             {{ item.branchName }}
           </option>
+          <!-- <div *ngIf="submitted && BranchId == ''" class="invalid-feedback">
+            Select The Type
+          </div> -->
         </select>
+        <div *ngIf="submitted && f['branch'].errors" class="invalid-feedback">
+          <div *ngIf="f['branch'].errors['required']">Select the branch</div>
+        </div>
       </div>
       <div class="mb-3 cus-int-div area">
         <select
@@ -31,10 +40,12 @@
           aria-label="Default select example"
           required
           name="area"
-          [(ngModel)]="selectedAreaObj"
+          [(ngModel)]="selectedAreaObj.area"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjArea(selectedAreaObj)"
-        >
+          [ngClass]="{ 'is-invalid': submitted && f['area'].errors }"
+          >
+        
           <!-- <option disabled selected value="null">Area</option> -->
           <option value="All" [ngValue]="{ id: 0, area: 'All' }">All</option>
 
@@ -42,6 +53,9 @@
             {{ item.area }}
           </option>
         </select>
+        <div *ngIf="submitted && f['area'].errors" class="invalid-feedback">
+          <div *ngIf="f['area'].errors['required']">Select the area</div>
+        </div>
       </div>
       <div class="mb-3 cus-int-div road">
         <select
@@ -49,16 +63,21 @@
           aria-label="Default select example"
           required
           name="road"
-          [(ngModel)]="selectedRoadObj"
+          [(ngModel)]="selectedRoadObj.road"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjRoad(selectedRoadObj)"
-        >
+          [ngClass]="{ 'is-invalid': submitted && f['road'].errors }"
+          >
+         
           <!-- <option disabled selected value="null">Road</option> -->
           <option value="All" [ngValue]="{ id: 0, road: 'All' }">All</option>
           <option *ngFor="let item of RoadArray" [ngValue]="item">
             {{ item.road }}
           </option>
         </select>
+        <div *ngIf="submitted && f['road'].errors" class="invalid-feedback">
+          <div *ngIf="f['road'].errors['required']">Select the road</div>
+        </div>
       </div>
       <div class="cus-int-div but">
         <span

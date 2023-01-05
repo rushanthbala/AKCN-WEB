@@ -3,7 +3,7 @@
 >
   <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
 
-  <div class="input-div col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
+  <div class="input-div col-12 col-md-4">
     <input
       type="text"
       (keyup)="applyFilter($event)"
@@ -13,8 +13,8 @@
       formControlName="address"
     />
   </div>
-  <div class="mb-3 col-12 col-sm-12 col-md-3 col-lg-4 col-xl-6"></div>
-  <div class="col-3 col-sm-3 col-md-5 col-lg-4 col-xl-3">
+  <div class="mb-3 col-12 col-md-4"></div>
+  <div class="col-5 col-md-4">
     <div class="btn-set d-flex m-1">
       <button
         class="input-group-text cus-btn-down btn-c-1"
@@ -44,7 +44,7 @@
 <br />
 <br />
 <div *ngIf="TICKET_DATA.length != 0">
-  <div *ngIf="showTable">
+  <div *ngIf="showTable" class="table-responsive">
     <div id="htmlData">
       <table
         mat-table

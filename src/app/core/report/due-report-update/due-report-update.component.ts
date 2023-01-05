@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -39,6 +39,8 @@ export class DueReportUpdateComponent implements OnInit {
   public StatusArray: any = [];
 
   public minAmount: any;
+
+  submitted = false
 
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
@@ -123,9 +125,15 @@ export class DueReportUpdateComponent implements OnInit {
 
   initialForm() {
     this.loginForm = this.fb.group({
-      fromdate: '',
-      minAmount: '',
+      minAmount: new FormControl('', [Validators.required]),
+      branch : new FormControl('', Validators.required),
+      area : new FormControl('', Validators.required),
+      road : new FormControl('', Validators.required),
+      status : new FormControl('', Validators.required),
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
   }
 
   emitEvent() {
@@ -144,16 +152,22 @@ export class DueReportUpdateComponent implements OnInit {
     let fromdate = this.loginForm.value.fromdate;
     let minAmount = this.loginForm.value.minAmount;
 
-    if (
-      minAmount == '' ||
-      this.BranchId == undefined ||
-      this.RoadId == undefined ||
-      this.AreaId == undefined ||
-      this.StatusName == undefined
-    ) {
-      this.isEmpty();
+    // if (
+    //   minAmount == '' ||
+    //   this.BranchId == undefined ||
+    //   this.RoadId == undefined ||
+    //   this.AreaId == undefined ||
+    //   this.StatusName == undefined
+    // ) {
+    //   this.isEmpty();
+    //   this.loading = false;
+    // }
+    if(!this.loginForm.valid){
+      this.submitted = true;
       this.loading = false;
-    }else {
+      return
+    }
+    else {
       this.OnClick.emit({ user: detailObj, minAmount: minAmount });
 
       this.loading = false;

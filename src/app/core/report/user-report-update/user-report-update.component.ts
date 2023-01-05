@@ -4,6 +4,7 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
+  AbstractControl,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -33,6 +34,7 @@ export class UserReportUpdateComponent implements OnInit {
   UserArray: any;
   UserName: any ="User";
   UserID: any;
+  submitted= false
   onChangeObj(newObj: any) {
     console.log(newObj.firstName);
     console.log(newObj.id);
@@ -64,9 +66,14 @@ export class UserReportUpdateComponent implements OnInit {
 
   initialForm() {
     this.loginForm = this.fb.group({
-      fromdate: new FormControl(''),
-      todate: new FormControl(''),
+      fromdate: new FormControl('', [Validators.required]),
+      todate: new FormControl('',[Validators.required]),
+      user: new FormControl(null,[Validators.required]),
     }, {validator: this.dateLessThan('fromdate', 'todate')});
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
   }
 
   dateLessThan(from: string, to: string) {
@@ -87,6 +94,7 @@ export class UserReportUpdateComponent implements OnInit {
   }
   emitEvent() {
     this.loading = true;
+    this.submitted = true
 
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
@@ -94,14 +102,18 @@ export class UserReportUpdateComponent implements OnInit {
     let detailObj = {
       id: this.UserName,
     };
-    if (fromdate == "" || todate== "" || this.UserName =="User" || this.UserName ==undefined ) {
-      console.log(this.UserName,"this.UserName");
+    // if (fromdate == "" || todate== "" || this.UserName =="User" || this.UserName ==undefined ) {
+    //   console.log(this.UserName,"this.UserName");
       
-      this.isEmpty();
-      this.loading = false;
-    }else if(!this.loginForm.valid){
-      this.showmsg();
-      this.loading = false;
+    //   this.isEmpty();
+    //   this.loading = false;
+    // }else if(!this.loginForm.valid){
+    //   this.showmsg();
+    //   this.loading = false;
+    // }
+    if(!this.loginForm.valid){
+      this.loading =false
+      return
     }
      else {
       this.OnClick.emit({

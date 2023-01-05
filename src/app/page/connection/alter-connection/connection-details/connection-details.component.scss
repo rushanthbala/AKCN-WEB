@@ -122,21 +122,22 @@
     width: 100%;
   }
   .btn-div-set {
-    max-width: 730px;
+    max-width: 900px;
     margin-top: 1rem;
+    margin-bottom: 5%;
+    margin-left: 2%;
   }
   .cus-btn-down {
     height: 40px;
     color: #fff;
     border-radius: 30px;
-    // max-width: 220px;
-    width: 22%;
+    max-width: 220px;
+    width: 100%;
     font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
-    margin-left: 2%;
   }
   mat-error{
     padding-left: 6px;

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -15,6 +15,7 @@ export class PaymentUpdateComponent implements OnInit {
   constructor(private fb: FormBuilder, private toastr: ToastrService,
   ) { }
   loginForm: FormGroup | any;
+  submitted = false
 
   ngOnInit(): void {
     this.initialForm();
@@ -22,10 +23,13 @@ export class PaymentUpdateComponent implements OnInit {
   }
   initialForm() {
     this.loginForm = this.fb.group({
-      connectionId: "",
-      amount: "",
-      arreardate: "",
+      connectionId:  new FormControl('', [Validators.required]),
+      amount:  new FormControl('', [Validators.required]),
+      arreardate:  new FormControl('', [Validators.required]),
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
   }
 
   searching() {
@@ -38,9 +42,11 @@ export class PaymentUpdateComponent implements OnInit {
     let amount = this.loginForm.value.amount;
     let arreardate = this.loginForm.value.arreardate;
 
-    if (connectionId == "" || amount == "" || arreardate == "") {
-      this.isEmpty();
+    if (!this.loginForm.valid) {
+      // this.isEmpty();
+      this.submitted = true
       this.loading = false;
+      return
     } else {
       this.OnClick.emit({ connectionId: connectionId, amount: amount, arreardate: arreardate })
 

@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import {Component, Inject,OnInit} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -13,6 +13,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 export class CancelDialogBoxComponent  implements OnInit  {
   public open: Boolean = true;
   public loading: Boolean = false;
+  submitted = false
 
   Reconnection: FormGroup | any;
   ngOnInit(): void {
@@ -30,8 +31,11 @@ export class CancelDialogBoxComponent  implements OnInit  {
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
-      Remark: ''
+      Remark: new FormControl('', [Validators.required])
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.Reconnection.controls;
   }
   ReconnectionRequest() {
 
@@ -47,10 +51,15 @@ export class CancelDialogBoxComponent  implements OnInit  {
       // "assignedTo": this.TechnicianName,
       // "assignedToID": this.TechnicianId,
     };
-    if (dataObj.reason == ""
-    ) {
-      this.isEmpty();
-    } else {
+    // if (dataObj.reason == ""
+    // ) {
+    //   this.isEmpty();
+    // } 
+    if(!this.Reconnection.valid){
+      this.submitted = true;
+      return
+    }
+    else {
       this.loading =true
       this.dataServise.putValue(`request/cancel/${this.data.TicketData.id}`, dataObj).subscribe(
         (res: any) => {

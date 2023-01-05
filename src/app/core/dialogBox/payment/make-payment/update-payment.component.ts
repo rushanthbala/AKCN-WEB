@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -35,6 +35,7 @@ export class UpdatePaymentComponent implements OnInit {
 
 
   chackRequest: FormGroup | any;
+  submitted = false
   ngOnInit(): void {
     this.initialReconnectionForm();
     // this.getAll()
@@ -52,9 +53,13 @@ export class UpdatePaymentComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      amount: '',
-      description: ''
+      payment:new FormControl(null, [Validators.required]),
+      amount: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required])
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
   }
   ReconnectionRequest() {
     let todayDate =new Date()
@@ -73,10 +78,15 @@ export class UpdatePaymentComponent implements OnInit {
     }
     console.log(dataObj,"dataObj");
 
-    if (dataObj.amount == "" || dataObj.description == "" ||dataObj.paymentType == ""
-    ) {
-      this.isEmpty();
-    } else {
+    // if (dataObj.amount == "" || dataObj.description == "" ||dataObj.paymentType == ""
+    // ) {
+    //   this.isEmpty();
+    // } 
+    if(!this.chackRequest.valid){
+      this.submitted = true;
+      return
+    }
+    else {
       this.dataServise.postValue('payment', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {

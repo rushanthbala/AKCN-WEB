@@ -1,6 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -27,6 +27,7 @@ export class AreaDialogComponent implements OnInit {
 
   chackRequest: FormGroup | any;
   branchArray: any;
+  submitted = false
   ngOnInit(): void {
     this.getAll()
     console.log(this.data,"dtaaaa");
@@ -63,11 +64,14 @@ export class AreaDialogComponent implements OnInit {
   initialReconnectionForm() {
     console.log(this.data,"his.data");
     this.chackRequest = this.fb.group({
-      area: this.ifData ?this.currentData.area: "",
-      rental: this.ifData ?this.currentData.rental: "",
-      branch:this.ifData ?this.currentData.branchID:null,
-      areaCode: this.ifData ?this.currentData.areaCode: new FormControl("", [Validators.minLength(3), Validators.maxLength(3)]),
+      area: this.ifData ?this.currentData.area: new FormControl('', [Validators.required]),
+      rental: this.ifData ?this.currentData.rental: new FormControl('', [Validators.required]),
+      branch:this.ifData ?this.currentData.branchID:new FormControl(null, [Validators.required]),
+      areaCode: this.ifData ?this.currentData.areaCode: new FormControl("", [Validators.required,Validators.minLength(3), Validators.maxLength(3)]),
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
   }
   ReconnectionRequest() {
     console.log(this.chackRequest.value);
@@ -87,7 +91,9 @@ export class AreaDialogComponent implements OnInit {
    console.log(sendObj,"sendObj");
    
     if (!this.chackRequest.valid) {
-      this.isEmpty();
+      // this.isEmpty();
+      this.submitted = true;
+      return
     }else {
       this.loading = true
       if (this.data.sendtype=='POST'){

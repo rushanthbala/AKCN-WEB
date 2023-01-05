@@ -1,6 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -29,6 +29,7 @@ export class RoleDialogComponent implements OnInit {
   public currentData: any = {};
 
   chackRequest: FormGroup | any;
+  submitted = false
   ngOnInit(): void {
     this.getAll();
     console.log(this.data, 'dtaaaa');
@@ -61,11 +62,17 @@ export class RoleDialogComponent implements OnInit {
     console.log(this.data, 'his.data');
 
     this.chackRequest = this.fb.group({
-      role: this.ifData ? this.currentData.role : '',
+      role: this.ifData ? this.currentData.role : new FormControl('', [Validators.required]),
       // lastName: this.ifData ?this.currentData.lastName: "",
     });
   }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
+  }
+
   ReconnectionRequest() {
+    this.submitted = true;
     console.log(this.chackRequest.value);
     let datas = {
       role: this.chackRequest.value.role,
@@ -76,8 +83,10 @@ export class RoleDialogComponent implements OnInit {
       "id":datas.id
     };
 
-    if (datas.role == '') {
-      this.isEmpty();
+    if (!this.chackRequest.valid) {
+      // this.isEmpty();
+     
+      return;
     }else{
       this.loading = true
       if(this.data.sendtype == 'POST'){

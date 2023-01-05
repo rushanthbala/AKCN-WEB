@@ -5,7 +5,7 @@
     >
       <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
 
-      <div class="input-div">
+      <div class="input-div col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
         <input
           type="text"
           (keyup)="applyFilter($event)"
@@ -15,7 +15,8 @@
           formControlName="address"
         />
       </div>
-      <div class="input-div">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-6"></div>
+      <div class="input-div col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
         <button
           class="input-group-text cus-btn-down btn-c-1 mt-2"
           id="basic-addon2"
@@ -29,7 +30,7 @@
     </div>
     <br />
     <br />
-    <div class="container-6">
+    <div class="container-6 table-responsive">
       <div *ngIf="TICKET_DATA.length != 0">
         <div *ngIf="showTable" else loading>
           <div id="htmlData">

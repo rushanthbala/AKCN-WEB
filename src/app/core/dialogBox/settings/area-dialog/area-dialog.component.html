@@ -13,12 +13,20 @@
             #val
             id="parentesco"
             formControlName="branch"
-          >
+            [ngClass]="{ 'is-invalid': submitted && f['branch'].errors }"
+            >
+           
             <option disabled selected value="null">Branch</option>
             <option *ngFor="let item of branchArray" [value]="item.id">
               {{ item.branchName }}
             </option>
           </select>
+          <div
+          *ngIf="submitted && f['branch'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['branch'].errors['required']">Select the branch</div>
+        </div>
         </div>
       </div>
       <div class="row mt-2">
@@ -30,7 +38,14 @@
             id="area"
             placeholder="Area"
             formControlName="area"
-          />
+            [ngClass]="{ 'is-invalid': submitted && f['area'].errors }"
+            />
+            <div
+              *ngIf="submitted && f['area'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f['area'].errors['required']">Fill The Field</div>
+            </div>
         </div>
       </div>
       <div class="row mt-2">
@@ -42,7 +57,14 @@
             id="rental"
             placeholder="(must be in 3 letters)"
             formControlName="areaCode"
-          />
+            [ngClass]="{ 'is-invalid': submitted && f['areaCode'].errors }"
+            />
+            <div
+              *ngIf="submitted && f['areaCode'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f['areaCode'].errors['required']">Fill The Field</div>
+            </div>
         </div>
       </div>
       
@@ -55,7 +77,14 @@
             id="rental"
             placeholder="Rental"
             formControlName="rental"
-          />
+            [ngClass]="{ 'is-invalid': submitted && f['rental'].errors }"
+            />
+            <div
+              *ngIf="submitted && f['rental'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f['rental'].errors['required']">Fill The Field</div>
+            </div>
         </div>
       </div>
 

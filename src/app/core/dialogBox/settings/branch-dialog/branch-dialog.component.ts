@@ -1,6 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -26,6 +26,7 @@ export class BranchDialogComponent implements OnInit {
   public currentData :any={}
 
   chackRequest: FormGroup | any;
+  submitted = false
   ngOnInit(): void {
     this.getAll()
     console.log(this.data,"dtaaaa");
@@ -57,14 +58,18 @@ export class BranchDialogComponent implements OnInit {
     console.log(this.data,"his.data");
     
     this.chackRequest = this.fb.group({
-      branchName: this.ifData ?this.currentData.branchName: "",
-      branchAddress: this.ifData ?this.currentData.branchAddress: "",
-      branchCity: this.ifData ?this.currentData.branchCity: "",
-      branchPhone: this.ifData ?this.currentData.branchPhone: "",
+      branchName: this.ifData ?this.currentData.branchName: new FormControl('', [Validators.required]),
+      branchAddress: this.ifData ?this.currentData.branchAddress: new FormControl('', [Validators.required]),
+      branchCity: this.ifData ?this.currentData.branchCity: new FormControl('', [Validators.required]),
+      branchPhone: this.ifData ?this.currentData.branchPhone: new FormControl('', [Validators.required]),
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
   }
   ReconnectionRequest() {
     console.log(this.chackRequest.value);
+    this,this.submitted = true
     let datas = {
       branchName: this.chackRequest.value.branchName,
       branchAddress: this.chackRequest.value.branchAddress,
@@ -79,8 +84,10 @@ export class BranchDialogComponent implements OnInit {
     }
 
    
-    if (datas.branchName == "" ||datas.branchAddress == "" || datas.branchCity == "" ||datas.branchPhone == ""    ) {
-      this.isEmpty();
+    if (!this.chackRequest.valid) {
+      // this.isEmpty();
+     
+      return;
     } else {
       this.loading = true
       if (this.data.sendtype=='POST'){

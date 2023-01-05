@@ -1,6 +1,8 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
-    <div class="form-heading int-div card-head-h2">{{ ifData ? "Edit Branch" : "Add Branch" }}</div>
+    <div class="form-heading int-div card-head-h2">
+      {{ ifData ? "Edit Branch" : "Add Branch" }}
+    </div>
     <p class="para">{{ ifData ? currentData.userID : "" }}</p>
     <div>
       <div class="row mt-2">
@@ -12,7 +14,11 @@
             id="branchName"
             placeholder="Branch"
             formControlName="branchName"
+            [ngClass]="{ 'is-invalid': submitted && f['branchName'].errors }"
           />
+          <div *ngIf="submitted && f['branchName'].errors" class="invalid-feedback">
+            <div *ngIf="f['branchName'].errors['required']">Fill The Field</div>
+          </div>
         </div>
       </div>
       <div class="row mt-2">
@@ -24,7 +30,11 @@
             id="branchAddress"
             placeholder="Address"
             formControlName="branchAddress"
+            [ngClass]="{ 'is-invalid': submitted && f['branchAddress'].errors }"
           />
+          <div *ngIf="submitted && f['branchAddress'].errors" class="invalid-feedback">
+            <div *ngIf="f['branchAddress'].errors['required']">Fill The Field</div>
+          </div>
         </div>
       </div>
       <div class="row mt-2">
@@ -36,7 +46,11 @@
             id="branchCity"
             placeholder="City"
             formControlName="branchCity"
+            [ngClass]="{ 'is-invalid': submitted && f['branchCity'].errors }"
           />
+          <div *ngIf="submitted && f['branchCity'].errors" class="invalid-feedback">
+            <div *ngIf="f['branchCity'].errors['required']">Fill The Field</div>
+          </div>
         </div>
         <div class="col-12 col-sm-6 mt-3">
           <div class="para mt-3 ps-3">Phone</div>
@@ -46,7 +60,11 @@
             id="branchPhone"
             placeholder="Phone"
             formControlName="branchPhone"
+            [ngClass]="{ 'is-invalid': submitted && f['branchPhone'].errors }"
           />
+          <div *ngIf="submitted && f['branchPhone'].errors" class="invalid-feedback">
+            <div *ngIf="f['branchPhone'].errors['required']">Fill The Field</div>
+          </div>
         </div>
       </div>
       <div class="row mt-2">

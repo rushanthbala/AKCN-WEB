@@ -4,7 +4,7 @@
     <div class="container-2">
       <mat-tab-group>
         <mat-tab label="PAYMENT HISTORY">
-          <div *ngIf="TICKET_DATA.length != 0" class="container-6">
+          <div *ngIf="TICKET_DATA.length != 0" class="container-6 table-responsive">
             <div *ngIf="showTable">
               <div id="htmlData">
                 <table
@@ -157,7 +157,7 @@
           </p>
         </mat-tab>
         <mat-tab label="CONNECTION HISTORY">
-          <div *ngIf="ConnectionData.length != 0" class="container-6">
+          <div *ngIf="ConnectionData.length != 0" class="container-6 table-responsive">
             <div *ngIf="showTable1">
               <div id="htmlData">
                 <table

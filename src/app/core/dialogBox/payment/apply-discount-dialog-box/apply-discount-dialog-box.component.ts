@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -15,6 +15,7 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
   public loading: Boolean = false;
 
   Reconnection: FormGroup | any;
+  submitted = false
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
@@ -31,9 +32,12 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
-      Remark: '',
-      amount: ""
+      Remark: new FormControl('', [Validators.required]),
+      amount: new FormControl('', [Validators.required])
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.Reconnection.controls;
   }
   apply() {
     let todayDate =new Date()
@@ -54,10 +58,15 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
     }
     console.log(dataObj, "data");
 
-    if (dataObj.description == "" || dataObj.amount == ""
-    ) {
-      this.isEmpty();
-    } else {
+    // if (dataObj.description == "" || dataObj.amount == ""
+    // ) {
+    //   this.isEmpty();
+    // }
+    if(!this.Reconnection.valid){
+      this.submitted = true;
+      return
+    }
+     else {
       this.dataServise.postValue('payment', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {

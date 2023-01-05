@@ -1,5 +1,5 @@
 import {Component, Inject,OnInit} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -15,6 +15,7 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
 
   public open: Boolean = true;
   Reconnection: FormGroup | any;
+  submitted = false;
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
@@ -30,8 +31,11 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
-      Remark: ''
+      Remark: new FormControl ('', [Validators.required])
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.Reconnection.controls;
   }
   updateCancel() {
     let newDate = new Date();
@@ -42,10 +46,15 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
       "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
     };
     console.log(this.data, dataObj);
-    if (dataObj.reason == "" 
-    ) {
-      this.isEmpty();
-    } else {
+    // if (dataObj.reason == "" 
+    // ) {
+    //   this.isEmpty();
+    // } 
+    if(!this.Reconnection.valid){
+      this.submitted = true;
+      return
+    }
+    else {
       this.dataServise.putValue(`ticket/cancel/${this.data.TicketData.id}`, dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {

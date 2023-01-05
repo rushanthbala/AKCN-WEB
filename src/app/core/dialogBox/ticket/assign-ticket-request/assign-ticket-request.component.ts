@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -22,6 +22,7 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   public TechnicianId: any;
   suburl2: string = "area"
   suburl1: string = "employee"
+  submitted = false;
 
   public selectedDeviceObj: any = {}
   public storedToken: any = localStorage.getItem('auth');
@@ -55,9 +56,12 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      phoneNumber: '',
-      address: ''
+      tech: new FormControl(null, [Validators.required])
     });
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
   }
   assignYTicket() {
 
@@ -71,12 +75,17 @@ export class AssignTicketRequestDilogComponent implements OnInit {
       "assignedTo": this.TechnicianName,
       "assignedToID": this.TechnicianId,
     };
-    if (dataObj.assignedTo == "Technician"
-    ) {
-      console.log(dataObj,"dataObj");
+    // if (dataObj.assignedTo == "Technician"
+    // ) {
+    //   console.log(dataObj,"dataObj");
       
-      this.isEmpty();
-    } else {
+    //   this.isEmpty();
+    // }
+    if(!this.chackRequest.valid){
+      this.submitted = true
+      return
+    } 
+    else {
       this.loading =true
       this.dataServise.putValue(`ticket/assign/${this.data.TicketData.id}`, dataObj).subscribe(
         (res: any) => {

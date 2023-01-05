@@ -37,6 +37,7 @@ export class CollectionReportUpdateComponent {
   startDate: any;
   endDate: any;
   d: any;
+  submitted = false;
   onChangeObj(newObj: any) {
     console.log(newObj.firstName);
     console.log(newObj.id);
@@ -78,8 +79,8 @@ export class CollectionReportUpdateComponent {
 
   initialForm() {
     this.loginForm = this.fb.group({
-      fromdate: new FormControl(''),
-      todate: new FormControl(''),
+      fromdate: new FormControl('', [Validators.required]),
+      todate: new FormControl('', [Validators.required]),
     }, {validator: this.dateLessThan('fromdate', 'todate')});
   }
 
@@ -102,6 +103,9 @@ export class CollectionReportUpdateComponent {
      return {};
     }
   }
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
+  }
 
   searching() {
     console.log(this.loginForm.value);
@@ -113,16 +117,21 @@ export class CollectionReportUpdateComponent {
   }
   emitEvent() {
     this.loading = true;
+    this.submitted = true;
 
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
 
-    if (fromdate == "" || todate == "") {
-      this.isEmpty();
+    // if (fromdate == "" || todate == "") {
+    //   this.isEmpty();
+    //   this.loading = false;
+    // }else if(!this.loginForm.valid){
+    //   this.showmsg();
+    //   this.loading = false;
+    // }
+    if(!this.loginForm.valid){
       this.loading = false;
-    }else if(!this.loginForm.valid){
-      this.showmsg();
-      this.loading = false;
+      return
     }
     else {
       this.OnClick.emit({

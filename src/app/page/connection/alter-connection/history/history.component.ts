@@ -53,6 +53,7 @@ export class HistoryComponent implements OnInit {
   ];
   paymentType: any;
   showTable1: any;
+  EmployeeData: any;
 
   constructor(public dataServise: HttpService, private fb: FormBuilder) { }
 
@@ -118,6 +119,7 @@ export class HistoryComponent implements OnInit {
         this.showTable = true;
         // console.log(respon);
         this.getPaymentHistory(id);
+        this.getEmployee();
       },
       (err) => {
         console.log(err);
@@ -220,6 +222,24 @@ export class HistoryComponent implements OnInit {
 
 
   }
+
+  getEmployee(){
+    this.dataServise.getData(`employee`).subscribe(
+      (res) => {
+        let array = res;
+        array.map((item: any) => {
+          console.log(item.firstName)
+          this.EmployeeData = item.firstName
+        })
+        // console.log("1", res)
+        this.ifGetData = true;
+      },
+      (err) => {
+        this.ifGetData = true;
+      }
+    );
+  }
+
 
   // getConnectionHistory(id: any) {
   //   console.log('okokok');

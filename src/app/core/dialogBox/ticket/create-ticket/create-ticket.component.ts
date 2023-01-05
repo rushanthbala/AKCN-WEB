@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -37,6 +37,7 @@ export class CreateTicketComponentDialog implements OnInit {
 
 
   chackRequest: FormGroup | any;
+  submitted = false;
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
@@ -53,10 +54,16 @@ export class CreateTicketComponentDialog implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      description: '',
-      phoneNumber: ''
+      subject: new FormControl(null, [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required])
     });
   }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
+  }
+
   ReconnectionRequest() {
     let newDate = new Date();
     let dataObj = {
@@ -68,10 +75,15 @@ export class CreateTicketComponentDialog implements OnInit {
       "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
     };
     console.log(this.data, dataObj);
-    if (dataObj.description == "" || dataObj.phone == "" || dataObj.subject == 'Subject'
-    ) {
-      this.isEmpty();
-    } else {
+    // if (dataObj.description == "" || dataObj.phone == "" || dataObj.subject == 'Subject'
+    // ) {
+    //   this.isEmpty();
+    // } 
+    if(!this.chackRequest.valid){
+      this.submitted = true
+      return
+    }
+    else {
       this.dataServise.postValue('ticket', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {

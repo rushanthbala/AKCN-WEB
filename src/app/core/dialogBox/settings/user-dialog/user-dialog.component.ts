@@ -1,6 +1,12 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -32,6 +38,7 @@ export class UserPostPut implements OnInit {
   chackRequest: FormGroup | any;
   id: any;
   roleArray: any;
+  submitted = false;
 
   ngOnInit(): void {
     this.getAll();
@@ -64,17 +71,34 @@ export class UserPostPut implements OnInit {
   initialReconnectionForm() {
     console.log(this.data, 'his.data');
 
+    // this.chackRequest = this.fb.group({
+    //   firstName: new FormControl('', [Validators.required]),
+    //   lastName: new FormControl('', [Validators.required]),
+    //   email: new FormControl('', [Validators.required]),
+    //   primaryPhone: new FormControl('', [Validators.required]),
+    //   password: new FormControl('', [Validators.required]),
+    //   role: new FormControl('', [Validators.required]),
+    //   cpassword: new FormControl('', [Validators.required]),
+    // });
+
     this.chackRequest = this.fb.group({
-      firstName: this.ifData ? this.currentData.firstName : '',
-      lastName: this.ifData ? this.currentData.lastName : '',
-      email: this.ifData ? this.currentData.email : '',
-      primaryPhone: this.ifData ? this.currentData.primaryPhone : '',
-      password: this.ifData ? this.currentData.password : '',
-      role: this.ifData ? this.currentData.roleID : null,
+      firstName: this.ifData ? this.currentData.firstName : new FormControl('', [Validators.required]),
+      lastName: this.ifData ? this.currentData.lastName : new FormControl('', [Validators.required]),
+      email: this.ifData ? this.currentData.email : new FormControl('', [Validators.required, Validators.email]),
+      primaryPhone: this.ifData ? this.currentData.primaryPhone : new FormControl('', [Validators.required]),
+      password: this.ifData ? this.currentData.password : new FormControl('', [Validators.required]),
+      role: this.ifData ? this.currentData.roleID : new FormControl(null, [Validators.required]), 
+      cpassword: new FormControl('', [Validators.required]),
       // branch: this.ifData ? this.currentData.branchID : null,
     });
   }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
+  }
+
   ReconnectionRequest() {
+    this.submitted = true;
     console.log(this.chackRequest.value);
     let datas = {
       firstName: this.chackRequest.value.firstName,
@@ -97,15 +121,10 @@ export class UserPostPut implements OnInit {
       status: '1',
     };
 
-    if (
-      datas.firstName == '' ||
-      datas.lastName == '' ||
-      datas.email == '' ||
-      datas.password == '' ||
-      datas.primaryPhone == '' ||
-      datas.role == ''
-    ) {
-      this.isEmpty();
+    if (!this.chackRequest.valid) {
+      // this.isEmpty();
+     
+      return;
     } else {
       this.loading = true;
       if (this.data.sendtype == 'POST') {
@@ -134,21 +153,23 @@ export class UserPostPut implements OnInit {
   }
 
   putMethod(sendObj: any) {
-    this.dataServise.putValue(`employee/${this.currentData.id}`, sendObj).subscribe(
-      (res: any) => {
-        console.log(this.data);
-        if (res.errorMessage) {
+    this.dataServise
+      .putValue(`employee/${this.currentData.id}`, sendObj)
+      .subscribe(
+        (res: any) => {
+          console.log(this.data);
+          if (res.errorMessage) {
+            this.loading = false;
+          } else {
+            this.showSuccess();
+            this.loading = false;
+          }
+        },
+        (e) => {
           this.loading = false;
-        } else {
-          this.showSuccess();
-          this.loading = false;
+          this.showError();
         }
-      },
-      (e) => {
-        this.loading = false;
-        this.showError();
-      }
-    );
+      );
   }
 
   getAll() {
