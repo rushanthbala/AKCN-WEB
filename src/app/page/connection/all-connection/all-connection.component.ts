@@ -68,7 +68,6 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         });
-        console.log(res);
         this.ifGetData = true;
       },
       (err) => {
@@ -95,7 +94,6 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
     }
   }
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] =
       this.dataSource.filteredData.map((x: TicketElement) => ({
         connectionID: x.connectionID,
@@ -141,8 +139,6 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
 
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    console.log(id.id);
-    console.log('component chnaged');
     // this.connectionId = id.id;
   }
 }

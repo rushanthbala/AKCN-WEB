@@ -32,7 +32,6 @@ export class ConnectionSearchComponent  implements OnInit  {
   }
 
   searching() {
-    console.log(this.loginForm.value);
   }
   emitEvent() {
     this.loading = true;

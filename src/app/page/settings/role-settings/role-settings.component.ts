@@ -60,7 +60,6 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
     this.getPendingData();
   }
   getPendingData() {
-    console.log('okokok');
     this.dataServise.getData(`userrole`).subscribe(
       (res) => {
         this.TICKET_DATA = res;
@@ -97,7 +96,6 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
   }
   // UserPostPut
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] =
       this.dataSource.filteredData.map((x: TicketElement) => ({
         connectionID: x.connectionID,
@@ -126,7 +124,6 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       // this.animal = result;
     });
   }
@@ -138,7 +135,6 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       // this.animal = result;
     });
   }
@@ -173,7 +169,6 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
     this.subscriberdata = us;
     this.UpadteUserDialogBox();
     // this.isSubscriberdata=true;
-    // console.log(us);
   }
   viewPermission(us: any) {
     // this.showTable = false;
@@ -181,7 +176,6 @@ export class RoleSettingComponent implements AfterViewInit, OnInit {
     this.subscriberdata = us;
     this.UpadtePermissionDialogBox();
     // this.isSubscriberdata=true;
-    // console.log(us);
   }
   
 }

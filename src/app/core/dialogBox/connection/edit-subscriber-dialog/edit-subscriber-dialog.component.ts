@@ -40,7 +40,6 @@ export class EditSubscriberDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-    console.log(this.data,"his.data");
     
     this.chackRequest = this.fb.group({
       NIC:this.data.subscriberNIC ?this.data.subscriberNIC: "check",
@@ -52,7 +51,6 @@ export class EditSubscriberDialogComponent implements OnInit {
     });
   }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
     let datas = {
       NIC: this.chackRequest.value.NIC,
       firstName: this.chackRequest.value.firstName,
@@ -74,10 +72,7 @@ export class EditSubscriberDialogComponent implements OnInit {
       "ppVerified": "1"
     }
 
-    console.log(datas,"datas");
-    console.log(datas.firstName == "" ,datas.lastName == "" ,
-    datas.primaryNo=="",   datas.secoundaryNo == "Road" ,  datas.NIC == "Area",datas.email == "" 
- );
+   
     
     if (datas.firstName == "" ||datas.lastName == "" ||
     datas.primaryNo==""||   datas.secoundaryNo == "Road" ||  datas.NIC == "Area" ||datas.email == "" 

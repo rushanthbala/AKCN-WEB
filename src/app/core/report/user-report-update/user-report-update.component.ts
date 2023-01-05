@@ -36,8 +36,6 @@ export class UserReportUpdateComponent implements OnInit {
   UserID: any;
   submitted= false
   onChangeObj(newObj: any) {
-    console.log(newObj.firstName);
-    console.log(newObj.id);
     this.UserName = newObj.firstName;
     this.UserID = newObj.id;
     // ... do other stuff here ...
@@ -90,7 +88,6 @@ export class UserReportUpdateComponent implements OnInit {
   }
 
   searching() {
-    console.log(this.loginForm.value);
   }
   emitEvent() {
     this.loading = true;
@@ -103,7 +100,6 @@ export class UserReportUpdateComponent implements OnInit {
       id: this.UserName,
     };
     // if (fromdate == "" || todate== "" || this.UserName =="User" || this.UserName ==undefined ) {
-    //   console.log(this.UserName,"this.UserName");
       
     //   this.isEmpty();
     //   this.loading = false;

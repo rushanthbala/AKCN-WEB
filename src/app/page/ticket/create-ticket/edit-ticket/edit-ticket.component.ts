@@ -107,17 +107,13 @@ export class EditTicketComponent implements OnInit {
   }
 
   searching() {
-    console.log(this.loginForm.value);
   }
   // model form function
   ReconnectionRequest() {
-    console.log(this.Reconnection.value);
   }
   ChangeRequest() {
-    console.log(this.Reconnection.value);
   }
   ExtraRequest() {
-    console.log(this.Reconnection.value);
   }
   createTicket(): void {
     const dialogRef = this.dialog.open(CreateTicketComponentDialog, {
@@ -126,7 +122,6 @@ export class EditTicketComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -138,7 +133,6 @@ export class EditTicketComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -149,7 +143,6 @@ export class EditTicketComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

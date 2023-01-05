@@ -29,11 +29,8 @@ export class PagesComponent implements OnInit {
     localStorage.clear();
   }
   ngOnInit(): void {
-    console.log('==========');
     if (this.authService.isUserLoggedIn()) {
-      console.log('true');
     } else {
-      console.log('false');
       window.location.href = '/login';
     }
     // this.menuStart()
@@ -43,9 +40,7 @@ export class PagesComponent implements OnInit {
       .observe(['(max-width: 1200px)'])
       // .pipe(untilDestroyed(this))
       .subscribe((res) => {
-        console.log('sub');
         if (res.matches) {
-          console.log('sidenav.mode', this.sidenav.mode);
           this.sidenav.mode = 'over';
           this.sidenav.close();
         } else {
@@ -354,7 +349,6 @@ export class PagesComponent implements OnInit {
   menuClick(clickedItem: number) {
     this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state; // flips the boolean value for the clicked item
     for (let item of this.menuItems) {
-      // console.log(item, this.menuItems[clickedItem]);
 
       if (item !== this.menuItems[clickedItem]) {
         item.state = false;
@@ -367,7 +361,6 @@ export class PagesComponent implements OnInit {
   menuStart(){
     var url = this.router.url;
     var urlSpilite = url.split('/');
-    // console.log(this.href,"href",urlSpilite[2],"urlSpilite[2]");
     
   }
 

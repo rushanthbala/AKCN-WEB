@@ -30,7 +30,6 @@ export class AreaDialogComponent implements OnInit {
   submitted = false
   ngOnInit(): void {
     this.getAll()
-    console.log(this.data,"dtaaaa");
     if(this.data.sendtype=="POST"){
       // alert("cool")
       this.ifData=false
@@ -39,7 +38,6 @@ export class AreaDialogComponent implements OnInit {
       this.currentData =this.data.subscriberdata
       // alert("oko")
     }else{
-      // console.log(this.data.sendtype=="PUT" &&this.data.subscriberdata,this.data.sendtype ,this.data.subscriberdata);
     }
     this.initialReconnectionForm();
     //  this.chackRequest=this.fb.group({
@@ -62,7 +60,6 @@ export class AreaDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-    console.log(this.data,"his.data");
     this.chackRequest = this.fb.group({
       area: this.ifData ?this.currentData.area: new FormControl('', [Validators.required]),
       rental: this.ifData ?this.currentData.rental: new FormControl('', [Validators.required]),
@@ -74,7 +71,6 @@ export class AreaDialogComponent implements OnInit {
     return this.chackRequest.controls;
   }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
     let datas = {
       area: this.chackRequest.value.area,
       rental: this.chackRequest.value.rental,
@@ -88,7 +84,6 @@ export class AreaDialogComponent implements OnInit {
       "areaCode":datas.areaCode
     }
 
-   console.log(sendObj,"sendObj");
    
     if (!this.chackRequest.valid) {
       // this.isEmpty();

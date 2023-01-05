@@ -45,7 +45,6 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
       createdBy: this.data.firstName,
       "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
     };
-    console.log(this.data, dataObj);
     // if (dataObj.reason == "" 
     // ) {
     //   this.isEmpty();

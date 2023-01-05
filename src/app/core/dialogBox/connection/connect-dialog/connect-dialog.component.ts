@@ -49,7 +49,6 @@ export class ConnectDialogComponent implements OnInit {
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
     var adminId = admin ? admin.id : null
     this.loading = true;
-    console.log(this.chackRequest.value);
     let data = {
       actionDate: this.chackRequest.value.disconnectedDate,
       dueAmount:this.chackRequest.value.reconnectionFee,

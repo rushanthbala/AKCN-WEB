@@ -55,7 +55,6 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
     this.getPendingData();
   }
   getPendingData() {
-    console.log('okokok');
     this.dataServise.getData(`road`).subscribe(
       (res) => {
         this.TICKET_DATA = res;
@@ -92,7 +91,6 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
   }
   // UserPostPut
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] =
       this.dataSource.filteredData.map((x: TicketElement) => ({
         connectionID: x.connectionID,
@@ -121,7 +119,6 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       // this.animal = result;
     });
   }
@@ -156,7 +153,6 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
     this.subscriberdata = us;
     this.UpadteUserDialogBox();
     // this.isSubscriberdata=true;
-    // console.log(us);
   }
 }
 

@@ -56,16 +56,16 @@ export class PendingOneTicketComponent implements OnInit {
     });
   }
   searching() {
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
   }
   // model form function
   ReconnectionRequest() {
-    console.log(this.Reconnection.value);
+    // console.log(this.Reconnection.value);
   }
   ChangeRequest() {
-    console.log(this.Reconnection.value);
+    // console.log(this.Reconnection.value);
   }
   ExtraRequest() {
-    console.log(this.Reconnection.value);
+    // console.log(this.Reconnection.value);
   }
 }

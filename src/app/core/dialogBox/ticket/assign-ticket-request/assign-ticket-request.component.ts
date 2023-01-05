@@ -27,8 +27,6 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   public selectedDeviceObj: any = {}
   public storedToken: any = localStorage.getItem('auth');
   onChangeObj(newObj: any) {
-    console.log(newObj.firstName);
-    console.log(newObj.id);
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
     // ... do other stuff here ...
@@ -36,8 +34,6 @@ export class AssignTicketRequestDilogComponent implements OnInit {
 
   chackRequest: FormGroup | any;
   ngOnInit(): void {
-    console.log(this.storedToken, "this.storedToken");
-
     this.initialReconnectionForm();
     this.getAll()
   }
@@ -77,7 +73,6 @@ export class AssignTicketRequestDilogComponent implements OnInit {
     };
     // if (dataObj.assignedTo == "Technician"
     // ) {
-    //   console.log(dataObj,"dataObj");
       
     //   this.isEmpty();
     // }

@@ -55,8 +55,6 @@ export class UserReportComponent {
     var fromdate = first.fromdate;
     var todate = first.todate;
 
-    console.log(userName, fromdate, todate);
-
     // connectionId: connectionId, amount: amount,arreardate:arreardate
     // var Ctype: string = first.type
     // var url = findTypeUrl(Ctype)
@@ -67,7 +65,6 @@ export class UserReportComponent {
       .subscribe(
         (res) => {
           this.userData = res;
-          console.log(res)
           this.tableResult = this.userData.length;
 
           this.dataSource = new MatTableDataSource(this.userData);
@@ -99,7 +96,6 @@ export class UserReportComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -110,7 +106,6 @@ export class UserReportComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

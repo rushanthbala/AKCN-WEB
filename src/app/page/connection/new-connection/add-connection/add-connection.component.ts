@@ -46,7 +46,6 @@ export class AddConnectionComponent implements OnInit  {
       this.BranchArray = res;
     });
     
-    console.log(this.roadArray, this.areaArray);
 
   }
 
@@ -93,9 +92,6 @@ export class AddConnectionComponent implements OnInit  {
     addEventClick() {
 
       this.submitted = true;
-      console.log(this.userForm,this.userForm.valid, "userForm.valid");
-
-
       let data = {
         connectionType: this.userForm.value.type,
         tvCount: this.userForm.value.TV,
@@ -114,7 +110,6 @@ export class AddConnectionComponent implements OnInit  {
         "actionDate" :this.userForm.value.ConnectionDate,
         branchID:this.branchId
       }
-      console.log(data);
       var checkData = this.technicianId =="" ||this.technicianId==undefined||
       this.roadId =="" ||this.roadId==undefined||
       this.areaId =="" ||this.areaId==undefined ||

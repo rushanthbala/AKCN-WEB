@@ -29,10 +29,8 @@ export class MakePaymentComponent  {
   searching(first: Object | any) {
     var Ctype: string = first.type
     var url = findTypeUrl(Ctype)
-console.log(first,"first");
 
     var cInput: String = first.searchinginput
-    console.log(`${this.suburl}/${url}/${cInput}`);
     
     this.dataServise.getData(`${this.suburl}/${url}/${cInput}`).subscribe((res) => {
       this.userData = res[0];
@@ -49,7 +47,6 @@ console.log(first,"first");
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

@@ -27,7 +27,6 @@ export class AddArrearsComponent {
     var connectionId = first.connectionId
     var amount = first.amount
     var arreardate = first.arreardate
-    console.log(connectionId, amount, arreardate);
 
 // add to database
 
@@ -46,7 +45,6 @@ let dataObj ={
   phoneNo:"0761711675"
 
 }
-console.log(dataObj,"dataObj");
 
 if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime == ""
 ) {
@@ -91,7 +89,6 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -102,7 +99,6 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

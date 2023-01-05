@@ -39,8 +39,6 @@ export class CollectionReportUpdateComponent {
   d: any;
   submitted = false;
   onChangeObj(newObj: any) {
-    console.log(newObj.firstName);
-    console.log(newObj.id);
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
     // ... do other stuff here ...
@@ -108,7 +106,6 @@ export class CollectionReportUpdateComponent {
   }
 
   searching() {
-    console.log(this.loginForm.value);
   }
   onChangeObjBranch(newObj: any) {
     this.BranchName = newObj.branchName;

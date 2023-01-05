@@ -46,7 +46,6 @@ export class NoDataComponent implements OnInit {
   //   });
   // }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
     let data = {
       phoneNumber: this.chackRequest.value.phoneNumber,
       address: this.chackRequest.value.address,

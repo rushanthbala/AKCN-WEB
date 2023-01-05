@@ -49,7 +49,6 @@ export class ChangeRequestComponent implements OnInit {
     return this.chackRequest.controls;
   }
   ReconnectionRequest() {
-    console.log(this.chackRequest.value);
     let data = {
       phoneNumber: this.chackRequest.value.phoneNumber,
       address: this.chackRequest.value.address,
@@ -94,7 +93,6 @@ export class ChangeRequestComponent implements OnInit {
     this.dataServise.getData(`${this.suburl2}`).subscribe((res) => {
       this.areaArray = res;
     });
-    console.log(this.roadArray, this.areaArray);
 
   }
 

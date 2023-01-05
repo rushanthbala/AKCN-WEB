@@ -83,13 +83,10 @@ export class PendingDetailsComponent {
   }
   // model form function
   ReconnectionRequest() {
-    console.log(this.Reconnection.value);
   }
   ChangeRequest() {
-    console.log(this.Reconnection.value);
   }
   ExtraRequest() {
-    console.log(this.Reconnection.value);
   }
   AssignOpenDialog(): void {
     let TotalObjectData =this.TotalObjectData;
@@ -102,7 +99,6 @@ export class PendingDetailsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -114,7 +110,6 @@ export class PendingDetailsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

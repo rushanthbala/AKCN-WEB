@@ -48,7 +48,6 @@ export class DueReportComponent implements AfterViewInit, OnInit {
   
 
   searching(first: Object | any) {
-    console.log(first, 'first');
     //   {
     //     "branchID": 1,
     //     "RoadID": 0,
@@ -61,12 +60,10 @@ export class DueReportComponent implements AfterViewInit, OnInit {
     var statusID = first.user.StatusName == 0 ? 'All' : first.user.StatusName;
     var minAmount = first.minAmount == 0 ? 'All' : first.minAmount;
 
-    console.log(branchID, areaID, roadID, minAmount, statusID);
 
     // var connectionId = first.connectionId
     // var amount = first.amount
     // var arreardate = first.arreardate
-    // console.log(connectionId, amount, arreardate);
 
     // connectionId: connectionId, amount: amount,arreardate:arreardate
     // var Ctype: string = first.type
@@ -84,7 +81,6 @@ export class DueReportComponent implements AfterViewInit, OnInit {
       .subscribe(
         (res) => {
           this.userData = res;
-          console.log(res)
           this.tableResult = this.userData.length;
 
           this.dataSource = new MatTableDataSource(this.userData);
@@ -116,7 +112,6 @@ export class DueReportComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -127,7 +122,6 @@ export class DueReportComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.animal = result;
     });
   }

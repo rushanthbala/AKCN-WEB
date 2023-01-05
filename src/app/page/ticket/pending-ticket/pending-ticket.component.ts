@@ -52,7 +52,6 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       }, 1)
-      console.log(res);
       this.ifGetData=true
     },(err)=>{
       this.ifGetData=true
@@ -108,7 +107,6 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
     }
   }
   exportNormalTable() {
-    console.log('ko', this.dataSource.filteredData);
     const onlyNameAndSymbolArr: Partial<TicketElement>[] = this.dataSource.filteredData.map((x: TicketElement) => ({
       connectionID: x.connectionID,
       "ticketID": x.ticketID,
@@ -153,7 +151,6 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
     this.showTable = false;
     this.subscriberdata = us;
     this.isSubscriberdata = true;
-    console.log(us);
 
   }
   detailhide() {

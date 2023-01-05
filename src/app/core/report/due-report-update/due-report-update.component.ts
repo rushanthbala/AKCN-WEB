@@ -102,7 +102,6 @@ export class DueReportUpdateComponent implements OnInit {
   }
 
   findArea(id: any) {
-    console.log('findArea', id);
     this.dataServise.getData(`areaBybranchId/${id}`).subscribe((res) => {
       this.AreaArray = res;
       // if(res.length >0){
@@ -113,7 +112,6 @@ export class DueReportUpdateComponent implements OnInit {
   }
 
   findRoad(id: any) {
-    console.log('find road', id);
     this.dataServise.getData(`road/roadByAreaID/${id}`).subscribe((res) => {
       this.RoadArray = res;
       // if(res.length >0){
@@ -137,10 +135,6 @@ export class DueReportUpdateComponent implements OnInit {
   }
 
   emitEvent() {
-    console.log('mic01');
-
-    console.log(this.BranchName, this.RoadName, this.AreaName, this.StatusName);
-    console.log(this.BranchId, this.RoadId, this.AreaId, this.StatusName);
     let detailObj = {
       branchID: this.BranchId,
       RoadID: this.RoadId,
