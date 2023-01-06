@@ -112,10 +112,10 @@ export class AssignTicketRequestDilogComponent implements OnInit {
 
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.TechnicianArray = res;
-      if (res.length > 0) {
-        this.TechnicianName = res[0].firstName;
-        this.TechnicianId = res[0].id;
-      }
+      // if (res.length > 0) {
+      //   this.TechnicianName = res[0].firstName;
+      //   this.TechnicianId = res[0].id;
+      // }
     });
   }
 
