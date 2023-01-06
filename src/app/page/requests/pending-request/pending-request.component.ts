@@ -67,8 +67,10 @@ export class PendingRequestComponent implements AfterViewInit, OnInit {
       (res) => {
         this.TICKET_DATA = res;
         this.dataSource = new MatTableDataSource(this.TICKET_DATA);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
         this.ifGetData = true;
       },
       (err) => {

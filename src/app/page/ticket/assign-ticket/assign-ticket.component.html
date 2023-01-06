@@ -168,14 +168,15 @@
       aria-label="Select page of users"
     ></mat-paginator>
   </div>
-  <div class="editData" *ngIf="!showTable">
-    <!--  [object]='subscriberdata'  text="text" -->
-    <app-assign-details
-      [object]="subscriberdata"
-      text="text"
-      (backTo)="detailhide()"
-    ></app-assign-details>
-  </div>
+  
+</div>
+<div class="editData" *ngIf="!showTable">
+  <!--  [object]='subscriberdata'  text="text" -->
+  <app-assign-details
+    [object]="subscriberdata"
+    text="text"
+    (backTo)="detailhide()"
+  ></app-assign-details>
 </div>
 <p class="head-2 p-5" *ngIf="TICKET_DATA.length == 0 && ifGetData">
   No Data found

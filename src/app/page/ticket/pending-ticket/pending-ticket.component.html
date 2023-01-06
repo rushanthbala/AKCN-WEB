@@ -159,14 +159,15 @@
       aria-label="Select page of users"
     ></mat-paginator>
   </div>
-  <div class="editData" *ngIf="!showTable">
-    <!--  [object]='subscriberdata'  text="text" -->
-    <app-pending-details
-      [object]="subscriberdata"
-      text="text"
-      (backTo)="detailhide()"
-    ></app-pending-details>
-  </div>
+ 
+</div>
+<div class="editData" *ngIf="!showTable">
+  <!--  [object]='subscriberdata'  text="text" -->
+  <app-pending-details
+    [object]="subscriberdata"
+    text="text"
+    (backTo)="detailhide()"
+  ></app-pending-details>
 </div>
 <!-- {{dataSource.length}} -->
 <div *ngIf="TICKET_DATA.length == 0 && ifGetData" class="head-2 p-5">
