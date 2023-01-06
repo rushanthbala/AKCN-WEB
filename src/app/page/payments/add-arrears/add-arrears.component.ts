@@ -15,6 +15,7 @@ import { HttpService } from 'src/app/servise/http/http.service';
 export class AddArrearsComponent {
   animal: string | any;
   name: string | any;
+  errmsg: string | any;
   userData: any;
   showTable: boolean = false;
   tableResult: any;
@@ -50,20 +51,34 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
 ) {
   this.isEmpty();
 } else {
-  this.dataServise.postValue('payment', dataObj).subscribe(
-    (res: any) => {
-      if (res.errorMessage) {
-        this.loading = false;
-      } else {
-        this.UpdatedateDialogBoxOpen()
-        this.loading = false;
-      }
+  let ids =dataObj.connectionID
+  this.dataServise.getData(`connection/id/${ids}`).subscribe(
+    (res) => {
+      this.errmsg="onnum ill"
+
+      let PN = res[0].primaryPhone
+      dataObj.phoneNo= res[0].primaryPhone
+      this.dataServise.postValue('payment', dataObj).subscribe(
+        (res: any) => {
+          if (res.errorMessage) {
+            this.loading = false;
+          } else {
+            this.UpdatedateDialogBoxOpen()
+            this.loading = false;
+          }
+        },
+        (e) => {
+          this.loading = false;
+          this.showError()
+        }
+      );
     },
-    (e) => {
-      this.loading = false;
-      this.showError()
+    (err) => {
+      this.errmsg="onnum ill"
+      this.isWrongConnectionId()
     }
   );
+ 
 }
     // connectionId: connectionId, amount: amount,arreardate:arreardate
     // var Ctype: string = first.type
@@ -104,7 +119,7 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
   }
   showSuccess() {
     this.toastr.success('Sucessfully Finished', 'Sucessfully');
-    window.location.reload()
+    // window.location.reload()
 
   }
   showError() {
@@ -112,5 +127,8 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
   }
   isEmpty() {
     this.toastr.error('Fill All The Field', 'Error');
+  }
+  isWrongConnectionId() {
+    this.toastr.error('Check the Connection ID', 'Error');
   }
 }
