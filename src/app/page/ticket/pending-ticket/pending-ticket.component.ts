@@ -107,7 +107,7 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
 
   convertIdToName(name: any) {
     let employeeName = '';
-    this.EmployeeData.map((item: any) => {
+    this.EmployeeData?.map((item: any) => {
       if (item.id == name) {
         employeeName = item.firstName;
       } else {
