@@ -80,8 +80,8 @@ export class DisconnectDialogBoxComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success('Sucessfully created !', 'successful');
-    // this.onNoClick()
-    // window.location.reload();
+    this.onNoClick()
+    window.location.reload();
 
   }
   showError() {

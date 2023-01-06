@@ -29,6 +29,9 @@ export class PendingChangeRequestComponent implements OnInit {
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
+    this.chackRequest.tech =newObj.firstName;
+    console.log( this.chackRequest.tech," this.chackRequest.tech");
+    
     // ... do other stuff here ...
   }
 
@@ -73,7 +76,9 @@ export class PendingChangeRequestComponent implements OnInit {
     // ) {
     //   this.isEmpty();
     // } 
-    if(!this.chackRequest.valid){
+    console.log(this.chackRequest.value,this.TechnicianName);
+    if(this.TechnicianName =="Technician"){
+      
       this.submitted = true;
       return
     }
@@ -100,10 +105,10 @@ export class PendingChangeRequestComponent implements OnInit {
     // get TechnicianArray
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.TechnicianArray = res;
-      if(res.length >0){
-        this.TechnicianName=res[0].firstName
-        this.TechnicianId=res[0].id
-      }
+      // if(res.length >0){
+      //   this.TechnicianName=res[0].firstName
+      //   this.TechnicianId=res[0].id
+      // }
     });
   }
 

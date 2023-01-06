@@ -150,7 +150,7 @@ export class CloseRequestComponent implements AfterViewInit, OnInit {
         createdAt: x.createdAt,
         updatedAt: x.updatedAt,
       }));
-    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'ExampleArray');
+    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'CloseRequest');
     // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
@@ -165,7 +165,7 @@ export class CloseRequestComponent implements AfterViewInit, OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
+      PDF.save('closed-request.pdf');
     });
   }
   applyFilter(event: Event) {

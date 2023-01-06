@@ -42,11 +42,16 @@ export class EditRequestComponent implements OnInit {
     this.getTicketCount()
 
   }
+  
   getTicketCount() {
-    this.dataServise.getData(`ticket/connectionId/${this.object.id}`).subscribe((res) => {
+    // console.log(`request/connectionId/${this.object.id}`);
+    
+    this.dataServise.getData(`request/connectionId/${this.object.id}`).subscribe((res) => {
       // this.userData = res;
       // this.tableResult = this.userData.length
       // this.isFetchDataFail = false
+      console.log(res,"ressss");
+      
       var allRequest: any = []
       allRequest = res
       allRequest.map((item: any) => {
