@@ -16,6 +16,8 @@ export class AddRentalComponent{
   animal: string | any;
   name: string | any;
   userData: any;
+  errmsg: string | any;
+
   showTable: boolean = false;
   tableResult: any;
   public loading: Boolean = true;
@@ -48,18 +50,31 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
 ) {
   this.isEmpty();
 } else {
-  this.dataServise.postValue('payment', dataObj).subscribe(
-    (res: any) => {
-      if (res.errorMessage) {
-        this.loading = false;
-      } else {
-        this.UpdatedateDialogBoxOpen()
-        this.loading = false;
-      }
+  let ids =dataObj.connectionID
+  this.dataServise.getData(`connection/id/${ids}`).subscribe(
+    (res) => {
+      this.errmsg="onnum ill"
+
+      let PN = res[0].primaryPhone
+      dataObj.phoneNo= res[0].primaryPhone
+      this.dataServise.postValue('payment', dataObj).subscribe(
+        (res: any) => {
+          if (res.errorMessage) {
+            this.loading = false;
+          } else {
+            this.UpdatedateDialogBoxOpen()
+            this.loading = false;
+          }
+        },
+        (e) => {
+          this.loading = false;
+          this.showError()
+        }
+      );
     },
-    (e) => {
-      this.loading = false;
-      this.showError()
+    (err) => {
+      this.errmsg="onnum ill"
+      this.isWrongConnectionId()
     }
   );
 }
@@ -110,5 +125,8 @@ if (dataObj.amount == "" || dataObj.connectionID == "" ||dataObj.paidDateTime ==
   }
   isEmpty() {
     this.toastr.error('Fill All The Field', 'Error');
+  }
+  isWrongConnectionId() {
+    this.toastr.error('Check the Connection ID', 'Error');
   }
 }
