@@ -136,7 +136,7 @@
             Created By
           </th>
           <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.createdBy }}
+            {{ convertIdToName(element.createdBy) }}
           </td>
         </ng-container>
 

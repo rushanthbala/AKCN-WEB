@@ -54,3 +54,8 @@
   margin-top: 8px;
   font-size: 12px !important;
 }
+.user::before {
+  content: "Technician";
+  font-size: 12px;
+  color: #707070;
+}

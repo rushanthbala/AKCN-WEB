@@ -32,6 +32,7 @@ export class AssignRequestComponent implements AfterViewInit, OnInit {
     'createdBy',
     'createdAt',
   ];
+  EmployeeData: any;
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -60,6 +61,7 @@ export class AssignRequestComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.getPendingData();
     this.initialForm();
+    this.getEmployee();
   }
   getPendingData() {
     this.dataServise.getData(`request/status/assigned`).subscribe(
@@ -74,6 +76,34 @@ export class AssignRequestComponent implements AfterViewInit, OnInit {
         this.ifGetData = true;
       }
     );
+  }
+
+  getEmployee() {
+    this.dataServise.getData(`employee`).subscribe(
+      (res) => {
+        let array = res;
+
+        // array.map((item: any) => {
+        this.EmployeeData = res
+        // })
+        this.ifGetData = true;
+      },
+      (err) => {
+        this.ifGetData = true;
+      }
+    );
+  }
+
+  convertIdToName(name: any) {
+    let employeeName = "";
+    this.EmployeeData?.map((item: any) => {
+      if (item.id == name) {
+        employeeName = item.firstName
+      } else {
+        employeeName = '--'
+      }
+    })
+    return employeeName
   }
 
   ngAfterViewInit(): void {

@@ -2,7 +2,7 @@
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Assign Ticket</div>
     <!-- <p class="para">{{ data.TicketData.id }}</p> -->
-    <div class="">
+    <div class="user mt-4">
       <select
         class="form-select mt-2"
         aria-label="Default select example"
@@ -10,17 +10,17 @@
         [(ngModel)]="selectedDeviceObj"
         [ngModelOptions]="{ standalone: true }"
         (ngModelChange)="onChangeObj(selectedDeviceObj)"
-        [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }"
+        [ngClass]="{ 'is-invalid': submitted && TechnicianName }"
       >
         <!-- [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }" -->
-        <option disabled selected value="null">Technician</option>
+        <!-- <option disabled selected value="null">Technician</option> -->
         <option *ngFor="let item of TechnicianArray" [ngValue]="item">
           {{ item.firstName }}
         </option>
       </select>
-      <!-- <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
+      <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
         <div *ngIf="f['tech'].errors['required']">Select the technician</div>
-      </div> -->
+      </div>
 
       <!-- <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
                 <option disabled selected value="null">Technician</option>
