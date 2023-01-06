@@ -124,10 +124,10 @@ export class DueReportUpdateComponent implements OnInit {
   initialForm() {
     this.loginForm = this.fb.group({
       minAmount: new FormControl('', [Validators.required]),
-      branch : new FormControl('', Validators.required),
-      area : new FormControl('', Validators.required),
-      road : new FormControl('', Validators.required),
-      status : new FormControl('', Validators.required),
+      // branch : new FormControl('', Validators.required),
+      // area : new FormControl('', Validators.required),
+      // road : new FormControl('', Validators.required),
+      // status : new FormControl('', Validators.required),
     });
   }
   get f(): { [key: string]: AbstractControl } {
@@ -146,21 +146,21 @@ export class DueReportUpdateComponent implements OnInit {
     let fromdate = this.loginForm.value.fromdate;
     let minAmount = this.loginForm.value.minAmount;
 
-    // if (
-    //   minAmount == '' ||
-    //   this.BranchId == undefined ||
-    //   this.RoadId == undefined ||
-    //   this.AreaId == undefined ||
-    //   this.StatusName == undefined
-    // ) {
-    //   this.isEmpty();
-    //   this.loading = false;
-    // }
-    if(!this.loginForm.valid){
-      this.submitted = true;
+    if (
+      minAmount == '' ||
+      this.BranchId == undefined ||
+      this.RoadId == undefined ||
+      this.AreaId == undefined ||
+      this.StatusName == undefined
+    ) {
+      this.isEmpty();
       this.loading = false;
-      return
     }
+    // if(!this.loginForm.valid){
+    //   this.submitted = true;
+    //   this.loading = false;
+    //   return
+    // }
     else {
       this.OnClick.emit({ user: detailObj, minAmount: minAmount });
 

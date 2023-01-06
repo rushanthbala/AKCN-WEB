@@ -133,9 +133,9 @@ export class UnpaidReportUpdateComponent {
 
   initialForm() {
     this.loginForm = this.fb.group({
-      branch : new FormControl('', Validators.required),
-      area : new FormControl('', Validators.required),
-      road : new FormControl('', Validators.required),
+      // branch : new FormControl('', Validators.required),
+      // area : new FormControl('', Validators.required),
+      // road : new FormControl('', Validators.required),
     });
   }
 
@@ -155,14 +155,14 @@ export class UnpaidReportUpdateComponent {
     // let minAmount = this.loginForm.value.minAmount;
 
     if (
-      // this.BranchId == undefined ||
-      // this.RoadId == undefined ||
-      // this.AreaId == undefined
-      !this.loginForm.valid
+      this.BranchId == undefined ||
+      this.RoadId == undefined ||
+      this.AreaId == undefined
+      // !this.loginForm.valid
     ) {
-      // this.isEmpty();
-      this.submitted = true
-      this.loading = false;
+      this.isEmpty();
+      // this.submitted = true
+      // this.loading = false;
     } else {
       this.OnClick.emit({ user: detailObj });
 

@@ -1,6 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { formatDate } from '@angular/common';
@@ -8,23 +18,23 @@ import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-assign-ticket-request',
   templateUrl: './assign-ticket-request.component.html',
-  styleUrls: ['./assign-ticket-request.component.scss']
+  styleUrls: ['./assign-ticket-request.component.scss'],
 })
 export class AssignTicketRequestDilogComponent implements OnInit {
   public loading: Boolean = false;
   public areaArray: any = [];
   public roadArray: any = [];
   public TechnicianArray: any = [];
-  public AdminId: any
+  public AdminId: any;
   public roadId: any = 'Road';
   public areaId: any = 'Area';
-  public TechnicianName: any = 'Technician';;
+  public TechnicianName: any = 'Technician';
   public TechnicianId: any;
-  suburl2: string = "area"
-  suburl1: string = "employee"
+  suburl2: string = 'area';
+  suburl1: string = 'employee';
   submitted = false;
 
-  public selectedDeviceObj: any = {}
+  public selectedDeviceObj: any = {};
   public storedToken: any = localStorage.getItem('auth');
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
@@ -35,24 +45,23 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   chackRequest: FormGroup | any;
   ngOnInit(): void {
     this.initialReconnectionForm();
-    this.getAll()
+    this.getAll();
   }
   constructor(
     public dialogRef: MatDialogRef<AssignTicketRequestDilogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {
     this.AdminId = JSON.parse(localStorage.getItem('currentUser') || '{}');
-
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      tech: new FormControl(null, [Validators.required])
+      // tech: new FormControl(null, [Validators.required])
     });
   }
 
@@ -60,42 +69,41 @@ export class AssignTicketRequestDilogComponent implements OnInit {
     return this.chackRequest.controls;
   }
   assignYTicket() {
-
     let newDate = new Date();
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
-    var adminId = admin ? admin.id : null
+    var adminId = admin ? admin.id : null;
 
     let dataObj = {
-      "updatedBy": adminId,
-      "updatedAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
-      "assignedTo": this.TechnicianName,
-      "assignedToID": this.TechnicianId,
+      updatedBy: adminId,
+      updatedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      assignedTo: this.TechnicianName,
+      assignedToID: this.TechnicianId,
     };
-    // if (dataObj.assignedTo == "Technician"
-    // ) {
-      
-    //   this.isEmpty();
+    if (dataObj.assignedTo == 'Technician') {
+      this.isEmpty();
+    }
+    // if(!this.chackRequest.valid){
+    //   this.submitted = true
+    //   return
     // }
-    if(!this.chackRequest.valid){
-      this.submitted = true
-      return
-    } 
     else {
-      this.loading =true
-      this.dataServise.putValue(`ticket/assign/${this.data.TicketData.id}`, dataObj).subscribe(
-        (res: any) => {
-          if (res.errorMessage) {
+      this.loading = true;
+      this.dataServise
+        .putValue(`ticket/assign/${this.data.TicketData.id}`, dataObj)
+        .subscribe(
+          (res: any) => {
+            if (res.errorMessage) {
+              this.loading = false;
+            } else {
+              this.showSuccess();
+              this.loading = false;
+            }
+          },
+          (e) => {
             this.loading = false;
-          } else {
-            this.showSuccess()
-            this.loading = false;
+            this.showError();
           }
-        },
-        (e) => {
-          this.loading = false;
-          this.showError()
-        }
-      );
+        );
     }
   }
 
@@ -104,21 +112,21 @@ export class AssignTicketRequestDilogComponent implements OnInit {
 
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.TechnicianArray = res;
-      if(res.length >0){
-        this.TechnicianName=res[0].firstName
-        this.TechnicianId=res[0].id
+      if (res.length > 0) {
+        this.TechnicianName = res[0].firstName;
+        this.TechnicianId = res[0].id;
       }
     });
   }
 
   onSelect(val: any) {
-    this.TechnicianId = val.id
+    this.TechnicianId = val.id;
   }
   showSuccess() {
     this.toastr.success('Sucessfully Assigned', 'Sucessfully');
-    this.onNoClick()
+    this.onNoClick();
     window.location.reload();
-    }
+  }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
   }

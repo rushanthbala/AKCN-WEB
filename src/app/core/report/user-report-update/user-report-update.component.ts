@@ -66,7 +66,7 @@ export class UserReportUpdateComponent implements OnInit {
     this.loginForm = this.fb.group({
       fromdate: new FormControl('', [Validators.required]),
       todate: new FormControl('',[Validators.required]),
-      user: new FormControl(null,[Validators.required]),
+      // user: new FormControl(null,[Validators.required]),
     }, {validator: this.dateLessThan('fromdate', 'todate')});
   }
 
@@ -99,18 +99,18 @@ export class UserReportUpdateComponent implements OnInit {
     let detailObj = {
       id: this.UserName,
     };
-    // if (fromdate == "" || todate== "" || this.UserName =="User" || this.UserName ==undefined ) {
+    if (fromdate == "" || todate== "" || this.UserName =="User" || this.UserName ==undefined ) {
       
-    //   this.isEmpty();
-    //   this.loading = false;
-    // }else if(!this.loginForm.valid){
-    //   this.showmsg();
-    //   this.loading = false;
-    // }
-    if(!this.loginForm.valid){
-      this.loading =false
-      return
+      this.isEmpty();
+      this.loading = false;
+    }else if(!this.loginForm.valid){
+      this.showmsg();
+      this.loading = false;
     }
+    // if(!this.loginForm.valid){
+    //   this.loading =false
+    //   return
+    // }
      else {
       this.OnClick.emit({
         user: detailObj,

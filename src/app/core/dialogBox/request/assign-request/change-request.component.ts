@@ -50,7 +50,7 @@ export class PendingChangeRequestComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      tech: new FormControl('', [Validators.required])
+      // tech: new FormControl('', [Validators.required])
     });
   }
 
@@ -69,14 +69,14 @@ export class PendingChangeRequestComponent implements OnInit {
       "assignedTo": this.TechnicianName,
       "assignedToID": this.TechnicianId,
     };
-    // if (dataObj.assignedTo == "Technician"
-    // ) {
-    //   this.isEmpty();
-    // } 
-    if(!this.chackRequest.valid){
-      this.submitted = true;
-      return
-    }
+    if (dataObj.assignedTo == "Technician"
+    ) {
+      this.isEmpty();
+    } 
+    // if(!this.chackRequest.valid){
+    //   this.submitted = true;
+    //   return
+    // }
     else {
       this.loading = true
       this.dataServise.putValue(`request/assign/${this.data.TicketData.id}`, dataObj).subscribe(

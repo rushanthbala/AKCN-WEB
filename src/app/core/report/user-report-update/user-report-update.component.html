@@ -10,21 +10,20 @@
           class="form-select"
           aria-label="Default select example"
           required
-          [(ngModel)]="selectedDeviceObj.user"
+          [(ngModel)]="selectedDeviceObj"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
-          [ngClass]="{ 'is-invalid': submitted && f['user'].errors }"
-          >
-         
+        >
+          <!-- [ngClass]="{ 'is-invalid': submitted && f['user'].errors }" -->
           <!-- <option disabled selected value="null">User</option> -->
           <option [ngValue]="{ id: 1, firstName: 'ADMIN' }">ADMIN</option>
           <option *ngFor="let item of UserArray" [ngValue]="item">
             {{ item.firstName }}
           </option>
         </select>
-        <div *ngIf="submitted && f['user'].errors" class="invalid-feedback">
+        <!-- <div *ngIf="submitted && f['user'].errors" class="invalid-feedback">
           <div *ngIf="f['user'].errors['required']">Select the user</div>
-        </div>
+        </div> -->
       </div>
       <div class="mb-3 cus-int-div">
         <input
@@ -40,11 +39,11 @@
             opacity: 1;
           "
           useValueAsDate
-          [ngClass]="{ 'is-invalid': submitted && f['fromdate'].errors }"
         />
+        <!-- [ngClass]="{ 'is-invalid': submitted && f['fromdate'].errors }"
         <div *ngIf="submitted && f['fromdate'].errors" class="invalid-feedback">
           <div *ngIf="f['fromdate'].errors['required']">Fill The Field</div>
-        </div>
+        </div> -->
       </div>
       <div class="mb-3 cus-int-div">
         <input
@@ -60,14 +59,14 @@
             opacity: 1;
           "
           useValueAsDate
-          [ngClass]="{ 'is-invalid': submitted && f['todate'].errors }"
         />
+        <!-- [ngClass]="{ 'is-invalid': submitted && f['todate'].errors }"
         <div *ngIf="submitted && f['todate'].errors" class="invalid-feedback">
           <div *ngIf="f['todate'].errors['required']">Fill The Field</div>
-        </div>
-         <div *ngIf="loginForm.errors" class="text-small">
+        </div> -->
+        <!-- <div *ngIf="submitted && loginForm.errors" class="text-small">
             {{ loginForm.errors?.dates }}
-          </div>
+          </div> -->
       </div>
       <div class="cus-int-div">
         <span

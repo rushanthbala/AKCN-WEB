@@ -8,20 +8,20 @@
           class="form-select"
           aria-label="Default select example"
           required
-          [(ngModel)]="selectedDeviceObj.tech"
+          [(ngModel)]="selectedDeviceObj"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
-          [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }"
         >
+          <!-- [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }" -->
           <!-- <option disabled selected value="null">Technician</option> -->
           <option *ngFor="let item of TechnicianArray" [ngValue]="item">
             {{ item.firstName }}
           </option>
         </select>
 
-        <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
+        <!-- <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
           <div *ngIf="f['tech'].errors['required']">Select the technician</div>
-        </div>
+        </div> -->
       </div>
       <button
         *ngIf="!loading"
