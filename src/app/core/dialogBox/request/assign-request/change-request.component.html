@@ -1,7 +1,7 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Assign Ticket</div>
-    <p class="para">{{ data.TicketData.id }}</p>
+    <!-- <p class="para">{{ data.TicketData.id }}</p> -->
     <div class="">
       <select
         class="form-select mt-2"
@@ -10,6 +10,7 @@
         [(ngModel)]="selectedDeviceObj"
         [ngModelOptions]="{ standalone: true }"
         (ngModelChange)="onChangeObj(selectedDeviceObj)"
+        [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }"
       >
         <!-- [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }" -->
         <option disabled selected value="null">Technician</option>

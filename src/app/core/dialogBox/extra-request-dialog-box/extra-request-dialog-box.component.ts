@@ -39,17 +39,19 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
     return this.Reconnection.controls;
   }
   ReconnectionRequest() {
+    // request part
     let newDate = new Date();
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
     var adminId = admin ? admin.id : null
 
     let dataObj = {
       connectionID: this.data.id,
-      requestType:"Reconnection",
+      requestType:"Extra TV",
       description: this.Reconnection.value.description,
       phone: this.Reconnection.value.phoneNumber,
       createdBy: adminId,
       "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
+      subject:"Extra TV",
     };
     // if (dataObj.description == "" || dataObj.phone == ""
     // ) {
@@ -60,7 +62,7 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
       return
     }
     else {
-      this.dataServise.postValue('ticket', dataObj).subscribe(
+      this.dataServise.postValue('request', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
