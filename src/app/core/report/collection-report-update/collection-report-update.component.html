@@ -5,32 +5,14 @@
     <div
       class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
     >
-      <!-- <div class="mb-3 cus-int-div">
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          required
-          [(ngModel)]="selectedDeviceObj"
-          [ngModelOptions]="{ standalone: true }"
-          (ngModelChange)="onChangeObjBranch(selectedDeviceObj)"
-        >
-          <option disabled selected [value]="">Branch</option>
-          <option value="All" [ngValue]="{ id: 0, branchName: 'All' }">
-            All
-          </option>
-
-          <option *ngFor="let item of BranchArray" [ngValue]="item">
-            {{ item.branchName }}
-          </option>
-        </select>
-      </div> -->
-      <div class="mb-3 cus-int-div">
+      <div class="col-12 col-md-3 from">
         <input
           type="date"
           class="form-control int"
           required
           placeholder="From"
           formControlName="fromdate"
+          max="{{maxDate}}"
           style="
             font: normal normal normal 13px/21px Poppins;
             letter-spacing: 0px;
@@ -44,13 +26,14 @@
           <div *ngIf="f['fromdate'].errors['required']">Fill The Field</div>
         </div>
       </div>
-      <div class="mb-3 cus-int-div">
+      <div class="col-12 col-md-3 to">
         <input
           type="date"
           class="form-control int"
           required
           placeholder="To"
           formControlName="todate"
+          max="{{maxDate}}"
           style="
             font: normal normal normal 13px/21px Poppins;
             letter-spacing: 0px;
@@ -67,8 +50,7 @@
           {{ loginForm.errors?.dates }}
         </div>
       </div>
-
-      <div class="cus-int-div">
+      <div class="col-12 col-md-3">
         <span
           class="input-group-text cus-btn align-items-center justify-content-center"
           id="basic-addon2"
@@ -87,6 +69,7 @@
         >
         <!-- <label *ngIf="loginForm.errors">{{ loginForm.errors?.dates | json }}</label> -->
       </div>
+      <div class="col-12 col-md-3"></div>
     </div>
 
     <br />

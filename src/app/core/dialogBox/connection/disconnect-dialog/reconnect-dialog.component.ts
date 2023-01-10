@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -21,6 +21,7 @@ export class ReconnectDialogComponent implements OnInit {
   public  TechnicianId: any = 'Technician';
   suburl2: string = "area"
   suburl1: string = "road"
+  submitted = false
 
 
   chackRequest: FormGroup | any;
@@ -41,9 +42,13 @@ export class ReconnectDialogComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      disconnectedDate: '',
-      remarks: ''
+      disconnectedDate: new FormControl('', [Validators.required]),
+      remarks: new FormControl('', [Validators.required]),
+      texh: new FormControl(null, [Validators.required])
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
   }
   ReconnectionRequest() {
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
@@ -58,13 +63,19 @@ export class ReconnectDialogComponent implements OnInit {
       conductdBy:adminId,
       connectionID:this.data.id,
     };
-    if (data.actionDate == "" || data.remarks == "" ||
-      this.TechnicianId == "Technician" 
-    ) {
-      this.isEmpty();
-      this.loading = false;
+    // if (data.actionDate == "" || data.remarks == "" ||
+    //   this.TechnicianId == "Technician" 
+    // ) {
+    //   this.isEmpty();
+    //   this.loading = false;
 
-    } else {
+    // }
+    if(!this.chackRequest.valid){
+      this.submitted = true
+      this.loading = false
+      return
+    }
+    else {
       this.dataServise.putValue(`connection/status/deactivate/${this.data.connectionID}`, data).subscribe(
         (res: any) => {
           if (res.errorMessage) {

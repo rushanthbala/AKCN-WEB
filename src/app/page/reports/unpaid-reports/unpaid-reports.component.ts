@@ -8,6 +8,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unpaid-reports',
@@ -38,7 +39,8 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
     private fb: FormBuilder,
     public dataServise: HttpService,
     public dialog: MatDialog,
-    private _liveAnnouncer: LiveAnnouncer
+    private _liveAnnouncer: LiveAnnouncer,
+    private router: Router
   ) {}
 
   @ViewChild(MatSort) sort: MatSort | any;
@@ -127,5 +129,9 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+  viewDetails(id: any) {
+    this.router.navigate([`auth/alter-connection/history/${id.id}`]);
+    // this.connectionId = id.id;
   }
 }

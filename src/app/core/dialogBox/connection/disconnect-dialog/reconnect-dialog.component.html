@@ -7,37 +7,62 @@
     <!-- <p class="para">{{ data.connectionID }}</p> -->
     <div>
       <select
-        class="form-select"
+        class="form-select mt-2"
         aria-label="Default select example"
         (change)="onSelect(val.value)"
         required
         #val
+        formControlName="texh"
+        [ngClass]="{ 'is-invalid': submitted && f['texh'].errors }"
       >
         <option disabled selected value="null">Technician</option>
         <option *ngFor="let item of TechnicianArray" [value]="item.id">
           {{ item.firstName }}
         </option>
       </select>
-      <div class="para mt-3 ps-3">Disconnected Date</div>
+      <div *ngIf="submitted && f['texh'].errors" class="invalid-feedback">
+        <div *ngIf="f['texh'].errors['required']">Select the Technician</div>
+      </div>
+      <!-- <div class="para mt-3 ps-3">Disconnected Date</div> -->
       <input
         type="date"
-        class="form-control int"
-        id="ID"
-        placeholder="12-12-2022"
+        class="form-control int mt-4"
+        required
+        placeholder="Disconnected Date"
         formControlName="disconnectedDate"
+        style="
+          font: normal normal normal 13px/21px Poppins;
+          letter-spacing: 0px;
+          color: #707070;
+          opacity: 1;
+        "
+        useValueAsDate
+        [ngClass]="{ 'is-invalid': submitted && f['disconnectedDate'].errors }"
       />
+      <div
+        *ngIf="submitted && f['disconnectedDate'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['disconnectedDate'].errors['required']">
+          Fill The Field
+        </div>
+      </div>
 
-      <div class="para mt-3 ps-3">Reason Of Disconnect</div>
+      <!-- <div class="para mt-3 ps-3">Reason Of Disconnect</div> -->
 
       <input
         type="text"
-        class="form-control int"
+        class="form-control int mt-4"
         type="text"
         required
         id="ID"
-        placeholder="Reason"
+        placeholder="Reason Of Disconnect"
         formControlName="remarks"
+        [ngClass]="{ 'is-invalid': submitted && f['remarks'].errors }"
       />
+      <div *ngIf="submitted && f['remarks'].errors" class="invalid-feedback">
+        <div *ngIf="f['remarks'].errors['required']">Fill The Field</div>
+      </div>
       <button
         *ngIf="!loading"
         class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"

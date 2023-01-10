@@ -33,7 +33,7 @@ mat-sidenav {
 .content {
   height: 100%;
   overflow: auto;
-  background: #ffffff;
+  // background: #ffffff;
   padding-left: 10px;
   background: #FCFCFC 0% 0% no-repeat padding-box;
 }
@@ -52,8 +52,9 @@ mat-sidenav-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 1rem;
-  padding: 0.4rem 0rem 0.4rem 0.5rem;
+  font-size: 20px;
+  padding: 0.1rem 1.5rem 0.1rem 1rem;
+  margin: 5px 5px 5px 0px;
   outline: none !important;
   background-color: #ffff;
   mat-icon {
@@ -65,42 +66,49 @@ mat-sidenav-container {
     opacity: 0.7;
     font-size: 14px;
     // padding-left: 12px;
-    color: #8990ad;
+    color: #000;
   }
 }
-
 .sidebtnhover {
   background: #027cfe23 0% 0% no-repeat padding-box !important;
-  background: #027cfe23 0% 0% no-repeat padding-box !important;
+  // background: #027cfe23 0% 0% no-repeat padding-box !important;
+  // padding: 0px 0px 0px 20px;
   border-radius: 35px;
   .icon-Calendar {
     background-image: url("../../assets/svgHover/Calendar.svg");
     // background-image: url("../../assets/svg/Group.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
   .icon-Dashboard {
     background-image: url("../../assets/svgHover/dashboard.svg");
     background-repeat: no-repeat;
+    background-size: 18px;
   }
   .icon-Ticket {
     background-image: url("../../assets/svgHover/Iconly-Curved-Bookmark.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
   .icon-Dollar {
     background-image: url("../../assets/svgHover/currency-dollar.svg");
     background-repeat: no-repeat;
+    background-size: 12px;
   }
   .icon-Requests {
     background-image: url("../../assets/svgHover/Iconly-Curved-Add\ User.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
   .icon-Connections {
     background-image: url("../../assets/svgHover/connection.svg");
     background-repeat: no-repeat;
+    background-size: 18px;
   }
   .icon-Reports {
     background-image: url("../../assets/svgHover/Calendar.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
   .icon-Settingss {
     background-image: url("../../assets/svgHover/Iconly-Curved-Setting.svg");
@@ -109,6 +117,7 @@ mat-sidenav-container {
   .plus {
     background-image: url("../../assets/svgHover/Group\ 26.svg");
     background-repeat: no-repeat;
+    background-size: 20px;
   }
 
   span {
@@ -121,13 +130,15 @@ mat-sidenav-container {
 .menu-button span {
   opacity: 0.7;
   font-size: 15px;
-  color: #8990ad;
+  color: #000;
+  font-weight: 600;
+  padding: 0px 10px 60px 10px;
 }
 
 .menu-button:hover {
   background: #027cfe23 0% 0% no-repeat padding-box;
   background: #027cfe23 0% 0% no-repeat padding-box; /* margin: 4px; */
-  /* padding: 6px; */
+  // padding: 0px 0px 0px 20px;
   border-radius: 35px !important;
   mat-icon {
     margin-right: 8px;
@@ -138,31 +149,38 @@ mat-sidenav-container {
     background-image: url("../../assets/svgHover/Calendar.svg");
     // background-image: url("../../assets/svg/Group.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
 
   .icon-Dashboard {
     background-image: url("../../assets/svgHover/dashboard.svg");
     background-repeat: no-repeat;
+    background-size: 18px;
   }
   .icon-Ticket {
     background-image: url("../../assets/svgHover/Iconly-Curved-Bookmark.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
   .icon-Dollar {
     background-image: url("../../assets/svgHover/currency-dollar.svg");
     background-repeat: no-repeat;
+    background-size: 12px;
   }
   .icon-Requests {
     background-image: url("../../assets/svgHover/Iconly-Curved-Add\ User.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
   .icon-Connections {
     background-image: url("../../assets/svgHover/connection.svg");
     background-repeat: no-repeat;
+    background-size: 18px;
   }
   .icon-Reports {
     background-image: url("../../assets/svgHover/Calendar.svg");
     background-repeat: no-repeat;
+    background-size: 16px;
   }
   .icon-Settingss {
     background-image: url("../../assets/svgHover/Iconly-Curved-Setting.svg");
@@ -171,6 +189,7 @@ mat-sidenav-container {
   .plus {
     background-image: url("../../assets/svgHover/Group\ 26.svg");
     background-repeat: no-repeat;
+    background-size: 20px;
   }
 
   span {
@@ -201,7 +220,7 @@ mat-sidenav-container {
   /* top: 0; */
   right: 0;
   margin-left: 12px;
-  padding-right: 10px;
+  // padding-right: 10px;
 }
 .menu-center-items {
   display: flex;
@@ -351,6 +370,9 @@ hr {
 //   padding-right: 40px;
 //   margin-left: 17px;
 // }
+// .navbar-avartar-div{
+//   padding: 0px 30px 0px 30px;
+// }
 .secound-nav {
   width: 100%;
   padding: 0px 10px 0px 0px;
@@ -374,6 +396,7 @@ hr {
 .under-logo-div {
   margin-top: 5rem;
   bottom: 0%;
+  padding: 0px 0px 0px 8px;
   // padding: 24px;
   // position: absolute;
   // bottom: 0%;
@@ -384,34 +407,43 @@ hr {
   // border: 0px solid #fff;
 }
 .icon {
-  width: 100%;
-  max-width: 24px;
-  height: auto;
+  // width: 100%;
+  // max-width: 24px;
+  // height: auto;
   padding: 2px 0px 30px 30px;
+  // width: 10px;
+  // height: 10px;
+  // font-size: 100px;
 }
 .icon-Dashboard {
   background-image: url("../../assets/svg/dashboard.svg");
   background-repeat: no-repeat;
+  background-size: 18px;
 }
 .icon-Ticket {
   background-image: url("../../assets/svg/Iconly-Curved-Bookmark.svg");
   background-repeat: no-repeat;
+  background-size: 16px;
 }
 .icon-Dollar {
   background-image: url("../../assets/svg/currency-dollar.svg");
   background-repeat: no-repeat;
+  background-size: 12px;
 }
 .icon-Requests {
   background-image: url("../../assets/svg/Iconly-Curved-Add\ User.svg");
   background-repeat: no-repeat;
+  background-size: 16px;
 }
 .icon-Connections {
   background-image: url("../../assets/svg/connection.svg");
   background-repeat: no-repeat;
+  background-size: 18px;
 }
 .icon-Reports {
   background-image: url("../../assets/svg/Calendar.svg");
   background-repeat: no-repeat;
+  background-size: 16px;
 }
 .icon-Settingss {
   background-image: url("../../assets/svg/Iconly-Curved-Setting.svg");
@@ -420,10 +452,12 @@ hr {
 .minus {
   background-image: url("../../assets/svg/Group\ 264.svg");
   background-repeat: no-repeat;
+  background-size: 20px;
 }
 .plus {
   background-image: url("../../assets/svg/Group\ 26.svg");
   background-repeat: no-repeat;
+  background-size: 20px;
 }
 .icon-setteing:hover {
   background-repeat: no-repeat;
@@ -444,9 +478,9 @@ hr {
   display: none;
 }
 .dropdown-menu {
-  background: #fff 0% 0% no-repeat padding-box;
+  background: #99999917 0% 0% no-repeat padding-box;
   border-radius: 10px;
-  border: 0px solid #fff;
+  border: 0px solid #99999917;
   cursor: pointer;
 }
 .dropdown-item {
@@ -471,4 +505,12 @@ hr {
 .username{
   padding: 0px 0px 0px 15px;
 }
+}
+.side-nav-mode{
+  border: none;
+  background-color: #FCFCFC;
+}
+.fa-circle{
+  font-size: 15px;
+  margin-left: -12%;
 }

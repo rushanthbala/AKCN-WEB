@@ -9,10 +9,13 @@
   cursor: pointer;
   height: 40px;
 }
-
+.invalid-feedback{
+  padding: 0px 0px 0px 10px;
+  font-size: 14px;
+}
 .int {
   padding-left: 20px;
-  height: 50px;
+  height: 40px;
   border: none;
   outline: none;
   width: 100%;
@@ -41,4 +44,12 @@
   margin-top: 8px;
   font-size: 12px !important;
   cursor: pointer;
+}
+input[type="date"]::before {
+  content: attr(placeholder);
+  width: 100%;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  display: none;
 }

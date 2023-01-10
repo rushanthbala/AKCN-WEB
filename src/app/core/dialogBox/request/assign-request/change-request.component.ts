@@ -54,7 +54,7 @@ export class PendingChangeRequestComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      // tech: new FormControl('', [Validators.required])
+      tech: new FormControl('', [Validators.required])
     });
   }
 
@@ -75,7 +75,9 @@ export class PendingChangeRequestComponent implements OnInit {
     };
     if (dataObj.assignedTo == "Technician"
     ) {
-      this.isEmpty();
+      // this.isEmpty();
+      this.submitted = true;
+      return
     } 
     // if(!this.chackRequest.valid){
     //   this.submitted = true;

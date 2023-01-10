@@ -30,7 +30,7 @@
   box-shadow: 0px 5px 33px #00000014;
   border-radius: 90px !important;
   color: #fff;
-  height: 45px;
+  height: 40px;
   font-size: 14px;
   max-width: 220px;
   width: 100%;
@@ -38,7 +38,7 @@
 }
 
 .int {
-  height: 50px;
+  height: 40px;
   padding-left: 20px;
   border: none;
   outline: none;
@@ -122,7 +122,7 @@ tr:nth-child(even) {
 }
 .int {
   padding-left: 20px;
-  height: 50px;
+  height: 40px;
   border: none;
   outline: none;
   width: 100%;
@@ -151,26 +151,38 @@ tr:nth-child(even) {
   padding: 0px 0px 0px 10px;
   font-size: 14px;
 }
-input[type="date"]::before {
-  content: attr(placeholder);
-  width: 100%;
-}
-input[type="date"]:focus::before,
-input[type="date"]:valid::before {
-  display: none;
-}
+// input[type="date"]::before {
+//   content: attr(placeholder);
+//   width: 100%;
+// }
+// input[type="date"]:focus::before,
+// input[type="date"]:valid::before {
+//   display: none;
+// }
 
 .form-select {
   cursor: pointer;
   height: 40px;
   border-radius: 90px;
 }
-.form-control {
-  height: 45px;
-  margin-top: 8%;
-}
+// .form-control {
+//   height: 45px;
+//   margin-top: 8%;
+// }
 .user::before {
   content: "User";
+  font-size: 12px;
+  color: #707070;
+}
+
+.from::before {
+  content: "From";
+  font-size: 12px;
+  color: #707070;
+}
+
+.to::before {
+  content: "To";
   font-size: 12px;
   color: #707070;
 }

@@ -35,7 +35,9 @@
           >
             Connection ID
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.connectionID }}</td>
+          <td mat-cell *matCellDef="let element"  (click)="viewDetails(element)">
+            <a style="color: #027AFE; cursor: pointer;">{{ element.connectionID }}</a>
+          </td>
         </ng-container>
 
         <!-- firstName Column -->
@@ -103,7 +105,7 @@
     </div>
 
     <mat-paginator
-      [pageSizeOptions]="[5, 10, 25, 100]"
+      [pageSizeOptions]="[10, 25, 100]"
       aria-label="Select page of users"
     ></mat-paginator>
   </div>

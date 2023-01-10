@@ -39,6 +39,7 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
+    this.chackRequest.tech = newObj.firstName;
     // ... do other stuff here ...
   }
 
@@ -61,7 +62,7 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      // tech: new FormControl(null, [Validators.required])
+      tech: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -80,7 +81,9 @@ export class AssignTicketRequestDilogComponent implements OnInit {
       assignedToID: this.TechnicianId,
     };
     if (dataObj.assignedTo == 'Technician') {
-      this.isEmpty();
+      // this.isEmpty();
+      this.submitted = true;
+      return;
     }
     // if(!this.chackRequest.valid){
     //   this.submitted = true

@@ -35,6 +35,7 @@ export class UserReportUpdateComponent implements OnInit {
   UserName: any ="User";
   UserID: any;
   submitted= false
+  maxDate: any;
   onChangeObj(newObj: any) {
     this.UserName = newObj.firstName;
     this.UserID = newObj.id;
@@ -51,6 +52,7 @@ export class UserReportUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    this. futureDateDisable();
   }
   getAll() {
     this.dataServise.getData(`employee`).subscribe((res) => {
@@ -132,5 +134,20 @@ export class UserReportUpdateComponent implements OnInit {
   }
   showmsg(){
     this.toastr.error('From date must be less than to date', 'Error')
+  }
+  futureDateDisable(){
+    var date :any = new Date();
+    var todayDate: any = date.getDate();
+    var month: any = date.getMonth() + 1;
+    var year: any = date.getFullYear();
+
+    if(todayDate < 10){
+      todayDate = "0" + todayDate; //1,2..9
+    }
+    if(month < 10){
+      month = "0" + month;
+    }
+    this.maxDate = year + "-" + month + "-" + todayDate;  //2022-12-31
+
   }
 }

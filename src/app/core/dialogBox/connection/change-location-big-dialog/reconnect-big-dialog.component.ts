@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -23,6 +23,7 @@ export class ReconnectBigDialogComponent implements OnInit {
   suburl1: string = "road"
   areaCodeName =""
   roadIDName=""
+  submitted = false
 
 
   chackRequest: FormGroup | any;
@@ -43,10 +44,16 @@ export class ReconnectBigDialogComponent implements OnInit {
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      disconnectedDate: '',
-      reconnectionFee: '',
-      newAddress:""
+      disconnectedDate: new FormControl('', [Validators.required]),
+      reconnectionFee: new FormControl('', [Validators.required]),
+      newAddress:new FormControl('', [Validators.required]),
+      tech: new FormControl(null, [Validators.required]),
+      area:new FormControl(null, [Validators.required]),
+      road:new FormControl(null, [Validators.required])
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.chackRequest.controls;
   }
   ReconnectionRequest() {
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
@@ -70,11 +77,16 @@ export class ReconnectBigDialogComponent implements OnInit {
 //     datas.TechnicianId == "Technician" ,datas.newAddress=="",   datas.roadId == "Road" ,  datas.areaId == "Area"
 //  );
     
-    if (dataObj.areaCode == "Area" ||dataObj.roadID == "Road" ||
-    dataObj.connectionAddress == "" ||dataObj.dueAmount==""||   dataObj.actionDate == "" ||  dataObj.connectionID == ""
-    ) {
-      this.isEmpty();
-    } else {
+    // if (dataObj.areaCode == "Area" ||dataObj.roadID == "Road" ||
+    // dataObj.connectionAddress == "" ||dataObj.dueAmount==""||   dataObj.actionDate == "" ||  dataObj.connectionID == ""
+    // ) {
+    //   this.isEmpty();
+    // } 
+    if(!this.chackRequest.valid){
+      this.submitted = true;
+      return
+    }
+    else {
       // connection/location/JAF00012
       this.loading = true
       this.dataServise.putValue(`connection/address/${this.data.id}`, dataObj).subscribe(

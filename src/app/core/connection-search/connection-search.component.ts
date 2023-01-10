@@ -23,7 +23,7 @@ export class ConnectionSearchComponent  implements OnInit  {
   }
   initialForm() {
     this.loginForm = this.fb.group({
-      searchinginput: ['', Validators.required],
+      searchinginput:new FormControl ('', [Validators.required, Validators.minLength(9)]),
     });
   }
 

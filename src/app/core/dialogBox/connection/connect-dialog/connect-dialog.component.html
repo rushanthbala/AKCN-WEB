@@ -12,22 +12,43 @@
         (change)="onSelect(val.value)"
         required
         #val
+        formControlName="tech"
+        [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }"
       >
         <option disabled selected value="null">Technician</option>
         <option *ngFor="let item of TechnicianArray" [value]="item.id">
           {{ item.firstName }}
         </option>
       </select>
-      <div class="para mt-3 ps-3">Disconnected Date</div>
+      <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
+        <div *ngIf="f['tech'].errors['required']">Select the Technician</div>
+      </div>
+      <!-- <div class="para mt-3 ps-3">Disconnected Date</div> -->
       <input
         type="date"
         class="form-control int"
-        id="ID"
-        placeholder="12-12-2022"
+        required
+        placeholder="Disconnected Date"
         formControlName="disconnectedDate"
+        style="
+          font: normal normal normal 13px/21px Poppins;
+          letter-spacing: 0px;
+          color: #707070;
+          opacity: 1;
+        "
+        useValueAsDate
+        [ngClass]="{ 'is-invalid': submitted && f['disconnectedDate'].errors }"
       />
+      <div
+        *ngIf="submitted && f['disconnectedDate'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['disconnectedDate'].errors['required']">
+          Fill The Field
+        </div>
+      </div>
 
-      <div class="para mt-3 ps-3">Reconnect Fee</div>
+      <!-- <div class="para mt-3 ps-3">Reconnect Fee</div> -->
 
       <input
         type="text"
@@ -35,9 +56,18 @@
         type="text"
         required
         id="ID"
-        placeholder="amount"
+        placeholder="Reconnect Fee"
         formControlName="reconnectionFee"
+        [ngClass]="{ 'is-invalid': submitted && f['reconnectionFee'].errors }"
       />
+      <div
+        *ngIf="submitted && f['reconnectionFee'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['reconnectionFee'].errors['required']">
+          Fill The Field
+        </div>
+      </div>
       <button
         *ngIf="!loading"
         class="input-group-text cus-btn-down cus-model-btn-down btn-c-1"

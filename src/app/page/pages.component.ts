@@ -124,57 +124,57 @@ export class PagesComponent implements OnInit {
       this.href = 'Connections';
       this.link = '/auth/all-connection';
       this.sublink = '/auth/all-connection';
-      this.contentSubHeading = 'Tickets > All Connection';
+      this.contentSubHeading = 'Connections > All Connection';
     } else if (urlSpilite[2] === 'new-connection') {
       this.href = 'Connections';
       this.link = '/auth/new-connection';
       this.sublink = '/auth/new-connection';
-      this.contentSubHeading = 'Tickets > New Connection';
+      this.contentSubHeading = 'Connections > New Connection';
     } else if (urlSpilite[2] === 'alter-connection') {
       this.href = 'Connections';
       this.link = '/auth/alter-connection';
       this.sublink = '/auth/alter-connection';
-      this.contentSubHeading = 'Tickets > Alter Connection';
+      this.contentSubHeading = 'Connections > Alter Connection';
     } else if (urlSpilite[2] === 'make-payment') {
       this.href = 'Payments';
       this.link = '/auth/make-payment';
       this.sublink = '/auth/make-payment';
-      this.contentSubHeading = 'Tickets > Make Payment';
+      this.contentSubHeading = 'Payments > Make Payment';
     } else if (urlSpilite[2] === 'adjust-payment') {
       this.href = 'Payments';
       this.link = '/auth/adjust-payment';
       this.sublink = '/auth/adjust-payment';
-      this.contentSubHeading = 'Tickets > Adjust Payment';
+      this.contentSubHeading = 'Payments > Adjust Payment';
     } else if (urlSpilite[2] === 'add-arrears') {
       this.href = 'Payments';
       this.link = '/auth/add-arrears';
       this.sublink = '/auth/add-arrears';
-      this.contentSubHeading = 'Tickets > Add Arrears';
+      this.contentSubHeading = 'Payments > Add Arrears';
     } else if (urlSpilite[2] === 'add-rentals') {
       this.href = 'Payments';
       this.link = '/auth/add-rentals';
       this.sublink = '/auth/add-rentals';
-      this.contentSubHeading = 'Tickets > Add Rentals';
+      this.contentSubHeading = 'Payments > Add Rentals';
     } else if (urlSpilite[2] === 'user-report') {
       this.href = 'Reports';
       this.link = '/auth/user-report';
       this.sublink = '/auth/user-report';
-      this.contentSubHeading = 'Tickets > User Report';
+      this.contentSubHeading = 'Reports > User Report';
     } else if (urlSpilite[2] === 'due-report') {
       this.href = 'Reports';
       this.link = '/auth/due-report';
       this.sublink = '/auth/due-report';
-      this.contentSubHeading = 'Tickets > Due Report';
+      this.contentSubHeading = 'Reports > Due Report';
     } else if (urlSpilite[2] === 'collection-report') {
       this.href = 'Reports';
       this.link = '/auth/collection-report';
       this.sublink = '/auth/collection-report';
-      this.contentSubHeading = 'Tickets > Collection Report';
+      this.contentSubHeading = 'Reports > Collection Report';
     } else if (urlSpilite[2] === 'unpaid-report') {
       this.href = 'Reports';
       this.link = '/auth/unpaid-report';
       this.sublink = '/auth/unpaid-report';
-      this.contentSubHeading = 'Tickets > Unpaid Report';
+      this.contentSubHeading = 'Reports > Unpaid Report';
     } else if (urlSpilite[2] === 'users-setting') {
       this.href = 'Settings';
       this.link = '/auth/users-setting';
@@ -217,7 +217,7 @@ export class PagesComponent implements OnInit {
       label: 'Tickets',
       text: 'Lorem Ipsum',
       state: false,
-      link: '/auth/ticket',
+      link: '/auth/create-ticket',
       item: [
         { name: 'Create Tickets', href: '/auth/create-ticket' },
         { name: 'Pending Tickets', href: '/auth/pending-ticket' },
@@ -260,12 +260,12 @@ export class PagesComponent implements OnInit {
           href: '/auth/cancelled-request',
         },
       ],
-      link: '/auth/requests',
+      link: '/auth/create-request',
       icon: '../../assets/icons/adduser.png',
     },
     {
       iconClass: 'icon-Connections',
-      label: 'Connection',
+      label: 'Connections',
       text: 'Lorem Ipsum',
       state: false,
       item: [
@@ -276,7 +276,7 @@ export class PagesComponent implements OnInit {
           href: '/auth/alter-connection',
         },
       ],
-      link: '/auth/connection',
+      link: '/auth/all-connection',
       icon: '../../assets/icons/Swap.png',
     },
     {
@@ -296,7 +296,7 @@ export class PagesComponent implements OnInit {
           href: '/auth/add-rentals',
         },
       ],
-      link: '/auth/payments',
+      link: '/auth/make-payment',
       icon: '../../assets/icons/currency-dollar.png',
     },
     {
@@ -317,12 +317,12 @@ export class PagesComponent implements OnInit {
         },
       ],
 
-      link: '/auth/reports',
+      link: '/auth/user-report',
       icon: '../../assets/icons/Calendar.png',
     },
     {
       iconClass: 'icon-Settingss',
-      label: 'Setting',
+      label: 'Settings',
       text: 'Lorem Ipsum',
       state: false,
       item: [
@@ -342,7 +342,7 @@ export class PagesComponent implements OnInit {
         },
       ],
 
-      link: '/auth/setting',
+      link: '/auth/users-setting',
       icon: '../../assets/icons/setting.png',
     },
   ];

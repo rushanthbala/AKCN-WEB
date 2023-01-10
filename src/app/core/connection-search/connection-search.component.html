@@ -10,7 +10,6 @@
       <div class="row w-100">
         <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8 mt-1">
           <input
-            type=" "
             class="form-control me-2 int"
             placeholder="Subscriber's NIC"
             aria-label="Recipient's username"
@@ -26,6 +25,12 @@
           >
             <div *ngIf="f['searchinginput'].errors['required']">
               Fill The Feild
+            </div>
+            <div *ngIf="f['searchinginput'].errors['minlength']">
+              Enter the valid NIC number
+            </div>
+            <div *ngIf="f['searchinginput'].errors['maxlength']">
+              Enter the valid NIC number
             </div>
           </div>
         </div>

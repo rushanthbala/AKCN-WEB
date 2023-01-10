@@ -25,12 +25,13 @@
           <div *ngIf="f['user'].errors['required']">Select the user</div>
         </div> -->
       </div>
-      <div class="mb-3 cus-int-div">
+      <div class="mb-3 cus-int-div from">
         <input
           type="date"
           class="form-control int"
           required
           placeholder="From"
+          max="{{maxDate}}"
           formControlName="fromdate"
           style="
             font: normal normal normal 13px/21px Poppins;
@@ -45,12 +46,13 @@
           <div *ngIf="f['fromdate'].errors['required']">Fill The Field</div>
         </div> -->
       </div>
-      <div class="mb-3 cus-int-div">
+      <div class="mb-3 cus-int-div to">
         <input
           type="date"
           class="form-control int"
           required
           placeholder="To"
+          max="{{maxDate}}"
           formControlName="todate"
           style="
             font: normal normal normal 13px/21px Poppins;

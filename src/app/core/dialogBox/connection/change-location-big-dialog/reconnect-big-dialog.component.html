@@ -5,30 +5,47 @@
     <!-- <p class="para">{{ data.connectionID }}</p> -->
     <div>
       <div class="row mt-2">
-        <div class="col-12 col-sm-6 d-flex align-items-end mt-3">
+        <div class="col-12 col-sm-6 mt-3">
           <select
             class="form-select"
             aria-label="Default select example"
             (change)="onSelectTech(val.value)"
             required
             #val
+            formControlName="tech"
+            [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }"
           >
             <option disabled selected value="null">Technician</option>
             <option *ngFor="let item of TechnicianArray" [value]="item.id">
               {{ item.firstName }}
             </option>
           </select>
+          <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
+            <div *ngIf="f['tech'].errors['required']">Select the technician</div>
+          </div>
         </div>
+      
         <div class="col-12 col-sm-6">
-          <div class="para mt-3 ps-3">Disconnected Date</div>
+          <!-- <div class="para mt-3 ps-3">Disconnected Date</div> -->
           <input
-            type="date"
-            class="form-control int"
-            id="ID"
-            placeholder="12-12-2022"
-            formControlName="disconnectedDate"
-          />
+          type="date"
+          class="form-control int mt-3"
+          required
+          placeholder="Disconnect Date"
+          formControlName="disconnectedDate"
+          style="
+            font: normal normal normal 13px/21px Poppins;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 1;
+          "
+          useValueAsDate
+          [ngClass]="{ 'is-invalid': submitted && f['disconnectedDate'].errors }"
+        />
+        <div *ngIf="submitted && f['disconnectedDate'].errors" class="invalid-feedback">
+          <div *ngIf="f['disconnectedDate'].errors['required']">Fill The Field</div>
         </div>
+      </div>
       </div>
       <!-- <div class="para mt-3 ps-3 "> </div> -->
       <!--  -->
@@ -41,12 +58,17 @@
             (change)="onSelectarea(val3.value)"
             required
             #val3
+            formControlName="area"
+            [ngClass]="{ 'is-invalid': submitted && f['area'].errors }"
           >
             <option disabled selected value="null">{{ areaCodeName }}</option>
             <option *ngFor="let item of areaArray" [value]="item.id">
               {{ item.area }}
             </option>
           </select>
+          <div *ngIf="submitted && f['area'].errors" class="invalid-feedback">
+            <div *ngIf="f['area'].errors['required']">Select the area</div>
+          </div>
         </div>
         <div class="col-12 col-sm-6">
           <div class="para mt-3 ps-3"></div>
@@ -56,34 +78,47 @@
             (change)="onSelect(val.value)"
             required
             #val
+            formControlName="road"
+            [ngClass]="{ 'is-invalid': submitted && f['road'].errors }"
           >
             <option disabled selected value="null">{{ roadIDName }}</option>
             <option *ngFor="let item of roadArray" [value]="item.id">
               {{ item.road }}
             </option>
           </select>
+          <div *ngIf="submitted && f['road'].errors" class="invalid-feedback">
+            <div *ngIf="f['road'].errors['required']">Select the road</div>
+          </div>
         </div>
       </div>
       <div class="row mt-2">
         <div class="col-12 col-sm-6">
-          <div class="para mt-3 ps-3">New Address</div>
+          <!-- <div class="para mt-3 ps-3">New Address</div> -->
           <input
             type="text"
-            class="form-control int"
+            class="form-control int mt-2"
             id="ID"
             placeholder="New Address"
             formControlName="newAddress"
+            [ngClass]="{ 'is-invalid': submitted && f['newAddress'].errors }"
           />
+          <div *ngIf="submitted && f['newAddress'].errors" class="invalid-feedback">
+            <div *ngIf="f['newAddress'].errors['required']">Fill the field</div>
+          </div>
         </div>
         <div class="col-12 col-sm-6">
-          <div class="para mt-3 ps-3">Connection Fee</div>
+          <!-- <div class="para mt-3 ps-3">Connection Fee</div> -->
           <input
             type="text"
-            class="form-control int"
+            class="form-control int mt-2"
             id="ID"
             placeholder="Amount"
             formControlName="reconnectionFee"
-          />
+            [ngClass]="{ 'is-invalid': submitted && f['reconnectionFee'].errors }"
+            />
+            <div *ngIf="submitted && f['reconnectionFee'].errors" class="invalid-feedback">
+              <div *ngIf="f['reconnectionFee'].errors['required']">Fill the field</div>
+            </div>
         </div>
       </div>
       <div class="row mt-2">
