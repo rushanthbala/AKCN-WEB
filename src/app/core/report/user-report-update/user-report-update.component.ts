@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, VERSION, ViewChild } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -36,6 +36,18 @@ export class UserReportUpdateComponent implements OnInit {
   UserID: any;
   submitted= false
   maxDate: any;
+
+  @ViewChild('picker') picker: any;
+  name = 'Angular ' + VERSION.major;
+  toggle() {
+    this.picker.open();
+  }
+  @ViewChild('picker1') picker1: any;
+  name1 = 'Angular ' + VERSION.major;
+  toggle1() {
+    this.picker1.open();
+  }
+
   onChangeObj(newObj: any) {
     this.UserName = newObj.firstName;
     this.UserID = newObj.id;

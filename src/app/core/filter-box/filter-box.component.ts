@@ -17,6 +17,8 @@ export class FilterBoxComponent implements OnInit {
   loginForm: FormGroup | any;
   submitted = false
 
+  filter = 'Connection Id'
+
   ngOnInit(): void {
     this.initialForm();
 

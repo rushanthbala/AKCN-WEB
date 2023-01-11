@@ -15,6 +15,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-cancel-request',
@@ -159,16 +160,20 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   public openPDF(): void {
-    let DATA: any = document.getElementById('htmlData');
-    html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('cancel-request.pdf');
-    });
+    // let DATA: any = document.getElementById('htmlData');
+    // html2canvas(DATA).then((canvas) => {
+    //   let fileWidth = 208;
+    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
+    //   const FILEURI = canvas.toDataURL('image/png');
+    //   let PDF = new jsPDF('p', 'mm', 'a4');
+    //   let position = 0;
+    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+    //   PDF.save('cancel-request.pdf');
+    // });
+    let doc = new jsPDF();
+    doc.text("Cancel Requests", 80, 10)
+    autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
+    doc.save('cancel-request')
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

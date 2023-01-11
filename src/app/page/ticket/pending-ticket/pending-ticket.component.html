@@ -3,6 +3,7 @@
   *ngIf="showTable"
 >
   <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
+
   <form [formGroup]="submit">
     <div class="input-div col-12 col-md-4">
       <input
@@ -15,28 +16,29 @@
       />
     </div>
   </form>
-    <div class="mb-3 col-12 col-md-4"></div>
-      <div class="btn-set d-flex m-1 col-5 col-md-4">
-        <button
-          class="input-group-text cus-btn-down btn-c-1"
-          id="basic-addon2"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-          (click)="exportNormalTable()"
-        >
-          Excel
-        </button>
-        <button
-          class="input-group-text cus-btn-down btn-c-2"
-          id="basic-addon2"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-          (click)="openPDF()"
-        >
-          PDF
-        </button>
-      </div>
- 
+  <div class="mb-3 col-12 col-md-4"></div>
+  <div class="col-5 col-md-4">
+    <div class="btn-set d-flex m-1">
+      <button
+        class="input-group-text cus-btn-down btn-c-1"
+        id="basic-addon2"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        (click)="exportNormalTable()"
+      >
+        Excel
+      </button>
+      <button
+        class="input-group-text cus-btn-down btn-c-2"
+        id="basic-addon2"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        (click)="openPDF()"
+      >
+        PDF
+      </button>
+    </div>
+  </div>
 </div>
 <br />
 <br />

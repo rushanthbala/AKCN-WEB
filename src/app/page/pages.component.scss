@@ -54,7 +54,7 @@ mat-sidenav-container {
   justify-content: flex-start;
   font-size: 20px;
   padding: 0.1rem 1.5rem 0.1rem 1rem;
-  margin: 5px 5px 5px 0px;
+  margin: 0px 5px 5px 0px;
   outline: none !important;
   background-color: #ffff;
   mat-icon {
@@ -131,7 +131,7 @@ mat-sidenav-container {
   opacity: 0.7;
   font-size: 15px;
   color: #000;
-  font-weight: 600;
+  font-weight: 200;
   padding: 0px 10px 60px 10px;
 }
 
@@ -513,4 +513,12 @@ hr {
 .fa-circle{
   font-size: 15px;
   margin-left: -12%;
+}
+.bi-caret-down{
+  cursor: pointer;
+  margin: 3px 0px 0px 10px;
+  font-size: 14px;
+}
+.mat-icon-button ::ng-deep .mat-button-focus-overlay {
+  display: none;
 }

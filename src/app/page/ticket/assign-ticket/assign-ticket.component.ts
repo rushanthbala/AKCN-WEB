@@ -15,6 +15,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-assign-ticket',
@@ -120,22 +121,43 @@ export class AssignTicketComponent implements AfterViewInit, OnInit {
         updatedAt: x.updatedAt,
       }));
     TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'AssignTicket');
-    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
+
+    // const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    // const EXCEL_EXTENSION = '.xlsx';
+
+    // const worksheet = XLSX.utils.json_to_sheet(this.TICKET_DATA);
+
+    // const workbook ={
+    //   Sheets:{
+    //     'testingSheet': worksheet
+    //   },
+    //   SheetNames: ['testingSheet']
+    // }
+
+    // const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type:'array'})
+
+    // const blopData = new Blob([excelBuffer], {type:EXCEL_TYPE})
+    // this.fileServer.save(blopData, "AssignTicket")
+
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
 
-  public openPDF(): void {
-    let DATA: any = document.getElementById('htmlData');
-    html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('assign-ticket.pdf');
-    });
+ openPDF() {
+    // let DATA: any = document.getElementById('htmlData');
+    // html2canvas(DATA).then((canvas) => {
+    //   let fileWidth = 208;
+    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
+    //   const FILEURI = canvas.toDataURL('image/png');
+    //   let PDF = new jsPDF('p', 'mm', 'a4');
+    //   let position = 0;
+    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+    //   PDF.save('assign-ticket.pdf');
+    // });
+    const doc = new jsPDF();
+    doc.text("Assign Tickets", 80, 10)
+    autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
+    doc.save('assign-ticket')
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

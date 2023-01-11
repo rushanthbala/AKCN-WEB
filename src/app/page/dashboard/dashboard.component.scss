@@ -89,16 +89,7 @@
 //   justify-content: space-between;
 //   flex-wrap: wrap;
 // }
-.int {
-  height: 40px;
-  padding-left: 20px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: #99999917 0% 0% no-repeat padding-box;
-  border-radius: 90px;
-  color: #707070;
-}
+
 tbody {
   text-align: left;
   font: normal normal normal 12px/22px Poppins;
@@ -115,4 +106,35 @@ tbody {
   .card-3 {
     width: 80%;
   }
+}
+.int {
+  height: 40px;
+  // padding-left: 20px;
+  width: 70%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #99999917 0% 0% no-repeat padding-box;
+  border-radius: 90px;
+  color: #707070;
+  padding: 1px 0px 0px 10px;
+}
+.mat-form-field{
+  margin-left: 28%;
+  padding: 0px 20px 45px 20px;
+}
+.date_container {        
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.mat-datepicker-toggle{
+  margin-left: -20%;
+}
+::ng-deep .mat-datepicker-toggle-default-icon{
+  width: 1em;
 }

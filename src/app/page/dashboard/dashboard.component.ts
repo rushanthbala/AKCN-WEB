@@ -1,5 +1,5 @@
 import { style } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
@@ -17,6 +17,12 @@ export class DashboardComponent implements OnInit {
   userData: any;
   maxDate: any;
   submitForm: FormGroup | any
+
+  @ViewChild('picker') picker: any;
+  name = 'Angular ' + VERSION.major;
+  toggle() {
+    this.picker.open();
+  }
 
   constructor(private fb: FormBuilder) {}
 

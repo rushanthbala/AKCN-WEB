@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, VERSION, ViewChild } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -43,6 +43,18 @@ export class CollectionReportUpdateComponent {
   d: any;
   submitted = false;
   maxDate: any;
+
+  @ViewChild('picker') picker: any;
+  name = 'Angular ' + VERSION.major;
+  toggle() {
+    this.picker.open();
+  }
+  @ViewChild('picker1') picker1: any;
+  name1 = 'Angular ' + VERSION.major;
+  toggle1() {
+    this.picker1.open();
+  }
+
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
@@ -119,17 +131,18 @@ export class CollectionReportUpdateComponent {
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
 
-    // if (fromdate == "" || todate == "") {
-    //   this.isEmpty();
-    //   this.loading = false;
-    // }else if(!this.loginForm.valid){
-    //   this.showmsg();
-    //   this.loading = false;
-    // }
-    if(!this.loginForm.valid){
+    if (fromdate == "" || todate == "") {
+      this.isEmpty();
       this.loading = false;
-      return
-    } else {
+    }else if(!this.loginForm.valid){
+      this.showmsg();
+      this.loading = false;
+    }
+    // if(!this.loginForm.valid){
+    //   this.loading = false;
+    //   return
+    // } 
+    else {
       this.OnClick.emit({
         fromdate: fromdate,
         todate: todate,

@@ -122,44 +122,48 @@
               aria-haspopup="true"
               aria-expanded="false"
             > -->
-              <img
-                src="../../assets/sidebarIcon/admin.png"
-                alt="logo"
-                srcset=""
-                class="dropdown-toggle main-user-avathar"
-                type="button"
-                id="dropdownMenu2"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              />
+            <img
+              src="../../assets/sidebarIcon/admin.png"
+              alt="logo"
+              srcset=""
+              class="main-user-avathar"
+            />
             <!-- </button> -->
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li>
-                <a class="dropdown-item"
-                  ><i class="bi bi-person"></i> Profile</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item"
-                  ><i class="bi bi-chat-dots"></i> Feedback</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item"
-                  ><i class="bi bi-question-circle"></i> Help</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" (click)="logout()"
-                  ><i class="bi bi-box-arrow-right"></i> Logout</a
-                >
-              </li>
-            </ul>
+           
           </div>
-          <div class="container-8">
-            <div class="username">Alex Kumar</div>
-          </div>
+          <!-- <div class="container-8"> -->
+          <div class="username">Alex Kumar</div>
+          <!-- </div> -->
+          <i
+            class="dropdown-toggle bi bi-caret-down"
+            type="button"
+            id="dropdownMenu2"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          ></i>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li>
+              <a class="dropdown-item"
+                ><i class="bi bi-person"></i> Profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item"
+                ><i class="bi bi-chat-dots"></i> Feedback</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item"
+                ><i class="bi bi-question-circle"></i> Help</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="logout()"
+                ><i class="bi bi-box-arrow-right"></i> Logout</a
+              >
+            </li>
+          </ul>
         </div>
         <br />
         <br />

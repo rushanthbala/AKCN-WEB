@@ -37,7 +37,8 @@ export class PagesComponent implements OnInit {
     // this.menuStart()
   }
   ngAfterViewInit() {
-    this.observer
+    setTimeout(() => {
+      this.observer
       .observe(['(max-width: 1200px)'])
       // .pipe(untilDestroyed(this))
       .subscribe((res) => {
@@ -60,6 +61,8 @@ export class PagesComponent implements OnInit {
           this.sidenav.close();
         }
       });
+    }, 1)
+
   }
   getNavName() {
     var url = this.router.url;
