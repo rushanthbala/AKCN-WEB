@@ -16,6 +16,8 @@
 
 <div class="main-div">
   <div class="container-6 table-responsive" *ngIf="showTable && !isFetchDataFail">
+    <div class="card">
+    <div class="card-body">
     <div id="htmlData">
       <table
         mat-table
@@ -141,10 +143,12 @@
       aria-label="Select page of users"
     ></mat-paginator>
   </div>
+</div>
+</div>
   <div *ngIf="isSubscriberdata">
     <app-edit-request [object]="subscriberdata" text="text"></app-edit-request>
   </div>
 </div>
-<div *ngIf="showTable && userData.length == 0" class="head-2 p-5">
+<div *ngIf="showTable && userData.length == 0" class="head-2">
   No Data Found
 </div>

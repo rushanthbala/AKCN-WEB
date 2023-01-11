@@ -1,3 +1,6 @@
+.card{
+  border: none;
+}
 .input-div {
   width: 220px;
 }
@@ -12,11 +15,14 @@
   color: #707070;
   padding: 0px 0px 0px 20px;
 }
+// .btn-set{
+//   width: 30%;
+// }
 .cus-btn-down {
   // max-width: 100px;
   // padding: 4px 16px;
   height: 40px;
-  width: 50%;
+  width: 100%;
   color: #fff;
   border-radius: 90px;
   font-size: 14px;
@@ -177,4 +183,52 @@ td:last-child {
   width: 50%;
   min-width: 60px;
   // margin: 0 auto;
+}
+@media(max-width: 767px){
+  .btn-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0px 0px 0px 30px;
+  }
+  .cus-btn-down{
+    width: 18%;
+  }
+}
+@media(max-width: 500px){
+  .btn-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0px 0px 0px 30px;
+  }
+  .cus-btn-down{
+    width: 25%;
+  }
+}
+@media(max-width: 380px){
+  .btn-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0px 0px 0px 20px;
+  }
+  .cus-btn-down{
+    width: 30%;
+  }
+}
+// @media(max-width: 600px){
+//   .btn-set{
+//     width: 100%;
+//   }
+//   .cus-btn-down{
+//     width: 100%;
+//     // margin-left: 12%;
+//   }
+// }
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

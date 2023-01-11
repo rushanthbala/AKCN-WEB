@@ -17,7 +17,7 @@
     </div>
   </form>
   <div class="mb-3 col-12 col-md-4"></div>
-  <div class="col-5 col-md-4">
+  <div class="col-12 col-md-4">
     <div class="btn-set d-flex m-1">
       <button
         class="input-group-text cus-btn-down btn-c-1"
@@ -42,11 +42,14 @@
 </div>
 <br />
 <br />
+
 <div
   *ngIf="TICKET_DATA && TICKET_DATA.length != 0"
   class="container-6 table-responsive"
 >
   <div *ngIf="showTable">
+    <div class="card">
+      <div class="card-body">
     <div id="htmlData">
       <table
         mat-table
@@ -163,6 +166,8 @@
   </div>
  
 </div>
+</div>
+</div>
 <div class="editData" *ngIf="!showTable">
   <!--  [object]='subscriberdata'  text="text" -->
   <app-pending-details
@@ -172,6 +177,7 @@
   ></app-pending-details>
 </div>
 <!-- {{dataSource.length}} -->
-<div *ngIf="TICKET_DATA.length == 0 && ifGetData" class="head-2 p-5">
+<div *ngIf="TICKET_DATA.length == 0 && ifGetData" class="head-2">
   No Data Found
 </div>
+

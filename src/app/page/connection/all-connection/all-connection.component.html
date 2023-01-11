@@ -47,122 +47,134 @@
 <br />
 <div *ngIf="TICKET_DATA.length != 0">
   <div *ngIf="showTable" class="table-responsive">
-    <div id="htmlData">
-      <table
-        mat-table
-        [dataSource]="dataSource"
-        id="ExampleNormalTable"
-        matSort
-        (matSortChange)="announceSortChange($event)"
-        class=""
-      >
+    <div class="card">
+      <div class="card-body">
+        <div id="htmlData">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            id="ExampleNormalTable"
+            matSort
+            (matSortChange)="announceSortChange($event)"
+            class=""
+          >
+            <!-- connectionID Column -->
+            <ng-container matColumnDef="connectionID">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by connectionID"
+              >
+                ID
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                <a style="color: #027afe; cursor: pointer">{{
+                  element.connectionID
+                }}</a>
+              </td>
+            </ng-container>
 
-        <!-- connectionID Column -->
-        <ng-container matColumnDef="connectionID">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by connectionID"
-          >
-            ID
-          </th>
-          <td mat-cell *matCellDef="let element"  (click)="viewDetails(element)">
-            <a style="color: #027AFE; cursor: pointer;">{{ element.connectionID }}</a>
-          </td>
-        </ng-container>
+            <!-- firstName Column -->
+            <ng-container matColumnDef="firstName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by firstName"
+              >
+                Subscriber
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.firstName }}
+              </td>
+            </ng-container>
 
-        <!-- firstName Column -->
-        <ng-container matColumnDef="firstName">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by firstName"
-          >
-            Subscriber
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.firstName }}
-          </td>
-        </ng-container>
+            <!-- primaryPhone Column -->
+            <ng-container matColumnDef="primaryPhone">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionprimaryPhone="Sort by primaryPhone"
+              >
+                Phone
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.primaryPhone }}
+              </td>
+            </ng-container>
 
-        <!-- primaryPhone Column -->
-        <ng-container matColumnDef="primaryPhone">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionprimaryPhone="Sort by primaryPhone"
-          >
-            Phone
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.primaryPhone }}
-          </td>
-        </ng-container>
+            <!-- connectionAddress Column -->
+            <ng-container matColumnDef="connectionAddress">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by connectionAddress"
+              >
+                Address
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.connectionAddress }}
+              </td>
+            </ng-container>
 
-        <!-- connectionAddress Column -->
-        <ng-container matColumnDef="connectionAddress">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by connectionAddress"
-          >
-            Address
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.connectionAddress }}
-          </td>
-        </ng-container>
+            <!-- connectionStatus Column -->
+            <ng-container matColumnDef="connectionStatus">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by connectionStatus"
+              >
+                Status
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                [ngStyle]="{
+                  color:
+                    element.connectionStatus == 'Active' ? '#31AB25' : '#B50A00'
+                }"
+              >
+                {{ element.connectionStatus }}
+              </td>
+            </ng-container>
+            <!-- class="{{ element.connectionStatus.toUpperCase() }}" -->
+            <!-- connectedDate Column -->
+            <ng-container matColumnDef="connectedDate">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by connectedDate"
+              >
+                Date
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.connectedDate | date : "yyyy-M-d hh:mm" }}
+              </td>
+            </ng-container>
 
-        <!-- connectionStatus Column -->
-        <ng-container matColumnDef="connectionStatus">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by connectionStatus"
-          >
-            Status
-          </th>
-          <td
-            mat-cell
-            *matCellDef="let element"
-            [ngStyle]="{color: element.connectionStatus == 'Active' ? '#31AB25' : '#B50A00'}"
-          >
-            {{ element.connectionStatus }}
-          </td>
-        </ng-container>
-        <!-- class="{{ element.connectionStatus.toUpperCase() }}" -->
-        <!-- connectedDate Column -->
-        <ng-container matColumnDef="connectedDate">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by connectedDate"
-          >
-            Date
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.connectedDate | date : "yyyy-M-d hh:mm" }}
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        <!-- <tr class="mat-row" *matNoDataRow>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <!-- <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr> -->
-      </table>
-    </div>
+          </table>
+        </div>
 
-    <mat-paginator
-      [pageSizeOptions]="[10, 25, 100]"
-      aria-label="Select page of users"
-    ></mat-paginator>
+        <mat-paginator
+          [pageSizeOptions]="[10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
+      </div>
+    </div>
   </div>
   <div class="editData">
     <!--  [object]='subscriberdata'  text="text" -->

@@ -16,7 +16,7 @@
     </div>
   </form>
   <div class="mb-3 col-12 col-md-4"></div>
-  <div class="col-5 col-md-4">
+  <div class="col-12 col-md-4">
     <div class="btn-set d-flex m-1">
       <button
         class="input-group-text cus-btn-down btn-c-1"
@@ -47,6 +47,10 @@
 <br />
 <div *ngIf="TICKET_DATA.length != 0">
   <div *ngIf="showTable" class="table-responsive">
+    <div class="card">
+      <div class="card-body">
+
+   
     <div id="htmlData">
       <table
         mat-table
@@ -161,6 +165,8 @@
   </tr> -->
       </table>
     </div>
+  </div>
+</div>
 
     <mat-paginator
       [pageSizeOptions]="[10, 25, 100]"
@@ -172,6 +178,6 @@
   <!--  [object]='subscriberdata'  text="text" -->
   <!-- <app-pending-details   [object]='subscriberdata'  text="text"  ></app-pending-details> -->
 </div>
-<p class="head-2 p-5" *ngIf="TICKET_DATA.length == 0 && ifGetData">
+<p class="head-2" *ngIf="TICKET_DATA.length == 0 && ifGetData">
   No Data found
 </p>
