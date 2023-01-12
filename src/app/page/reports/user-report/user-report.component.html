@@ -14,7 +14,7 @@
 <div class="main-div">
   <div *ngIf="userData.length != 0">
     <div
-      class="container-6 table-responsive"
+      class="container-6"
       *ngIf="showTable && !isFetchDataFail"
     >
     <p class="head-2" *ngIf="showTable && !isFetchDataFail">
@@ -22,7 +22,7 @@
     </p>
       <div class="card">
         <div class="card-body">
-          <div id="htmlData">
+          <div id="htmlData" class="table-responsive">
             <table
               mat-table
               [dataSource]="dataSource"

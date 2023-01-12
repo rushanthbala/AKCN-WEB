@@ -31,10 +31,10 @@
     </div>
     <br />
     <br />
-    <div class="container-6 table-responsive">
+    <div class="container-6">
       <div *ngIf="TICKET_DATA.length != 0">
         <div *ngIf="showTable" else loading>
-          <div id="htmlData">
+          <div id="htmlData" class="table-responsive">
             <table
               mat-table
               [dataSource]="dataSource"
