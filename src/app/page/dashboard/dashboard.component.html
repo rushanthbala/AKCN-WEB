@@ -3,7 +3,7 @@
     <p class="font-weight-bold mt-2">Daily</p>
     <div>
       <form [formGroup]="submitForm">
-        <div class="mb-3 date_container" (mouseenter)="toggle()">
+        <div class="mb-3 date_container">
           <input
             type="text"
             class="form-control int"
@@ -20,7 +20,7 @@
             max="{{maxDate}}"
             [matDatepicker]="picker"
           />
-          <mat-datepicker-toggle class="dp"  matSuffix [for]="picker"></mat-datepicker-toggle>                                                                                
+          <mat-datepicker-toggle class="dp"  matSuffix [for]="picker"></mat-datepicker-toggle>                                                                             
           <mat-datepicker class="dp" #picker></mat-datepicker>  
         </div>
         <!-- <mat-form-field  class="int form-control">

@@ -123,15 +123,14 @@ tr:nth-child(even) {
 .int {
   height: 40px;
   // padding-left: 20px;
-  // width: 70%;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 14px;
   background: #99999917 0% 0% no-repeat padding-box;
   border-radius: 90px;
   color: #707070;
-  padding: 1px 0px 0px 10px;
-  cursor: pointer;
+  padding: 2px 0px 0px 30px;
 }
 .col-md-3 {
   max-width: 220px;

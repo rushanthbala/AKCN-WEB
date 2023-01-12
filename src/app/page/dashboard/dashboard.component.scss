@@ -117,7 +117,7 @@ tbody {
   background: #99999917 0% 0% no-repeat padding-box;
   border-radius: 90px;
   color: #707070;
-  padding: 1px 0px 0px 10px;
+  padding: 2px 0px 0px 30px;
 }
 .mat-form-field{
   margin-left: 28%;
@@ -138,3 +138,19 @@ tbody {
 ::ng-deep .mat-datepicker-toggle-default-icon{
   width: 1em;
 }
+.mat-icon-button:focus{
+  background: none;
+}
+::ng-deep .mat-datepicker-toggle-default-icon:focus{
+  outline: none;
+ box-shadow: none;
+}
+// ::ng-deep .mat-focused {
+//   /*change color of label*/
+//   // color: white !important;
+//   background: ;
+//  }
+// ::ng-deep .mat-datepicker-toggle:focus {
+//   background: none;
+//  }
+ 
