@@ -61,7 +61,7 @@ export class PagesComponent implements OnInit {
           this.sidenav.close();
         }
       });
-    }, 1)
+    })
 
   }
   getNavName() {

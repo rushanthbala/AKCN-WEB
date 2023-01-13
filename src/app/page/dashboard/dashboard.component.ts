@@ -39,6 +39,9 @@ export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstName', 'lastName'];
   labledata: any[] = [];
   realdata: any[] = [];
+selectDate: any;
+  selected: any;
+  selectCollection: any;
   toggle() {
     this.picker.open();
   }
@@ -192,7 +195,7 @@ export class DashboardComponent implements OnInit {
     // console.log(this.currentMonth , 'fddfdfd')
   }
 
-  //daily
+  // daily
   dailyCollection() {
     this.dataService
       .getData(`dashboard/getDailyCollections/${this.maxDate}`)
@@ -342,5 +345,69 @@ export class DashboardComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+  getDate(event: any){
+    console.log(event)
+    var selectDate = event.getDate();
+    if(selectDate < 10){
+      selectDate = "0" + selectDate
+    }
+    var selectYear = event.getFullYear();
+    var selectMonth = event.getMonth() + 1;
+    if(selectMonth < 10){
+      selectMonth = "0" + selectMonth
+    }
+    this.selected = selectYear + '-' + selectMonth + '-' + selectDate;
+    console.log(this.selected)
+
+    //collection
+      // console.log(this.submitForm.value, 'ddddd')
+      this.dataService.getData(`dashboard/getDailyCollections/${this.selected}`).subscribe(
+        (res) => {
+          this.collectionData = res;
+          console.log(this.collectionData.collection, '1');
+        }, (err)=>{
+          console.log(err)
+        }
+      )
+
+      //new connection
+      this.dataService
+      .getData(`dashboard/getDailyNewConnections/${this.selected}`)
+      .subscribe(
+        (res) => {
+          this.dailyConnection = res;
+          console.log(this.dailyConnection.connectionCount, '22');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      //re connection
+      this.dataService
+      .getData(`dashboard/getDailyReconnections/${this.selected}`)
+      .subscribe(
+        (res) => {
+          this.connectionData = res;
+          console.log(this.connectionData.reconnection, '33');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      //location change
+      this.dataService
+      .getData(`dashboard/getDailyLocationChange/${this.selected}`)
+      .subscribe(
+        (res) => {
+          this.locationChange = res;
+          console.log(this.locationChange.reconnection, '44');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 }
