@@ -2,6 +2,9 @@ import { style } from '@angular/animations';
 import { Component, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Chart, registerables } from 'node_modules/chart.js';
+import { HttpService } from 'src/app/servise/http/http.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 Chart.register(...registerables);
 
 @Component({
@@ -16,76 +19,32 @@ export class DashboardComponent implements OnInit {
   tableDatasetsDate: any;
   userData: any;
   maxDate: any;
-  submitForm: FormGroup | any
+  submitForm: FormGroup | any;
 
   @ViewChild('picker') picker: any;
   name = 'Angular ' + VERSION.major;
+  collectionData: any = [];
+  dailyConnection: any = [];
+  reConnection: any = [];
+  locationChange: any;
+  connectionData: any;
+  currentMonth: any;
+  monthlyConnectionData: any;
+  monthlyNewConnectionData: any;
+  monthylReconnectionData: any;
+  montlhyLocationChangeData: any;
+  todayData: any;
+  annualReportData: any;
+  dataSource: any;
+  displayedColumns: string[] = ['id', 'firstName', 'lastName'];
+  labledata: any[] = [];
+  realdata: any[] = [];
   toggle() {
     this.picker.open();
   }
 
-  constructor(private fb: FormBuilder) {}
-
-  sdata = [
-    {
-      id: 1,
-      name: 'COLLECTION',
-      number: '143350',
-      img: true,
-      color: 'green',
-    },
-    {
-      id: 2,
-      name: 'NEW CONNECTION',
-      number: '143350',
-      img: false,
-      color: 'red',
-    },
-    {
-      id: 3,
-      name: 'RECONNECTION',
-      number: '143350',
-      img: false,
-      color: 'red',
-    },
-    {
-      id: 4,
-      name: 'LINE CHANGE',
-      number: '143350',
-      img: true,
-      color: 'green',
-    }
-  ];
-  mData = [
-    {
-      id: 1,
-      name: 'COLLECTION',
-      number: '143350',
-      img: true,
-      color: 'green',
-    },
-    {
-      id: 2,
-      name: 'NEW CONNECTION',
-      number: '143350',
-      img: false,
-      color: 'red',
-    },
-    {
-      id: 3,
-      name: 'PROFITS',
-      number: '143350',
-      img: false,
-      color: 'red',
-    },
-    {
-      id: 4,
-      name: 'RECONNECTION',
-      number: '143350',
-      img: true,
-      color: 'green',
-    },
-  ]
+  constructor(private fb: FormBuilder, private dataService: HttpService) {}
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   userArray: any = [
     {
       id: 1,
@@ -161,41 +120,36 @@ export class DashboardComponent implements OnInit {
   p: number = 1;
 
   ngOnInit(): void {
-    // this.getAllTableData();
-    this.renderChart();
     this.userData = this.userArray;
     this.futureDateDisable();
-    // this.getAllCardData();
-    this.initialForm()
+    this.initialForm();
+    this.dailyCollection();
+    this.newConnection();
+    this.dailyReconnection();
+    this.dailyLocationChange();
+    this.monthlyConnection();
+    this.monthlyNewConnection();
+    this.monthlyReConnection();
+    this.monthlyLocationChange();
+    this.todayCollectionReport();
+    // this.renderChart(this.labledata, this.realdata);
+    this.anualReport();
   }
 
-  initialForm(){
+  initialForm() {
     this.submitForm = this.fb.group({
-      fromdate:''
-    })
+      fromdate: '',
+    });
   }
 
-  renderChart() {
+  renderChart(labledata: any, maindata: any) {
     const myChart = new Chart('linechart', {
       type: 'line',
       data: {
-        labels: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'sep',
-          'Oct',
-          'Nov',
-          'Dec',
-        ],
+        labels: labledata,
         datasets: [
           {
-            data: [3, 4, 2, 4, 5, 6, 5, 4, 5, 3, 4, 6],
+            data: maindata,
             borderWidth: 2,
             borderColor: '#2CD9C5',
             backgroundColor: ['#2CD9C51A', '#2E5BFF00'],
@@ -221,19 +175,172 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
-  futureDateDisable(){
-    var date :any = new Date();
+  futureDateDisable() {
+    var date: any = new Date();
     var todayDate: any = date.getDate();
     var month: any = date.getMonth() + 1;
     var year: any = date.getFullYear();
 
-    if(todayDate < 10){
-      todayDate = "0" + todayDate; //1,2..9
+    if (todayDate < 10) {
+      todayDate = '0' + todayDate; //1,2..9
     }
-    if(month < 10){
-      month = "0" + month;
+    if (month < 10) {
+      month = '0' + month;
     }
-    this.maxDate = year + "-" + month + "-" + todayDate;  //2022-12-31
+    this.maxDate = year + '-' + month + '-' + todayDate; //2022-12-31
+    this.currentMonth = year + '-' + month + '-' + '01';
+    // console.log(this.currentMonth , 'fddfdfd')
+  }
 
+  //daily
+  dailyCollection() {
+    this.dataService
+      .getData(`dashboard/getDailyCollections/${this.maxDate}`)
+      .subscribe(
+        (res) => {
+          this.collectionData = res;
+          console.log(this.collectionData.collection, '1');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  newConnection() {
+    this.dataService
+      .getData(`dashboard/getDailyNewConnections/${this.maxDate}`)
+      .subscribe(
+        (res) => {
+          this.dailyConnection = res;
+          console.log(this.dailyConnection.connectionCount, '2');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  dailyReconnection() {
+    this.dataService
+      .getData(`dashboard/getDailyReconnections/${this.maxDate}`)
+      .subscribe(
+        (res) => {
+          this.connectionData = res;
+          console.log(this.connectionData.reconnection, '3');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  dailyLocationChange() {
+    this.dataService
+      .getData(`dashboard/getDailyLocationChange/${this.maxDate}`)
+      .subscribe(
+        (res) => {
+          this.locationChange = res;
+          console.log(this.locationChange.reconnection, '4');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  //monthly
+  monthlyConnection() {
+    this.dataService
+      .getData(`dashboard/getMonthlyCollections/${this.currentMonth}`)
+      .subscribe(
+        (res) => {
+          this.monthlyConnectionData = res;
+          console.log(this.monthlyConnectionData.collection, '1 1');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  monthlyNewConnection() {
+    this.dataService
+      .getData(`dashboard/getMonthlyNewConnections/${this.currentMonth}`)
+      .subscribe(
+        (res) => {
+          this.monthlyNewConnectionData = res;
+          console.log(this.monthlyNewConnectionData.connectionCount, '1 2');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  monthlyReConnection() {
+    this.dataService
+      .getData(`dashboard/getMonthlyReconnections/${this.currentMonth}`)
+      .subscribe(
+        (res) => {
+          this.monthylReconnectionData = res;
+          console.log(this.monthylReconnectionData.reconnection, '1 3');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  monthlyLocationChange() {
+    this.dataService
+      .getData(`dashboard/getMonthlyLocationChange/${this.currentMonth}`)
+      .subscribe(
+        (res) => {
+          this.montlhyLocationChangeData = res;
+          console.log(this.montlhyLocationChangeData.reconnection, '1 4');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  //today collection report
+  todayCollectionReport() {
+    this.dataService
+      .getData(`dashboard/collectionsByAgent/${this.maxDate}`)
+      .subscribe(
+        (res) => {
+          this.todayData = res;
+          console.log(this.todayData, '3 1');
+          this.dataSource = new MatTableDataSource(
+            this.todayData
+          );
+          setTimeout(() =>{
+            this.dataSource.paginator = this.paginator;
+            }, 1)
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  //annual report
+  anualReport() {
+    this.dataService.getData(`dashboard/monthlyGraph`).subscribe(
+      (res) => {
+        this.annualReportData = res.slice(-12);
+        console.log(this.annualReportData, '2 1');
+        if(this.annualReportData != null){
+          for(let i=0; i<this.annualReportData.length; i++){
+            // console.log(this.annualReportData[i], 'eeee')
+            // console.log(this.annualReportData[i].month, 'llll')
+            this.labledata?.push(this.annualReportData[i].month.substring(0,3))
+            this.realdata?.push(this.annualReportData[i].totalAmount)
+          }
+          // console.log(this.labledata, this.realdata, 'aaaaaaa')
+          this.renderChart(this.labledata, this.realdata);
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
