@@ -51,19 +51,42 @@
     ></app-card-template>
   </div> -->
   <div class="container-4">
-    <div class="card" [ngStyle]="{backgroundColor: collectionData.collection ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: collectionData.collection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">COLLECTION</h5>
         <div class="container-6 mt-4">
           <p class="card-text col-8">
-            {{ collectionData.collection ? collectionData.collection : "0"}}
+            {{ collectionData.collection ? collectionData.collection : "0" }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color: collectionData.collection ? '#31ab25' : '#b50a00'}"> {{ collectionData.collection ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: collectionData.collection ? '#31ab25' : '#b50a00'
+            }"
+          >
+            {{
+              collectionData.collection ? "trending_up" : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
-    <div class="card" [ngStyle]="{backgroundColor: dailyConnection.connectionCount ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: dailyConnection.connectionCount
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">NEW CONNECTION</h5>
         <div class="container-6 mt-4">
@@ -75,11 +98,27 @@
             }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color:  dailyConnection.connectionCount ? '#31ab25' : '#b50a00'}"> {{  dailyConnection.connectionCount ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: dailyConnection.connectionCount ? '#31ab25' : '#b50a00'
+            }"
+          >
+            {{
+              dailyConnection.connectionCount ? "trending_up" : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
-    <div class="card" [ngStyle]="{backgroundColor: connectionData.reconnection ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: connectionData.reconnection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">RECONNECTION</h5>
         <div class="container-6 mt-4">
@@ -89,11 +128,27 @@
             }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color:  connectionData.reconnection ? '#31ab25' : '#b50a00'}"> {{  connectionData.reconnection ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: connectionData.reconnection ? '#31ab25' : '#b50a00'
+            }"
+          >
+            {{
+              connectionData.reconnection ? "trending_up" : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
-    <div class="card" [ngStyle]="{backgroundColor: locationChange.reconnection ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: locationChange.reconnection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">LOCATION CHANGE</h5>
         <div class="container-6 mt-4">
@@ -103,7 +158,16 @@
             }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color:  locationChange.reconnection ? '#31ab25' : '#b50a00'}"> {{  locationChange.reconnection ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: locationChange.reconnection ? '#31ab25' : '#b50a00'
+            }"
+          >
+            {{
+              locationChange.reconnection ? "trending_up" : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
@@ -126,7 +190,14 @@
     ></app-card-template>
   </div> -->
   <div class="container-4">
-    <div class="card" [ngStyle]="{backgroundColor: monthlyConnectionData.collection ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: monthlyConnectionData.collection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">COLLECTION</h5>
         <div class="container-6 mt-4">
@@ -138,11 +209,27 @@
             }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color:  monthlyConnectionData.collection ? '#31ab25' : '#b50a00'}"> {{  monthlyConnectionData.collection ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: monthlyConnectionData.collection ? '#31ab25' : '#b50a00'
+            }"
+          >
+            {{
+              monthlyConnectionData.collection ? "trending_up" : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
-    <div class="card" [ngStyle]="{backgroundColor: monthlyNewConnectionData.connectionCount ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: monthlyNewConnectionData.connectionCount
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">NEW CONNECTION</h5>
         <div class="container-6 mt-4">
@@ -154,11 +241,31 @@
             }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color:  monthlyNewConnectionData.connectionCount ? '#31ab25' : '#b50a00'}"> {{  monthlyNewConnectionData.connectionCount ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: monthlyNewConnectionData.connectionCount
+                ? '#31ab25'
+                : '#b50a00'
+            }"
+          >
+            {{
+              monthlyNewConnectionData.connectionCount
+                ? "trending_up"
+                : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
-    <div class="card" [ngStyle]="{backgroundColor: monthylReconnectionData.reconnection ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: monthylReconnectionData.reconnection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">RECONNECTION</h5>
         <div class="container-6 mt-4">
@@ -170,11 +277,31 @@
             }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color:  monthylReconnectionData.reconnection ? '#31ab25' : '#b50a00'}"> {{  monthylReconnectionData.reconnection ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: monthylReconnectionData.reconnection
+                ? '#31ab25'
+                : '#b50a00'
+            }"
+          >
+            {{
+              monthylReconnectionData.reconnection
+                ? "trending_up"
+                : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
-    <div class="card" [ngStyle]="{backgroundColor: montlhyLocationChangeData.reconnection ? 'rgba(49, 171, 37, 0.1)' : 'rgba(181, 10, 0, 0.1)'}">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: montlhyLocationChangeData.reconnection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
       <div class="card-body">
         <h5 class="card-title">LOCATION CHANGE</h5>
         <div class="container-6 mt-4">
@@ -186,7 +313,20 @@
             }}
           </p>
           <div class="col-2"></div>
-          <mat-icon class="col-2" [ngStyle]="{color:  montlhyLocationChangeData.reconnection ? '#31ab25' : '#b50a00'}"> {{  montlhyLocationChangeData.reconnection ? 'trending_up' : 'trending_down'}}</mat-icon>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: montlhyLocationChangeData.reconnection
+                ? '#31ab25'
+                : '#b50a00'
+            }"
+          >
+            {{
+              montlhyLocationChangeData.reconnection
+                ? "trending_up"
+                : "trending_down"
+            }}</mat-icon
+          >
         </div>
       </div>
     </div>
@@ -205,57 +345,59 @@
     <div class="container-10">
       <!-- <div *ngIf="TICKET_DATA.length != 0">
         <div *ngIf="showTable" else loading> -->
-          <div id="htmlData" class="table-responsive">
-            <table
-              mat-table
-              [dataSource]="dataSource"
-              id="ExampleNormalTable"
-              class=""
+      <div id="htmlData" class="table-responsive">
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          id="ExampleNormalTable"
+          class=""
+        >
+          <td mat-cell *matCellDef="let row"></td>
+          <ng-container matColumnDef="id">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              sortActionDescription="Sort by id"
             >
-              <td mat-cell *matCellDef="let row"></td>
-              <ng-container matColumnDef="id">
-                <th
-                  mat-header-cell
-                  *matHeaderCellDef
-                  sortActionDescription="Sort by id"
-                >
-                Agent
-                </th>
-                <td mat-cell *matCellDef="let element">{{ element.name ? element.name : '--' }}</td>
-              </ng-container>
-              <ng-container matColumnDef="firstName">
-                <th
-                  mat-header-cell
-                  *matHeaderCellDef
-                  sortActionDescription="Sort by firstName"
-                >
-                  Amount
-                </th>
-                <td mat-cell *matCellDef="let element">
-                  {{ element.totalAmount ? element.totalAmount : '--' }}
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="lastName">
-                <th
-                  mat-header-cell
-                  *matHeaderCellDef
-                  sortActionDescription="Sort by lastName"
-                >
-                  Bills
-                </th>
-                <td mat-cell *matCellDef="let element">
-                  {{ element.bills ? element.bills : '--' }}
-                </td>
-              </ng-container>
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-            </table>
-            <!-- <mat-paginator
+              Agent
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.name ? element.name : "--" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="firstName">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              sortActionDescription="Sort by firstName"
+            >
+              Amount
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.totalAmount ? element.totalAmount : "--" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="lastName">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              sortActionDescription="Sort by lastName"
+            >
+              Bills
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.bills ? element.bills : "--" }}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <!-- <mat-paginator
             [pageSizeOptions]="[10, 25, 100]"
             aria-label="Select page of users"
           ></mat-paginator> -->
-          </div>
-        <!-- </div>
+      </div>
+      <!-- </div>
       </div> -->
     </div>
   </div>

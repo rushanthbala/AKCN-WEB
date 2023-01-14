@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
   selectDate: any;
   selected: any;
   selectCollection: any;
+  selectedForMonthly: any;
   toggle() {
     this.picker.open();
   }
@@ -360,6 +361,9 @@ export class DashboardComponent implements OnInit {
     this.selected = selectYear + '-' + selectMonth + '-' + selectDate;
     console.log(this.selected);
 
+    this.selectedForMonthly = selectYear + '-' + selectMonth + '-' + '01';
+    console.log(this.selectedForMonthly)
+
     //collection
     // console.log(this.submitForm.value, 'ddddd')
     this.dataService
@@ -407,6 +411,58 @@ export class DashboardComponent implements OnInit {
         (res) => {
           this.locationChange = res;
           console.log(this.locationChange.reconnection, '44');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      //monthlyConnection
+      this.dataService
+      .getData(`dashboard/getMonthlyCollections/${this.selectedForMonthly}`)
+      .subscribe(
+        (res) => {
+          this.monthlyConnectionData = res;
+          console.log(this.monthlyConnectionData.collection, '1 22');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      //New connection
+      this.dataService
+      .getData(`dashboard/getMonthlyNewConnections/${this.selectedForMonthly}`)
+      .subscribe(
+        (res) => {
+          this.monthlyNewConnectionData = res;
+          console.log(this.monthlyNewConnectionData.connectionCount, '1 22');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      //Re Connection
+      this.dataService
+      .getData(`dashboard/getMonthlyReconnections/${this.selectedForMonthly}`)
+      .subscribe(
+        (res) => {
+          this.monthylReconnectionData = res;
+          console.log(this.monthylReconnectionData.reconnection, '1 33');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      //monthly location change
+      this.dataService
+      .getData(`dashboard/getMonthlyLocationChange/${this.selectedForMonthly}`)
+      .subscribe(
+        (res) => {
+          this.montlhyLocationChangeData = res;
+          console.log(this.montlhyLocationChangeData.reconnection, '1 44');
         },
         (err) => {
           console.log(err);
