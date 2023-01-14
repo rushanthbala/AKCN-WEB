@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstName', 'lastName'];
   labledata: any[] = [];
   realdata: any[] = [];
-selectDate: any;
+  selectDate: any;
   selected: any;
   selectCollection: any;
   toggle() {
@@ -311,12 +311,10 @@ selectDate: any;
         (res) => {
           this.todayData = res;
           console.log(this.todayData, '3 1');
-          this.dataSource = new MatTableDataSource(
-            this.todayData
-          );
-          setTimeout(() =>{
+          this.dataSource = new MatTableDataSource(this.todayData);
+          setTimeout(() => {
             this.dataSource.paginator = this.paginator;
-            }, 1)
+          }, 1);
         },
         (err) => {
           console.log(err);
@@ -330,12 +328,14 @@ selectDate: any;
       (res) => {
         this.annualReportData = res.slice(-12);
         console.log(this.annualReportData, '2 1');
-        if(this.annualReportData != null){
-          for(let i=0; i<this.annualReportData.length; i++){
+        if (this.annualReportData != null) {
+          for (let i = 0; i < this.annualReportData.length; i++) {
             // console.log(this.annualReportData[i], 'eeee')
             // console.log(this.annualReportData[i].month, 'llll')
-            this.labledata?.push(this.annualReportData[i].month.substring(0,3))
-            this.realdata?.push(this.annualReportData[i].totalAmount)
+            this.labledata?.push(
+              this.annualReportData[i].month.substring(0, 3)
+            );
+            this.realdata?.push(this.annualReportData[i].totalAmount);
           }
           // console.log(this.labledata, this.realdata, 'aaaaaaa')
           this.renderChart(this.labledata, this.realdata);
@@ -346,33 +346,36 @@ selectDate: any;
       }
     );
   }
-  getDate(event: any){
-    console.log(event)
+  getDate(event: any) {
+    console.log(event);
     var selectDate = event.getDate();
-    if(selectDate < 10){
-      selectDate = "0" + selectDate
+    if (selectDate < 10) {
+      selectDate = '0' + selectDate;
     }
     var selectYear = event.getFullYear();
     var selectMonth = event.getMonth() + 1;
-    if(selectMonth < 10){
-      selectMonth = "0" + selectMonth
+    if (selectMonth < 10) {
+      selectMonth = '0' + selectMonth;
     }
     this.selected = selectYear + '-' + selectMonth + '-' + selectDate;
-    console.log(this.selected)
+    console.log(this.selected);
 
     //collection
-      // console.log(this.submitForm.value, 'ddddd')
-      this.dataService.getData(`dashboard/getDailyCollections/${this.selected}`).subscribe(
+    // console.log(this.submitForm.value, 'ddddd')
+    this.dataService
+      .getData(`dashboard/getDailyCollections/${this.selected}`)
+      .subscribe(
         (res) => {
           this.collectionData = res;
           console.log(this.collectionData.collection, '1');
-        }, (err)=>{
-          console.log(err)
+        },
+        (err) => {
+          console.log(err);
         }
-      )
+      );
 
-      //new connection
-      this.dataService
+    //new connection
+    this.dataService
       .getData(`dashboard/getDailyNewConnections/${this.selected}`)
       .subscribe(
         (res) => {
@@ -384,8 +387,8 @@ selectDate: any;
         }
       );
 
-      //re connection
-      this.dataService
+    //re connection
+    this.dataService
       .getData(`dashboard/getDailyReconnections/${this.selected}`)
       .subscribe(
         (res) => {
@@ -397,8 +400,8 @@ selectDate: any;
         }
       );
 
-      //location change
-      this.dataService
+    //location change
+    this.dataService
       .getData(`dashboard/getDailyLocationChange/${this.selected}`)
       .subscribe(
         (res) => {
