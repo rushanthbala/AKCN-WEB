@@ -418,55 +418,55 @@ export class DashboardComponent implements OnInit {
       );
 
       //monthlyConnection
-      this.dataService
-      .getData(`dashboard/getMonthlyCollections/${this.selectedForMonthly}`)
-      .subscribe(
-        (res) => {
-          this.monthlyConnectionData = res;
-          console.log(this.monthlyConnectionData.collection, '1 22');
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      // this.dataService
+      // .getData(`dashboard/getMonthlyCollections/${this.selectedForMonthly}`)
+      // .subscribe(
+      //   (res) => {
+      //     this.monthlyConnectionData = res;
+      //     console.log(this.monthlyConnectionData.collection, '1 22');
+      //   },
+      //   (err) => {
+      //     console.log(err);
+      //   }
+      // );
 
       //New connection
-      this.dataService
-      .getData(`dashboard/getMonthlyNewConnections/${this.selectedForMonthly}`)
-      .subscribe(
-        (res) => {
-          this.monthlyNewConnectionData = res;
-          console.log(this.monthlyNewConnectionData.connectionCount, '1 22');
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      // this.dataService
+      // .getData(`dashboard/getMonthlyNewConnections/${this.selectedForMonthly}`)
+      // .subscribe(
+      //   (res) => {
+      //     this.monthlyNewConnectionData = res;
+      //     console.log(this.monthlyNewConnectionData.connectionCount, '1 22');
+      //   },
+      //   (err) => {
+      //     console.log(err);
+      //   }
+      // );
 
       //Re Connection
-      this.dataService
-      .getData(`dashboard/getMonthlyReconnections/${this.selectedForMonthly}`)
-      .subscribe(
-        (res) => {
-          this.monthylReconnectionData = res;
-          console.log(this.monthylReconnectionData.reconnection, '1 33');
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      // this.dataService
+      // .getData(`dashboard/getMonthlyReconnections/${this.selectedForMonthly}`)
+      // .subscribe(
+      //   (res) => {
+      //     this.monthylReconnectionData = res;
+      //     console.log(this.monthylReconnectionData.reconnection, '1 33');
+      //   },
+      //   (err) => {
+      //     console.log(err);
+      //   }
+      // );
 
       //monthly location change
-      this.dataService
-      .getData(`dashboard/getMonthlyLocationChange/${this.selectedForMonthly}`)
-      .subscribe(
-        (res) => {
-          this.montlhyLocationChangeData = res;
-          console.log(this.montlhyLocationChangeData.reconnection, '1 44');
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      // this.dataService
+      // .getData(`dashboard/getMonthlyLocationChange/${this.selectedForMonthly}`)
+      // .subscribe(
+      //   (res) => {
+      //     this.montlhyLocationChangeData = res;
+      //     console.log(this.montlhyLocationChangeData.reconnection, '1 44');
+      //   },
+      //   (err) => {
+      //     console.log(err);
+      //   }
+      // );
   }
 }
