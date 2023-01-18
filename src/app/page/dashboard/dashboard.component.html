@@ -54,7 +54,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: collectionData.collection
+        backgroundColor: collectionData?.collection
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -63,17 +63,17 @@
         <h5 class="card-title">COLLECTION</h5>
         <div class="container-6 mt-4">
           <p class="card-text col-8">
-            {{ collectionData.collection ? collectionData.collection : "0" }}
+            {{ collectionData?.collection ? collectionData?.collection : "0" }}
           </p>
           <div class="col-2"></div>
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: collectionData.collection ? '#31ab25' : '#b50a00'
+              color: collectionData?.collection ? '#31ab25' : '#b50a00'
             }"
           >
             {{
-              collectionData.collection ? "trending_up" : "trending_down"
+              collectionData?.collection ? "trending_up" : "trending_down"
             }}</mat-icon
           >
         </div>
@@ -82,7 +82,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: dailyConnection.connectionCount
+        backgroundColor: dailyConnection?.connectionCount
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -92,8 +92,8 @@
         <div class="container-6 mt-4">
           <p class="card-text col-8">
             {{
-              dailyConnection.connectionCount
-                ? dailyConnection.connectionCount
+              dailyConnection?.connectionCount
+                ? dailyConnection?.connectionCount
                 : "0"
             }}
           </p>
@@ -101,11 +101,11 @@
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: dailyConnection.connectionCount ? '#31ab25' : '#b50a00'
+              color: dailyConnection?.connectionCount ? '#31ab25' : '#b50a00'
             }"
           >
             {{
-              dailyConnection.connectionCount ? "trending_up" : "trending_down"
+              dailyConnection?.connectionCount ? "trending_up" : "trending_down"
             }}</mat-icon
           >
         </div>
@@ -114,7 +114,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: connectionData.reconnection
+        backgroundColor: connectionData?.reconnection
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -124,18 +124,18 @@
         <div class="container-6 mt-4">
           <p class="card-text col-8">
             {{
-              connectionData.reconnection ? connectionData.reconnection : "0"
+              connectionData?.reconnection ? connectionData?.reconnection : "0"
             }}
           </p>
           <div class="col-2"></div>
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: connectionData.reconnection ? '#31ab25' : '#b50a00'
+              color: connectionData?.reconnection ? '#31ab25' : '#b50a00'
             }"
           >
             {{
-              connectionData.reconnection ? "trending_up" : "trending_down"
+              connectionData?.reconnection ? "trending_up" : "trending_down"
             }}</mat-icon
           >
         </div>
@@ -144,7 +144,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: locationChange.reconnection
+        backgroundColor: locationChange?.reconnection
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -154,18 +154,18 @@
         <div class="container-6 mt-4">
           <p class="card-text col-8">
             {{
-              locationChange.reconnection ? locationChange.reconnection : "0"
+              locationChange?.reconnection ? locationChange?.reconnection : "0"
             }}
           </p>
           <div class="col-2"></div>
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: locationChange.reconnection ? '#31ab25' : '#b50a00'
+              color: locationChange?.reconnection ? '#31ab25' : '#b50a00'
             }"
           >
             {{
-              locationChange.reconnection ? "trending_up" : "trending_down"
+              locationChange?.reconnection ? "trending_up" : "trending_down"
             }}</mat-icon
           >
         </div>
@@ -193,7 +193,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: monthlyConnectionData.collection
+        backgroundColor: monthlyConnectionData?.collection
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -203,8 +203,8 @@
         <div class="container-6 mt-4">
           <p class="card-text col-8">
             {{
-              monthlyConnectionData.collection
-                ? monthlyConnectionData.collection
+              monthlyConnectionData?.collection
+                ? monthlyConnectionData?.collection
                 : "0"
             }}
           </p>
@@ -212,11 +212,11 @@
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: monthlyConnectionData.collection ? '#31ab25' : '#b50a00'
+              color: monthlyConnectionData?.collection ? '#31ab25' : '#b50a00'
             }"
           >
             {{
-              monthlyConnectionData.collection ? "trending_up" : "trending_down"
+              monthlyConnectionData?.collection ? "trending_up" : "trending_down"
             }}</mat-icon
           >
         </div>
@@ -225,7 +225,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: monthlyNewConnectionData.connectionCount
+        backgroundColor: monthlyNewConnectionData?.connectionCount
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -235,8 +235,8 @@
         <div class="container-6 mt-4">
           <p class="card-text col-8">
             {{
-              monthlyNewConnectionData.connectionCount
-                ? monthlyNewConnectionData.connectionCount
+              monthlyNewConnectionData?.connectionCount
+                ? monthlyNewConnectionData?.connectionCount
                 : "0"
             }}
           </p>
@@ -244,13 +244,13 @@
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: monthlyNewConnectionData.connectionCount
+              color: monthlyNewConnectionData?.connectionCount
                 ? '#31ab25'
                 : '#b50a00'
             }"
           >
             {{
-              monthlyNewConnectionData.connectionCount
+              monthlyNewConnectionData?.connectionCount
                 ? "trending_up"
                 : "trending_down"
             }}</mat-icon
@@ -261,7 +261,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: monthylReconnectionData.reconnection
+        backgroundColor: monthylReconnectionData?.reconnection
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -271,8 +271,8 @@
         <div class="container-6 mt-4">
           <p class="card-text col-8">
             {{
-              monthylReconnectionData.reconnection
-                ? monthylReconnectionData.reconnection
+              monthylReconnectionData?.reconnection
+                ? monthylReconnectionData?.reconnection
                 : "0"
             }}
           </p>
@@ -280,13 +280,13 @@
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: monthylReconnectionData.reconnection
+              color: monthylReconnectionData?.reconnection
                 ? '#31ab25'
                 : '#b50a00'
             }"
           >
             {{
-              monthylReconnectionData.reconnection
+              monthylReconnectionData?.reconnection
                 ? "trending_up"
                 : "trending_down"
             }}</mat-icon
@@ -297,7 +297,7 @@
     <div
       class="card"
       [ngStyle]="{
-        backgroundColor: montlhyLocationChangeData.reconnection
+        backgroundColor: montlhyLocationChangeData?.reconnection
           ? 'rgba(49, 171, 37, 0.1)'
           : 'rgba(181, 10, 0, 0.1)'
       }"
@@ -307,8 +307,8 @@
         <div class="container-6 mt-4">
           <p class="card-text col-8">
             {{
-              montlhyLocationChangeData.reconnection
-                ? montlhyLocationChangeData.reconnection
+              montlhyLocationChangeData?.reconnection
+                ? montlhyLocationChangeData?.reconnection
                 : "0"
             }}
           </p>
@@ -316,13 +316,13 @@
           <mat-icon
             class="col-2"
             [ngStyle]="{
-              color: montlhyLocationChangeData.reconnection
+              color: montlhyLocationChangeData?.reconnection
                 ? '#31ab25'
                 : '#b50a00'
             }"
           >
             {{
-              montlhyLocationChangeData.reconnection
+              montlhyLocationChangeData?.reconnection
                 ? "trending_up"
                 : "trending_down"
             }}</mat-icon

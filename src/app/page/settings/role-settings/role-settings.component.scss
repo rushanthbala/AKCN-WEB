@@ -66,7 +66,7 @@
   letter-spacing: 0px;
   color: #707070;
   opacity: 1;
-  padding: 0px 238px 0px 0;
+  padding: 0px 308px 0px 0;
 }
 .mat-cell {
   border: 0px;
@@ -78,9 +78,11 @@
   border: 0px;
 }
 .mat-cell:last-of-type,
-.mat-header-cell:last-of-type,
 .mat-footer-cell:last-of-type {
   padding-right: 0px;
+}
+.mat-header-cell:last-of-type{
+  padding-left: 50px;
 }
 td:first-child {
   border-left-style: solid;

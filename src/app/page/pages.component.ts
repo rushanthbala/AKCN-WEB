@@ -25,6 +25,7 @@ export class PagesComponent implements OnInit {
   public sublink: string = '';
   public contentSubHeading: string = '';
   public navName: string = '';
+  currentlyOpenedItemIndex = -1
   logout() {
     localStorage.clear();
     window.location.reload()
@@ -352,16 +353,42 @@ export class PagesComponent implements OnInit {
 
   menuClick(clickedItem: number) {
     this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state; // flips the boolean value for the clicked item
-    for (let item of this.menuItems) {
+    // for (let item of this.menuItems) {
 
-      if (item !== this.menuItems[clickedItem]) {
-        item.state = false;
-      } else {
-        item.state = true;
+    //   if (item !== this.menuItems[clickedItem]) {
+    //     item.state = false;
+    //   } else {
+    //     item.state = true;
+    //   }
+    // }
+    // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
+    // if(this.menuItems === clickedItem){
+    //   this.menuItems = -1
+    // }
+    if (this.currentlyOpenedItemIndex === clickedItem) {
+      this.currentlyOpenedItemIndex = -1;
+      
+    } else{
+      this.currentlyOpenedItemIndex = clickedItem;
+      for (let item of this.menuItems) {
+
+        if (item !== this.menuItems[clickedItem]) {
+          item.state = false;
+        } else {
+          item.state = true;
+        }
       }
     }
-    // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
   }
+  // setOpened(itemIndex: number){
+  //   this.currentlyOpenedItemIndex = itemIndex;
+  // }
+  
+  // setClosed(itemIndex: number) {
+  //   if (this.currentlyOpenedItemIndex === itemIndex) {
+  //     this.currentlyOpenedItemIndex = -1;
+  //   }
+  // }
   menuStart(){
     var url = this.router.url;
     var urlSpilite = url.split('/');

@@ -349,12 +349,12 @@ export class DashboardComponent implements OnInit {
   }
   getDate(event: any) {
     console.log(event);
-    var selectDate = event.getDate();
+    var selectDate = event?.getDate();
     if (selectDate < 10) {
       selectDate = '0' + selectDate;
     }
-    var selectYear = event.getFullYear();
-    var selectMonth = event.getMonth() + 1;
+    var selectYear = event?.getFullYear();
+    var selectMonth = event?.getMonth() + 1;
     if (selectMonth < 10) {
       selectMonth = '0' + selectMonth;
     }

@@ -1,7 +1,7 @@
 <form [formGroup]="inputset">
   <!-- {{object|json}}hihias
    <br/>
-  {{allData|json}}hihias -->
+  {{allData?|json}}hihias -->
   <div class="card">
   <div
     class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
@@ -13,7 +13,7 @@
         class="form-control int"
         id="ID"
         placeholder="ID"
-        value="{{ allData.connectionID }}"
+        value="{{ allData?.connectionID }}"
         readonly
       />
     </div>
@@ -23,7 +23,7 @@
         type="text"
         class="form-control int"
         id="NIC"
-        value="{{ allData.subscriberNIC }}"
+        value="{{ allData?.subscriberNIC }}"
         readonly
         placeholder="NIC"
       />
@@ -34,7 +34,7 @@
         type="text"
         class="form-control int"
         id="SUBSCRIBER"
-        value="{{ allData.firstName }}"
+        value="{{ allData?.firstName }}"
         readonly
         placeholder="SUBSCRIBER"
       />
@@ -45,7 +45,7 @@
         type="text"
         class="form-control int"
         id="PHONE"
-        value="{{ allData.primaryPhone }}"
+        value="{{ allData?.primaryPhone }}"
         readonly
         placeholder="PHONE"
       />
@@ -106,7 +106,7 @@
         type="text"
         class="form-control int"
         id="Connection Address"
-        value="{{ allData.connectionAddress }}"
+        value="{{ allData?.connectionAddress }}"
         readonly
         placeholder="Address"
       />
@@ -117,7 +117,7 @@
         type="text"
         class="form-control int"
         id="Status"
-        value="{{ allData.status }}"
+        value="{{ allData?.status }}"
         readonly
         placeholder="Status"
       />
@@ -128,7 +128,7 @@
         type="text"
         class="form-control int"
         id="Due"
-        value="{{ allData.dueAmount }}"
+        value="{{ allData?.dueAmount }}"
         readonly
         placeholder="Due"
       />
@@ -139,7 +139,7 @@
         type="text"
         class="form-control int"
         id="Type"
-        value="{{ allData.connectionType }}"
+        value="{{ allData?.connectionType }}"
         readonly
         placeholder="Type"
       />
@@ -155,7 +155,7 @@
       id="basic-addon2"
       (click)="Back()"
     >
-      Back To Pending Ticket
+      Back To Assign Ticket
     </button>
 
     <button
