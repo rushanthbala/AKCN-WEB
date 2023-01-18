@@ -51,10 +51,38 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
   searching(first: Object | any) {
 
     var fromdate = first.fromdate;
+    // console.log(fromdate, 'ff')
+    let year1 = fromdate.getFullYear();
+    let month1 = fromdate.getMonth() + 1;
+    let day1 = fromdate.getDate();
+    if(day1 < 10){
+      day1 = "0" + day1;
+    }
+
+    if(month1 < 10){
+      month1 = "0" + month1;
+    }
+
+    let fromdate1 = year1 + "-" + month1 + "-" + day1 
+    // console.log(fromdate1)
+
     var todate = first.todate;
+    // console.log(todate, 'gg')
+    let year2 = todate.getFullYear();
+    let month2 = todate.getMonth() + 1;
+    let day2 = todate.getDate();
+    if(day2 < 10){
+      day2 = "0" + day2;
+    }
+
+    if(month2 < 10){
+      month2 = "0" + month2;
+    }
+
+    let todate2 = year2 + "-" + month2 + "-" + day2 
 
     this.dataServise
-      .getData(`connectionReport/byDate/${fromdate}/${todate}`)
+      .getData(`connectionReport/byDate/${fromdate1}/${todate2}`)
       .subscribe(
         (res) => {
           this.userData = res;
