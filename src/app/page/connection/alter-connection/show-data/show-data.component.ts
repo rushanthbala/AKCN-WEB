@@ -62,9 +62,9 @@ export class ShowDataComponent implements OnInit {
     this.initialExtraForm();
     this.initialChangeForm();
     let xy=this.object.connectionLocation
-    var split_str = xy.split(",");
-    this.longitude= split_str[0]
-    this.lattitute= split_str[1]
+    var split_str = xy?.split(",");
+    // this.longitude= split_str[0]
+    // this.lattitute= split_str[1]
     this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
 
   }
