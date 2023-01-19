@@ -96,6 +96,9 @@ import { PaymentFilterComponent } from '../core/payment-filter/payment-filter.co
 import { ShowPaymentComponent } from './payments/adjust-payment/show-payment/show-payment.component';
 import { AdjustPaymentUpdateComponent } from '../core/adjust-payment-update/adjust-payment-update.component';
 import { RolePermissionDialogComponent } from '../core/dialogBox/settings/role-permission-dialog/role-permission-dialog.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { OtpComponent } from './otp/otp.component';
+import { ReEnterpasswordComponent } from './re-enterpassword/re-enterpassword.component';
 
 @NgModule({
   declarations: [
@@ -182,7 +185,10 @@ import { RolePermissionDialogComponent } from '../core/dialogBox/settings/role-p
     PaymentFilterComponent,
     ShowPaymentComponent,
     AdjustPaymentUpdateComponent,
-    RolePermissionDialogComponent
+    RolePermissionDialogComponent,
+    ForgotpasswordComponent,
+    OtpComponent,
+    ReEnterpasswordComponent
   ],
   imports: [
     CommonModule,

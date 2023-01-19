@@ -32,6 +32,8 @@ import { CollectionReportComponent } from './reports/collection-report/collectio
 import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
 import { HistoryComponent } from './connection/alter-connection/history/history.component';
 import { AdjustPaymentComponent } from './payments/adjust-payment/adjust-payment.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { OtpComponent } from './otp/otp.component';
 
 const routes: Routes = [
   {
