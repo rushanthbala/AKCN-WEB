@@ -5,7 +5,7 @@
           <form
             class="register-form"
             [formGroup]="loginForm"
-            (ngSubmit)="login()"
+            (ngSubmit)="otp()"
           >
             <img
               src="../../assets/icons/logo1.png"
@@ -34,10 +34,13 @@
                   <div *ngIf="f['email'].errors['required']">
                     Fill The Field
                   </div>
-                </div>
-                <div class="container-3">
-                    <a routerLink="/" class="link-primary">Resend</a>
+                  <div *ngIf="f['email'].errors['minlength']">
+                    Check your otp
                   </div>
+                  <div *ngIf="f['email'].errors['maxlength']">
+                    Check your otp
+                  </div>
+                </div>
             </div>
             <br />
             <div class="mb-3">
@@ -45,6 +48,9 @@
                 Submit
               </button>
               <br>
+              <div class="container-3 mt-4">
+                <a class="link-primary" (click)="reSend()">Resend OTP</a>
+              </div>
             </div>
             <!-- <div class="mb-3" *ngIf="loading">
               <button type="submit" class="btn btn-primary form-btn" disabled>

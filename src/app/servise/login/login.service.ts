@@ -19,9 +19,16 @@ export class LoginService {
   };
   constructor(private _http: HttpClient) {}
 
+  //post
   postValue(url: String, data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' };
     // console.log(this._http.put(this.apiURL + url, data, { headers: headers }));
     return this._http.post(this.apiURL + url, data, { headers: headers });
+  }
+   // put
+   putValue(url: String, data: any): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    // console.log(this._http.put(this.apiURL + url, data, { headers: headers }));
+    return this._http.put(this.apiURL + url, data, { headers: headers });
   }
 }

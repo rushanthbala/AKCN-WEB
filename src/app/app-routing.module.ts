@@ -22,11 +22,11 @@ const routes: Routes = [
     component:ForgotpasswordComponent
   },
   {
-    path:'otp',
+    path:'otp/:phone',
     component:OtpComponent
   },
   {
-    path:'reEnterPassword',
+    path:'reEnterPassword/:phone/:otp',
     component:ReEnterpasswordComponent
   },
   {
