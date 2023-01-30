@@ -46,7 +46,9 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   chackRequest: FormGroup | any;
   ngOnInit(): void {
     this.initialReconnectionForm();
-    this.getAll();
+    setTimeout(() => {
+      this.getAll();
+    });
   }
   constructor(
     public dialogRef: MatDialogRef<AssignTicketRequestDilogComponent>,

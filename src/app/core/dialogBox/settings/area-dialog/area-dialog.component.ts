@@ -29,7 +29,9 @@ export class AreaDialogComponent implements OnInit {
   branchArray: any;
   submitted = false
   ngOnInit(): void {
-    this.getAll()
+    setTimeout(() => {
+      this.getAll();
+    });
     if(this.data.sendtype=="POST"){
       // alert("cool")
       this.ifData=false

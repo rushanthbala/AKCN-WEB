@@ -42,7 +42,9 @@ export class UserPostPut implements OnInit {
   submitted = false;
 
   ngOnInit(): void {
-    this.getAll();
+    setTimeout(() => {
+      this.getAll();
+    });
     if (this.data.sendtype == 'POST') {
       // alert("cool")
       this.ifData = false;
@@ -68,7 +70,6 @@ export class UserPostPut implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-
     // this.chackRequest = this.fb.group({
     //   firstName: new FormControl('', [Validators.required]),
     //   lastName: new FormControl('', [Validators.required]),
@@ -79,18 +80,33 @@ export class UserPostPut implements OnInit {
     //   cpassword: new FormControl('', [Validators.required]),
     // });
 
-    this.chackRequest = this.fb.group({
-      firstName: this.ifData ? this.currentData.firstName : new FormControl('', [Validators.required]),
-      lastName: this.ifData ? this.currentData.lastName : new FormControl('', [Validators.required]),
-      email: this.ifData ? this.currentData.email : new FormControl('', [Validators.required, Validators.email]),
-      primaryPhone: this.ifData ? this.currentData.primaryPhone : new FormControl('', [Validators.required]),
-      password: this.ifData ? this.currentData.password : new FormControl('', [Validators.required]),
-      role: this.ifData ? this.currentData.roleID : new FormControl(null, [Validators.required]), 
-      cpassword: new FormControl('', [Validators.required]),
-      // branch: this.ifData ? this.currentData.branchID : null,
-    }, {
-      validators: [Validation.match('password', 'cpassword')],
-    });
+    this.chackRequest = this.fb.group(
+      {
+        firstName: this.ifData
+          ? this.currentData.firstName
+          : new FormControl('', [Validators.required]),
+        lastName: this.ifData
+          ? this.currentData.lastName
+          : new FormControl('', [Validators.required]),
+        email: this.ifData
+          ? this.currentData.email
+          : new FormControl('', [Validators.required, Validators.email]),
+        primaryPhone: this.ifData
+          ? this.currentData.primaryPhone
+          : new FormControl('', [Validators.required]),
+        password: this.ifData
+          ? this.currentData.password
+          : new FormControl('', [Validators.required]),
+        role: this.ifData
+          ? this.currentData.roleID
+          : new FormControl(null, [Validators.required]),
+        cpassword: new FormControl('', [Validators.required]),
+        // branch: this.ifData ? this.currentData.branchID : null,
+      },
+      {
+        validators: [Validation.match('password', 'cpassword')],
+      }
+    );
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -122,7 +138,7 @@ export class UserPostPut implements OnInit {
 
     if (!this.chackRequest.valid) {
       // this.isEmpty();
-     
+
       return;
     } else {
       this.loading = true;

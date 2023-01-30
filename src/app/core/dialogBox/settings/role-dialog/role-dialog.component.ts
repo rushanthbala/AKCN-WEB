@@ -1,6 +1,12 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -29,9 +35,11 @@ export class RoleDialogComponent implements OnInit {
   public currentData: any = {};
 
   chackRequest: FormGroup | any;
-  submitted = false
+  submitted = false;
   ngOnInit(): void {
-    this.getAll();
+    setTimeout(() => {
+      this.getAll();
+    });
     if (this.data.sendtype == 'POST') {
       // alert("cool")
       this.ifData = false;
@@ -57,9 +65,10 @@ export class RoleDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-
     this.chackRequest = this.fb.group({
-      role: this.ifData ? this.currentData.role : new FormControl('', [Validators.required]),
+      role: this.ifData
+        ? this.currentData.role
+        : new FormControl('', [Validators.required]),
       // lastName: this.ifData ?this.currentData.lastName: "",
     });
   }
@@ -72,28 +81,28 @@ export class RoleDialogComponent implements OnInit {
     this.submitted = true;
     let datas = {
       role: this.chackRequest.value.role,
-      id:this.chackRequest.value.id
+      id: this.chackRequest.value.id,
     };
     let sendObj = {
-      "role": datas.role,
-      "id":datas.id
+      role: datas.role,
+      id: datas.id,
     };
 
     if (!this.chackRequest.valid) {
       // this.isEmpty();
-     
+
       return;
-    }else{
-      this.loading = true
-      if(this.data.sendtype == 'POST'){
-        this.postMethod(sendObj)
-      } else{
-        this.putMethod(sendObj)
+    } else {
+      this.loading = true;
+      if (this.data.sendtype == 'POST') {
+        this.postMethod(sendObj);
+      } else {
+        this.putMethod(sendObj);
       }
     }
   }
 
-  postMethod(sendObj: any){
+  postMethod(sendObj: any) {
     this.dataServise.postValue(`userrole`, sendObj).subscribe(
       (res: any) => {
         if (res.errorMessage) {
@@ -110,21 +119,23 @@ export class RoleDialogComponent implements OnInit {
     );
   }
 
-  putMethod(sendObj:any){
-    this.dataServise.putValue(`userrole/${this.currentData.id}`, sendObj).subscribe(
-      (res: any) => {
-        if (res.errorMessage) {
+  putMethod(sendObj: any) {
+    this.dataServise
+      .putValue(`userrole/${this.currentData.id}`, sendObj)
+      .subscribe(
+        (res: any) => {
+          if (res.errorMessage) {
+            this.loading = false;
+          } else {
+            this.showSuccess();
+            this.loading = false;
+          }
+        },
+        (e) => {
           this.loading = false;
-        } else {
-          this.showSuccess();
-          this.loading = false;
+          this.showError();
         }
-      },
-      (e) => {
-        this.loading = false;
-        this.showError();
-      }
-    );
+      );
   }
 
   getAll() {

@@ -17,8 +17,6 @@ export class FilterBoxComponent implements OnInit {
   loginForm: FormGroup | any;
   submitted = false
 
-  filter = 'Connection Id'
-
   ngOnInit(): void {
     this.initialForm();
 
@@ -26,7 +24,7 @@ export class FilterBoxComponent implements OnInit {
   initialForm() {
     this.loginForm = this.fb.group({
       searchinginput: ['', Validators.required],
-      type: ['', Validators.required],
+      type: ['Connection Id', Validators.required],
     });
   }
 

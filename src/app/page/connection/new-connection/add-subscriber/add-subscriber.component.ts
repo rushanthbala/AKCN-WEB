@@ -7,20 +7,20 @@ import { HttpService } from 'src/app/servise/http/http.service';
 @Component({
   selector: 'app-add-subscriber',
   templateUrl: './add-subscriber.component.html',
-  styleUrls: ['./add-subscriber.component.scss']
+  styleUrls: ['./add-subscriber.component.scss'],
 })
 export class AddCSubsciberComponent implements OnInit {
   @Input() object: object | any;
-  @Output() OnClick = new EventEmitter<any>()
+  @Output() OnClick = new EventEmitter<any>();
   public areaArray: any = [];
   public roadArray: any = [];
   public technicianArray: any = [];
   public BranchArray: any = [];
 
-  public roadId: any
-  public areaId: any
-  public technicianId: any
-  public branchId: any
+  public roadId: any;
+  public areaId: any;
+  public technicianId: any;
+  public branchId: any;
 
   errmsg = '';
   sucmsg = '';
@@ -29,7 +29,9 @@ export class AddCSubsciberComponent implements OnInit {
   userForm: FormGroup | any;
   submitted = false;
   ngOnInit(): void {
-    this.getAll()
+    setTimeout(() => {
+      this.getAll();
+    });
   }
   getAll() {
     // get roadArray
@@ -46,22 +48,20 @@ export class AddCSubsciberComponent implements OnInit {
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
     });
-
   }
-
 
   onSelect(val: any) {
-    this.roadId = val
+    this.roadId = val;
   }
   onSelectBranch(val: any) {
-    this.branchId = val
+    this.branchId = val;
   }
 
   onSelectarea(val: any) {
-    this.areaId = val
+    this.areaId = val;
   }
   onSelectTechnician(val: any) {
-    this.technicianId = val
+    this.technicianId = val;
   }
 
   public checkErrorUserForm = (controlName: string, errorName: string) => {
@@ -69,36 +69,38 @@ export class AddCSubsciberComponent implements OnInit {
   };
   onSubmit(values: any) {
     // console.log(values, "ASAS");
-
   }
-  constructor(private fb: FormBuilder, public dataServise: HttpService, private toastr: ToastrService,
+  constructor(
+    private fb: FormBuilder,
+    public dataServise: HttpService,
+    private toastr: ToastrService
   ) {
+    this.userForm = this.fb.group(
+      {
+        subscriberNIC: ['', Validators.required],
+        primaryPhone: ['', Validators.required],
+        secondaryPhone: '',
+        email: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        type: ['Normal', Validators.required],
+        TV: ['', Validators.required],
+        OldID: '',
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        cPassword: ['', Validators.required],
 
-    this.userForm = this.fb.group({
-
-      subscriberNIC: ['', Validators.required],
-      primaryPhone: ['', Validators.required],
-      secondaryPhone: '',
-      email: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      type: ['Normal', Validators.required],
-      TV: ['', Validators.required],
-      OldID: '',
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      cPassword: ['', Validators.required],
-
-
-      ConnectionAddress: ['', Validators.required],
-      ConnectionDate: ['', Validators.required],
-      Arrears: ['', Validators.required],
-      ConnectionFee: ['', Validators.required],
-
-
-    }, { validator: this.passwordMatchValidator });
+        ConnectionAddress: ['', Validators.required],
+        ConnectionDate: ['', Validators.required],
+        Arrears: ['', Validators.required],
+        ConnectionFee: ['', Validators.required],
+      },
+      { validator: this.passwordMatchValidator }
+    );
   }
   passwordMatchValidator(frm: FormGroup) {
-    return frm.controls['password'].value === frm.controls['cPassword'].value ? null : { 'mismatch': true };
+    return frm.controls['password'].value === frm.controls['cPassword'].value
+      ? null
+      : { mismatch: true };
   }
   inputset: FormGroup | any;
   addEventClick() {
@@ -114,8 +116,8 @@ export class AddCSubsciberComponent implements OnInit {
         firstName: this.userForm.value.firstName,
         lastName: this.userForm.value.lastName,
         hash: this.userForm.value.password,
-        "ppVerified": 1,
-      }
+        ppVerified: 1,
+      };
     } else {
       data = {
         subscriberNIC: this.userForm.value.subscriberNIC,
@@ -124,16 +126,19 @@ export class AddCSubsciberComponent implements OnInit {
         firstName: this.userForm.value.firstName,
         lastName: this.userForm.value.lastName,
         hash: this.userForm.value.password,
-        "ppVerified": 1,
-      }
+        ppVerified: 1,
+      };
     }
 
-
-    var checkData: boolean = this.technicianId == "" || this.technicianId == undefined ||
-      this.roadId == "" || this.roadId == undefined ||
-      this.areaId == "" || this.areaId == undefined ||
-      this.branchId == "" || this.branchId == undefined
-
+    var checkData: boolean =
+      this.technicianId == '' ||
+      this.technicianId == undefined ||
+      this.roadId == '' ||
+      this.roadId == undefined ||
+      this.areaId == '' ||
+      this.areaId == undefined ||
+      this.branchId == '' ||
+      this.branchId == undefined;
 
     if (this.userForm.valid && !checkData) {
       this.dataServise.postValue('auth/register', data).subscribe(
@@ -142,7 +147,7 @@ export class AddCSubsciberComponent implements OnInit {
             this.errmsg = res.message || 'Something Went wrong.';
             this.loading = false;
           } else {
-            var cid = res.msg.id
+            var cid = res.msg.id;
             let obj = {
               connectionType: this.userForm.value.type,
               tvCount: this.userForm.value.TV,
@@ -155,46 +160,40 @@ export class AddCSubsciberComponent implements OnInit {
               ConnectionFee: this.userForm.value.ConnectionFee,
               roadId: 1,
               customerID: cid,
-              "status": "Active",
-              "connectedDate": this.userForm.value.ConnectionDate,
-              "connectionStatus": "ACTIVE",
-              "actionDate": this.userForm.value.ConnectionDate,
-              branchID: this.branchId
-            }
-
-
+              status: 'Active',
+              connectedDate: this.userForm.value.ConnectionDate,
+              connectionStatus: 'ACTIVE',
+              actionDate: this.userForm.value.ConnectionDate,
+              branchID: this.branchId,
+            };
 
             this.dataServise.postValue('connection', obj).subscribe(
               (res: any) => {
-
                 if (res.errorMessage) {
                   this.errmsg = res.message || 'Something Went wrong.';
                   this.loading = false;
                 } else {
                   this.sucmsg = res.message || 'sucessfull !!.';
-                  this.showSuccess()
+                  this.showSuccess();
                   this.loading = false;
-                  this.OnClick.emit()
+                  this.OnClick.emit();
                 }
               },
               (e) => {
                 this.loading = false;
-                this.showError()
+                this.showError();
               }
             );
           }
         },
         (e) => {
           this.loading = false;
-          this.showError()
+          this.showError();
         }
       );
     } else {
-      this.isEmpty()
-
+      this.isEmpty();
     }
-
-
   }
   showSuccess() {
     this.toastr.success('Sucessfully Created', 'Sucessfully');
@@ -205,5 +204,4 @@ export class AddCSubsciberComponent implements OnInit {
   isEmpty() {
     this.toastr.error('Please fill out all field', 'Error');
   }
-
 }

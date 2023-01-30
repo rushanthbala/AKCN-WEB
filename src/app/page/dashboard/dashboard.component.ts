@@ -193,7 +193,6 @@ export class DashboardComponent implements OnInit {
     }
     this.maxDate = year + '-' + month + '-' + todayDate; //2022-12-31
     this.currentMonth = year + '-' + month + '-' + '01';
-    // console.log(this.currentMonth , 'fddfdfd')
   }
 
   // daily
@@ -203,7 +202,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.collectionData = res;
-          console.log(this.collectionData.collection, '1');
         },
         (err) => {
           console.log(err);
@@ -216,7 +214,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.dailyConnection = res;
-          console.log(this.dailyConnection.connectionCount, '2');
         },
         (err) => {
           console.log(err);
@@ -229,7 +226,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.connectionData = res;
-          console.log(this.connectionData.reconnection, '3');
         },
         (err) => {
           console.log(err);
@@ -242,7 +238,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.locationChange = res;
-          console.log(this.locationChange.reconnection, '4');
         },
         (err) => {
           console.log(err);
@@ -257,7 +252,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.monthlyConnectionData = res;
-          console.log(this.monthlyConnectionData.collection, '1 1');
         },
         (err) => {
           console.log(err);
@@ -270,7 +264,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.monthlyNewConnectionData = res;
-          console.log(this.monthlyNewConnectionData.connectionCount, '1 2');
         },
         (err) => {
           console.log(err);
@@ -283,7 +276,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.monthylReconnectionData = res;
-          console.log(this.monthylReconnectionData.reconnection, '1 3');
         },
         (err) => {
           console.log(err);
@@ -296,7 +288,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.montlhyLocationChangeData = res;
-          console.log(this.montlhyLocationChangeData.reconnection, '1 4');
         },
         (err) => {
           console.log(err);
@@ -311,7 +302,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.todayData = res;
-          console.log(this.todayData, '3 1');
           this.dataSource = new MatTableDataSource(this.todayData);
           setTimeout(() => {
             this.dataSource.paginator = this.paginator;
@@ -328,17 +318,13 @@ export class DashboardComponent implements OnInit {
     this.dataService.getData(`dashboard/monthlyGraph`).subscribe(
       (res) => {
         this.annualReportData = res.slice(-12);
-        console.log(this.annualReportData, '2 1');
         if (this.annualReportData != null) {
           for (let i = 0; i < this.annualReportData.length; i++) {
-            // console.log(this.annualReportData[i], 'eeee')
-            // console.log(this.annualReportData[i].month, 'llll')
             this.labledata?.push(
               this.annualReportData[i].month.substring(0, 3)
             );
             this.realdata?.push(this.annualReportData[i].totalAmount);
           }
-          // console.log(this.labledata, this.realdata, 'aaaaaaa')
           this.renderChart(this.labledata, this.realdata);
         }
       },
@@ -348,7 +334,6 @@ export class DashboardComponent implements OnInit {
     );
   }
   getDate(event: any) {
-    console.log(event);
     var selectDate = event?.getDate();
     if (selectDate < 10) {
       selectDate = '0' + selectDate;
@@ -359,19 +344,15 @@ export class DashboardComponent implements OnInit {
       selectMonth = '0' + selectMonth;
     }
     this.selected = selectYear + '-' + selectMonth + '-' + selectDate;
-    console.log(this.selected);
 
     this.selectedForMonthly = selectYear + '-' + selectMonth + '-' + '01';
-    console.log(this.selectedForMonthly)
 
     //collection
-    // console.log(this.submitForm.value, 'ddddd')
     this.dataService
       .getData(`dashboard/getDailyCollections/${this.selected}`)
       .subscribe(
         (res) => {
           this.collectionData = res;
-          console.log(this.collectionData.collection, '1');
         },
         (err) => {
           console.log(err);
@@ -384,7 +365,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.dailyConnection = res;
-          console.log(this.dailyConnection.connectionCount, '22');
         },
         (err) => {
           console.log(err);
@@ -397,7 +377,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.connectionData = res;
-          console.log(this.connectionData.reconnection, '33');
         },
         (err) => {
           console.log(err);
@@ -410,7 +389,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.locationChange = res;
-          console.log(this.locationChange.reconnection, '44');
         },
         (err) => {
           console.log(err);

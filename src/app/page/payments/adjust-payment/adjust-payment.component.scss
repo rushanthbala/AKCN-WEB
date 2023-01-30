@@ -90,7 +90,6 @@
   .mat-table {
     background-color: #fff;
     box-shadow: none;
-    overflow: auto;
     max-height: 500px;
     width: 100%;
   }
@@ -125,7 +124,7 @@
   .mat-cell:last-of-type,
   .mat-header-cell:last-of-type,
   .mat-footer-cell:last-of-type {
-    padding-right: 0px;
+    padding-right: 50px;
   }
   td:first-child {
     border-left-style: solid;

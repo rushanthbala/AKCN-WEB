@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, VERSION, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  VERSION,
+  ViewChild,
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -70,9 +76,11 @@ export class CollectionReportUpdateComponent {
   loginForm: FormGroup | any;
 
   ngOnInit(): void {
-    
-    this.getAll();
-    this. futureDateDisable()
+    setTimeout(() => {
+      this.getAll();
+    });
+
+    this.futureDateDisable();
   }
   getAll() {
     // get TechnicianArray
@@ -94,10 +102,13 @@ export class CollectionReportUpdateComponent {
   }
 
   initialForm() {
-    this.loginForm = this.fb.group({
-      fromdate: new FormControl('', [Validators.required]),
-      todate: new FormControl('', [Validators.required]),
-    }, {validator: this.dateLessThan('fromdate', 'todate')});
+    this.loginForm = this.fb.group(
+      {
+        fromdate: new FormControl('', [Validators.required]),
+        todate: new FormControl('', [Validators.required]),
+      },
+      { validator: this.dateLessThan('fromdate', 'todate') }
+    );
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -105,20 +116,19 @@ export class CollectionReportUpdateComponent {
   }
 
   dateLessThan(from: string, to: string) {
-    return (group: FormGroup): {[key: string]: any} => {
-     let f = group.controls[from];
-     let t = group.controls[to];
-     if (f.value > t.value) {
-       return {
-         dates: "From date should be less than to date"
-       };
-     }
-     return {};
-    }
+    return (group: FormGroup): { [key: string]: any } => {
+      let f = group.controls[from];
+      let t = group.controls[to];
+      if (f.value > t.value) {
+        return {
+          dates: 'From date should be less than to date',
+        };
+      }
+      return {};
+    };
   }
 
-  searching() {
-  }
+  searching() {}
   onChangeObjBranch(newObj: any) {
     this.BranchName = newObj.branchName;
     this.BranchId = newObj.id;
@@ -131,17 +141,17 @@ export class CollectionReportUpdateComponent {
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
 
-    if (fromdate == "" || todate == "") {
+    if (fromdate == '' || todate == '') {
       this.isEmpty();
       this.loading = false;
-    }else if(!this.loginForm.valid){
+    } else if (!this.loginForm.valid) {
       this.showmsg();
       this.loading = false;
     }
     // if(!this.loginForm.valid){
     //   this.loading = false;
     //   return
-    // } 
+    // }
     else {
       this.OnClick.emit({
         fromdate: fromdate,
@@ -160,22 +170,21 @@ export class CollectionReportUpdateComponent {
   isEmpty() {
     this.toastr.error('Fill All The Field', 'Error');
   }
-  showmsg(){
-    this.toastr.error('From date must be less than to date', 'Error')
+  showmsg() {
+    this.toastr.error('From date must be less than to date', 'Error');
   }
-  futureDateDisable(){
-    var date :any = new Date();
+  futureDateDisable() {
+    var date: any = new Date();
     var todayDate: any = date.getDate();
     var month: any = date.getMonth() + 1;
     var year: any = date.getFullYear();
 
-    if(todayDate < 10){
-      todayDate = "0" + todayDate; //1,2..9
+    if (todayDate < 10) {
+      todayDate = '0' + todayDate; //1,2..9
     }
-    if(month < 10){
-      month = "0" + month;
+    if (month < 10) {
+      month = '0' + month;
     }
-    this.maxDate = year + "-" + month + "-" + todayDate;  //2022-12-31
-
+    this.maxDate = year + '-' + month + '-' + todayDate; //2022-12-31
   }
 }

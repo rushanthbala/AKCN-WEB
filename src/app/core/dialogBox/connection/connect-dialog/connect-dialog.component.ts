@@ -27,7 +27,9 @@ export class ConnectDialogComponent implements OnInit {
   chackRequest: FormGroup | any;
   ngOnInit(): void {
     this.initialReconnectionForm();
-    this.getAll()
+    setTimeout(() => {
+      this.getAll();
+    });
   }
   constructor(
     public dialogRef: MatDialogRef<ConnectDialogComponent>,

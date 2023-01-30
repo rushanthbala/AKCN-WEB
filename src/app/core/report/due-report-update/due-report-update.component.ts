@@ -1,5 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  AbstractControl,
+  Validators,
+} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -40,7 +46,7 @@ export class DueReportUpdateComponent implements OnInit {
 
   public minAmount: any;
 
-  submitted = false
+  submitted = false;
 
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
@@ -78,7 +84,9 @@ export class DueReportUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialForm();
-    this.getAll();
+    setTimeout(() => {
+      this.getAll();
+    });
   }
   getAll() {
     this.StatusArray = [
@@ -176,7 +184,7 @@ export class DueReportUpdateComponent implements OnInit {
   isEmpty() {
     this.toastr.error('Fill All The Field', 'Error');
   }
-  showmsg(){
-    this.toastr.error(`Can't be All fields are All`, 'Error')
+  showmsg() {
+    this.toastr.error(`Can't be All fields are All`, 'Error');
   }
 }

@@ -28,7 +28,9 @@ export class BranchDialogComponent implements OnInit {
   chackRequest: FormGroup | any;
   submitted = false
   ngOnInit(): void {
-    this.getAll()
+    setTimeout(() => {
+      this.getAll();
+    });
     if(this.data.sendtype=="POST"){
       // alert("cool")
       this.ifData=false

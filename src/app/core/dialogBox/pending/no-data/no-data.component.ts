@@ -1,16 +1,19 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
   selector: 'app-no-data',
   templateUrl: './no-data.component.html',
-  styleUrls: ['./no-data.component.scss']
+  styleUrls: ['./no-data.component.scss'],
 })
 export class NoDataComponent implements OnInit {
-
   public loading: Boolean = true;
   public areaArray: any = [];
   public roadArray: any = [];
@@ -18,24 +21,24 @@ export class NoDataComponent implements OnInit {
 
   public roadId: any = 'Road';
   public areaId: any = 'Area';
-  public  TechnicianId: any = 'Technician';
-  suburl2: string = "area"
-  suburl1: string = "road"
-
+  public TechnicianId: any = 'Technician';
+  suburl2: string = 'area';
+  suburl1: string = 'road';
 
   chackRequest: FormGroup | any;
   ngOnInit(): void {
     //    this.initialReconnectionForm();
-    this.getAll()
+    setTimeout(() => {
+      this.getAll();
+    });
   }
   constructor(
     public dialogRef: MatDialogRef<NoDataComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService,
-
-  ) { }
+    private toastr: ToastrService
+  ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -49,11 +52,14 @@ export class NoDataComponent implements OnInit {
     let data = {
       phoneNumber: this.chackRequest.value.phoneNumber,
       address: this.chackRequest.value.address,
-      roadId:this.roadId,
-      areaId:this.areaId
+      roadId: this.roadId,
+      areaId: this.areaId,
     };
-    if (this.chackRequest.value.phoneNumber == "" || this.chackRequest.value.address == "" ||
-      this.roadId == "Road" || this.areaId == "Area"
+    if (
+      this.chackRequest.value.phoneNumber == '' ||
+      this.chackRequest.value.address == '' ||
+      this.roadId == 'Road' ||
+      this.areaId == 'Area'
     ) {
       this.isEmpty();
     } else {
@@ -62,7 +68,7 @@ export class NoDataComponent implements OnInit {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            this.showSuccess()
+            this.showSuccess();
             this.loading = false;
           }
         },
@@ -81,7 +87,7 @@ export class NoDataComponent implements OnInit {
   }
 
   onSelect(val: any) {
-    this.TechnicianId = val
+    this.TechnicianId = val;
   }
   showSuccess() {
     this.toastr.success('Sucessfully Login', 'Sucessfully');

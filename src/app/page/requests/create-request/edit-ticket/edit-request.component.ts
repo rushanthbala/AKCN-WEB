@@ -50,7 +50,6 @@ export class EditRequestComponent implements OnInit {
       // this.userData = res;
       // this.tableResult = this.userData.length
       // this.isFetchDataFail = false
-      console.log(res,"ressss");
       
       var allRequest: any = []
       allRequest = res
