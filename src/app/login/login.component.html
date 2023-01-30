@@ -33,20 +33,33 @@
             <input
               type="password"
               class="input-core"
-              id="exampleInputPassword1"
+              id="exampleInputPassword"
               placeholder="Password"
               formControlName="password"
               required
             />
+            <!-- <input
+              _ngcontent-jub-c52
+              type="password"
+              id="exampleInputPassword"
+              placeholder="Password"
+              formcontrolname="password"
+              required
+              class="input-core ng-untouched ng-pristine ng-invalid"
+              ng-reflect-required
+              ng-reflect-name="password"
+            /> -->
           </div>
           <br />
           <div class="mb-3">
             <button type="submit" class="btn btn-primary form-btn">
               Login
             </button>
-            <br>
+            <br />
             <div class="container-3 mt-4">
-              <a routerLink="/forgotpassword" class="link-primary">Forgot Password</a>
+              <a routerLink="/forgotpassword" class="link-primary"
+                >Forgot Password</a
+              >
             </div>
           </div>
           <!-- <div class="mb-3" *ngIf="loading">
@@ -61,7 +74,7 @@
           src="../../assets/login.png"
           alt="Login image"
           class="img-fluid"
-          style="object-fit: cover;"
+          style="object-fit: cover"
         />
       </div>
     </div>

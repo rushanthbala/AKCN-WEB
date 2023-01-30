@@ -107,20 +107,13 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
     const onlyNameAndSymbolArr: Partial<TicketElement>[] =
       this.dataSource.filteredData.map((x: TicketElement) => ({
         connectionID: x.connectionID,
-        ticketID: x.ticketID,
-        createdBy: x.createdBy,
-        assignedTo: x.assignedTo,
-        assignedToID: x.assignedToID,
-        updatedBy: x.updatedBy,
-        subject: x.subject,
-        description: x.description,
-        reason: x.reason,
-        phone: x.phone,
-        status: x.status,
-        createdAt: x.createdAt,
-        updatedAt: x.updatedAt,
+        firstName:x.firstName,
+        primaryPhone:x.primaryPhone,
+        connectionAddress:x.connectionAddress,
+        actionDate:x.actionDate,
+        status: x.status
       }));
-    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'ExampleArray');
+    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'all-connection');
     // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
@@ -137,10 +130,25 @@ export class AllConnectionComponent implements AfterViewInit, OnInit {
     //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
     //   PDF.save('angular-demo.pdf');
     // });
+
+    let date : any = new Date();
+    let year : any = date.getFullYear();
+    let month : any = date.getMonth() + 1;
+    let todayDate : any = date.getDate();
+
+    if(month < 10){
+      month = '0' + month;
+    }
+    if(todayDate < 10){
+      todayDate = '0' + todayDate;
+    }
+
+    var output = year + "-" + month + "-" + todayDate;
+
     let doc = new jsPDF();
-    doc.text("All Connection Details", 80, 10)
+    doc.text("All Connection Details  "+ output, 75, 10)
     autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
-    doc.save('all-connection')
+    doc.save('all-connection '+ output)
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -164,19 +172,10 @@ export interface PeriodicElement {
   symbol: string;
 }
 export interface TicketElement {
-  id: number;
+  actionDate: string;
+  connectionAddress: string;
+  primaryPhone: number;
+  firstName: string;
   connectionID: number;
-  ticketID: string;
-  createdBy: string;
-  assignedTo: string;
-  assignedToID: string;
-  updatedBy: string;
-  subject: string;
-  description: string;
-  reason: string;
-  phone: string;
   status: string;
-  createdAt: string;
-  updatedAt: string;
-  closedAt: string;
 }

@@ -1,9 +1,22 @@
 import * as XLSX from 'xlsx';
 
 const getFileName = (name: string) => {
-  let timeSpan = new Date().toISOString();
+  let date : any = new Date();
+    let year : any = date.getFullYear();
+    let month : any = date.getMonth() + 1;
+    let todayDate : any = date.getDate();
+
+    if(month < 10){
+      month = '0' + month;
+    }
+    if(todayDate < 10){
+      todayDate = '0' + todayDate;
+    }
+
+    var output = year + "-" + month + "-" + todayDate;
+
   let sheetName = name || 'ExportResult';
-  let fileName = `${sheetName}-${timeSpan}`;
+  let fileName = `${sheetName}-${output}`;
   return {
     sheetName,
     fileName,

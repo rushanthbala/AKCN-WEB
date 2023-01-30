@@ -153,7 +153,7 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
         createdAt: x.createdAt,
         updatedAt: x.updatedAt,
       }));
-    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'CancelledRequest');
+    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'cancel-request');
     // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
@@ -170,10 +170,25 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
     //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
     //   PDF.save('cancel-request.pdf');
     // });
+
+    let date : any = new Date();
+    let year : any = date.getFullYear();
+    let month : any = date.getMonth() + 1;
+    let todayDate : any = date.getDate();
+
+    if(month < 10){
+      month = '0' + month;
+    }
+    if(todayDate < 10){
+      todayDate = '0' + todayDate;
+    }
+
+    var output = year + "-" + month + "-" + todayDate;
+
     let doc = new jsPDF();
-    doc.text("Cancel Requests", 80, 10)
+    doc.text("Cancel Requests  "+ output, 75, 10)
     autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
-    doc.save('cancel-request')
+    doc.save('cancel-request ' + output)
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
