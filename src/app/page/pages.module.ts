@@ -99,6 +99,9 @@ import { RolePermissionDialogComponent } from '../core/dialogBox/settings/role-p
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { OtpComponent } from './otp/otp.component';
 import { ReEnterpasswordComponent } from './re-enterpassword/re-enterpassword.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileDetailsComponent } from '../core/profile-details/profile-details.component';
+import { ProfilePasswordComponent } from '../core/profile-password/profile-password.component';
 
 @NgModule({
   declarations: [
@@ -188,7 +191,10 @@ import { ReEnterpasswordComponent } from './re-enterpassword/re-enterpassword.co
     RolePermissionDialogComponent,
     ForgotpasswordComponent,
     OtpComponent,
-    ReEnterpasswordComponent
+    ReEnterpasswordComponent,
+    ProfileComponent,
+    ProfileDetailsComponent,
+    ProfilePasswordComponent
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileDetailsComponent } from '../core/profile-details/profile-details.component';
 // import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
@@ -410,6 +412,9 @@ export class PagesComponent implements OnInit {
         document.exitFullscreen();
       }
     }
+  }
+  Profile(){
+    this.router.navigate(['/auth/profile'])
   }
 }
 

@@ -34,6 +34,7 @@ import { HistoryComponent } from './connection/alter-connection/history/history.
 import { AdjustPaymentComponent } from './payments/adjust-payment/adjust-payment.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { OtpComponent } from './otp/otp.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -166,6 +167,10 @@ const routes: Routes = [
       {
         path:'alter-connection/history/:id',
         component:HistoryComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
       }
     ],
   },

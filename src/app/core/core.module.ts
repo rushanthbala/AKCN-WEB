@@ -26,11 +26,13 @@ import { UnpaidReportTableComponent } from './reportTable/unpaid-report-table/un
 import { PaymentFilterComponent } from './payment-filter/payment-filter.component';
 import { UpdatePaymentComponent } from './payment/update-payment/update-payment.component';
 import { AdjustPaymentUpdateComponent } from './adjust-payment-update/adjust-payment-update.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { ProfilePasswordComponent } from './profile-password/profile-password.component';
 
 @NgModule({
   declarations: [DialogBoxComponent, ExtraRequestDialogBoxComponent, ChangeRequestComponent, NavSideBarButtonComponent, 
     FilterBoxComponent, CustomButtonComponent, ChangeRequestComponent, ExtraRequestDialogBoxComponent, ConnectionSearchComponent,
-     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent, RoleDialogComponent, RoadDialogComponent, AreaDialogComponent, BranchDialogComponent, CollectionReportUpdateComponent, UnpaidReportUpdateComponent, CollectionReportTableComponent, DueReportTableComponent, UserReportTableComponent, UnpaidReportTableComponent, PaymentFilterComponent, UpdatePaymentComponent, AdjustPaymentUpdateComponent],
+     UpdateDataComponent, UserReportUpdateComponent, ReconnectDialogComponent, RoleDialogComponent, RoadDialogComponent, AreaDialogComponent, BranchDialogComponent, CollectionReportUpdateComponent, UnpaidReportUpdateComponent, CollectionReportTableComponent, DueReportTableComponent, UserReportTableComponent, UnpaidReportTableComponent, PaymentFilterComponent, UpdatePaymentComponent, AdjustPaymentUpdateComponent, ProfileDetailsComponent, ProfilePasswordComponent],
   imports: [CommonModule, BrowserModule],
   entryComponents: [CardTemplateComponent],
 })
