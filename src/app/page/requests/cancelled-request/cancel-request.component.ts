@@ -175,6 +175,9 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
     let year : any = date.getFullYear();
     let month : any = date.getMonth() + 1;
     let todayDate : any = date.getDate();
+    let hours: any = date.getHours();
+    let minutes: any = date.getMinutes();
+    let seconds: any = date.getSeconds();
 
     if(month < 10){
       month = '0' + month;
@@ -182,13 +185,23 @@ export class CancelledRequestComponent implements AfterViewInit, OnInit {
     if(todayDate < 10){
       todayDate = '0' + todayDate;
     }
+    if(hours<10){
+      hours = '0' + hours;
+    }
+    if(minutes < 10){
+      minutes = '0' + minutes;
+    }
+    if(seconds < 10){
+      seconds = '0' + seconds;
+    }
 
     var output = year + "-" + month + "-" + todayDate;
+    var output2 = hours + ":" + minutes + ":" + seconds;
 
     let doc = new jsPDF();
-    doc.text("Cancel Requests  "+ output, 75, 10)
+    doc.text("Cancel Requests/"+ output + '/' + output2, 60, 10)
     autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
-    doc.save('cancel-request ' + output)
+    doc.save('cancel-request ' + output + ' ' + output2)
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

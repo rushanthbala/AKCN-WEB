@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
       <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-        <p class="heading">Deatils</p>
+        <p class="heading">Type</p>
         <br />
         <div class="input-group mb-3">
           <div
@@ -62,14 +62,14 @@
                 class="form-control int"
                 id="phone"
                 placeholder="Phone Number"
-                formControlName="phone"
-                [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
+                value="{{currentUser?.phone}}"
+                [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
               />
               <div
-                *ngIf="submitted && f['lastName'].errors"
+                *ngIf="submitted && f['phone'].errors"
                 class="invalid-feedback"
               >
-                <div *ngIf="f['lastName'].errors['required']">Fill The Field</div>
+                <div *ngIf="f['phone'].errors['required']">Fill The Field</div>
               </div>
             </div>
             <div class="cus-int-div">

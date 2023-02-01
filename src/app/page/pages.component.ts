@@ -16,6 +16,7 @@ import { ProfileDetailsComponent } from '../core/profile-details/profile-details
 export class PagesComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+i: any;
   // responsive
   constructor(
     private observer: BreakpointObserver,
@@ -28,6 +29,7 @@ export class PagesComponent implements OnInit {
   public contentSubHeading: string = '';
   public navName: string = '';
   currentlyOpenedItemIndex = -1
+  admin: any;
   logout() {
     localStorage.clear();
     window.location.reload()
@@ -414,7 +416,13 @@ export class PagesComponent implements OnInit {
     }
   }
   Profile(){
-    this.router.navigate(['/auth/profile'])
+    // this.admin = localStorage.getItem('auth');
+    // console.log(this.admin[6])
+    // this.router.navigate([`/auth/profile/${this.admin[6]}`])
+    this.router.navigateByUrl(`/auth/profile`)
+    .then(() => this.router.navigated = false)
+    .then(() => this.router.navigate([`/auth/profile`]));
+    // window.location.reload();
   }
 }
 

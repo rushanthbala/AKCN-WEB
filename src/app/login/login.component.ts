@@ -9,6 +9,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
+import { StorageServiceService } from '../servise/storageService/storage-service.service';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,13 @@ import {
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  isLoggedIn= false;
   constructor(
     private fb: FormBuilder,
     public dataServise: LoginService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private storageService: StorageServiceService
   ) { }
   loginForm: FormGroup | any;
   errmsg = '';
@@ -28,6 +31,10 @@ export class LoginComponent implements OnInit {
   loading = false;
   ngOnInit(): void {
     this.initialForm();
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+      // this.roles = this.storageService.getUser().roles;
+    }
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -52,6 +59,7 @@ export class LoginComponent implements OnInit {
             this.errmsg = res.message || 'These credentials do not match !!.';
             this.loading = false;
           } else {
+            this.storageService.saveUser(data);
             localStorage.setItem('auth', JSON.stringify(res.message));
             this.sucmsg = res.message || 'sucessfull !!.';
             this.showSuccess()
