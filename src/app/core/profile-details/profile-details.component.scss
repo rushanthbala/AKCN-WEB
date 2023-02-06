@@ -41,6 +41,8 @@
 }
 .form-control {
   height: 30px;
+  max-width: 220px;
+  width: 100%;
 }
 .invalid-feedback {
   padding: 0px 0px 0px 10px;
@@ -140,11 +142,17 @@ tr:nth-child(even) {
   border-radius: 90px;
   color: #707070;
 }
-.cus-int-div {
-  max-width: 220px;
-  width: 100%;
-  margin: 0.8rem;
+.input-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // margin-top: -22%;
 }
+// .cus-int-div {
+//   // max-width: 220px;
+//   // width: 30%;
+//   // margin: 0.8rem;
+// }
 .main-input-content {
   max-width: 1000px;
   width: 100%;
@@ -153,4 +161,67 @@ tr:nth-child(even) {
   cursor: pointer;
   height: 40px;
   border-radius: 90px;
+}
+.container-1{
+  display: flex;
+  flex-direction: column;
+}
+.welcome-username{
+  // color: #8990ad;
+  font-size: 30px;
+  padding-left: 9px;
+  margin-top: -12px;
+}
+.main-user-avathar {
+  display: flex;
+  width: 100%;
+  max-width: 250px;
+  border-radius: 52px;
+  margin: 0px 20px;
+}
+@media(max-width: 900px){
+  .input-group{
+    align-items: center;
+  }
+}
+@media(max-width: 767px){
+  .input-group{
+    align-items: flex-start;
+    margin-left: 8%;
+  }
+}
+@media(max-width: 500px){
+  .input-group{
+    align-items: flex-start;
+    margin-left: 12%;
+  }
+}
+@media(max-width: 400px){
+  .input-group{
+    align-items: flex-start;
+    margin-left: 15%;
+  }
+}
+.user::before {
+  content: "First Name : ";
+  font-size: 14px;
+  color: #707070;
+}
+
+.from::before {
+  content: "Last Name : ";
+  font-size: 14px;
+  color: #707070;
+}
+
+.to::before {
+  content: "Email : ";
+  font-size: 14px;
+  color: #707070;
+}
+
+.phone::before{
+  content: "Phone Number : ";
+  font-size: 14px;
+  color: #707070;
 }

@@ -34,6 +34,12 @@ export class ProfileDetailsComponent {
   ngOnInit(): void {
     this.initialForm();
     this.getData();
+    // const Auth : any = localStorage.getItem("auth");
+    // const message = JSON.parse(Auth);
+    // const AdminId = message.id;
+    // const phone = message.phone;
+    // console.log(AdminId)
+    // console.log(phone)
   }
 
   initialForm() {
@@ -53,22 +59,8 @@ export class ProfileDetailsComponent {
     }
   }
   getData() {
-
-    this.currentUser = this.storageService.getUser();
-    // console.log(this.currentUser)
-
-    // var Auth = JSON.parse(localStorage.getItem('auth') || '{}');
-    // var JToken = Auth.token || '';
-    // let header = new HttpHeaders().set('Authorization', 'Bearer ' + JToken);
-
-    // this.dataservise
-    //   .getAllData(`admin`, { headers: header })
-    //   .subscribe((res) => {
-    //     this.currentUser = res;
-    //     // this.reloadPage();
-    //   });
-  }
-  reloadPage(){
-    window.location.reload()
+    const Auth: any = localStorage.getItem('auth')
+    this.currentUser = JSON.parse(Auth);
+    // console.log(this.currentUser, 'lllll')
   }
 }

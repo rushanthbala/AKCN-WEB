@@ -1,51 +1,73 @@
-<div class="card">
-    <div class="card-body">
+<div class="container-1 d-flex">
+  <div class="welcome-username">Profile</div>
+</div>
+<div class="card mt-4">
+  <div class="card-body">
+    <p class="heading">Details</p>
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          src="../../assets/sidebarIcon/admin.png"
+          alt="logo"
+          srcset=""
+          class="main-user-avathar mt-4"
+        />
+      </div>
+      <div class="col-md-4 col-12">
       <form [formGroup]="loginForm" (ngSubmit)="emitEvent()">
-        <p class="heading">Type</p>
         <br />
-        <div class="input-group mb-3">
-          <div
-            class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap main-input-content"
-          >
-            <div class="mb-3 cus-int-div">
+        <!-- <div class="col-md-4"></div> -->
+        <!-- <div class="col-md-12 col-6"> -->
+          <div class="input-group mb-3">
+            <!-- <div
+            class="d-flex card-div justify-content-center justify-content-lg-center justify-content-sm-center flex-wrap main-input-content"
+          > -->
+            <div class="mb-3 cus-int-div mt-4 user">
               <input
                 type="text"
                 class="form-control int"
                 id="firstName"
                 placeholder="First Name"
-                formControlName="firstName"
+                value="{{ currentUser?.firstName }}"
+                readonly
                 [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
               />
               <div
                 *ngIf="submitted && f['firstName'].errors"
                 class="invalid-feedback"
               >
-                <div *ngIf="f['firstName'].errors['required']">Fill The Field</div>
+                <div *ngIf="f['firstName'].errors['required']">
+                  Fill The Field
+                </div>
               </div>
             </div>
-            <div class="mb-3 cus-int-div">
+            <div class="mb-3 cus-int-div from">
               <input
                 type="text"
                 class="form-control int"
                 id="lastName"
                 placeholder="Last Name"
-                formControlName="lastName"
+                value="{{ currentUser?.lastName }}"
+                readonly
                 [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
               />
               <div
                 *ngIf="submitted && f['lastName'].errors"
                 class="invalid-feedback"
               >
-                <div *ngIf="f['lastName'].errors['required']">Fill The Field</div>
+                <div *ngIf="f['lastName'].errors['required']">
+                  Fill The Field
+                </div>
               </div>
             </div>
-            <div class="mb-3 cus-int-div">
+            <div class="mb-3 cus-int-div to">
               <input
                 type="email"
                 class="form-control int"
                 id="email"
                 placeholder="Email"
-                formControlName="email"
+                readonly
+                value="{{ currentUser?.email }}"
                 [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
               />
               <div
@@ -53,16 +75,19 @@
                 class="invalid-feedback"
               >
                 <div *ngIf="f['email'].errors['required']">Fill The Field</div>
-                <div *ngIf="f['email'].errors['email']">Email type is invalid</div>
+                <div *ngIf="f['email'].errors['email']">
+                  Email type is invalid
+                </div>
               </div>
             </div>
-            <div class="mb-3 cus-int-div">
+            <div class="mb-3 cus-int-div phone">
               <input
                 type="text"
                 class="form-control int"
                 id="phone"
                 placeholder="Phone Number"
-                value="{{currentUser?.phone}}"
+                readonly
+                value="{{ currentUser?.phone }}"
                 [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
               />
               <div
@@ -72,7 +97,7 @@
                 <div *ngIf="f['phone'].errors['required']">Fill The Field</div>
               </div>
             </div>
-            <div class="cus-int-div">
+            <!-- <div class="cus-int-div">
               <span
                 class="input-group-text cus-btn align-items-center justify-content-center"
                 id="basic-addon2"
@@ -89,10 +114,13 @@
                 (click)="emitEvent()"
                 >Submit...</span
               >
-            </div>
+            </div> -->
+            <!-- </div> -->
+            <br />
           </div>
-          <br />
-        </div>
+        <!-- </div> -->
       </form>
     </div>
+    </div>
   </div>
+</div>

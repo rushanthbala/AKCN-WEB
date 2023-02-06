@@ -17,6 +17,7 @@ export class PagesComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 i: any;
+div1 : boolean = true;
   // responsive
   constructor(
     private observer: BreakpointObserver,
@@ -356,6 +357,7 @@ i: any;
   ];
 
   menuClick(clickedItem: number) {
+    this.div1 = true;
     this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state; // flips the boolean value for the clicked item
     // for (let item of this.menuItems) {
 
@@ -422,6 +424,7 @@ i: any;
     this.router.navigateByUrl(`/auth/profile`)
     .then(() => this.router.navigated = false)
     .then(() => this.router.navigate([`/auth/profile`]));
+    this.div1 = false;
     // window.location.reload();
   }
 }
