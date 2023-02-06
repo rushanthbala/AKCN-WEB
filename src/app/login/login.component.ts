@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
     this.toastr.success('Sucessfully Login', 'Sucessfully');
   }
   showError() {
-    this.toastr.error('Someting Went Wrong', 'Error');
+    this.toastr.error('Phone nmber or Password is incorrect', 'Error');
   }
   isEmpty() {
     this.toastr.error('Fill All The Field', 'Error');
