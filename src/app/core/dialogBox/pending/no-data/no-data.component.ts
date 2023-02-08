@@ -42,12 +42,12 @@ export class NoDataComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  // initialReconnectionForm() {
-  //   this.chackRequest = this.fb.group({
-  //     phoneNumber: '',
-  //     address: ''
-  //   });
-  // }
+  initialReconnectionForm() {
+    this.chackRequest = this.fb.group({
+      // phoneNumber: '',
+      // address: ''
+    });
+  }
   ReconnectionRequest() {
     let data = {
       phoneNumber: this.chackRequest.value.phoneNumber,

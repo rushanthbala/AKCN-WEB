@@ -5,12 +5,44 @@ import { Chart, registerables } from 'node_modules/chart.js';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormControl } from '@angular/forms';
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatDatepicker} from '@angular/material/datepicker';
+import * as _moment from 'moment';
+import {default as _rollupMoment, Moment} from 'moment';
 Chart.register(...registerables);
+
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 export class DashboardComponent implements OnInit {
   cardAllData: any;
@@ -20,6 +52,7 @@ export class DashboardComponent implements OnInit {
   userData: any;
   maxDate: any;
   submitForm: FormGroup | any;
+  submitMonthForm: FormGroup | any;
 
   @ViewChild('picker') picker: any;
   name = 'Angular ' + VERSION.major;
@@ -43,90 +76,105 @@ export class DashboardComponent implements OnInit {
   selected: any;
   selectCollection: any;
   selectedForMonthly: any;
+  dataSource1: any;
+  displayedColumns1: string[] = ['area', 'paidAmount', 'unpaidAmount']
+  areaData: any;
   toggle() {
     this.picker.open();
   }
 
   constructor(private fb: FormBuilder, private dataService: HttpService) {}
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  userArray: any = [
-    {
-      id: 1,
-      name: 'rushanth',
-      Image: 'https://i.ytimg.com/vi/Rk3T__b2mDg/maxresdefault.jpg',
-      email: 'sample@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 2,
-      name: 'Janu',
-      Image: 'image url',
-      email: 'sample2@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 3,
-      name: 'stelin',
-      Image: 'image url',
-      email: 'sample3@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 4,
-      name: 'Shan',
-      Image: 'image url',
-      email: 'sample4@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 5,
-      name: 'rushanth',
-      Image: 'image url',
-      email: 'sample5@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 6,
-      name: 'Janu',
-      Image: 'image url',
-      email: 'sample6@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 7,
-      name: 'stelin',
-      Image: 'image url',
-      email: 'sample7@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 8,
-      name: 'Shan',
-      Image: 'image url',
-      email: 'sample@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 9,
-      name: 'stelin',
-      Image: 'image url',
-      email: 'sample@gmail.com',
-      points: 1212,
-    },
-    {
-      id: 10,
-      name: 'Shan',
-      Image: 'image url',
-      email: 'sample@gmail.com',
-      points: 1212,
-    },
-  ];
+  // userArray: any = [
+  //   {
+  //     id: 1,
+  //     name: 'rushanth',
+  //     Image: 'https://i.ytimg.com/vi/Rk3T__b2mDg/maxresdefault.jpg',
+  //     email: 'sample@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Janu',
+  //     Image: 'image url',
+  //     email: 'sample2@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'stelin',
+  //     Image: 'image url',
+  //     email: 'sample3@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Shan',
+  //     Image: 'image url',
+  //     email: 'sample4@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'rushanth',
+  //     Image: 'image url',
+  //     email: 'sample5@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Janu',
+  //     Image: 'image url',
+  //     email: 'sample6@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 7,
+  //     name: 'stelin',
+  //     Image: 'image url',
+  //     email: 'sample7@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 8,
+  //     name: 'Shan',
+  //     Image: 'image url',
+  //     email: 'sample@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 9,
+  //     name: 'stelin',
+  //     Image: 'image url',
+  //     email: 'sample@gmail.com',
+  //     points: 1212,
+  //   },
+  //   {
+  //     id: 10,
+  //     name: 'Shan',
+  //     Image: 'image url',
+  //     email: 'sample@gmail.com',
+  //     points: 1212,
+  //   },
+  // ];
   p: number = 1;
 
+  date = new FormControl(moment());
+
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.date.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(ctrlValue);
+    // console.log(ctrlValue, 'llll')
+    datepicker.close();
+  }
+
   ngOnInit(): void {
-    this.userData = this.userArray;
+    // this.userData = this.userArray;
     this.futureDateDisable();
     this.initialForm();
+    this.initialMonthForm();
     this.dailyCollection();
     this.newConnection();
     this.dailyReconnection();
@@ -138,12 +186,19 @@ export class DashboardComponent implements OnInit {
     this.todayCollectionReport();
     // this.renderChart(this.labledata, this.realdata);
     this.anualReport();
+    this.areaReport();
   }
 
   initialForm() {
     this.submitForm = this.fb.group({
       fromdate: '',
     });
+  }
+
+  initialMonthForm(){
+    this.submitMonthForm = this.fb.group({
+      date:'',
+    })
   }
 
   renderChart(labledata: any, maindata: any) {
@@ -394,57 +449,21 @@ export class DashboardComponent implements OnInit {
           console.log(err);
         }
       );
-
-      //monthlyConnection
-      // this.dataService
-      // .getData(`dashboard/getMonthlyCollections/${this.selectedForMonthly}`)
-      // .subscribe(
-      //   (res) => {
-      //     this.monthlyConnectionData = res;
-      //     console.log(this.monthlyConnectionData.collection, '1 22');
-      //   },
-      //   (err) => {
-      //     console.log(err);
-      //   }
-      // );
-
-      //New connection
-      // this.dataService
-      // .getData(`dashboard/getMonthlyNewConnections/${this.selectedForMonthly}`)
-      // .subscribe(
-      //   (res) => {
-      //     this.monthlyNewConnectionData = res;
-      //     console.log(this.monthlyNewConnectionData.connectionCount, '1 22');
-      //   },
-      //   (err) => {
-      //     console.log(err);
-      //   }
-      // );
-
-      //Re Connection
-      // this.dataService
-      // .getData(`dashboard/getMonthlyReconnections/${this.selectedForMonthly}`)
-      // .subscribe(
-      //   (res) => {
-      //     this.monthylReconnectionData = res;
-      //     console.log(this.monthylReconnectionData.reconnection, '1 33');
-      //   },
-      //   (err) => {
-      //     console.log(err);
-      //   }
-      // );
-
-      //monthly location change
-      // this.dataService
-      // .getData(`dashboard/getMonthlyLocationChange/${this.selectedForMonthly}`)
-      // .subscribe(
-      //   (res) => {
-      //     this.montlhyLocationChangeData = res;
-      //     console.log(this.montlhyLocationChangeData.reconnection, '1 44');
-      //   },
-      //   (err) => {
-      //     console.log(err);
-      //   }
-      // );
+  }
+  areaReport(){
+    this.dataService
+      .getData(`dashboard/collectionsByAgent/${this.maxDate}`)
+      .subscribe(
+        (res) => {
+          this.areaData = res;
+          this.dataSource1 = new MatTableDataSource(this.areaData);
+          setTimeout(() => {
+            this.dataSource1.paginator = this.paginator;
+          }, 1);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 }

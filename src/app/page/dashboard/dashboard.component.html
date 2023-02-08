@@ -176,6 +176,46 @@
 <div class="row">
   <div class="container-1">
     <p class="font-weight-bold mt-4">Monthly</p>
+    <div>
+      <form [formGroup]="submitMonthForm">
+        <div class="mb-3 date_container mt-4">
+          <input
+            type="text"
+            class="form-control int1"
+            required
+            placeholder="Choose Month"
+            [formControl]="date"
+            name="date"
+            max="{{ maxDate }}"
+            style="
+              font: normal normal normal 13px/21px Poppins;
+              letter-spacing: 0px;
+              color: #707070;
+              opacity: 1;
+            "
+            useValueAsDate
+            [matDatepicker]="dp"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dp"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #dp
+            startView="multi-year"
+            (monthSelected)="setMonthAndYear($event, dp)"
+            panelClass="example-month-picker"
+          >
+          </mat-datepicker>
+          <!-- <mat-datepicker-toggle
+            class="dp"
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker class="dp" #picker type="submit"></mat-datepicker> -->
+        </div>
+      </form>
+    </div>
   </div>
   <!-- <div
     *ngFor="let it of mData; let i = index"
@@ -215,7 +255,9 @@
             }"
           >
             {{
-              monthlyConnectionData?.collection ? "trending_up" : "trending_down"
+              monthlyConnectionData?.collection
+                ? "trending_up"
+                : "trending_down"
             }}</mat-icon
           >
         </div>
@@ -390,6 +432,70 @@
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <!-- <mat-paginator
+            [pageSizeOptions]="[10, 25, 100]"
+            aria-label="Select page of users"
+          ></mat-paginator> -->
+      </div>
+      <!-- </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+<br />
+<div class="container-8">
+  <div class="card-4">
+    <div class="card-text-2">Area Wise Report</div>
+    <div class="container-10">
+      <!-- <div *ngIf="TICKET_DATA.length != 0">
+        <div *ngIf="showTable" else loading> -->
+      <div id="htmlData" class="table-responsive">
+        <table
+          mat-table
+          [dataSource]="dataSource1"
+          id="ExampleNormalTable"
+          class=""
+        >
+          <td mat-cell *matCellDef="let row"></td>
+          <ng-container matColumnDef="area">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              sortActionDescription="Sort by area"
+            >
+              Area
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.name ? element.name : "--" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="paidAmount">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              sortActionDescription="Sort by paidAmount"
+            >
+              Paid Amount
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.totalAmount ? element.totalAmount : "--" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="unpaidAmount">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              sortActionDescription="Sort by unpaidAmount"
+            >
+              Unpaid Amount
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.bills ? element.bills : "--" }}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
         </table>
         <!-- <mat-paginator
             [pageSizeOptions]="[10, 25, 100]"

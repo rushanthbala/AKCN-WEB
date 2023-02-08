@@ -30,7 +30,6 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'id',
     'firstName',
-    'lastName',
     'roleID',
     'createdDate',
   ];

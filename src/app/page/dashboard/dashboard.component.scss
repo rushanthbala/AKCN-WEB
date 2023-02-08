@@ -119,6 +119,18 @@
   color: #707070;
   padding: 2px 0px 0px 30px;
 }
+.int1 {
+  height: 40px;
+  // padding-left: 20px;
+  width: 70%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #99999917 0% 0% no-repeat padding-box;
+  border-radius: 90px;
+  color: #707070;
+  padding: 2px 0px 0px 20px;
+}
 .mat-form-field{
   margin-left: 28%;
   padding: 0px 20px 45px 20px;
@@ -226,4 +238,24 @@
   color: #707070;
   opacity: 1;
   padding: 0px 108px 0px 0;
+}
+.container-8 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+.card-4 {
+  background-color: #fff;
+  border: 0px solid #fff;
+  width: 33rem;
+  padding: 10px 20px 10px 20px;
+}
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
 }

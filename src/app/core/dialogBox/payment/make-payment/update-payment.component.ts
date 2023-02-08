@@ -18,12 +18,45 @@ export class UpdatePaymentComponent implements OnInit {
   public TechnicianArray: any = [];
   public PaymentArray: any = [
     {
-    id:1,
-    value:'MONTHLY PAYMENT'
-  }, {
-    id:2,
-    value:'FINE'
-  },
+      id: 1,
+      value: 'MONTHLY PAYMENT',
+    },
+    {
+      id: 2,
+      value: 'FINE',
+    },
+    {
+      id: 3,
+      value: 'RENTAL',
+    },
+    {
+      id: 4,
+      value: 'ARREARS',
+    },
+    {
+      id: 5,
+      value: 'DISCOUNT',
+    },
+    {
+      id: 6,
+      value: 'RECONNECTION',
+    },
+    {
+      id: 7,
+      value: 'NEW CONNECTION',
+    },
+    {
+      id: 8,
+      value: 'DISCONNECT',
+    },
+    {
+      id: 9,
+      value: 'EXTRA TV',
+    },
+    {
+      id: 10,
+      value: 'CHANGE LOCATION',
+    },
 ];
 
   public roadId: any = 'Road';
