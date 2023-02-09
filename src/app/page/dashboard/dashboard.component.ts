@@ -5,44 +5,12 @@ import { Chart, registerables } from 'node_modules/chart.js';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { FormControl } from '@angular/forms';
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {MatDatepicker} from '@angular/material/datepicker';
-import * as _moment from 'moment';
-import {default as _rollupMoment, Moment} from 'moment';
 Chart.register(...registerables);
-
-const moment = _rollupMoment || _moment;
-
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'MM/YYYY',
-  },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  ],
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
   cardAllData: any;
@@ -159,30 +127,14 @@ export class DashboardComponent implements OnInit {
   // ];
   p: number = 1;
 
-  date = new FormControl(moment());
-
-  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.date.value!;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.date.setValue(ctrlValue);
-    // console.log(ctrlValue, 'llll')
-    datepicker.close();
-  }
-
   ngOnInit(): void {
     // this.userData = this.userArray;
     this.futureDateDisable();
     this.initialForm();
-    this.initialMonthForm();
     this.dailyCollection();
     this.newConnection();
     this.dailyReconnection();
     this.dailyLocationChange();
-    this.monthlyConnection();
-    this.monthlyNewConnection();
-    this.monthlyReConnection();
-    this.monthlyLocationChange();
     this.todayCollectionReport();
     // this.renderChart(this.labledata, this.realdata);
     this.anualReport();
@@ -193,12 +145,6 @@ export class DashboardComponent implements OnInit {
     this.submitForm = this.fb.group({
       fromdate: '',
     });
-  }
-
-  initialMonthForm(){
-    this.submitMonthForm = this.fb.group({
-      date:'',
-    })
   }
 
   renderChart(labledata: any, maindata: any) {
@@ -299,57 +245,7 @@ export class DashboardComponent implements OnInit {
         }
       );
   }
-
-  //monthly
-  monthlyConnection() {
-    this.dataService
-      .getData(`dashboard/getMonthlyCollections/${this.currentMonth}`)
-      .subscribe(
-        (res) => {
-          this.monthlyConnectionData = res;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-  }
-  monthlyNewConnection() {
-    this.dataService
-      .getData(`dashboard/getMonthlyNewConnections/${this.currentMonth}`)
-      .subscribe(
-        (res) => {
-          this.monthlyNewConnectionData = res;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-  }
-  monthlyReConnection() {
-    this.dataService
-      .getData(`dashboard/getMonthlyReconnections/${this.currentMonth}`)
-      .subscribe(
-        (res) => {
-          this.monthylReconnectionData = res;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-  }
-  monthlyLocationChange() {
-    this.dataService
-      .getData(`dashboard/getMonthlyLocationChange/${this.currentMonth}`)
-      .subscribe(
-        (res) => {
-          this.montlhyLocationChangeData = res;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-  }
-
+  
   //today collection report
   todayCollectionReport() {
     this.dataService
@@ -452,10 +348,10 @@ export class DashboardComponent implements OnInit {
   }
   areaReport(){
     this.dataService
-      .getData(`dashboard/collectionsByAgent/${this.maxDate}`)
+      .getData(`dashboard/areaTable`)
       .subscribe(
         (res) => {
-          this.areaData = res;
+          this.areaData = res.reverse();
           this.dataSource1 = new MatTableDataSource(this.areaData);
           setTimeout(() => {
             this.dataSource1.paginator = this.paginator;

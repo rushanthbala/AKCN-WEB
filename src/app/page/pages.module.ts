@@ -102,6 +102,7 @@ import { ReEnterpasswordComponent } from './re-enterpassword/re-enterpassword.co
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailsComponent } from '../core/profile-details/profile-details.component';
 import { ProfilePasswordComponent } from '../core/profile-password/profile-password.component';
+import { MonthYearInputComponent } from '../core/month-year-input/month-year-input.component';
 
 @NgModule({
   declarations: [
@@ -194,7 +195,8 @@ import { ProfilePasswordComponent } from '../core/profile-password/profile-passw
     ReEnterpasswordComponent,
     ProfileComponent,
     ProfileDetailsComponent,
-    ProfilePasswordComponent
+    ProfilePasswordComponent,
+    MonthYearInputComponent
   ],
   imports: [
     CommonModule,

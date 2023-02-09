@@ -1,0 +1,178 @@
+<div class="row">
+  <div class="container-1">
+    <p class="font-weight-bold mt-4">Monthly</p>
+    <div>
+      <div class="mb-3 date_container mt-4">
+        <input
+          type="text"
+          class="form-control int1"
+          required
+          placeholder="Choose Month"
+          [formControl]="date"
+          name="date"
+          max="{{ maxDate }}"
+          style="
+            font: normal normal normal 13px/21px Poppins;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 1;
+          "
+          useValueAsDate
+          [matDatepicker]="dp"
+        />
+        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker
+          #dp
+          startView="multi-year"
+          (monthSelected)="setMonthAndYear($event, dp)"
+          panelClass="example-month-picker"
+        >
+        </mat-datepicker>
+      </div>
+    </div>
+  </div>
+  <div class="container-4">
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: monthlyConnectionData?.collection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
+      <div class="card-body">
+        <h5 class="card-title">COLLECTION</h5>
+        <div class="container-6 mt-4">
+          <p class="card-text col-8">
+            {{
+              monthlyConnectionData?.collection
+                ? monthlyConnectionData?.collection
+                : "0"
+            }}
+          </p>
+          <div class="col-2"></div>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: monthlyConnectionData?.collection ? '#31ab25' : '#b50a00'
+            }"
+          >
+            {{
+              monthlyConnectionData?.collection
+                ? "trending_up"
+                : "trending_down"
+            }}</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: monthlyNewConnectionData?.connectionCount
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
+      <div class="card-body">
+        <h5 class="card-title">NEW CONNECTION</h5>
+        <div class="container-6 mt-4">
+          <p class="card-text col-8">
+            {{
+              monthlyNewConnectionData?.connectionCount
+                ? monthlyNewConnectionData?.connectionCount
+                : "0"
+            }}
+          </p>
+          <div class="col-2"></div>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: monthlyNewConnectionData?.connectionCount
+                ? '#31ab25'
+                : '#b50a00'
+            }"
+          >
+            {{
+              monthlyNewConnectionData?.connectionCount
+                ? "trending_up"
+                : "trending_down"
+            }}</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: monthylReconnectionData?.reconnection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
+      <div class="card-body">
+        <h5 class="card-title">RECONNECTION</h5>
+        <div class="container-6 mt-4">
+          <p class="card-text col-8">
+            {{
+              monthylReconnectionData?.reconnection
+                ? monthylReconnectionData?.reconnection
+                : "0"
+            }}
+          </p>
+          <div class="col-2"></div>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: monthylReconnectionData?.reconnection
+                ? '#31ab25'
+                : '#b50a00'
+            }"
+          >
+            {{
+              monthylReconnectionData?.reconnection
+                ? "trending_up"
+                : "trending_down"
+            }}</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      [ngStyle]="{
+        backgroundColor: montlhyLocationChangeData?.reconnection
+          ? 'rgba(49, 171, 37, 0.1)'
+          : 'rgba(181, 10, 0, 0.1)'
+      }"
+    >
+      <div class="card-body">
+        <h5 class="card-title">LOCATION CHANGE</h5>
+        <div class="container-6 mt-4">
+          <p class="card-text col-8">
+            {{
+              montlhyLocationChangeData?.reconnection
+                ? montlhyLocationChangeData?.reconnection
+                : "0"
+            }}
+          </p>
+          <div class="col-2"></div>
+          <mat-icon
+            class="col-2"
+            [ngStyle]="{
+              color: montlhyLocationChangeData?.reconnection
+                ? '#31ab25'
+                : '#b50a00'
+            }"
+          >
+            {{
+              montlhyLocationChangeData?.reconnection
+                ? "trending_up"
+                : "trending_down"
+            }}</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
