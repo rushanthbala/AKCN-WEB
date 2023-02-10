@@ -58,7 +58,7 @@ export class UserPostPut implements OnInit {
     } else {
     }
     this.initialReconnectionForm();
-  }
+   }
   constructor(
     public dialogRef: MatDialogRef<UserPostPut>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -70,15 +70,6 @@ export class UserPostPut implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-    // this.chackRequest = this.fb.group({
-    //   firstName: new FormControl('', [Validators.required]),
-    //   lastName: new FormControl('', [Validators.required]),
-    //   email: new FormControl('', [Validators.required]),
-    //   primaryPhone: new FormControl('', [Validators.required]),
-    //   password: new FormControl('', [Validators.required]),
-    //   role: new FormControl('', [Validators.required]),
-    //   cpassword: new FormControl('', [Validators.required]),
-    // });
 
     this.chackRequest = this.fb.group(
       {
@@ -94,14 +85,14 @@ export class UserPostPut implements OnInit {
         primaryPhone: this.ifData
           ? this.currentData.primaryPhone
           : new FormControl('', [Validators.required]),
-        password: this.ifData
-          ? this.currentData.password
-          : new FormControl('', [Validators.required]),
+        password: '',
         role: this.ifData
           ? this.currentData.roleID
           : new FormControl(null, [Validators.required]),
-        cpassword: new FormControl('', [Validators.required]),
-        // branch: this.ifData ? this.currentData.branchID : null,
+        cpassword: '',
+        branch: this.ifData
+          ? this.currentData.branchID
+          : new FormControl(null, [Validators.required]),
       },
       {
         validators: [Validation.match('password', 'cpassword')],
@@ -119,7 +110,7 @@ export class UserPostPut implements OnInit {
       firstName: this.chackRequest.value.firstName,
       lastName: this.chackRequest.value.lastName,
       role: this.chackRequest.value.role,
-      // branch: this.chackRequest.value.branch,
+      branch: this.chackRequest.value.branch,
       email: this.chackRequest.value.email,
       primaryPhone: this.chackRequest.value.primaryPhone,
       password: this.chackRequest.value.password,
@@ -131,7 +122,7 @@ export class UserPostPut implements OnInit {
       email: datas.email,
       primaryPhone: datas.primaryPhone,
       roleID: datas.role,
-      // branchID: datas.branch,
+      branchID: datas.branch,
       ppVerified: '1',
       status: '1',
     };

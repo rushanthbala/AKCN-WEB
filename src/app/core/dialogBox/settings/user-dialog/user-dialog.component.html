@@ -76,6 +76,53 @@
           </div>
         </div>
       </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3"></div>
+
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            (change)="onSelectarea(val.value)"
+            required
+            #val
+            formControlName="branch"
+            id="parentesco"
+            [ngClass]="{ 'is-invalid': submitted && f['branch'].errors }"
+          >
+            <option disabled selected value="null">Branch</option>
+            <option *ngFor="let item of branchArray" [value]="item.id">
+              {{ item.branchName }}
+            </option>
+          </select>
+          <div *ngIf="submitted && f['branch'].errors" class="invalid-feedback">
+            <div *ngIf="f['branch'].errors['required']">Select the branch</div>
+          </div>
+        </div>
+        <!-- <div class="col-sm-3"></div> -->
+        <div class="col-12 col-sm-6">
+          <div class="para mt-3 ps-3"></div>
+          <div class="form-group">
+            <select
+              class="form-select mt-2"
+              aria-label="Default select example"
+              (change)="onSelect(val.value)"
+              required
+              #val
+              formControlName="role"
+              [ngClass]="{ 'is-invalid': submitted && f['role'].errors }"
+            >
+              <option disabled selected value="null">Role</option>
+              <option *ngFor="let item of roleArray" [value]="item.id">
+                {{ item.role }}
+              </option>
+            </select>
+            <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
+              <div *ngIf="f['role'].errors['required']">Select the role</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row mt-2" *ngIf="!ifData">
         <div class="col-12 col-sm-6 mt-3">
           <!-- <div class="para mt-3 ps-3">Password</div> -->
@@ -113,49 +160,7 @@
           </div>
         </div>
       </div>
-      <div class="row mt-2">
-        <!-- <div class="col-12 col-sm-6">
-          <div class="para mt-3 ps-3"></div>
-
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            (change)="onSelectarea(val.value)"
-            required
-            #val
-            formControlName="branch"
-            id="parentesco"
-          >
-            <option disabled selected value="null">Branch</option>
-            <option *ngFor="let item of branchArray" [value]="item.id">
-              {{ item.branchName }}
-            </option>
-          </select>
-        </div> -->
-        <div class="col-sm-3"></div>
-        <div class="col-12 col-sm-6">
-          <div class="para mt-3 ps-3"></div>
-          <div class="form-group">
-            <select
-              class="form-select mt-2"
-              aria-label="Default select example"
-              (change)="onSelect(val.value)"
-              required
-              #val
-              formControlName="role"
-              [ngClass]="{ 'is-invalid': submitted && f['role'].errors }"
-            >
-              <option disabled selected value="null">Role</option>
-              <option *ngFor="let item of roleArray" [value]="item.id">
-                {{ item.role }}
-              </option>
-            </select>
-            <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
-              <div *ngIf="f['role'].errors['required']">Select the role</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       <div class="row mt-2">
         <div class="col-12 col-sm-6">

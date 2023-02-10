@@ -123,9 +123,11 @@
     width: 100%;
   }
   .btn-div-set {
-    max-width: 530px;
+    // max-width: 1000px;
     margin-top: 1rem;
     margin-bottom: 5%;
+    column-gap: 20px;
+    width: 100%;
   }
   .cus-btn-down {
     height: 40px;
