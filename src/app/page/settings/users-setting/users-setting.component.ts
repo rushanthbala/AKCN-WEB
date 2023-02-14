@@ -32,11 +32,14 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
     'firstName',
     'branchID',
     'roleID',
+    'status',
     'createdDate',
   ];
   object: any;
   Result: any;
   Model: any;
+  statusData: any;
+  toggleValue: any;
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -48,7 +51,6 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   userData: any;
-  //
   loading: boolean = true;
   errmsg: string = '';
   sucmsg: string = '';
@@ -63,14 +65,40 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   tableResult: any;
   p: number = 1;
   submit: FormGroup | any;
+  statusForm: FormGroup | any;
+  public ifData: boolean = false;
+  public currentData: any = {}
   ngOnInit() {
     this.getPendingData();
+    this.getStatus();
     this.initialForm();
+    this.secondForm();
   }
   initialForm() {
     this.submit = this.fb.group({
-      address: '',
+      address: ''
     });
+  }
+  secondForm(){
+    this.statusForm = this.fb.group({
+      checkbox:this.ifData ? this.statusData.checkbox: ' ',
+    })
+  }
+
+  getStatus(){
+    this.dataServise.getData(`employee`).subscribe(
+      (res :any) => {
+        this.statusData = res;
+        this.secondForm();
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+  toggle(){
+    this.toggleValue = !this.toggleValue;
+    // this.dataServise.putValue('')
   }
 
   getPendingData() {

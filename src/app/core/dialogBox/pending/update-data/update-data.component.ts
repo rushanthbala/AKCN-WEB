@@ -26,7 +26,9 @@ export class UpdateDataComponent  implements OnInit {
   chackRequest: FormGroup | any;
   ngOnInit(): void {
     // this.initialReconnectionForm();
-    this.getAll()
+    // setTimeout(() => {
+    //   this.getAll()
+    // })
   }
   constructor(
     public dialogRef: MatDialogRef<UpdateDataComponent>,
@@ -73,12 +75,12 @@ export class UpdateDataComponent  implements OnInit {
     }
   }
 
-  getAll() {
-    // get TechnicianArray
-    this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
-      this.TechnicianArray = res;
-    });
-  }
+  // getAll() {
+  //   // get TechnicianArray
+  //   this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
+  //     this.TechnicianArray = res;
+  //   });
+  // }
 
   onSelect(val: any) {
     this.TechnicianId = val

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,8 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/servise/login/login.service';
-import Validation from 'src/Validation/password.validation';
-import { HttpService } from 'src/app/servise/http/http.service';
+import { SharedService } from 'src/app/servise/shared/shared.service';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -23,9 +22,10 @@ export class ForgotpasswordComponent {
     private fb: FormBuilder,
     private router: Router,
     private dataService: LoginService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private shared: SharedService,
   ) {}
-  loginForm: FormGroup | any;
+  forgotForm: FormGroup | any;
   loading = false;
   submitted = false;
   errmsg = '';
@@ -34,20 +34,19 @@ export class ForgotpasswordComponent {
     this.initialForm();
   }
   initialForm() {
-    this.loginForm = this.fb.group({
-      email: new FormControl('', [Validators.required]),
+    this.forgotForm = this.fb.group({
+      phone: new FormControl('', [Validators.required]),
     });
   }
   get f(): { [key: string]: AbstractControl } {
-    return this.loginForm.controls;
+    return this.forgotForm.controls;
   }
 
   forgotpassword() {
     let data = {
-      phone: '0'+this.loginForm.value.email,
+      phone: '0'+this.forgotForm.value.phone,
     };
-    // console.log(data, 'll')
-    if (!this.loginForm.valid) {
+    if (!this.forgotForm.valid) {
       this.submitted = true;
       return;
     } else {
@@ -55,10 +54,10 @@ export class ForgotpasswordComponent {
         (res: any) => {
           if (res.match == false) {
             this.errmsg = res.message;
-            this.ifFalse();
-            // alert(this.errmsg)
+            this.loading = false;
           } else {
-            this.router.navigate([`otp/${data.phone}`]);
+            this.router.navigate([`otp`]);
+            this.shared.setMessage(data.phone);
           }
         },
         (e) => {
@@ -68,16 +67,7 @@ export class ForgotpasswordComponent {
       );
     }
   }
-  showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
-  }
   showError() {
-    this.toastr.error('Someting Went Wrong', 'Error');
-  }
-  isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
-  }
-  ifFalse() {
-    this.toastr.error('Invalid Phone Number', 'Error');
+    this.toastr.error('Please Enter the Valid Phone Number', 'Error');
   }
 }

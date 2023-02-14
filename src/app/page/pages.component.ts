@@ -1,12 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-import { delay, filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { ProfileComponent } from './profile/profile.component';
-import { ProfileDetailsComponent } from '../core/profile-details/profile-details.component';
-// import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-pages',
@@ -16,9 +13,8 @@ import { ProfileDetailsComponent } from '../core/profile-details/profile-details
 export class PagesComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-i: any;
-div1 : boolean = true;
-  // responsive
+  i: any;
+  div1: boolean = true;
   constructor(
     private observer: BreakpointObserver,
     private router: Router,
@@ -29,25 +25,21 @@ div1 : boolean = true;
   public sublink: string = '';
   public contentSubHeading: string = '';
   public navName: string = '';
-  currentlyOpenedItemIndex = -1
+  currentlyOpenedItemIndex = -1;
   admin: any;
   logout() {
     localStorage.clear();
-    window.location.reload()
+    window.location.reload();
   }
   ngOnInit(): void {
     if (this.authService.isUserLoggedIn()) {
     } else {
       window.location.href = '/login';
     }
-    // this.menuStart()
   }
   ngAfterViewInit() {
     setTimeout(() => {
-      this.observer
-      .observe(['(max-width: 1200px)'])
-      // .pipe(untilDestroyed(this))
-      .subscribe((res) => {
+      this.observer.observe(['(max-width: 1200px)']).subscribe((res) => {
         if (res.matches) {
           this.sidenav.mode = 'over';
           this.sidenav.close();
@@ -57,18 +49,14 @@ div1 : boolean = true;
         }
       });
 
-    this.router.events
-      .pipe(
-        // untilDestroyed(this),
-        filter((e) => e instanceof NavigationEnd)
-      )
-      .subscribe(() => {
-        if (this.sidenav.mode === 'over') {
-          this.sidenav.close();
-        }
-      });
-    })
-
+      this.router.events
+        .pipe(filter((e) => e instanceof NavigationEnd))
+        .subscribe(() => {
+          if (this.sidenav.mode === 'over') {
+            this.sidenav.close();
+          }
+        });
+    });
   }
   getNavName() {
     var url = this.router.url;
@@ -238,9 +226,6 @@ div1 : boolean = true;
           name: 'Closed Tickets',
           href: '/auth/closed-ticket',
         },
-        // {
-        //   name: 'Closed Tickets', href: '/auth/cancelled-ticket'
-        // },
         {
           name: 'Cancelled Tickets',
           href: '/auth/cancelled-ticket',
@@ -358,26 +343,13 @@ div1 : boolean = true;
 
   menuClick(clickedItem: number) {
     this.div1 = true;
-    this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state; // flips the boolean value for the clicked item
-    // for (let item of this.menuItems) {
-
-    //   if (item !== this.menuItems[clickedItem]) {
-    //     item.state = false;
-    //   } else {
-    //     item.state = true;
-    //   }
-    // }
-    // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
-    // if(this.menuItems === clickedItem){
-    //   this.menuItems = -1
-    // }
+    // flips the boolean value for the clicked item
+    this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state;
     if (this.currentlyOpenedItemIndex === clickedItem) {
       this.currentlyOpenedItemIndex = -1;
-      
-    } else{
+    } else {
       this.currentlyOpenedItemIndex = clickedItem;
       for (let item of this.menuItems) {
-
         if (item !== this.menuItems[clickedItem]) {
           item.state = false;
         } else {
@@ -386,22 +358,10 @@ div1 : boolean = true;
       }
     }
   }
-  // setOpened(itemIndex: number){
-  //   this.currentlyOpenedItemIndex = itemIndex;
-  // }
-  
-  // setClosed(itemIndex: number) {
-  //   if (this.currentlyOpenedItemIndex === itemIndex) {
-  //     this.currentlyOpenedItemIndex = -1;
-  //   }
-  // }
-  menuStart(){
+  menuStart() {
     var url = this.router.url;
     var urlSpilite = url.split('/');
-    
   }
-
-  // elem = document.documentElement;
   fullScreen() {
     var isInFullScreen =
       document.fullscreenElement && document.fullscreenElement !== null;
@@ -417,15 +377,12 @@ div1 : boolean = true;
       }
     }
   }
-  Profile(){
-    // this.admin = localStorage.getItem('auth');
-    // console.log(this.admin[6])
-    // this.router.navigate([`/auth/profile/${this.admin[6]}`])
-    this.router.navigateByUrl(`/auth/profile`)
-    .then(() => this.router.navigated = false)
-    .then(() => this.router.navigate([`/auth/profile`]));
+  Profile() {
+    this.router
+      .navigateByUrl(`/auth/profile`)
+      .then(() => (this.router.navigated = false))
+      .then(() => this.router.navigate([`/auth/profile`]));
     this.div1 = false;
-    // window.location.reload();
   }
 }
 

@@ -21,7 +21,6 @@ export class SettingService {
   }
   postValue(url: String, data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' };
-    // console.log(this._http.put(this.apiURL + url, data, { headers: headers }));
     return this._http.put(this.apiURL + url, data, { headers: headers });
   }
 }

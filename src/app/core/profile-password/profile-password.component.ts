@@ -49,15 +49,11 @@ export class ProfilePasswordComponent {
     const Auth : any = localStorage.getItem('auth')
     const message = JSON.parse(Auth);
     const phone = message.phone;
-    // console.log(phone);
     const OldPassword = this.password.value.oldPassword;
-    // console.log(OldPassword);
 
     let data = {
       hash: this.password.value.confirmPassword
     }
-    // console.log(data);
-
     if (!this.password.valid) {
       this.submitted = true;
       return
@@ -84,11 +80,5 @@ export class ProfilePasswordComponent {
   }
   showError() {
     this.toastr.error('Old password is incorrect', 'Error');
-  }
-  isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
-  }
-  isFalse(){
-    this.toastr.error('Invalid Otp', 'error')
   }
 }

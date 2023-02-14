@@ -91,7 +91,9 @@
                       {{
                         !(
                           element.paymentType == "DISCOUNT" ||
-                          element.paymentType == "MONTHLY PAYMENT"
+                          element.paymentType == "MONTHLY PAYMENT" ||
+                          element.paymentType == "ARREARS" ||
+                          element.paymentType == "RENTAL"
                         )
                           ? element.amount
                           : "--"

@@ -10,7 +10,6 @@
   flex-direction: column;
   height: 100vh;
 }
-
 .input-core {
   max-width: 400px;
   min-width: 270px;
@@ -25,12 +24,10 @@
   color: #707070;
   margin-left: 18%;
 }
-
 .form-heading {
   color: #11193c;
   font-weight: 500;
 }
-
 .form-btn {
   background-color: var(--mainText);
   height: 40px;
@@ -42,7 +39,6 @@
   border-radius: 36px;
   font-size: 12px;
 }
-
 .int-main-div {
   max-width: 420px;
   width: 100%;
@@ -50,62 +46,62 @@
 .container {
   background-color: #469dfe;
 }
-.img-fluid{
+.img-fluid {
   border: none;
   height: 95%;
   width: fit-content;
 }
 @media (max-width: 992px) {
- .row{
-  display: flex;
-  flex-direction: column-reverse;
- }
- .container{
-  background-color: #027afe;
- }
- .img-fluid{
-  height: 500px;
-  margin-left: 20%;
- }
- .register-form{
-  height: 60vh;
- }
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .container {
+    background-color: #027afe;
+  }
+  .img-fluid {
+    height: 500px;
+    margin-left: 20%;
+  }
+  .register-form {
+    height: 60vh;
+  }
 }
 @media (max-width: 776px) {
-  .row{
-   display: flex;
-   flex-direction: column-reverse;
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
   }
-  .container{
-   background-color: #027afe;
+  .container {
+    background-color: #027afe;
   }
-  .img-fluid{
-   height: 500px;
-   margin-left: 6%;
+  .img-fluid {
+    height: 500px;
+    margin-left: 6%;
   }
-  .register-form{
-   height: 70vh;
+  .register-form {
+    height: 70vh;
   }
- }
+}
 @media (max-width: 576px) {
-  .row{
-   display: flex;
-   flex-direction: column-reverse;
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
   }
-  .container{
-   background-color: #027afe;
+  .container {
+    background-color: #027afe;
   }
-  .img-fluid{
-   height: 400px;
-   margin-left: 6%;
+  .img-fluid {
+    height: 400px;
+    margin-left: 6%;
   }
- }
- @media(max-width: 410px){
-  .input-core{
+}
+@media (max-width: 410px) {
+  .input-core {
     margin-left: 15%;
   }
- }
-.container-3{
+}
+.container-3 {
   text-decoration: underline;
   text-align: center;
 }

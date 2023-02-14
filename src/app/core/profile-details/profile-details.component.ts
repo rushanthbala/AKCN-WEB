@@ -20,7 +20,7 @@ import { UserApiService } from '../../servise/user-api.service';
 export class ProfileDetailsComponent {
   loading = false;
   submitted = false;
-  loginForm: FormGroup | any;
+  profileForm: FormGroup | any;
   currentUser : any;
   admin: any;
 
@@ -28,22 +28,15 @@ export class ProfileDetailsComponent {
     private fb: FormBuilder,
     public dataServise: HttpService,
     public dataservise: UserApiService,
-    private storageService : StorageServiceService
   ) {}
 
   ngOnInit(): void {
     this.initialForm();
     this.getData();
-    // const Auth : any = localStorage.getItem("auth");
-    // const message = JSON.parse(Auth);
-    // const AdminId = message.id;
-    // const phone = message.phone;
-    // console.log(AdminId)
-    // console.log(phone)
   }
 
   initialForm() {
-    this.loginForm = this.fb.group({
+    this.profileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -51,16 +44,15 @@ export class ProfileDetailsComponent {
     });
   }
   get f(): { [key: string]: AbstractControl } {
-    return this.loginForm.controls;
+    return this.profileForm.controls;
   }
   emitEvent() {
-    if (!this.loginForm.valid) {
+    if (!this.profileForm.valid) {
       this.submitted = true;
     }
   }
   getData() {
     const Auth: any = localStorage.getItem('auth')
     this.currentUser = JSON.parse(Auth);
-    // console.log(this.currentUser, 'lllll')
   }
 }

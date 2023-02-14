@@ -1,16 +1,21 @@
-import { HttpHeaders } from '@angular/common/http';
-import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/servise/login/login.service';
+import { SharedService } from 'src/app/servise/shared/shared.service';
 import Validation from 'src/Validation/password.validation';
 
 @Component({
   selector: 'app-re-enterpassword',
   templateUrl: './re-enterpassword.component.html',
-  styleUrls: ['./re-enterpassword.component.scss']
+  styleUrls: ['./re-enterpassword.component.scss'],
 })
 export class ReEnterpasswordComponent {
   errmsg: any;
@@ -19,60 +24,66 @@ export class ReEnterpasswordComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private dataService : LoginService,
+    private dataService: LoginService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
-  ) { }
-  loginForm: FormGroup | any;
+    private shared: SharedService
+  ) {}
+  reEnterPasswordForm: FormGroup | any;
   loading = false;
   submitted = false;
+  data: any;
   ngOnInit(): void {
     this.initialForm();
+    this.data = this.shared.getMessage();
   }
   initialForm() {
-    this.loginForm = this.fb.group({
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      cpassword: new FormControl('', [Validators.required, Validators.minLength(6)])
-    }, {
-      validators: [Validation.match('password', 'cpassword')],
-    });
+    this.reEnterPasswordForm = this.fb.group(
+      {
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6),
+        ]),
+        cpassword: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6),
+        ]),
+      },
+      {
+        validators: [Validation.match('password', 'cpassword')],
+      }
+    );
   }
   get f(): { [key: string]: AbstractControl } {
-    return this.loginForm.controls;
+    return this.reEnterPasswordForm.controls;
   }
   login() {
-   if(!this.loginForm.valid){
-    this.submitted = true;
-    return
-   }else{
-    var url = window.location.pathname;
-    var phone = url.slice(17,27)
+    if (!this.reEnterPasswordForm.valid) {
+      this.submitted = true;
+      return;
+    } else {
+      let data = {
+        phone: this.data?.phone,
+        token: this.data?.resetotp,
+        hash: this.reEnterPasswordForm.value.password,
+      };
 
-    var url2 = window.location.pathname;
-    var otp = url2.substring(url2.lastIndexOf('/')+1)
-
-    let data = {
-      phone:phone,
-      token: otp,
-      hash:this.loginForm.value.password
+      this.dataService
+        .putValue(`admin/forgetPassword/${data.phone}/${data.token}`, data)
+        .subscribe(
+          (res: any) => {
+            if (res.errorMessage) {
+              this.errmsg = res.message;
+              this.loading = false;
+            } else {
+              this.router.navigate(['login']);
+            }
+          },
+          (e) => {
+            this.loading = false;
+            this.showError();
+          }
+        );
     }
-    // console.log(data, 'ff')
-
-    this.dataService.putValue(`admin/forgetPassword/${data.phone}/${data.token}`, data).subscribe(
-      (res : any) => {
-        if(res.errorMessage){
-          this.errmsg = res.message
-          this.loading = false
-        } else{
-          this.router.navigate(['login'])
-        }
-      },
-      (e) => {
-        this.loading = false
-        this.showError()
-      }
-    )
-   }
   }
   showSuccess() {
     this.toastr.success('Sucessfully Login', 'Sucessfully');

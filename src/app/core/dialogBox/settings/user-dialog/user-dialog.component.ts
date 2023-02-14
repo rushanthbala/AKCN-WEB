@@ -93,6 +93,9 @@ export class UserPostPut implements OnInit {
         branch: this.ifData
           ? this.currentData.branchID
           : new FormControl(null, [Validators.required]),
+          status: this.ifData
+          ? this.currentData.status
+          :' '
       },
       {
         validators: [Validation.match('password', 'cpassword')],
@@ -114,6 +117,7 @@ export class UserPostPut implements OnInit {
       email: this.chackRequest.value.email,
       primaryPhone: this.chackRequest.value.primaryPhone,
       password: this.chackRequest.value.password,
+      status: this.chackRequest.value.status
     };
     let sendObj = {
       firstName: datas.firstName,
@@ -124,7 +128,18 @@ export class UserPostPut implements OnInit {
       roleID: datas.role,
       branchID: datas.branch,
       ppVerified: '1',
-      status: '1',
+      status: true,
+    };
+    let sendObjforPut = {
+      firstName: datas.firstName,
+      lastName: datas.lastName,
+      password: datas.password,
+      email: datas.email,
+      primaryPhone: datas.primaryPhone,
+      roleID: datas.role,
+      branchID: datas.branch,
+      ppVerified: '1',
+      status: datas.status,
     };
 
     if (!this.chackRequest.valid) {
@@ -136,7 +151,7 @@ export class UserPostPut implements OnInit {
       if (this.data.sendtype == 'POST') {
         this.postMethod(sendObj);
       } else {
-        this.putMethod(sendObj);
+        this.putMethod(sendObjforPut);
       }
     }
   }
@@ -158,9 +173,9 @@ export class UserPostPut implements OnInit {
     );
   }
 
-  putMethod(sendObj: any) {
+  putMethod(sendObjforPut: any) {
     this.dataServise
-      .putValue(`employee/${this.currentData.id}`, sendObj)
+      .putValue(`employee/${this.currentData.id}`, sendObjforPut)
       .subscribe(
         (res: any) => {
           if (res.errorMessage) {

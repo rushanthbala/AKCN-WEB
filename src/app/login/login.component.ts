@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { LoginService } from '../servise/login/login.service';
 import { ToastrService } from 'ngx-toastr';
-
-import {
-  Router,
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-} from '@angular/router';
-import { StorageServiceService } from '../servise/storageService/storage-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,24 +10,19 @@ import { StorageServiceService } from '../servise/storageService/storage-service
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  isLoggedIn= false;
+  isLoggedIn = false;
   constructor(
     private fb: FormBuilder,
     public dataServise: LoginService,
     private toastr: ToastrService,
-    private router: Router,
-    private storageService: StorageServiceService
-  ) { }
+    private router: Router
+  ) {}
   loginForm: FormGroup | any;
   errmsg = '';
   sucmsg = '';
   loading = false;
   ngOnInit(): void {
     this.initialForm();
-    if (this.storageService.isLoggedIn()) {
-      this.isLoggedIn = true;
-      // this.roles = this.storageService.getUser().roles;
-    }
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -45,11 +33,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.loading = true;
     let data = {
-      // email: this.loginForm.value.email,
       hash: this.loginForm.value.password,
-      phone:this.loginForm.value.email
+      phone: this.loginForm.value.email,
     };
-    if (data.phone == "" || data.hash == "") {
+    if (data.phone == '' || data.hash == '') {
       this.isEmpty();
       this.loading = false;
     } else {
@@ -59,17 +46,16 @@ export class LoginComponent implements OnInit {
             this.errmsg = res.message || 'These credentials do not match !!.';
             this.loading = false;
           } else {
-            this.storageService.saveUser(data);
             localStorage.setItem('auth', JSON.stringify(res.message));
             this.sucmsg = res.message || 'sucessfull !!.';
-            this.showSuccess()
+            this.showSuccess();
             this.loading = false;
             this.router.navigate(['auth/dashboard/']);
           }
         },
         (e) => {
           this.loading = false;
-          this.showError()
+          this.showError();
         }
       );
     }

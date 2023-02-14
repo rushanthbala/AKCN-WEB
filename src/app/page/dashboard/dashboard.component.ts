@@ -272,7 +272,7 @@ export class DashboardComponent implements OnInit {
         if (this.annualReportData != null) {
           for (let i = 0; i < this.annualReportData.length; i++) {
             this.labledata?.push(
-              this.annualReportData[i].month.substring(0, 3)
+              this.annualReportData[i].month?.substring(0, 3)
             );
             this.realdata?.push(this.annualReportData[i].totalAmount);
           }

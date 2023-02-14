@@ -70,6 +70,7 @@ text: any;
     var cInput: String = first.searchinginput;
     this.dataServise.getData(`payment/invoice/${cInput}`).subscribe(
       (res) => {
+        console.log(res)
         this.userData = res;
         // console.log(res.connectionID == '9');
         // if(res.connectionID){

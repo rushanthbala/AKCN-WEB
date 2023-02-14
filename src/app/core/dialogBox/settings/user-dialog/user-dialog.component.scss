@@ -55,3 +55,18 @@
   margin-top: 8px;
   font-size: 12px !important;
 }
+.form-check-label{
+  font-size: 15px;
+  margin-left: 10%;
+}
+.form-check-input{
+  width: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-left: -10px;
+}
+.form-check-input:focus {
+  border-color: #01b7ff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

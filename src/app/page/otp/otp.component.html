@@ -1,73 +1,57 @@
 <section class="vh-100">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <form
-            class="register-form"
-            [formGroup]="loginForm"
-            (ngSubmit)="otp()"
-          >
-            <img
-              src="../../assets/icons/logo1.png"
-              class="fa fa-minus"
-              aria-hidden="true"
-            />
-            <br />
-            <br />
-            <h1 class="form-heading mb-4">Confirm OTP</h1>
-            <br />
-            <div class="mb-3 int-main-div">
-              <input
-                placeholder="Enter Your OTP"
-                type="number"
-                class="input-core"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                formControlName="email"
-                required
-                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
-                />
-                <div
-                  *ngIf="submitted && f['email'].errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="f['email'].errors['required']">
-                    Fill The Field
-                  </div>
-                  <div *ngIf="f['email'].errors['minlength']">
-                    Check your otp
-                  </div>
-                  <div *ngIf="f['email'].errors['maxlength']">
-                    Check your otp
-                  </div>
-                </div>
-            </div>
-            <br />
-            <div class="mb-3">
-              <button type="submit" class="btn btn-primary form-btn">
-                Submit
-              </button>
-              <br>
-              <div class="container-3 mt-4">
-                <a class="link-primary" (click)="reSend()">Resend OTP</a>
-              </div>
-            </div>
-            <!-- <div class="mb-3" *ngIf="loading">
-              <button type="submit" class="btn btn-primary form-btn" disabled>
-                Loading..
-              </button>
-            </div> -->
-          </form>
-        </div>
-        <div class="container col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <form class="register-form" [formGroup]="otpForm" (ngSubmit)="otp()">
           <img
-            src="../../assets/login.png"
-            alt="Login image"
-            class="img-fluid"
-            style="object-fit: cover;"
+            src="../../assets/icons/logo1.png"
+            class="fa fa-minus"
+            aria-hidden="true"
           />
-        </div>
+          <br />
+          <br />
+          <h1 class="form-heading mb-4">Confirm OTP</h1>
+          <br />
+          <div class="mb-3 int-main-div">
+            <input
+              placeholder="Enter Your OTP"
+              type="number"
+              class="input-core"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="email"
+              required
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+            />
+            <div
+              *ngIf="submitted && f['email'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f['email'].errors['required']">Fill The Field</div>
+              <div *ngIf="f['email'].errors['minlength']">Check your otp</div>
+              <div *ngIf="f['email'].errors['maxlength']">Check your otp</div>
+            </div>
+          </div>
+          <br />
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary form-btn">
+              Submit
+            </button>
+            <br />
+            <div class="container-3 mt-4">
+              <a class="link-primary" (click)="reSend()">Resend OTP</a>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="container col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <img
+          src="../../assets/login.png"
+          alt="Login image"
+          class="img-fluid"
+          style="object-fit: cover"
+        />
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>

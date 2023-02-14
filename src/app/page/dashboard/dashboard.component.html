@@ -29,26 +29,9 @@
           ></mat-datepicker-toggle>
           <mat-datepicker class="dp" #picker type="submit"></mat-datepicker>
         </div>
-        <!-- <mat-form-field  class="int form-control">
-          <mat-label>Choose a date</mat-label>
-          <input  max="{{maxDate}}" matInput [matDatepicker]="picker">
-          <mat-datepicker-toggle matSuffix  [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field> -->
       </form>
     </div>
   </div>
-  <!-- <div
-    *ngFor="let it of sdata; let i = index"
-    class="col-6 col-sm-6 col-md-4 col-xl-3 mt-2"
-  >
-    <app-card-template
-      title="{{ it.name }}"
-      color="{{ it.color }}"
-      number="{{ it.number }}"
-      [img]="it.img"
-    ></app-card-template>
-  </div> -->
   <div class="container-4">
     <div
       class="card"
@@ -184,8 +167,6 @@
   <div class="card-3">
     <div class="card-text-2">Today Collection Report</div>
     <div class="container-10">
-      <!-- <div *ngIf="TICKET_DATA.length != 0">
-        <div *ngIf="showTable" else loading> -->
       <div id="htmlData" class="table-responsive">
         <table
           mat-table
@@ -234,12 +215,10 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
         <mat-paginator
-            [pageSizeOptions]="[8, 10]"
-            aria-label="Select page of users"
-          ></mat-paginator>
+          [pageSizeOptions]="[8, 10]"
+          aria-label="Select page of users"
+        ></mat-paginator>
       </div>
-      <!-- </div>
-      </div> -->
     </div>
   </div>
 </div>
@@ -248,8 +227,6 @@
   <div class="card-4">
     <div class="card-text-2">Area Wise Report</div>
     <div class="container-10">
-      <!-- <div *ngIf="TICKET_DATA.length != 0">
-        <div *ngIf="showTable" else loading> -->
       <div id="htmlData" class="table-responsive">
         <table
           mat-table
@@ -298,12 +275,10 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
         </table>
         <mat-paginator
-            [pageSizeOptions]="[8, 10]"
-            aria-label="Select page of users"
-          ></mat-paginator>
+          [pageSizeOptions]="[8, 10]"
+          aria-label="Select page of users"
+        ></mat-paginator>
       </div>
-      <!-- </div>
-      </div> -->
     </div>
   </div>
 </div>
