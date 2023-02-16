@@ -12,10 +12,7 @@
           [(ngModel)]="selectedDeviceObj"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjBranch(selectedDeviceObj)"
-          
         >
-        <!-- [ngClass]="{ 'is-invalid': submitted && f['branch'].errors }" -->
-          <!-- <option disabled selected value="null">Branch</option> -->
           <option value="All" [ngValue]="{ id: 0, branchName: 'All' }">
             All
           </option>
@@ -24,9 +21,6 @@
             {{ item.branchName }}
           </option>
         </select>
-        <!-- <div *ngIf="submitted && f['branch'].errors" class="invalid-feedback">
-          <div *ngIf="f['branch'].errors['required']">Select the branch</div>
-        </div> -->
       </div>
       <div class="mb-3 cus-int-div area">
         <select
@@ -36,10 +30,7 @@
           [(ngModel)]="selectedAreaObj"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjArea(selectedAreaObj)"
-          
         >
-        <!-- [ngClass]="{ 'is-invalid': submitted && f['area'].errors }" -->
-          <!-- <option disabled selected value="null">Area</option> -->
           <option value="All" [ngValue]="{ id: 0, area: 'All' }">All</option>
 
           <option *ngFor="let item of AreaArray" [ngValue]="item">
@@ -58,18 +49,12 @@
           [(ngModel)]="selectedRoadObj"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjRoad(selectedRoadObj)"
-          
         >
-        <!-- [ngClass]="{ 'is-invalid': submitted && f['road'].errors }" -->
-          <!-- <option disabled selected value="null">Road</option> -->
           <option value="All" [ngValue]="{ id: 0, road: 'All' }">All</option>
           <option *ngFor="let item of RoadArray" [ngValue]="item">
             {{ item.road }}
           </option>
         </select>
-        <!-- <div *ngIf="submitted && f['road'].errors" class="invalid-feedback">
-          <div *ngIf="f['road'].errors['required']">Select the road</div>
-        </div> -->
       </div>
       <div class="mb-3 cus-int-div status">
         <select
@@ -79,19 +64,13 @@
           [(ngModel)]="selectedStatusObj"
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObjStatus(selectedStatusObj)"
-         
         >
-        <!-- [ngClass]="{ 'is-invalid': submitted && f['status'].errors }" -->
-          <!-- <option disabled selected value="null">Status</option> -->
           <option value="All" [ngValue]="{ id: 0, value: 'All' }">All</option>
 
           <option *ngFor="let item of StatusArray" [ngValue]="item">
             {{ item.id }}
           </option>
         </select>
-        <!-- <div *ngIf="submitted && f['status'].errors" class="invalid-feedback">
-          <div *ngIf="f['status'].errors['required']">Select the status</div>
-        </div> -->
       </div>
       <div class="mb-3 cus-int-div">
         <input
@@ -100,15 +79,7 @@
           id="minAmount"
           placeholder="Minimum Due"
           formControlName="minAmount"
-         
         />
-        <!-- [ngClass]="{ 'is-invalid': submitted && f['minAmount'].errors }" -->
-        <!-- <div
-          *ngIf="submitted && f['minAmount'].errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f['minAmount'].errors['required']">Fill The Field</div>
-        </div> -->
       </div>
       <div class="cus-int-div">
         <span

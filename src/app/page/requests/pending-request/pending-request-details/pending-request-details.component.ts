@@ -1,8 +1,6 @@
-import { Component, OnInit,Input,Output, EventEmitter  } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
-import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/request/assign-request/change-request.component';
 import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/request/cancel-dialog-box/dialog-box.component';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -10,16 +8,20 @@ import { HttpService } from 'src/app/servise/http/http.service';
 @Component({
   selector: 'app-pending-request-details',
   templateUrl: './pending-request-details.component.html',
-  styleUrls: ['./pending-request-details.component.scss']
+  styleUrls: ['./pending-request-details.component.scss'],
 })
 export class PendingRequestDetailsComponent {
   animal: string | any;
   name: string | any;
 
-  constructor(private fb: FormBuilder,public dialog: MatDialog, public dataServise: HttpService) {}
-  @Input() object:object | any;
-  @Input() text:string | any;
-  @Output() backTo = new EventEmitter<any>()
+  constructor(
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    public dataServise: HttpService
+  ) {}
+  @Input() object: object | any;
+  @Input() text: string | any;
+  @Output() backTo = new EventEmitter<any>();
 
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
@@ -29,7 +31,7 @@ export class PendingRequestDetailsComponent {
   Change: FormGroup | any;
   Extra: FormGroup | any;
   allData: object | any;
-  
+
   ngOnInit(): void {
     this.initialForm();
     this.initialInputForm();
@@ -37,15 +39,17 @@ export class PendingRequestDetailsComponent {
     this.initialExtraForm();
     this.initialChangeForm();
 
-    this.getUserSingleData()
-
+    this.getUserSingleData();
   }
   getUserSingleData() {
-    this.dataServise.getData(`connection/id/${this.object.connectionID}`).subscribe((res) => {
-      this.allData = res[0]
-    }, (err) => {
-    }
-    );
+    this.dataServise
+      .getData(`connection/id/${this.object.connectionID}`)
+      .subscribe(
+        (res) => {
+          this.allData = res[0];
+        },
+        (err) => {}
+      );
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -79,23 +83,13 @@ export class PendingRequestDetailsComponent {
       road: '',
     });
   }
-  
-  searching() {
-  }
-  // model form function
-  ReconnectionRequest() {
-  }
-  ChangeRequest() {
-  }
-  ExtraRequest() {
-  }
-   AssignOpenDialog(): void {
+  AssignOpenDialog(): void {
     const dialogRef = this.dialog.open(PendingChangeRequestComponent, {
       width: '250px',
-      data:{TicketData:this.object, allData:this.allData}
+      data: { TicketData: this.object, allData: this.allData },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
@@ -103,14 +97,14 @@ export class PendingRequestDetailsComponent {
   CancelRequests(): void {
     const dialogRef = this.dialog.open(CancelDialogBoxComponent, {
       width: '250px',
-      data:{TicketData:this.object, allData:this.allData}
+      data: { TicketData: this.object, allData: this.allData },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
-  }  
-  Back(){
-    this.backTo.emit()
+  }
+  Back() {
+    this.backTo.emit();
   }
 }

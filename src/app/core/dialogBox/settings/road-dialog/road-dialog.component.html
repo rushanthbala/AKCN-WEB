@@ -1,6 +1,8 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
-    <div class="form-heading int-div card-head-h2">{{ ifData ? "Edit Road" : "Add Road" }}</div>
+    <div class="form-heading int-div card-head-h2">
+      {{ ifData ? "Edit Road" : "Add Road" }}
+    </div>
     <p class="para">{{ ifData ? currentData.userID : "" }}</p>
     <div>
       <div class="row mt-2">
@@ -13,13 +15,10 @@
             placeholder="Road"
             formControlName="road"
             [ngClass]="{ 'is-invalid': submitted && f['road'].errors }"
-            />
-            <div
-              *ngIf="submitted && f['road'].errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f['road'].errors['required']">Fill The Field</div>
-            </div>
+          />
+          <div *ngIf="submitted && f['road'].errors" class="invalid-feedback">
+            <div *ngIf="f['road'].errors['required']">Fill The Field</div>
+          </div>
         </div>
       </div>
       <div class="row mt-2">
@@ -33,19 +32,15 @@
             id="parentesco"
             formControlName="area"
             [ngClass]="{ 'is-invalid': submitted && f['area'].errors }"
-            >
-           
+          >
             <option disabled selected value="null">Area</option>
             <option *ngFor="let item of areaArray" [value]="item.id">
               {{ item.area }}
             </option>
           </select>
-          <div
-          *ngIf="submitted && f['area'].errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f['area'].errors['required']">Select the area</div>
-        </div>
+          <div *ngIf="submitted && f['area'].errors" class="invalid-feedback">
+            <div *ngIf="f['area'].errors['required']">Select the area</div>
+          </div>
         </div>
       </div>
 

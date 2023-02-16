@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
 import { DisconnectDialogBoxComponent } from 'src/app/core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
@@ -44,13 +44,8 @@ export class EditRequestComponent implements OnInit {
   }
   
   getTicketCount() {
-    // console.log(`request/connectionId/${this.object.id}`);
     
     this.dataServise.getData(`request/connectionId/${this.object.id}`).subscribe((res) => {
-      // this.userData = res;
-      // this.tableResult = this.userData.length
-      // this.isFetchDataFail = false
-      
       var allRequest: any = []
       allRequest = res
       allRequest.map((item: any) => {
@@ -65,8 +60,6 @@ export class EditRequestComponent implements OnInit {
         }
       })
     }, (err) => {
-      // this.isFetchDataFail = true
-      // Request.pe
       this.pendingRequest = 0
       this.assignRequest = 0
       this.closeRequest = 0
@@ -105,16 +98,6 @@ export class EditRequestComponent implements OnInit {
       area: '',
       road: '',
     });
-  }
-  
-  searching() {
-  }
-  // model form function
-  ReconnectionRequest() {
-  }
-  ChangeRequest() {
-  }
-  ExtraRequest() {
   }
   DisconnectionOpenDialog(): void {
     const dialogRef = this.dialog.open(DisconnectDialogBoxComponent, {

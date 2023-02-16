@@ -21,7 +21,6 @@ import { CustomButtonComponent } from '../core/custom-button/custom-button.compo
 import { FilterBoxComponent } from '../core/filter-box/filter-box.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialExampleModule } from './material.module';
-// import { DialogBoxComponent } from '../core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { ChangeRequestComponent } from '../core/dialogBox/request/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from '../core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { PendingDetailsComponent } from './ticket/pending-ticket/pending-details/pending-details.component';

@@ -1,4 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, VERSION, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  VERSION,
+  ViewChild,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -32,9 +39,9 @@ export class UserReportUpdateComponent implements OnInit {
 
   public selectedDeviceObj: any = {};
   UserArray: any;
-  UserName: any ="User";
+  UserName: any = 'User';
   UserID: any;
-  submitted= false
+  submitted = false;
   maxDate: any;
 
   @ViewChild('picker') picker: any;
@@ -64,24 +71,22 @@ export class UserReportUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this. futureDateDisable();
+    this.futureDateDisable();
   }
   getAll() {
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.UserArray = res;
-      // if (res.length > 0) {
-      //   this.UserName = res.firstName;
-      //   // this.UserID = res.id;
-      // }
     });
   }
 
   initialForm() {
-    this.loginForm = this.fb.group({
-      fromdate: new FormControl('', [Validators.required]),
-      todate: new FormControl('',[Validators.required]),
-      // user: new FormControl(null,[Validators.required]),
-    }, {validator: this.dateLessThan('fromdate', 'todate')});
+    this.loginForm = this.fb.group(
+      {
+        fromdate: new FormControl('', [Validators.required]),
+        todate: new FormControl('', [Validators.required]),
+      },
+      { validator: this.dateLessThan('fromdate', 'todate') }
+    );
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -89,23 +94,22 @@ export class UserReportUpdateComponent implements OnInit {
   }
 
   dateLessThan(from: string, to: string) {
-    return (group: FormGroup): {[key: string]: any} => {
-     let f = group.controls[from];
-     let t = group.controls[to];
-     if (f.value > t.value) {
-       return {
-         dates: "Date from should be less than Date to"
-       };
-     }
-     return {};
-    }
+    return (group: FormGroup): { [key: string]: any } => {
+      let f = group.controls[from];
+      let t = group.controls[to];
+      if (f.value > t.value) {
+        return {
+          dates: 'Date from should be less than Date to',
+        };
+      }
+      return {};
+    };
   }
 
-  searching() {
-  }
+  searching() {}
   emitEvent() {
     this.loading = true;
-    this.submitted = true
+    this.submitted = true;
 
     let fromdate = this.loginForm.value.fromdate;
     let todate = this.loginForm.value.todate;
@@ -113,19 +117,18 @@ export class UserReportUpdateComponent implements OnInit {
     let detailObj = {
       id: this.UserName,
     };
-    if (fromdate == "" || todate== "" || this.UserName =="User" || this.UserName ==undefined ) {
-      
+    if (
+      fromdate == '' ||
+      todate == '' ||
+      this.UserName == 'User' ||
+      this.UserName == undefined
+    ) {
       this.isEmpty();
       this.loading = false;
-    }else if(!this.loginForm.valid){
+    } else if (!this.loginForm.valid) {
       this.showmsg();
       this.loading = false;
-    }
-    // if(!this.loginForm.valid){
-    //   this.loading =false
-    //   return
-    // }
-     else {
+    } else {
       this.OnClick.emit({
         user: detailObj,
         fromdate: fromdate,
@@ -144,22 +147,21 @@ export class UserReportUpdateComponent implements OnInit {
   isEmpty() {
     this.toastr.error('Fill All The Field', 'Error');
   }
-  showmsg(){
-    this.toastr.error('From date must be less than to date', 'Error')
+  showmsg() {
+    this.toastr.error('From date must be less than to date', 'Error');
   }
-  futureDateDisable(){
-    var date :any = new Date();
+  futureDateDisable() {
+    var date: any = new Date();
     var todayDate: any = date.getDate();
     var month: any = date.getMonth() + 1;
     var year: any = date.getFullYear();
 
-    if(todayDate < 10){
-      todayDate = "0" + todayDate; //1,2..9
+    if (todayDate < 10) {
+      todayDate = '0' + todayDate; //1,2..9
     }
-    if(month < 10){
-      month = "0" + month;
+    if (month < 10) {
+      month = '0' + month;
     }
-    this.maxDate = year + "-" + month + "-" + todayDate;  //2022-12-31
-
+    this.maxDate = year + '-' + month + '-' + todayDate; //2022-12-31
   }
 }

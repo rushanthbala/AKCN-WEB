@@ -1,8 +1,6 @@
 <div
   class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
 >
-  <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
-
   <form [formGroup]="submit">
     <div class="input-div col-12 col-md-4">
       <input
@@ -32,10 +30,6 @@
       >
         PDF
       </button>
-      <!-- <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop">
-      Print
-    </button> -->
     </div>
   </div>
 </div>
@@ -54,15 +48,9 @@
             (matSortChange)="announceSortChange($event)"
             class=""
           >
-            <td mat-cell *matCellDef="let row" (click)="viewDetails(row)">
-              <!-- <mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)"
-                    [aria-label]="checkboxLabel(row)">
-      </mat-checkbox> -->
-            </td>
+            <td mat-cell *matCellDef="let row" (click)="viewDetails(row)"></td>
 
-            <!-- requestID Column -->
+            <!-- Ticket Column -->
             <ng-container matColumnDef="requestID">
               <th
                 mat-header-cell
@@ -178,9 +166,6 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-            <!-- <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr> -->
           </table>
         </div>
 
@@ -191,12 +176,7 @@
       </div>
     </div>
   </div>
-  <div class="editData">
-    <!--  [object]='subscriberdata'  text="text" -->
-    <!-- <app-pending-details   [object]='subscriberdata'  text="text"  ></app-pending-details> -->
-  </div>
+  <div class="editData"></div>
 </div>
 
-<p class="head-2" *ngIf="TICKET_DATA.length == 0 && ifGetData">
-  No Data found
-</p>
+<p class="head-2" *ngIf="TICKET_DATA.length == 0 && ifGetData">No Data found</p>

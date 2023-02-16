@@ -10,7 +10,6 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { TableUtil } from './tableUtils';
-import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -122,23 +121,11 @@ export class ClosedTicketComponent implements AfterViewInit, OnInit {
         updatedAt: x.updatedAt,
       }));
     TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'closed-ticket');
-    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   public openPDF(): void {
-    // let DATA: any = document.getElementById('htmlData');
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    //   PDF.save('closed-ticket.pdf');
-    // });
-
     let date : any = new Date();
     let year : any = date.getFullYear();
     let month : any = date.getMonth() + 1;

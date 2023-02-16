@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { isEmpty } from 'rxjs';
 import { HttpService } from 'src/app/servise/http/http.service';
+import { SharedService } from 'src/app/servise/shared/shared.service';
 
 @Component({
   selector: 'app-add-subscriber',
@@ -28,10 +28,12 @@ export class AddCSubsciberComponent implements OnInit {
   // dynamic form
   userForm: FormGroup | any;
   submitted = false;
+  nic: any;
   ngOnInit(): void {
     setTimeout(() => {
       this.getAll();
     });
+    this.nic = this.shared.getMessage();
   }
   getAll() {
     // get roadArray
@@ -42,9 +44,11 @@ export class AddCSubsciberComponent implements OnInit {
     this.dataServise.getData(`area`).subscribe((res) => {
       this.areaArray = res;
     });
+    //get employye array
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.technicianArray = res;
     });
+    //get branch array
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
     });
@@ -67,41 +71,35 @@ export class AddCSubsciberComponent implements OnInit {
   public checkErrorUserForm = (controlName: string, errorName: string) => {
     return this.userForm.controls[controlName].hasError(errorName);
   };
-  onSubmit(values: any) {
-    // console.log(values, "ASAS");
-  }
+  onSubmit(values: any) {}
   constructor(
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private shared: SharedService
   ) {
     this.userForm = this.fb.group(
       {
-        subscriberNIC: ['', Validators.required],
         primaryPhone: ['', Validators.required],
         secondaryPhone: '',
-        email: ['', Validators.required],
+        email: '',
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         type: ['Normal', Validators.required],
         TV: ['', Validators.required],
         OldID: '',
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        cPassword: ['', Validators.required],
-
         ConnectionAddress: ['', Validators.required],
         ConnectionDate: ['', Validators.required],
         Arrears: ['', Validators.required],
         ConnectionFee: ['', Validators.required],
-      },
-      { validator: this.passwordMatchValidator }
+      }
     );
   }
-  passwordMatchValidator(frm: FormGroup) {
-    return frm.controls['password'].value === frm.controls['cPassword'].value
-      ? null
-      : { mismatch: true };
-  }
+  // passwordMatchValidator(frm: FormGroup) {
+  //   return frm.controls['password'].value === frm.controls['cPassword'].value
+  //     ? null
+  //     : { mismatch: true };
+  // }
   inputset: FormGroup | any;
   addEventClick() {
     this.submitted = true;
@@ -109,23 +107,23 @@ export class AddCSubsciberComponent implements OnInit {
     var data;
     if (this.userForm.value.secondaryPhone) {
       data = {
-        subscriberNIC: this.userForm.value.subscriberNIC,
+        subscriberNIC: this.nic,
         primaryPhone: this.userForm.value.primaryPhone,
         secondaryPhone: this.userForm.value.secondaryPhone,
-        email: this.userForm.value.email,
+        // email: this.userForm.value.email,
         firstName: this.userForm.value.firstName,
         lastName: this.userForm.value.lastName,
-        hash: this.userForm.value.password,
+        // hash: this.userForm.value.password,
         ppVerified: 1,
       };
     } else {
       data = {
-        subscriberNIC: this.userForm.value.subscriberNIC,
+        subscriberNIC: this.nic,
         primaryPhone: this.userForm.value.primaryPhone,
-        email: this.userForm.value.email,
+        // email: this.userForm.value.email,
         firstName: this.userForm.value.firstName,
         lastName: this.userForm.value.lastName,
-        hash: this.userForm.value.password,
+        // hash: this.userForm.value.password,
         ppVerified: 1,
       };
     }

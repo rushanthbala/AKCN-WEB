@@ -2,8 +2,6 @@
   class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
   *ngIf="showTable"
 >
-  <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
-
   <form [formGroup]="submit">
     <div class="input-div col-12 col-md-4">
       <input
@@ -39,141 +37,157 @@
 <br />
 <br />
 
-<div
-  *ngIf="TICKET_DATA && TICKET_DATA.length != 0"
-  class="container-6"
->
+<div *ngIf="TICKET_DATA && TICKET_DATA.length != 0" class="container-6">
   <div *ngIf="showTable">
     <div class="card">
       <div class="card-body">
-    <div id="htmlData" class="table-responsive">
-      <table
-        mat-table
-        [dataSource]="dataSource"
-        id="ExampleNormalTable"
-        matSort
-        (matSortChange)="announceSortChange($event)"
-        class=""
-      >
-        <td mat-cell *matCellDef="let row" (click)="viewDetails(row)"></td>
-
-        <!-- ticketID Column -->
-        <ng-container matColumnDef="ticketID">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by ticketID"
+        <div id="htmlData" class="table-responsive">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            id="ExampleNormalTable"
+            matSort
+            (matSortChange)="announceSortChange($event)"
+            class=""
           >
-            Ticket
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.ticketID }}
-          </td>
-        </ng-container>
+            <td mat-cell *matCellDef="let row" (click)="viewDetails(row)"></td>
 
-        <!-- connectionID Column -->
-        <ng-container matColumnDef="connectionID">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by connectionID"
-          >
-            Id
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.connectionOrgId }}
-          </td>
-        </ng-container>
+            <!-- ticketID Column -->
+            <ng-container matColumnDef="ticketID">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by ticketID"
+              >
+                Ticket
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.ticketID }}
+              </td>
+            </ng-container>
 
-        <!-- description Column -->
-        <ng-container matColumnDef="description">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by description"
-          >
-            Subject
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.description }}
-          </td>
-        </ng-container>
+            <!-- connectionID Column -->
+            <ng-container matColumnDef="connectionID">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by connectionID"
+              >
+                Id
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.connectionOrgId }}
+              </td>
+            </ng-container>
 
-        <!-- phone Column -->
-        <ng-container matColumnDef="phone">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by phone"
-          >
-            Phone
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.phone }}
-          </td>
-        </ng-container>
+            <!-- description Column -->
+            <ng-container matColumnDef="description">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by description"
+              >
+                Subject
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.description }}
+              </td>
+            </ng-container>
 
-        <!-- createdBy Column -->
-        <ng-container matColumnDef="createdBy">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by createdBy"
-          >
-            Created By
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.createdBy ? convertIdToName(element.createdBy) : "--" }}
-          </td>
-        </ng-container>
+            <!-- phone Column -->
+            <ng-container matColumnDef="phone">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by phone"
+              >
+                Phone
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.phone }}
+              </td>
+            </ng-container>
 
-        <!-- createdAt Column -->
-        <ng-container matColumnDef="createdAt">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            sortActionDescription="Sort by createdAt"
-          >
-            Created At
-          </th>
-          <td mat-cell *matCellDef="let element" (click)="viewDetails(element)">
-            {{ element.createdAt | date : "yyyy-M-d hh:mm" }}
-          </td>
-        </ng-container>
+            <!-- createdBy Column -->
+            <ng-container matColumnDef="createdBy">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by createdBy"
+              >
+                Created By
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{
+                  element.createdBy
+                }}
+              </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        <!-- <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr> -->
-      </table>
+            <!-- createdAt Column -->
+            <ng-container matColumnDef="createdAt">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by createdAt"
+              >
+                Created At
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.createdAt | date : "yyyy-M-d hh:mm" }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <mat-paginator
+          [pageSizeOptions]="[10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
+      </div>
     </div>
-
-    <mat-paginator
-      [pageSizeOptions]="[10, 25, 100]"
-      aria-label="Select page of users"
-    ></mat-paginator>
   </div>
- 
-</div>
-</div>
 </div>
 <div class="editData" *ngIf="!showTable">
-  <!--  [object]='subscriberdata'  text="text" -->
   <app-pending-details
     [object]="subscriberdata"
     text="text"
     (backTo)="detailhide()"
   ></app-pending-details>
 </div>
-<!-- {{dataSource.length}} -->
 <div *ngIf="TICKET_DATA.length == 0 && ifGetData" class="head-2">
   No Data Found
 </div>
-

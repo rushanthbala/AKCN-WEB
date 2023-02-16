@@ -27,7 +27,6 @@ export class NoDataComponent implements OnInit {
 
   chackRequest: FormGroup | any;
   ngOnInit(): void {
-    //    this.initialReconnectionForm();
     setTimeout(() => {
       this.getAll();
     });
@@ -80,7 +79,6 @@ export class NoDataComponent implements OnInit {
   }
 
   getAll() {
-    // get TechnicianArray
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.TechnicianArray = res;
     });

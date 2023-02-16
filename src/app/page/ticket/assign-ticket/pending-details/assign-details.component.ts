@@ -1,11 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
-import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
-import { PendingChangeRequestComponent } from 'src/app/core/dialogBox/request/assign-request/change-request.component';
-import { CancelDialogBoxComponent } from 'src/app/core/dialogBox/request/cancel-dialog-box/dialog-box.component';
-import { ClosedRequestComponent } from 'src/app/core/dialogBox/request/close-request/closed-request.component';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { AssignTicketRequestDilogComponent } from 'src/app/core/dialogBox/ticket/assign-ticket-request/assign-ticket-request.component';
 import { TicketCancelDialogBoxComponent } from 'src/app/core/dialogBox/ticket/cancel-dialog-box/ticket-cancel-dialog-box.component';
 import { TicketCloseDialogBoxComponent } from 'src/app/core/dialogBox/ticket/close-dialog-box/ticket-close-dialog-box.component';
@@ -14,14 +9,18 @@ import { HttpService } from 'src/app/servise/http/http.service';
 @Component({
   selector: 'app-assign-details',
   templateUrl: './assign-details.component.html',
-  styleUrls: ['./assign-details.component.scss']
+  styleUrls: ['./assign-details.component.scss'],
 })
 export class AssignDetailsComponent {
   animal: string | any;
   name: string | any;
-  @Output() backTo = new EventEmitter<any>()
+  @Output() backTo = new EventEmitter<any>();
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, public dataServise: HttpService) { }
+  constructor(
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    public dataServise: HttpService
+  ) {}
   @Input() object: object | any;
   @Input() text: string | any;
 
@@ -40,15 +39,17 @@ export class AssignDetailsComponent {
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
-    this.getUserSingleData()
-
+    this.getUserSingleData();
   }
   getUserSingleData() {
-    this.dataServise.getData(`connection/id/${this.object.connectionID}`).subscribe((res) => {
-      this.allData = res[0]
-    }, (err) => {
-    }
-    );
+    this.dataServise
+      .getData(`connection/id/${this.object.connectionID}`)
+      .subscribe(
+        (res) => {
+          this.allData = res[0];
+        },
+        (err) => {}
+      );
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -82,25 +83,13 @@ export class AssignDetailsComponent {
       road: '',
     });
   }
-
-  searching() {
-  }
-  // model form function
-  ReconnectionRequest() {
-  }
-  ChangeRequest() {
-  }
-  ExtraRequest() {
-  }
   CloseOpenDialog(): void {
     const dialogRef = this.dialog.open(TicketCloseDialogBoxComponent, {
       width: '250px',
-            data:{TicketData:this.object, allData:this.allData}
-
-
+      data: { TicketData: this.object, allData: this.allData },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
@@ -108,28 +97,24 @@ export class AssignDetailsComponent {
   CancelTicket(): void {
     const dialogRef = this.dialog.open(TicketCancelDialogBoxComponent, {
       width: '250px',
-            data:{TicketData:this.object, allData:this.allData}
-
-
+      data: { TicketData: this.object, allData: this.allData },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
   TransferTicket(): void {
     const dialogRef = this.dialog.open(AssignTicketRequestDilogComponent, {
       width: '250px',
-            data:{TicketData:this.object, allData:this.allData}
-
-
+      data: { TicketData: this.object, allData: this.allData },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
   Back() {
-    this.backTo.emit()
+    this.backTo.emit();
   }
 }

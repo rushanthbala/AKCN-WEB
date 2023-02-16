@@ -1,7 +1,13 @@
 import { formatDate } from '@angular/common';
-import {Component, Inject,OnInit} from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -10,12 +16,13 @@ import { HttpService } from 'src/app/servise/http/http.service';
   templateUrl: './dialog-box.component.html',
   styleUrls: ['./dialog-box.component.scss'],
 })
-export class CancelDialogBoxComponent  implements OnInit  {
+export class CancelDialogBoxComponent implements OnInit {
   public open: Boolean = true;
   public loading: Boolean = false;
-  submitted = false
+  submitted = false;
 
   Reconnection: FormGroup | any;
+  currentUser: any;
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
@@ -24,64 +31,58 @@ export class CancelDialogBoxComponent  implements OnInit  {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
-      Remark: new FormControl('', [Validators.required])
+      Remark: new FormControl('', [Validators.required]),
     });
   }
   get f(): { [key: string]: AbstractControl } {
     return this.Reconnection.controls;
   }
   ReconnectionRequest() {
-
     let newDate = new Date();
-    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
-    var adminId = admin ? admin.id : null
+    const auth: any = localStorage.getItem('auth');
+    this.currentUser = JSON.parse(auth);
 
     let dataObj = {
-      "updatedBy": adminId,
-      "updatedAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
-      "closedAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
-      "reason":this.Reconnection.value.Remark,
-      // "assignedTo": this.TechnicianName,
-      // "assignedToID": this.TechnicianId,
+      updatedBy: this.currentUser.firstName,
+      updatedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      closedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      reason: this.Reconnection.value.Remark,
     };
-    // if (dataObj.reason == ""
-    // ) {
-    //   this.isEmpty();
-    // } 
-    if(!this.Reconnection.valid){
+    if (!this.Reconnection.valid) {
       this.submitted = true;
-      return
-    }
-    else {
-      this.loading =true
-      this.dataServise.putValue(`request/cancel/${this.data.TicketData.id}`, dataObj).subscribe(
-        (res: any) => {
-          if (res.errorMessage) {
+      return;
+    } else {
+      this.loading = true;
+      this.dataServise
+        .putValue(`request/cancel/${this.data.TicketData.id}`, dataObj)
+        .subscribe(
+          (res: any) => {
+            if (res.errorMessage) {
+              this.loading = false;
+            } else {
+              this.showSuccess();
+              this.loading = false;
+            }
+          },
+          (e) => {
             this.loading = false;
-          } else {
-            this.showSuccess()
-            this.loading = false;
+            this.showError();
           }
-        },
-        (e) => {
-          this.loading = false;
-          this.showError()
-        }
-      );
+        );
     }
   }
   showSuccess() {
     this.toastr.success('Sucessfully Cancel', 'Sucessfully');
-    this.onNoClick()
+    this.onNoClick();
     window.location.reload();
-    }
+  }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
@@ -92,22 +93,4 @@ export class CancelDialogBoxComponent  implements OnInit  {
 export interface DialogData {
   animal: string;
   id: string;
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

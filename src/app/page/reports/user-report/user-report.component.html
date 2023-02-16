@@ -9,17 +9,16 @@
 <br />
 <br />
 
-<p class="head-2" *ngIf="userData.length == 0 && isFetchDataFail">No Data found</p>
+<p class="head-2" *ngIf="userData.length == 0 && isFetchDataFail">
+  No Data found
+</p>
 
 <div class="main-div">
   <div *ngIf="userData.length != 0">
-    <div
-      class="container-6"
-      *ngIf="showTable && !isFetchDataFail"
-    >
-    <p class="head-2" *ngIf="showTable && !isFetchDataFail">
-      {{ tableResult }} Results found
-    </p>
+    <div class="container-6" *ngIf="showTable && !isFetchDataFail">
+      <p class="head-2" *ngIf="showTable && !isFetchDataFail">
+        {{ tableResult }} Results found
+      </p>
       <div class="card">
         <div class="card-body">
           <div id="htmlData" class="table-responsive">

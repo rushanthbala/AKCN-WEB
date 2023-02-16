@@ -5,7 +5,6 @@ import { CreateTicketComponent } from './ticket/create-ticket/create-ticket.comp
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditTicketComponent } from './ticket/create-ticket/edit-ticket/edit-ticket.component';
 import { PagesComponent } from './pages.component';
-import { PendingOneTicketComponent } from './pending-one-ticket/pending-one-ticket.component';
 import { PendingTicketComponent } from './ticket/pending-ticket/pending-ticket.component';
 import { AssignTicketComponent } from './ticket/assign-ticket/assign-ticket.component';
 import { ClosedTicketComponent } from './ticket/closed-ticket/pending-ticket.component';
@@ -32,8 +31,6 @@ import { CollectionReportComponent } from './reports/collection-report/collectio
 import { UnpaidReportsComponent } from './reports/unpaid-reports/unpaid-reports.component';
 import { HistoryComponent } from './connection/alter-connection/history/history.component';
 import { AdjustPaymentComponent } from './payments/adjust-payment/adjust-payment.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { OtpComponent } from './otp/otp.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [

@@ -18,15 +18,11 @@
   border-radius: 100px !important;
   background-color: #99999917;
 }
-
-// table
 .main-div {
   background-color: #fff;
-  // margin-top: 2rem;
   border-radius: 24px;
-  // margin:1rem 4rem 0rem 4rem;
 }
-@media only screen and (max-width:900px) {
+@media only screen and (max-width: 900px) {
   .main-div {
     margin: auto !important;
   }
@@ -67,7 +63,7 @@ tr:nth-child(even) {
 }
 .status {
   border-radius: 24px;
-  background-color: #B50A00;
+  background-color: #b50a00;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,11 +113,11 @@ tr:nth-child(even) {
   margin: 0rem 0rem 0rem 1rem;
 }
 .btn-c-1 {
-  background: #B50A00 !important;
+  background: #b50a00 !important;
 }
 .btn-c-2 {
-  background:#027AFE !important;
+  background: #027afe !important;
 }
 .btn-c-3 {
-  background: #31AB25 !important;
+  background: #31ab25 !important;
 }

@@ -5,11 +5,9 @@
     <app-payment-filter (OnClick)="searching($event)"></app-payment-filter>
   </div>
 </div>
-<!-- {{userData | json}} -->
 <div *ngIf="showTable">
   <div class="card mt-4">
     <div class="card-body">
-      <!-- <app-show-payment [object]="userData2" [text]="text"></app-show-payment> -->
       <div *ngIf="userData.length != 0">
         <div *ngIf="showTable">
           <div id="htmlData" class="table-responsive">
@@ -31,10 +29,7 @@
                 >
                   ID
                 </th>
-                <td
-                  mat-cell
-                  *matCellDef="let element"
-                >
+                <td mat-cell *matCellDef="let element">
                   <a style="color: #027afe; cursor: pointer">{{
                     element.invoiceID
                   }}</a>
@@ -52,7 +47,7 @@
                   Type
                 </th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.paymentType? element.paymentType : "--" }}
+                  {{ element.paymentType ? element.paymentType : "--" }}
                 </td>
               </ng-container>
 
@@ -86,27 +81,19 @@
                 </td>
               </ng-container>
               <ng-container matColumnDef="createdDate">
-                <th
-                  mat-header-cell
-                  *matHeaderCellDef
-                >
-                  Edit
-                </th>
+                <th mat-header-cell *matHeaderCellDef>Edit</th>
                 <td mat-cell *matCellDef="let element">
-                    <div
-                      class="status-btn update-c"
-                      (click)="viewDetails(element)"
-                    >
-                      UPDATE
+                  <div
+                    class="status-btn update-c"
+                    (click)="viewDetails(element)"
+                  >
+                    UPDATE
                   </div>
                 </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-              <!-- <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-            </tr> -->
             </table>
           </div>
 

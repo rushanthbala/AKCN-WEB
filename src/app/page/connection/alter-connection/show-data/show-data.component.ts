@@ -1,38 +1,26 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { EditConnectionDialogComponent } from 'src/app/core/dialogBox/connection/edit-connection-dialog/edit-connection-dialog.component';
 import { EditSubscriberDialogComponent } from 'src/app/core/dialogBox/connection/edit-subscriber-dialog/edit-subscriber-dialog.component';
 import { ReconnectBigDialogComponent } from 'src/app/core/dialogBox/connection/change-location-big-dialog/reconnect-big-dialog.component';
 import { ReconnectDialogComponent } from 'src/app/core/dialogBox/connection/disconnect-dialog/reconnect-dialog.component';
-import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
-import { DisconnectDialogBoxComponent } from 'src/app/core/dialogBox/disconnect-dialog-box/dialog-box.component';
 import { ConnectDialogComponent } from 'src/app/core/dialogBox/connection/connect-dialog/connect-dialog.component';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
 
 @Component({
   selector: 'app-show-data',
   templateUrl: './show-data.component.html',
-  styleUrls: ['./show-data.component.scss']
+  styleUrls: ['./show-data.component.scss'],
 })
 export class ShowDataComponent implements OnInit {
-  // @Output() OnClick = new EventEmitter<{
-  //   connectionid: any;
-  // }>();
-  // model
   animal: string | any;
   name: string | any;
   connectionId: any;
-  public longitude : any
-  public lattitute : any
-   url : any =`https://maps.google.com/maps?q=9.6778336,80.0034365&hl=es;z=14`
+  public longitude: any;
+  public lattitute: any;
+  url: any = `https://maps.google.com/maps?q=9.6778336,80.0034365&hl=es;z=14`;
 
   // this.url =`https://maps.google.com/maps?q=9.6778336,80.0034365&hl=es;z=14&amp;output=embed`
 
@@ -45,7 +33,7 @@ export class ShowDataComponent implements OnInit {
   @Input() object: object | any;
   @Input() text: string | any;
   // url: string = "https://maps.google.com/maps?q=9.6778336,80.0034365&hl=es;z=14&amp;output=embed";
-  urlSafe: SafeResourceUrl |any;
+  urlSafe: SafeResourceUrl | any;
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -61,12 +49,11 @@ export class ShowDataComponent implements OnInit {
     this.initialReconnectionForm();
     this.initialExtraForm();
     this.initialChangeForm();
-    let xy=this.object.connectionLocation
-    var split_str = xy?.split(",");
+    let xy = this.object.connectionLocation;
+    var split_str = xy?.split(',');
     // this.longitude= split_str[0]
     // this.lattitute= split_str[1]
-    this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
-
+    this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
   }
   initialForm() {
     this.loginForm = this.fb.group({
@@ -101,7 +88,6 @@ export class ShowDataComponent implements OnInit {
     });
   }
 
-  
   openReconnectDialog(): void {
     const dialogRef = this.dialog.open(ReconnectDialogComponent, {
       width: '250px',
@@ -167,16 +153,5 @@ export class ShowDataComponent implements OnInit {
 
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    // this.connectionId = id.id;
   }
-
-  // emitEvent() {
-  //   let detailObj = {
-  //     id: this.connectionId,
-  //   };
-  //   this.OnClick.emit({
-  //     connectionid: detailObj,
-  //   });
-  // } {
-
 }

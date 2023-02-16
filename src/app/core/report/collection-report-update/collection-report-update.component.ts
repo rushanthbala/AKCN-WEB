@@ -10,12 +10,9 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { from } from 'rxjs';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
@@ -83,13 +80,8 @@ export class CollectionReportUpdateComponent {
     this.futureDateDisable();
   }
   getAll() {
-    // get TechnicianArray
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
-      // if(res.length >0){
-      //   this.TechnicianName=res[0].firstName
-      //   this.TechnicianId=res[0].id
-      // }
     });
 
     this.dataServise.getData(`employee`).subscribe((res) => {
@@ -147,12 +139,7 @@ export class CollectionReportUpdateComponent {
     } else if (!this.loginForm.valid) {
       this.showmsg();
       this.loading = false;
-    }
-    // if(!this.loginForm.valid){
-    //   this.loading = false;
-    //   return
-    // }
-    else {
+    } else {
       this.OnClick.emit({
         fromdate: fromdate,
         todate: todate,

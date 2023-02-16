@@ -1,4 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
@@ -7,9 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
-import { StorageServiceService } from 'src/app/servise/storageService/storage-service.service';
 import { UserApiService } from '../../servise/user-api.service';
 
 @Component({
@@ -21,13 +18,13 @@ export class ProfileDetailsComponent {
   loading = false;
   submitted = false;
   profileForm: FormGroup | any;
-  currentUser : any;
+  currentUser: any;
   admin: any;
 
   constructor(
     private fb: FormBuilder,
     public dataServise: HttpService,
-    public dataservise: UserApiService,
+    public dataservise: UserApiService
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +49,7 @@ export class ProfileDetailsComponent {
     }
   }
   getData() {
-    const Auth: any = localStorage.getItem('auth')
+    const Auth: any = localStorage.getItem('auth');
     this.currentUser = JSON.parse(Auth);
   }
 }

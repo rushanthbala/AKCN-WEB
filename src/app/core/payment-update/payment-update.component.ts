@@ -18,7 +18,7 @@ export class PaymentUpdateComponent implements OnInit {
     connectionId: any;
     amount: any;
     arreardate: any;
-    loginForm: any
+    loginForm: any;
   }>();
   errmsg = '';
   sucmsg = '';
@@ -50,7 +50,6 @@ export class PaymentUpdateComponent implements OnInit {
     let arreardate = this.loginForm.value.arreardate;
 
     if (!this.loginForm.valid) {
-      // this.isEmpty();
       this.submitted = true;
       this.loading = false;
       return;
@@ -59,19 +58,10 @@ export class PaymentUpdateComponent implements OnInit {
         connectionId: connectionId,
         amount: amount,
         arreardate: arreardate,
-        loginForm: this.loginForm
+        loginForm: this.loginForm,
       });
 
       this.loading = false;
     }
-  }
-  showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
-  }
-  showError() {
-    this.toastr.error('Someting Went Wrong', 'Error');
-  }
-  isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
   }
 }

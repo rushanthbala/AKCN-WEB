@@ -1,60 +1,58 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-connection-search',
   templateUrl: './connection-search.component.html',
-  styleUrls: ['./connection-search.component.scss']
+  styleUrls: ['./connection-search.component.scss'],
 })
-export class ConnectionSearchComponent  implements OnInit  {
-  @Output() OnClick = new EventEmitter<{ searchinginput: string, type: string }>()
+export class ConnectionSearchComponent implements OnInit {
+  @Output() OnClick = new EventEmitter<{
+    searchinginput: string;
+    type: string;
+  }>();
   errmsg = '';
   sucmsg = '';
   loading = false;
-  constructor(private fb: FormBuilder, private toastr: ToastrService,
-  ) { }
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {}
   loginForm: FormGroup | any;
-  submitted = false
+  submitted = false;
 
   ngOnInit(): void {
     this.initialForm();
-
   }
   initialForm() {
     this.loginForm = this.fb.group({
-      searchinginput:new FormControl ('', [Validators.required, Validators.minLength(9)]),
+      searchinginput: new FormControl('', [
+        Validators.required,
+        Validators.minLength(9),
+      ]),
     });
   }
 
   get f(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
   }
-
-  searching() {
-  }
   emitEvent() {
     this.loading = true;
 
     let sInput = this.loginForm.value.searchinginput;
     let sType = this.loginForm.value.type;
-    if (!this.loginForm.valid ) {
-      this.submitted = true
+    if (!this.loginForm.valid) {
+      this.submitted = true;
       this.loading = false;
-      return
+      return;
     } else {
-      this.OnClick.emit({ searchinginput: sInput, type: 'sType' })
+      this.OnClick.emit({ searchinginput: sInput, type: 'sType' });
 
       this.loading = false;
     }
-  }
-  showSuccess() {
-    this.toastr.success('Sucessfully Login', 'Sucessfully');
-  }
-  showError() {
-    this.toastr.error('Someting Went Wrong', 'Error');
-  }
-  isEmpty() {
-    this.toastr.error('Fill All The Field', 'Error');
   }
 }

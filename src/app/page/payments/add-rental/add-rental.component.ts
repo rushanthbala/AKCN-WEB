@@ -1,4 +1,3 @@
-import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -42,31 +41,31 @@ export class AddRentalComponent {
       'yyyy-MM-dd h:mm:ss'
     );
 
-    let currentMonth : any = new Date().getMonth() + 1;
-    if(currentMonth == 1){
-      currentMonth = "JANUARY"
-    } else if(currentMonth == 2){
-      currentMonth = "FEBUARY"
-    }else if(currentMonth == 3){
-      currentMonth = "MARCH"
-    }else if(currentMonth == 4){
-      currentMonth = "APRIL"
-    }else if(currentMonth == 5){
-      currentMonth = "MAY"
-    }else if(currentMonth == 6){
-      currentMonth = "JUNE"
-    }else if(currentMonth == 7){
-      currentMonth = "JULY"
-    }else if(currentMonth == 8){
-      currentMonth = "AUGUST"
-    }else if(currentMonth == 9){
-      currentMonth = "SEPTEMBER"
-    }else if(currentMonth == 10){
-      currentMonth = "OCTOBER"
-    }else if(currentMonth == 11){
-      currentMonth = "NOVEMBER"
-    }else if(currentMonth == 12){
-      currentMonth = "DECEMBER"
+    let currentMonth: any = new Date().getMonth() + 1;
+    if (currentMonth == 1) {
+      currentMonth = 'JANUARY';
+    } else if (currentMonth == 2) {
+      currentMonth = 'FEBUARY';
+    } else if (currentMonth == 3) {
+      currentMonth = 'MARCH';
+    } else if (currentMonth == 4) {
+      currentMonth = 'APRIL';
+    } else if (currentMonth == 5) {
+      currentMonth = 'MAY';
+    } else if (currentMonth == 6) {
+      currentMonth = 'JUNE';
+    } else if (currentMonth == 7) {
+      currentMonth = 'JULY';
+    } else if (currentMonth == 8) {
+      currentMonth = 'AUGUST';
+    } else if (currentMonth == 9) {
+      currentMonth = 'SEPTEMBER';
+    } else if (currentMonth == 10) {
+      currentMonth = 'OCTOBER';
+    } else if (currentMonth == 11) {
+      currentMonth = 'NOVEMBER';
+    } else if (currentMonth == 12) {
+      currentMonth = 'DECEMBER';
     }
 
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
@@ -79,7 +78,7 @@ export class AddRentalComponent {
       paymentType: 'RENTAL.',
       amount: amount,
       enteredBy: adminId,
-      conductedBy: adminId
+      conductedBy: adminId,
     };
     if (
       dataObj.amount == '' ||
@@ -88,21 +87,21 @@ export class AddRentalComponent {
     ) {
       this.isEmpty();
     } else {
-          this.dataServise.postValue('payment/rental', dataObj).subscribe(
-            (res: any) => {
-              if (res.errorMessage) {
-                this.loading = false;
-              } else {
-                this.UpdatedateDialogBoxOpen();
-                this.loading = false;
-                loginForm.reset();
-              }
-            },
-            (e) => {
-              this.loading = false;
-              this.isWrongConnectionId();
-            }
-          );
+      this.dataServise.postValue('payment/rental', dataObj).subscribe(
+        (res: any) => {
+          if (res.errorMessage) {
+            this.loading = false;
+          } else {
+            this.UpdatedateDialogBoxOpen();
+            this.loading = false;
+            loginForm.reset();
+          }
+        },
+        (e) => {
+          this.loading = false;
+          this.isWrongConnectionId();
+        }
+      );
     }
   }
   // UpdateDataComponent

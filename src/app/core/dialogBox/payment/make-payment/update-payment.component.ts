@@ -1,17 +1,22 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
 @Component({
   selector: 'app-update-payment',
   templateUrl: './update-payment.component.html',
-  styleUrls: ['./update-payment.component.scss']
+  styleUrls: ['./update-payment.component.scss'],
 })
 export class UpdatePaymentComponent implements OnInit {
-
   public loading: Boolean = true;
   public areaArray: any = [];
   public roadArray: any = [];
@@ -57,18 +62,18 @@ export class UpdatePaymentComponent implements OnInit {
       id: 10,
       value: 'CHANGE LOCATION',
     },
-];
+  ];
 
   public roadId: any = 'Road';
   public areaId: any = 'Area';
-  public  TechnicianId: any = 'Technician';
-  public  PaymentType: any = '';
-  suburl2: string = "area"
-  suburl1: string = "road"
-
+  public TechnicianId: any = 'Technician';
+  public PaymentType: any = '';
+  suburl2: string = 'area';
+  suburl1: string = 'road';
 
   chackRequest: FormGroup | any;
-  submitted = false
+  submitted = false;
+  currentUser: any;
   ngOnInit(): void {
     this.initialReconnectionForm();
     // this.getAll()
@@ -78,52 +83,46 @@ export class UpdatePaymentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService,
-
-  ) { }
+    private toastr: ToastrService
+  ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.chackRequest = this.fb.group({
-      payment:new FormControl(null, [Validators.required]),
+      payment: new FormControl(null, [Validators.required]),
       amount: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required])
+      description: new FormControl('', [Validators.required]),
     });
   }
   get f(): { [key: string]: AbstractControl } {
     return this.chackRequest.controls;
   }
   ReconnectionRequest() {
-    let todayDate =new Date()
-    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
-    var adminId = admin ? admin.id : null
-  
-    let dataObj ={
-      connectionID:this.data.id,
-      paidDateTime:formatDate(todayDate, 'yyyy-MM-dd', "en-US"),
+    let todayDate = new Date();
+    const auth: any = localStorage.getItem('auth');
+    this.currentUser = JSON.parse(auth);
+
+    let dataObj = {
+      connectionID: this.data.id,
+      paidDateTime: formatDate(todayDate, 'yyyy-MM-dd', 'en-US'),
       description: this.chackRequest.value.description,
-      paymentType:this.PaymentType,
-      amount:this.chackRequest.value.amount,
-      enteredBy:"ADMIN",
-      conductedBy:adminId,
-      phoneNo:this.data.primaryPhone
-    }
-    // if (dataObj.amount == "" || dataObj.description == "" ||dataObj.paymentType == ""
-    // ) {
-    //   this.isEmpty();
-    // } 
-    if(!this.chackRequest.valid){
+      paymentType: this.PaymentType,
+      amount: this.chackRequest.value.amount,
+      enteredBy: this.currentUser.firstName,
+      conductedBy:  this.currentUser.firstName,
+      phoneNo: this.data.primaryPhone,
+    };
+    if (!this.chackRequest.valid) {
       this.submitted = true;
-      return
-    }
-    else {
+      return;
+    } else {
       this.dataServise.postValue('payment', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            this.showSuccess()
+            this.showSuccess();
             this.loading = false;
           }
         },
@@ -135,19 +134,17 @@ export class UpdatePaymentComponent implements OnInit {
   }
 
   getAll() {
-    // get TechnicianArray
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.TechnicianArray = res;
     });
   }
 
   onSelect(val: any) {
-    this.PaymentType = val
+    this.PaymentType = val;
   }
   showSuccess() {
     this.toastr.success('Sucessfully Finished', 'Sucessfully');
-    window.location.reload()
-
+    window.location.reload();
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

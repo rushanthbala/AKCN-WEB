@@ -1,4 +1,3 @@
-import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -34,9 +33,6 @@ export class AddArrearsComponent {
     var amount = first.amount;
     var arreardate = first.arreardate;
     var loginForm = first.loginForm;
-
-    // add to database
-
     let todayDate = new Date();
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
     var adminId = admin ? admin.id : null;
@@ -110,19 +106,6 @@ export class AddArrearsComponent {
         }
       );
     }
-    // connectionId: connectionId, amount: amount,arreardate:arreardate
-    // var Ctype: string = first.type
-    // var url = findTypeUrl(Ctype)
-
-    // var cInput: String = first.searchinginput
-    // this.dataServise.getData(`animal`).subscribe((res) => {
-    //   this.userData = res[0];
-    //   this.tableResult = this.userData.length
-    //   this.showTable = true;
-
-    // }, (err) => {
-    //   this.NoDataDialogBoxOpen()
-    // });
   }
   // UpdateDataComponent
   NoDataDialogBoxOpen(): void {
@@ -147,7 +130,6 @@ export class AddArrearsComponent {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Finished', 'Sucessfully');
-    // window.location.reload()
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');

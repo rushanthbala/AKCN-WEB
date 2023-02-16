@@ -53,82 +53,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private dataService: HttpService) {}
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // userArray: any = [
-  //   {
-  //     id: 1,
-  //     name: 'rushanth',
-  //     Image: 'https://i.ytimg.com/vi/Rk3T__b2mDg/maxresdefault.jpg',
-  //     email: 'sample@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Janu',
-  //     Image: 'image url',
-  //     email: 'sample2@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'stelin',
-  //     Image: 'image url',
-  //     email: 'sample3@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Shan',
-  //     Image: 'image url',
-  //     email: 'sample4@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'rushanth',
-  //     Image: 'image url',
-  //     email: 'sample5@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 6,
-  //     name: 'Janu',
-  //     Image: 'image url',
-  //     email: 'sample6@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 7,
-  //     name: 'stelin',
-  //     Image: 'image url',
-  //     email: 'sample7@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 8,
-  //     name: 'Shan',
-  //     Image: 'image url',
-  //     email: 'sample@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 9,
-  //     name: 'stelin',
-  //     Image: 'image url',
-  //     email: 'sample@gmail.com',
-  //     points: 1212,
-  //   },
-  //   {
-  //     id: 10,
-  //     name: 'Shan',
-  //     Image: 'image url',
-  //     email: 'sample@gmail.com',
-  //     points: 1212,
-  //   },
-  // ];
   p: number = 1;
 
   ngOnInit(): void {
-    // this.userData = this.userArray;
     this.futureDateDisable();
     this.initialForm();
     this.dailyCollection();
@@ -136,7 +63,6 @@ export class DashboardComponent implements OnInit {
     this.dailyReconnection();
     this.dailyLocationChange();
     this.todayCollectionReport();
-    // this.renderChart(this.labledata, this.realdata);
     this.anualReport();
     this.areaReport();
   }

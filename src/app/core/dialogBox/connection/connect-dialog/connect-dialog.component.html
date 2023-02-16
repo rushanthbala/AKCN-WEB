@@ -1,10 +1,6 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Reconnect</div>
-    <!-- {{
-            data | json
-        }} -->
-    <!-- <p class="para">{{ data.connectionID }}</p> -->
     <div>
       <select
         class="form-select"
@@ -23,7 +19,6 @@
       <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
         <div *ngIf="f['tech'].errors['required']">Select the Technician</div>
       </div>
-      <!-- <div class="para mt-3 ps-3">Disconnected Date</div> -->
       <input
         type="date"
         class="form-control int"
@@ -47,8 +42,6 @@
           Fill The Field
         </div>
       </div>
-
-      <!-- <div class="para mt-3 ps-3">Reconnect Fee</div> -->
 
       <input
         type="text"

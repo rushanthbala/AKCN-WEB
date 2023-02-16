@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { CreateTicketComponentDialog } from 'src/app/core/dialogBox/ticket/create-ticket/create-ticket.component';
@@ -46,9 +46,6 @@ export class EditTicketComponent implements OnInit {
   }
   getTicketCount() {
     this.dataServise.getData(`ticket/connectionId/${this.object.id}`).subscribe((res) => {
-      // this.userData = res;
-      // this.tableResult = this.userData.length
-      // this.isFetchDataFail = false
       var allRequest: any = []
       allRequest = res
       allRequest.map((item: any) => {
@@ -63,8 +60,6 @@ export class EditTicketComponent implements OnInit {
         }
       })
     }, (err) => {
-      // this.isFetchDataFail = true
-      // Request.pe
       this.pendingRequest = 0
       this.assignRequest = 0
       this.closeRequest = 0
@@ -106,15 +101,6 @@ export class EditTicketComponent implements OnInit {
     });
   }
 
-  searching() {
-  }
-  // model form function
-  ReconnectionRequest() {
-  }
-  ChangeRequest() {
-  }
-  ExtraRequest() {
-  }
   createTicket(): void {
     const dialogRef = this.dialog.open(CreateTicketComponentDialog, {
       width: '250px',

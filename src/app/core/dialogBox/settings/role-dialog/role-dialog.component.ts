@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -41,7 +40,6 @@ export class RoleDialogComponent implements OnInit {
       this.getAll();
     });
     if (this.data.sendtype == 'POST') {
-      // alert("cool")
       this.ifData = false;
     } else if (
       this.data.sendtype == 'PUT' &&
@@ -49,7 +47,6 @@ export class RoleDialogComponent implements OnInit {
     ) {
       this.ifData = true;
       this.currentData = this.data.subscriberdata;
-      // alert("oko")
     } else {
     }
     this.initialReconnectionForm();
@@ -69,7 +66,6 @@ export class RoleDialogComponent implements OnInit {
       role: this.ifData
         ? this.currentData.role
         : new FormControl('', [Validators.required]),
-      // lastName: this.ifData ?this.currentData.lastName: "",
     });
   }
 
@@ -89,8 +85,6 @@ export class RoleDialogComponent implements OnInit {
     };
 
     if (!this.chackRequest.valid) {
-      // this.isEmpty();
-
       return;
     } else {
       this.loading = true;
@@ -139,7 +133,6 @@ export class RoleDialogComponent implements OnInit {
   }
 
   getAll() {
-    // get TechnicianArray
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.TechnicianArray = res;
     });

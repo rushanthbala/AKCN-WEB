@@ -16,7 +16,10 @@
             formControlName="branchName"
             [ngClass]="{ 'is-invalid': submitted && f['branchName'].errors }"
           />
-          <div *ngIf="submitted && f['branchName'].errors" class="invalid-feedback">
+          <div
+            *ngIf="submitted && f['branchName'].errors"
+            class="invalid-feedback"
+          >
             <div *ngIf="f['branchName'].errors['required']">Fill The Field</div>
           </div>
         </div>
@@ -32,8 +35,13 @@
             formControlName="branchAddress"
             [ngClass]="{ 'is-invalid': submitted && f['branchAddress'].errors }"
           />
-          <div *ngIf="submitted && f['branchAddress'].errors" class="invalid-feedback">
-            <div *ngIf="f['branchAddress'].errors['required']">Fill The Field</div>
+          <div
+            *ngIf="submitted && f['branchAddress'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['branchAddress'].errors['required']">
+              Fill The Field
+            </div>
           </div>
         </div>
       </div>
@@ -48,7 +56,10 @@
             formControlName="branchCity"
             [ngClass]="{ 'is-invalid': submitted && f['branchCity'].errors }"
           />
-          <div *ngIf="submitted && f['branchCity'].errors" class="invalid-feedback">
+          <div
+            *ngIf="submitted && f['branchCity'].errors"
+            class="invalid-feedback"
+          >
             <div *ngIf="f['branchCity'].errors['required']">Fill The Field</div>
           </div>
         </div>
@@ -62,8 +73,13 @@
             formControlName="branchPhone"
             [ngClass]="{ 'is-invalid': submitted && f['branchPhone'].errors }"
           />
-          <div *ngIf="submitted && f['branchPhone'].errors" class="invalid-feedback">
-            <div *ngIf="f['branchPhone'].errors['required']">Fill The Field</div>
+          <div
+            *ngIf="submitted && f['branchPhone'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['branchPhone'].errors['required']">
+              Fill The Field
+            </div>
           </div>
         </div>
       </div>
@@ -99,59 +115,5 @@
         </div>
       </div>
     </div>
-    <!-- <div class="row">
-            <div class="col-6">
-                <div>
-                    <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
-                        #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.area">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
-                    <div class="para mt-3 ps-3">Disconnected Date </div>
-                    <input type="date" class="form-control int" id="ID" placeholder="12-12-2022" formControlName="disconnectedDate" />
-        
-                    <div class="para mt-3 ps-3">Reconnection Fee </div>
-        
-                    <input type="text" class="form-control int" type="number" required id="ID" placeholder="Amount"
-                        formControlName="reconnectionFee" />
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
-                        Create
-                    </button>
-                    <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
-                        style="background-color: #fff !important; color: #027afe">
-                        Cancel
-                    </button>
-        
-                </div>
-            </div>
-            <div class="col-6">
-                <div>
-                    <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
-                        #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.area">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
-                    <div class="para mt-3 ps-3">Disconnected Date </div>
-                    <input type="date" class="form-control int" id="ID" placeholder="12-12-2022" formControlName="disconnectedDate" />
-        
-                    <div class="para mt-3 ps-3">Reconnection Fee </div>
-        
-                    <input type="text" class="form-control int" type="number" required id="ID" placeholder="Amount"
-                        formControlName="reconnectionFee" />
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
-                        Create
-                    </button>
-                    <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
-                        style="background-color: #fff !important; color: #027afe">
-                        Cancel
-                    </button>
-        
-                </div>
-            </div>
-        </div> -->
   </div>
 </form>

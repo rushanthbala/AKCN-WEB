@@ -1,7 +1,6 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Assign Request</div>
-    <!-- <p class="para">{{ data.TicketData.id }}</p> -->
     <div class="user mt-4">
       <select
         class="form-select mt-2"
@@ -12,8 +11,6 @@
         (ngModelChange)="onChangeObj(selectedDeviceObj)"
         [ngClass]="{ 'is-invalid': submitted && TechnicianName }"
       >
-        <!-- [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }" -->
-        <!-- <option disabled selected value="null">Technician</option> -->
         <option *ngFor="let item of TechnicianArray" [ngValue]="item">
           {{ item.firstName }}
         </option>
@@ -21,13 +18,6 @@
       <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
         <div *ngIf="f['tech'].errors['required']">Select the technician</div>
       </div>
-
-      <!-- <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required #val>
-                <option disabled selected value="null">Technician</option>
-                <option *ngFor="let item of TechnicianArray" [value]="item.area">
-                    {{ item.firstName }}
-                </option>
-            </select> -->
       <button
         class="input-group-text cus-btn-down cus-model-btn-down btn-c-1 mt-4"
         (click)="ReconnectionRequest()"

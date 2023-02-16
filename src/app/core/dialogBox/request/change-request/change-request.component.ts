@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 import {
   AbstractControl,
   FormBuilder,
@@ -6,11 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -30,6 +27,7 @@ export class ChangeRequestComponent implements OnInit {
   submitted = false;
 
   chackRequest: FormGroup | any;
+  currentUser: any;
   ngOnInit(): void {
     this.initialReconnectionForm();
     setTimeout(() => {
@@ -58,20 +56,20 @@ export class ChangeRequestComponent implements OnInit {
     return this.chackRequest.controls;
   }
   ReconnectionRequest() {
+    let newDate = new Date();
+    const auth: any = localStorage.getItem('auth');
+    this.currentUser = JSON.parse(auth);
     let data = {
-      phoneNumber: this.chackRequest.value.phoneNumber,
+      phone: this.chackRequest.value.phoneNumber,
+      description: this.chackRequest.value.description,
       address: this.chackRequest.value.address,
+      createdBy: this.currentUser.firstName,
+      createdAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
       roadId: this.roadId,
       areaId: this.areaId,
       requestType: 'Change Request',
       connectionID: this.data.id,
     };
-    // if (this.chackRequest.value.phoneNumber == "" || this.chackRequest.value.address == "" ||
-    //   this.roadId == "Road" || this.areaId == "Area"
-    // ) {
-    //  this.submitted = true
-    //  return
-    // }
     if (!this.chackRequest.valid) {
       this.submitted = true;
       return;
@@ -93,11 +91,9 @@ export class ChangeRequestComponent implements OnInit {
   }
 
   getAll() {
-    // get roadArray
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.roadArray = res;
     });
-    // areaArray
     this.dataServise.getData(`${this.suburl2}`).subscribe((res) => {
       this.areaArray = res;
     });

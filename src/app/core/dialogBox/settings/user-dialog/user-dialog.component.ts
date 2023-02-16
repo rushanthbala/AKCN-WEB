@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -46,7 +45,6 @@ export class UserPostPut implements OnInit {
       this.getAll();
     });
     if (this.data.sendtype == 'POST') {
-      // alert("cool")
       this.ifData = false;
     } else if (
       this.data.sendtype == 'PUT' &&
@@ -54,11 +52,10 @@ export class UserPostPut implements OnInit {
     ) {
       this.ifData = true;
       this.currentData = this.data.subscriberdata;
-      // alert("oko")
     } else {
     }
     this.initialReconnectionForm();
-   }
+  }
   constructor(
     public dialogRef: MatDialogRef<UserPostPut>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -70,7 +67,6 @@ export class UserPostPut implements OnInit {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
-
     this.chackRequest = this.fb.group(
       {
         firstName: this.ifData
@@ -81,7 +77,7 @@ export class UserPostPut implements OnInit {
           : new FormControl('', [Validators.required]),
         email: this.ifData
           ? this.currentData.email
-          : new FormControl('', [Validators.required, Validators.email]),
+          : '',
         primaryPhone: this.ifData
           ? this.currentData.primaryPhone
           : new FormControl('', [Validators.required]),
@@ -93,9 +89,7 @@ export class UserPostPut implements OnInit {
         branch: this.ifData
           ? this.currentData.branchID
           : new FormControl(null, [Validators.required]),
-          status: this.ifData
-          ? this.currentData.status
-          :' '
+        status: this.ifData ? this.currentData.status : ' ',
       },
       {
         validators: [Validation.match('password', 'cpassword')],
@@ -117,7 +111,7 @@ export class UserPostPut implements OnInit {
       email: this.chackRequest.value.email,
       primaryPhone: this.chackRequest.value.primaryPhone,
       password: this.chackRequest.value.password,
-      status: this.chackRequest.value.status
+      status: this.chackRequest.value.status,
     };
     let sendObj = {
       firstName: datas.firstName,
@@ -143,8 +137,6 @@ export class UserPostPut implements OnInit {
     };
 
     if (!this.chackRequest.valid) {
-      // this.isEmpty();
-
       return;
     } else {
       this.loading = true;

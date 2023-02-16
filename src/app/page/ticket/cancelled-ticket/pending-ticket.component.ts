@@ -43,7 +43,6 @@ export class CancelledTicketComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   userData: any;
-  //
   loading: boolean = true;
   errmsg: string = '';
   sucmsg: string = '';
@@ -57,41 +56,6 @@ export class CancelledTicketComponent implements AfterViewInit, OnInit {
 
   tableResult: any;
   submit: FormGroup | any;
-
-  userArray: any = [
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-  ];
   p: number = 1;
   ngOnInit() {
     this.getPendingData();
@@ -155,7 +119,6 @@ export class CancelledTicketComponent implements AfterViewInit, OnInit {
         updatedAt: x.updatedAt,
       }));
     TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'cancelled-ticket');
-    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
@@ -172,37 +135,41 @@ export class CancelledTicketComponent implements AfterViewInit, OnInit {
     //   PDF.save('cancelled-ticket.pdf');
     // });
 
-    let date : any = new Date();
-    let year : any = date.getFullYear();
-    let month : any = date.getMonth() + 1;
-    let todayDate : any = date.getDate();
+    let date: any = new Date();
+    let year: any = date.getFullYear();
+    let month: any = date.getMonth() + 1;
+    let todayDate: any = date.getDate();
     let hours: any = date.getHours();
     let minutes: any = date.getMinutes();
     let seconds: any = date.getSeconds();
 
-    if(month < 10){
+    if (month < 10) {
       month = '0' + month;
     }
-    if(todayDate < 10){
+    if (todayDate < 10) {
       todayDate = '0' + todayDate;
     }
-    if(hours<10){
+    if (hours < 10) {
       hours = '0' + hours;
     }
-    if(minutes < 10){
+    if (minutes < 10) {
       minutes = '0' + minutes;
     }
-    if(seconds < 10){
+    if (seconds < 10) {
       seconds = '0' + seconds;
     }
 
-    var output = year + "-" + month + "-" + todayDate;
-    var output2 = hours + ":" + minutes + ":" + seconds;
+    var output = year + '-' + month + '-' + todayDate;
+    var output2 = hours + ':' + minutes + ':' + seconds;
 
     let doc = new jsPDF();
-    doc.text("Cancelled Tickets/"+ output + '/' + output2, 60, 10)
-    autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
-    doc.save('cancelled-ticket ' + output + ' ' + output2)
+    doc.text('Cancelled Tickets/' + output + '/' + output2, 60, 10);
+    autoTable(doc, {
+      html: '#ExampleNormalTable',
+      theme: 'striped',
+      margin: { top: 20 },
+    });
+    doc.save('cancelled-ticket ' + output + ' ' + output2);
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

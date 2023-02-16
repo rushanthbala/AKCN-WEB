@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
 import { NoDataComponent } from 'src/app/core/dialogBox/pending/no-data/no-data.component';
 import { UpdateDataComponent } from 'src/app/core/dialogBox/pending/update-data/update-data.component';
 import { HttpService } from 'src/app/servise/http/http.service';
@@ -28,7 +27,6 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
   userData: any = [];
   dataSource: any;
   displayedColumns: string[] = [
-    // 'invoiceID',
     'ConnectionID',
     'ConnectionAddress',
     'ConnectionStatus',
@@ -45,41 +43,36 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
   ) {}
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   searching(first: Object | any) {
-
     var fromdate = first.fromdate;
-    // console.log(fromdate, 'ff')
     let year1 = fromdate.getFullYear();
     let month1 = fromdate.getMonth() + 1;
     let day1 = fromdate.getDate();
-    if(day1 < 10){
-      day1 = "0" + day1;
+    if (day1 < 10) {
+      day1 = '0' + day1;
     }
 
-    if(month1 < 10){
-      month1 = "0" + month1;
+    if (month1 < 10) {
+      month1 = '0' + month1;
     }
 
-    let fromdate1 = year1 + "-" + month1 + "-" + day1 
-    // console.log(fromdate1)
+    let fromdate1 = year1 + '-' + month1 + '-' + day1;
 
     var todate = first.todate;
-    // console.log(todate, 'gg')
     let year2 = todate.getFullYear();
     let month2 = todate.getMonth() + 1;
     let day2 = todate.getDate();
-    if(day2 < 10){
-      day2 = "0" + day2;
+    if (day2 < 10) {
+      day2 = '0' + day2;
     }
 
-    if(month2 < 10){
-      month2 = "0" + month2;
+    if (month2 < 10) {
+      month2 = '0' + month2;
     }
 
-    let todate2 = year2 + "-" + month2 + "-" + day2 
+    let todate2 = year2 + '-' + month2 + '-' + day2;
 
     this.dataServise
       .getData(`connectionReport/byDate/${fromdate1}/${todate2}`)
@@ -93,11 +86,9 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
           }, 1);
-          // this.ifGetData = true;
           this.isFetchDataFail = false;
         },
         (err) => {
-          // this.ifGetData = true;
           this.isFetchDataFail = true;
         }
       );
@@ -141,6 +132,5 @@ export class CollectionReportComponent implements AfterViewInit, OnInit {
   }
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    // this.connectionId = id.id;
   }
 }

@@ -1,7 +1,17 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -15,7 +25,8 @@ export class DisconnectDialogBoxComponent implements OnInit {
 
   public open: Boolean = true;
   Reconnection: FormGroup | any;
-  submitted = false
+  submitted = false;
+  currentUser: any;
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
@@ -24,15 +35,15 @@ export class DisconnectDialogBoxComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService,
-  ) { }
+    private toastr: ToastrService
+  ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
       phoneNumber: new FormControl('', [Validators.required]),
-      description:new FormControl('', [Validators.required])
+      description: new FormControl('', [Validators.required]),
     });
   }
   get f(): { [key: string]: AbstractControl } {
@@ -40,33 +51,28 @@ export class DisconnectDialogBoxComponent implements OnInit {
   }
   ReconnectionRequest() {
     let newDate = new Date();
-    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
-    var adminId = admin ? admin.id : null
+    const auth: any = localStorage.getItem('auth');
+    this.currentUser = JSON.parse(auth);
 
     let dataObj = {
       connectionID: this.data.id,
-      requestType: "Reconnection",
+      requestType: 'Reconnection',
       description: this.Reconnection.value.description,
       phone: this.Reconnection.value.phoneNumber,
-      createdBy: adminId,
-      "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
+      createdBy: this.currentUser.firstName,
+      createdAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
     };
-    // if (dataObj.description == "" || dataObj.phone == ""
-    // ) {
-    //   this.isEmpty();
-    // } 
-    if(!this.Reconnection.valid){
+    if (!this.Reconnection.valid) {
       this.submitted = true;
-      return
-    }
-    else {
+      return;
+    } else {
       this.loading = true;
       this.dataServise.postValue('request', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            this.showSuccess()
+            this.showSuccess();
             this.loading = false;
           }
         },
@@ -77,12 +83,10 @@ export class DisconnectDialogBoxComponent implements OnInit {
     }
   }
 
-
   showSuccess() {
     this.toastr.success('Sucessfully created !', 'successful');
-    this.onNoClick()
+    this.onNoClick();
     window.location.reload();
-
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
@@ -95,20 +99,3 @@ export interface DialogData {
   animal: string;
   name: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -79,23 +79,10 @@ export class ReconnectBigDialogComponent implements OnInit {
       enteredBy: this.TechnicianId,
       conductdBy: adminId,
     };
-    // let locationAddress ={
-    //   "connectionLocation":this.chackRequest.value.newAddress
-
-    // }
-    //     datas.TechnicianId == "Technician" ,datas.newAddress=="",   datas.roadId == "Road" ,  datas.areaId == "Area"
-    //  );
-
-    // if (dataObj.areaCode == "Area" ||dataObj.roadID == "Road" ||
-    // dataObj.connectionAddress == "" ||dataObj.dueAmount==""||   dataObj.actionDate == "" ||  dataObj.connectionID == ""
-    // ) {
-    //   this.isEmpty();
-    // }
     if (!this.chackRequest.valid) {
       this.submitted = true;
       return;
     } else {
-      // connection/location/JAF00012
       this.loading = true;
       this.dataServise
         .putValue(`connection/address/${this.data.id}`, dataObj)
@@ -117,7 +104,6 @@ export class ReconnectBigDialogComponent implements OnInit {
   }
 
   getAll() {
-    // get TechnicianArray
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.TechnicianArray = res;
     });

@@ -58,40 +58,6 @@ export class CloseRequestComponent implements AfterViewInit, OnInit {
   tableResult: any;
   submit: FormGroup | any;
 
-  userArray: any = [
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-    {
-      id: 1,
-      ticket: 'rushanth',
-      subject: '0776450707',
-      phone: 'add 01',
-      createBy: '1212',
-      createAt: '21',
-    },
-  ];
   p: number = 1;
   ngOnInit() {
     this.getPendingData();
@@ -154,7 +120,6 @@ export class CloseRequestComponent implements AfterViewInit, OnInit {
         updatedAt: x.updatedAt,
       }));
     TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'closed-request');
-    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;

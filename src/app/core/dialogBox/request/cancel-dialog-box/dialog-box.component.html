@@ -1,7 +1,6 @@
 <form [formGroup]="Reconnection" (ngSubmit)="ReconnectionRequest()">
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Cancel Request</div>
-    <!-- <p class="para">{{ data.TicketData.id }}</p> -->
     <div class="">
       <textarea
         type="text"
@@ -13,12 +12,9 @@
         formControlName="Remark"
         [ngClass]="{ 'is-invalid': submitted && f['Remark'].errors }"
       ></textarea>
-      <div
-      *ngIf="submitted && f['Remark'].errors"
-      class="invalid-feedback"
-    >
-      <div *ngIf="f['Remark'].errors['required']">Fill The Field</div>
-    </div>
+      <div *ngIf="submitted && f['Remark'].errors" class="invalid-feedback">
+        <div *ngIf="f['Remark'].errors['required']">Fill The Field</div>
+      </div>
 
       <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1">
         Update

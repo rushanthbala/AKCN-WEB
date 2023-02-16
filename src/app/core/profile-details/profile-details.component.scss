@@ -58,13 +58,9 @@
   border-radius: 90px !important;
   color: #707070;
 }
-
-// table
 .main-div {
   background-color: #fff;
-  // margin-top: 2rem;
   border-radius: 24px;
-  // margin:1rem 4rem 0rem 4rem;
 }
 
 @media only screen and (max-width: 900px) {
@@ -112,20 +108,7 @@ td {
 
 tr:nth-child(even) {
   background-color: #99999917;
-  // opacity: 9%;
 }
-
-// .status {
-//     border-radius: 24px;
-//     background-color: #B50A00;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     color: #fff;
-//     width: 50%;
-//     min-width: 60px;
-//     // margin: 0 auto;
-// }
 
 .labels {
   font-weight: 600;
@@ -142,17 +125,11 @@ tr:nth-child(even) {
   border-radius: 90px;
   color: #707070;
 }
-.input-group{
+.input-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  // margin-top: -22%;
 }
-// .cus-int-div {
-//   // max-width: 220px;
-//   // width: 30%;
-//   // margin: 0.8rem;
-// }
 .main-input-content {
   max-width: 1000px;
   width: 100%;
@@ -162,12 +139,11 @@ tr:nth-child(even) {
   height: 40px;
   border-radius: 90px;
 }
-.container-1{
+.container-1 {
   display: flex;
   flex-direction: column;
 }
-.welcome-username{
-  // color: #8990ad;
+.welcome-username {
   font-size: 30px;
   padding-left: 9px;
   margin-top: -12px;
@@ -179,25 +155,25 @@ tr:nth-child(even) {
   border-radius: 52px;
   margin: 0px 20px;
 }
-@media(max-width: 900px){
-  .input-group{
+@media (max-width: 900px) {
+  .input-group {
     align-items: center;
   }
 }
-@media(max-width: 767px){
-  .input-group{
+@media (max-width: 767px) {
+  .input-group {
     align-items: flex-start;
     margin-left: 8%;
   }
 }
-@media(max-width: 500px){
-  .input-group{
+@media (max-width: 500px) {
+  .input-group {
     align-items: flex-start;
     margin-left: 12%;
   }
 }
-@media(max-width: 400px){
-  .input-group{
+@media (max-width: 400px) {
+  .input-group {
     align-items: flex-start;
     margin-left: 15%;
   }
@@ -220,7 +196,7 @@ tr:nth-child(even) {
   color: #707070;
 }
 
-.phone::before{
+.phone::before {
   content: "Phone Number : ";
   font-size: 14px;
   color: #707070;

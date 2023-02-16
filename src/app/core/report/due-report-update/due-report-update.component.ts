@@ -102,40 +102,24 @@ export class DueReportUpdateComponent implements OnInit {
     // get branch
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
-      // if(res.length >0){
-      //   this.TechnicianName=res[0].firstName
-      //   this.TechnicianId=res[0].id
-      // }
     });
   }
 
   findArea(id: any) {
     this.dataServise.getData(`areaBybranchId/${id}`).subscribe((res) => {
       this.AreaArray = res;
-      // if(res.length >0){
-      //   this.TechnicianName=res[0].firstName
-      //   this.TechnicianId=res[0].id
-      // }
     });
   }
 
   findRoad(id: any) {
     this.dataServise.getData(`road/roadByAreaID/${id}`).subscribe((res) => {
       this.RoadArray = res;
-      // if(res.length >0){
-      //   this.TechnicianName=res[0].firstName
-      //   this.TechnicianId=res[0].id
-      // }
     });
   }
 
   initialForm() {
     this.loginForm = this.fb.group({
       minAmount: new FormControl('', [Validators.required]),
-      // branch : new FormControl('', Validators.required),
-      // area : new FormControl('', Validators.required),
-      // road : new FormControl('', Validators.required),
-      // status : new FormControl('', Validators.required),
     });
   }
   get f(): { [key: string]: AbstractControl } {
@@ -149,7 +133,6 @@ export class DueReportUpdateComponent implements OnInit {
       AreaID: this.AreaId,
       StatusName: this.StatusName,
     };
-    // this.loading = true;
 
     let fromdate = this.loginForm.value.fromdate;
     let minAmount = this.loginForm.value.minAmount;
@@ -163,13 +146,7 @@ export class DueReportUpdateComponent implements OnInit {
     ) {
       this.isEmpty();
       this.loading = false;
-    }
-    // if(!this.loginForm.valid){
-    //   this.submitted = true;
-    //   this.loading = false;
-    //   return
-    // }
-    else {
+    } else {
       this.OnClick.emit({ user: detailObj, minAmount: minAmount });
 
       this.loading = false;

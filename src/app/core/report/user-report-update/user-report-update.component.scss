@@ -47,13 +47,9 @@
   border-radius: 90px;
   color: #707070;
 }
-
-// table
 .main-div {
   background-color: #fff;
-  // margin-top: 2rem;
   border-radius: 24px;
-  // margin:1rem 4rem 0rem 4rem;
 }
 
 @media only screen and (max-width: 900px) {
@@ -101,19 +97,17 @@ td {
 
 tr:nth-child(even) {
   background-color: #99999917;
-  // opacity: 9%;
 }
 
 .status {
   border-radius: 24px;
-  background-color: #B50A00;
+  background-color: #b50a00;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   width: 50%;
   min-width: 60px;
-  // margin: 0 auto;
 }
 
 .labels {
@@ -122,7 +116,6 @@ tr:nth-child(even) {
 }
 .int {
   height: 40px;
-  // padding-left: 20px;
   width: 100%;
   border: none;
   outline: none;
@@ -151,24 +144,12 @@ tr:nth-child(even) {
   padding: 0px 0px 0px 10px;
   font-size: 14px;
 }
-// input[type="date"]::before {
-//   content: attr(placeholder);
-//   width: 100%;
-// }
-// input[type="date"]:focus::before,
-// input[type="date"]:valid::before {
-//   display: none;
-// }
 
 .form-select {
   cursor: pointer;
   height: 40px;
   border-radius: 90px;
 }
-// .form-control {
-//   height: 45px;
-//   margin-top: 8%;
-// }
 .user::before {
   content: "User";
   font-size: 12px;
@@ -186,11 +167,11 @@ tr:nth-child(even) {
   font-size: 12px;
   color: #707070;
 }
-.mat-form-field{
+.mat-form-field {
   margin-left: 28%;
   padding: 0px 20px 45px 20px;
 }
-.date_container {        
+.date_container {
   float: left;
   display: flex;
   align-items: center;
@@ -199,9 +180,9 @@ tr:nth-child(even) {
 ::ng-deep .mat-form-field-underline {
   display: none;
 }
-.mat-datepicker-toggle{
+.mat-datepicker-toggle {
   margin-left: -20%;
 }
-::ng-deep .mat-datepicker-toggle-default-icon{
+::ng-deep .mat-datepicker-toggle-default-icon {
   width: 1em;
 }

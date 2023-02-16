@@ -12,8 +12,6 @@
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
           [ngClass]="{ 'is-invalid': submitted && TechnicianName }"
         >
-        
-          <!-- <option disabled selected value="null">Technician</option> -->
           <option *ngFor="let item of TechnicianArray" [ngValue]="item">
             {{ item.firstName }}
           </option>

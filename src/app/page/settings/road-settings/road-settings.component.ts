@@ -9,14 +9,10 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-// import { TableUtil } from './tableUtils';
-import * as XLSX from 'xlsx';
-import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RoadDialogComponent } from 'src/app/core/dialogBox/settings/road-dialog/road-dialog.component';
-import { ThisReceiver } from '@angular/compiler';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -98,27 +94,6 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
-  // UserPostPut
-  exportNormalTable() {
-    const onlyNameAndSymbolArr: Partial<TicketElement>[] =
-      this.dataSource.filteredData.map((x: TicketElement) => ({
-        connectionID: x.connectionID,
-        ticketID: x.ticketID,
-        createdBy: x.createdBy,
-        assignedTo: x.assignedTo,
-        assignedToID: x.assignedToID,
-        updatedBy: x.updatedBy,
-        subject: x.subject,
-        description: x.description,
-        reason: x.reason,
-        phone: x.phone,
-        status: x.status,
-        createdAt: x.createdAt,
-        updatedAt: x.updatedAt,
-      }));
-    // TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, "ExampleArray");
-    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
-  }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
   UpadteUserDialogBox(): void {
@@ -127,22 +102,7 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
       data: { subscriberdata: this.subscriberdata, sendtype: this.sendtype },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // this.animal = result;
-    });
-  }
-
-  public openPDF(): void {
-    let DATA: any = document.getElementById('htmlData');
-    html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -157,11 +117,9 @@ export class RoadSettingsComponent implements AfterViewInit, OnInit {
     this.UpadteUserDialogBox();
   }
   viewDetails(us: any) {
-    // this.showTable = false;
     this.sendtype = 'PUT';
     this.subscriberdata = us;
     this.UpadteUserDialogBox();
-    // this.isSubscriberdata=true;
   }
 }
 

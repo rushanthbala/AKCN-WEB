@@ -44,7 +44,6 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   userData: any;
-  //
   loading: boolean = false;
   ifGetData: boolean = false;
   errmsg: string = '';
@@ -89,13 +88,7 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
   getEmployee() {
     this.dataServise.getData(`employee`).subscribe(
       (res) => {
-        // let array = res;
-
-        // array.map((item: any) => {
-        // console.log(item.firstName)
         this.EmployeeData = res;
-        // })
-        // console.log("1", res)
         this.ifGetData = true;
       },
       (err) => {
@@ -153,22 +146,11 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
         updatedAt: x.updatedAt,
       }));
     TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'pending-ticket');
-    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   public openPDF(): void {
-    // let DATA: any = document.getElementById('htmlData');
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    //   PDF.save('pending-ticket.pdf');
-    // });
     let date : any = new Date();
     let year : any = date.getFullYear();
     let month : any = date.getMonth() + 1;

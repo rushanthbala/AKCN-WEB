@@ -32,7 +32,7 @@
           <div>
             <span class="icon {{ item.iconClass }}">&nbsp;</span>
             <span class="menu-button-label">{{ item.label }} </span>
-            <span class="col-icon-span">
+            <span class="col-icon-span" *ngIf="!(item.label == 'Dashboard')">
               <span class="fa icon plus" *ngIf="!item.state">&nbsp;</span>
               <span class="fa icon minus" *ngIf="item.state">&nbsp;</span>
             </span>

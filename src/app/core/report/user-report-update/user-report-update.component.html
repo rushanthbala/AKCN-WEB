@@ -14,16 +14,11 @@
           [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="onChangeObj(selectedDeviceObj)"
         >
-          <!-- [ngClass]="{ 'is-invalid': submitted && f['user'].errors }" -->
-          <!-- <option disabled selected value="null">User</option> -->
           <option [ngValue]="{ id: 1, firstName: 'ADMIN' }">ADMIN</option>
           <option *ngFor="let item of UserArray" [ngValue]="item">
             {{ item.firstName }}
           </option>
         </select>
-        <!-- <div *ngIf="submitted && f['user'].errors" class="invalid-feedback">
-          <div *ngIf="f['user'].errors['required']">Select the user</div>
-        </div> -->
       </div>
       <div class="mb-3 cus-int-div from">
         <div class="date_container">
@@ -43,10 +38,6 @@
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-datepicker class="dp" #picker></mat-datepicker>
-          <!-- [ngClass]="{ 'is-invalid': submitted && f['fromdate'].errors }"
-        <div *ngIf="submitted && f['fromdate'].errors" class="invalid-feedback">
-          <div *ngIf="f['fromdate'].errors['required']">Fill The Field</div>
-        </div> -->
         </div>
       </div>
       <div class="mb-3 cus-int-div from">
@@ -67,13 +58,6 @@
             [for]="picker1"
           ></mat-datepicker-toggle>
           <mat-datepicker class="dp" #picker1></mat-datepicker>
-          <!-- [ngClass]="{ 'is-invalid': submitted && f['todate'].errors }"
-        <div *ngIf="submitted && f['todate'].errors" class="invalid-feedback">
-          <div *ngIf="f['todate'].errors['required']">Fill The Field</div>
-        </div> -->
-          <!-- <div *ngIf="submitted && loginForm.errors" class="text-small">
-            {{ loginForm.errors?.dates }}
-          </div> -->
         </div>
       </div>
       <div class="cus-int-div">
@@ -95,19 +79,6 @@
         >
       </div>
     </div>
-    <!-- <div class="row w-100">
-            <div class="col12 sm-col-6 col-md-8  mt-1">
-                <input type=" " class="form-control me-2 int" placeholder="Subscriber's NIC"
-                    aria-label="Recipient's username" aria-describedby="basic-addon2"
-                    formControlName="searchinginput" />
-            </div>
-            <div class="col12 sm-col-6 col-md-4 mt-1">
-                <span class="input-group-text cus-btn align-items-center justify-content-center" id="basic-addon2" (click)="emitEvent()" *ngIf="!loading">
-                    Check Subscriber</span>
-                <span class="input-group-text cus-btn align-items-center justify-content-center disabled" id="basic-addon2" (click)="emitEvent()" *ngIf="loading"
-                    style="opacity: 0.7;">Check Subscriber ...</span>
-            </div>
-        </div> -->
 
     <br />
   </div>

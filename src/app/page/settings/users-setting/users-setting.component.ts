@@ -9,14 +9,11 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-// import { TableUtil } from './tableUtils';
-import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserPostPut } from 'src/app/core/dialogBox/settings/user-dialog/user-dialog.component';
-import { ThisReceiver } from '@angular/compiler';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -67,7 +64,7 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   submit: FormGroup | any;
   statusForm: FormGroup | any;
   public ifData: boolean = false;
-  public currentData: any = {}
+  public currentData: any = {};
   ngOnInit() {
     this.getPendingData();
     this.getStatus();
@@ -76,43 +73,39 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
   }
   initialForm() {
     this.submit = this.fb.group({
-      address: ''
+      address: '',
     });
   }
-  secondForm(){
+  secondForm() {
     this.statusForm = this.fb.group({
-      checkbox:this.ifData ? this.statusData.checkbox: ' ',
-    })
+      checkbox: this.ifData ? this.statusData.checkbox : ' ',
+    });
   }
 
-  getStatus(){
+  getStatus() {
     this.dataServise.getData(`employee`).subscribe(
-      (res :any) => {
+      (res: any) => {
         this.statusData = res;
         this.secondForm();
       },
       (err) => {
         console.log(err);
       }
-    )
+    );
   }
-  toggle(){
+  toggle() {
     this.toggleValue = !this.toggleValue;
-    // this.dataServise.putValue('')
   }
 
   getPendingData() {
     this.dataServise.getData(`employee`).subscribe(
       (res) => {
         this.TICKET_DATA = res;
-        this.dataSource = new MatTableDataSource(
-          this.TICKET_DATA
-        );
-        setTimeout(() =>{
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-        }, 1)
+        this.dataSource = new MatTableDataSource(this.TICKET_DATA);
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }, 1);
         this.ifGetData = true;
       },
       (err) => {
@@ -138,53 +131,15 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
-  // UserPostPut
-  exportNormalTable() {
-    const onlyNameAndSymbolArr: Partial<TicketElement>[] =
-      this.dataSource.filteredData.map((x: TicketElement) => ({
-        connectionID: x.connectionID,
-        ticketID: x.ticketID,
-        createdBy: x.createdBy,
-        assignedTo: x.assignedTo,
-        assignedToID: x.assignedToID,
-        updatedBy: x.updatedBy,
-        subject: x.subject,
-        description: x.description,
-        reason: x.reason,
-        phone: x.phone,
-        status: x.status,
-        createdAt: x.createdAt,
-        updatedAt: x.updatedAt,
-      }));
-    // TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, "ExampleArray");
-    // TableUtil.exportTableToExcel('ExampleNormalTable', 'test');
-  }
-  @ViewChild('content') content: ElementRef | any;
-  @ViewChild('htmlData') htmlData!: ElementRef;
   UpadteUserDialogBox(): void {
     const dialogRef = this.dialog.open(UserPostPut, {
       width: '550px',
       data: { subscriberdata: this.subscriberdata, sendtype: this.sendtype },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // this.animal = result;
-      // this.getPendingData();
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  public openPDF(): void {
-    let DATA: any = document.getElementById('htmlData');
-    html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
-    });
-  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -198,22 +153,11 @@ export class UsersSettingComponent implements AfterViewInit, OnInit {
     this.UpadteUserDialogBox();
   }
   viewDetails(us: any) {
-    // this.showTable = false;
     this.sendtype = 'PUT';
     this.subscriberdata = us;
     this.UpadteUserDialogBox();
-    // this.isSubscriberdata=true;
   }
 }
-
-// export interface UserSetting {
-//   userID: number;
-//   firstName: string;
-//   roleID: string;
-//   branchID: string;
-//   status: string;
-//   createdDate: string;
-// }
 export interface TicketElement {
   id: number;
   connectionID: number;

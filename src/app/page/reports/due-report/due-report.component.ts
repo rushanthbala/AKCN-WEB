@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NoDataComponent } from 'src/app/core/dialogBox/pending/no-data/no-data.component';
@@ -31,7 +31,7 @@ export class DueReportComponent implements AfterViewInit, OnInit {
     'ConnectionAddress',
     'tvCount',
     'ConnectionDate',
-    'dueAmount'
+    'dueAmount',
   ];
   ifGetData: boolean = false;
 
@@ -47,35 +47,12 @@ export class DueReportComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   ngOnInit(): void {}
 
-  
-
   searching(first: Object | any) {
-    //   {
-    //     "branchID": 1,
-    //     "RoadID": 0,
-    //     "AreaID": 1,
-    //     "StatusName": "All"
-    // }
     var branchID = first.user.branchID == 0 ? 'All' : first.user.branchID;
     var areaID = first.user.AreaID == 0 ? 'All' : first.user.AreaID;
     var roadID = first.user.RoadID == 0 ? 'All' : first.user.RoadID;
     var statusID = first.user.StatusName == 0 ? 'All' : first.user.StatusName;
     var minAmount = first.minAmount == 0 ? 'All' : first.minAmount;
-
-
-    // var connectionId = first.connectionId
-    // var amount = first.amount
-    // var arreardate = first.arreardate
-
-    // connectionId: connectionId, amount: amount,arreardate:arreardate
-    // var Ctype: string = first.type
-    // var url = findTypeUrl(Ctype)
-
-    // var cInput: String = first.searchinginput
-
-    // if(branchID('All') && areaID('All') && roadID('All') &&  )
-    // http://localhost:4000/connectionReport/branchAreaRoadDueStatus/1/5/2/1/all
-    // `connectionReport/branchAreaRoadDueStatus/${branchID}/${areaID}/${roadID}/${minAmount}/${statusID}`
     this.dataServise
       .getData(
         `connectionReport/branchAreaRoadDueStatus/${branchID}/${areaID}/${roadID}/${minAmount}/${statusID}`
@@ -140,6 +117,5 @@ export class DueReportComponent implements AfterViewInit, OnInit {
   }
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    // this.connectionId = id.id;
   }
 }

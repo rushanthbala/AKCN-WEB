@@ -1,7 +1,6 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Make Payment</div>
-    <!-- <p class="para">{{data.id}}</p> -->
     <div class="mt-4">
       <select
         class="form-select"
@@ -17,13 +16,9 @@
           {{ item.value }}
         </option>
       </select>
-      <div
-      *ngIf="submitted && f['payment'].errors"
-      class="invalid-feedback"
-    >
-      <div *ngIf="f['payment'].errors['required']">Select the type</div>
-    </div>
-      <!-- <div class="para mt-3 ps-3">House Number </div> -->
+      <div *ngIf="submitted && f['payment'].errors" class="invalid-feedback">
+        <div *ngIf="f['payment'].errors['required']">Select the type</div>
+      </div>
       <div class="col-12">
         <input
           type="text"
@@ -32,13 +27,10 @@
           placeholder="Amount"
           formControlName="amount"
           [ngClass]="{ 'is-invalid': submitted && f['amount'].errors }"
-          />
-          <div
-            *ngIf="submitted && f['amount'].errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="f['amount'].errors['required']">Fill The Field</div>
-          </div>
+        />
+        <div *ngIf="submitted && f['amount'].errors" class="invalid-feedback">
+          <div *ngIf="f['amount'].errors['required']">Fill The Field</div>
+        </div>
       </div>
       <textarea
         type="text"
@@ -50,12 +42,12 @@
         formControlName="description"
         [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
       ></textarea>
-        <div
-          *ngIf="submitted && f['description'].errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f['description'].errors['required']">Fill The Field</div>
-        </div>
+      <div
+        *ngIf="submitted && f['description'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['description'].errors['required']">Fill The Field</div>
+      </div>
 
       <button
         class="input-group-text cus-btn-down cus-model-btn-down btn-c-1 mt-4"

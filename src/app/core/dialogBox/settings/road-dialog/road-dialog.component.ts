@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -7,11 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -42,7 +37,6 @@ export class RoadDialogComponent implements OnInit {
     });
 
     if (this.data.sendtype == 'POST') {
-      // alert("cool")
       this.ifData = false;
     } else if (
       this.data.sendtype == 'PUT' &&
@@ -50,7 +44,6 @@ export class RoadDialogComponent implements OnInit {
     ) {
       this.ifData = true;
       this.currentData = this.data.subscriberdata;
-      // alert("oko")
     } else {
     }
     this.initialReconnectionForm();
@@ -92,8 +85,6 @@ export class RoadDialogComponent implements OnInit {
     };
 
     if (!this.chackRequest.valid) {
-      // this.isEmpty();
-
       return;
     } else {
       this.loading = true;
@@ -139,16 +130,9 @@ export class RoadDialogComponent implements OnInit {
   }
 
   getAll() {
-    // get TechnicianArray
-    // this.dataServise.getData(`employee`).subscribe((res) => {
-    //   this.TechnicianArray = res;
-    // });
     this.dataServise.getData(`area`).subscribe((res) => {
       this.areaArray = res;
     });
-    // this.dataServise.getData(`road`).subscribe((res) => {
-    //   this.roadArray = res;
-    // });
   }
 
   onSelect(val: any) {

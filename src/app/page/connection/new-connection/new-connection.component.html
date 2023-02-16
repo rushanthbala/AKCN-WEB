@@ -1,15 +1,24 @@
 <div *ngIf="!isActiveAddConnectionCom">
-    <div class=""  >
-        <app-connection-search (OnClick)="searching($event)"></app-connection-search>
-    </div>
-    <div *ngIf="!isNotUserData && showTable">
-        <app-subscriber-details [object]='userData'  text="text" (OnClick)="addAnotherConnection()" ></app-subscriber-details>
-        <!-- <app-edit-ticket [object]='subscriberdata'  text="text" ></app-edit-ticket> -->
-    </div>
+  <div class="">
+    <app-connection-search
+      (OnClick)="searching($event)"
+    ></app-connection-search>
+  </div>
+  <div *ngIf="!isNotUserData && showTable">
+    <app-subscriber-details
+      [object]="userData"
+      text="text"
+      (OnClick)="addAnotherConnection()"
+    ></app-subscriber-details>
+  </div>
 </div>
-<div class="" *ngIf="isActiveAddConnectionCom" >
-    <app-add-connection  [object]='userData'  text="text" (OnClick)="addAnotherConnection()" ></app-add-connection>
-</div> 
-<div class="" *ngIf="addSubscriberIf" >
-<app-add-subscriber (OnClick)="afterSubCreated()" ></app-add-subscriber>
-</div>  
+<div class="" *ngIf="isActiveAddConnectionCom">
+  <app-add-connection
+    [object]="userData"
+    text="text"
+    (OnClick)="addAnotherConnection()"
+  ></app-add-connection>
+</div>
+<div class="" *ngIf="addSubscriberIf">
+  <app-add-subscriber (OnClick)="afterSubCreated()"></app-add-subscriber>
+</div>

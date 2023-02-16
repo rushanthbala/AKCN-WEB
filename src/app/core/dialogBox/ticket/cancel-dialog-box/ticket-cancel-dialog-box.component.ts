@@ -1,6 +1,12 @@
-import {Component, Inject,OnInit} from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { formatDate } from '@angular/common';
@@ -10,28 +16,31 @@ import { formatDate } from '@angular/common';
   templateUrl: './ticket-cancel-dialog-box.component.html',
   styleUrls: ['./ticket-cancel-dialog-box.component.scss'],
 })
-export class TicketCancelDialogBoxComponent  implements OnInit  {
+export class TicketCancelDialogBoxComponent implements OnInit {
   public loading: Boolean = true;
 
   public open: Boolean = true;
   Reconnection: FormGroup | any;
   submitted = false;
+  currentUser: any;
   ngOnInit(): void {
     this.initialReconnectionForm();
+    const auth: any = localStorage.getItem('auth');
+    this.currentUser = JSON.parse(auth);
   }
   constructor(
     public dialogRef: MatDialogRef<TicketCancelDialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
-      Remark: new FormControl ('', [Validators.required])
+      Remark: new FormControl('', [Validators.required]),
     });
   }
   get f(): { [key: string]: AbstractControl } {
@@ -42,37 +51,34 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
     let dataObj = {
       reason: this.Reconnection.value.Remark,
       connectionID: this.data.id,
-      createdBy: this.data.firstName,
-      "createdAt": formatDate(newDate, 'yyyy-MM-dd', "en-US"),
+      createdBy: this.currentUser.firstName,
+      createdAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
     };
-    // if (dataObj.reason == "" 
-    // ) {
-    //   this.isEmpty();
-    // } 
-    if(!this.Reconnection.valid){
+    if (!this.Reconnection.valid) {
       this.submitted = true;
-      return
-    }
-    else {
-      this.dataServise.putValue(`ticket/cancel/${this.data.TicketData.id}`, dataObj).subscribe(
-        (res: any) => {
-          if (res.errorMessage) {
-            this.loading = false;
-          } else {
-            this.showSuccess()
+      return;
+    } else {
+      this.dataServise
+        .putValue(`ticket/cancel/${this.data.TicketData.id}`, dataObj)
+        .subscribe(
+          (res: any) => {
+            if (res.errorMessage) {
+              this.loading = false;
+            } else {
+              this.showSuccess();
+              this.loading = false;
+            }
+          },
+          (e) => {
             this.loading = false;
           }
-        },
-        (e) => {
-          this.loading = false;
-        }
-      );
+        );
     }
   }
-  
+
   showSuccess() {
     this.toastr.success('Sucessfully canceled  !', 'successful');
-    this.onNoClick()
+    this.onNoClick();
     window.location.reload();
   }
   showError() {
@@ -85,22 +91,4 @@ export class TicketCancelDialogBoxComponent  implements OnInit  {
 export interface DialogData {
   animal: string;
   id: string;
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -31,7 +31,7 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
     'ConnectionAddress',
     'tvCount',
     'ConnectionDate',
-    'dueAmount'
+    'dueAmount',
   ];
   ifGetData: boolean = false;
 
@@ -48,28 +48,9 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {}
 
   searching(first: Object | any) {
-
-    //   {
-    //     "branchID": 1,
-    //     "RoadID": 0,
-    //     "AreaID": 5
-    // }
-
     var branchID = first.user.branchID == 0 ? 'All' : first.user.branchID;
     var RoadID = first.user.RoadID == 0 ? 'All' : first.user.RoadID;
     var AreaID = first.user.AreaID == 0 ? 'All' : first.user.AreaID;
-
-
-    // var connectionId = first.connectionId
-    // var amount = first.amount
-    // var arreardate = first.arreardate
-    // console.log(connectionId, amount, arreardate);
-
-    // connectionId: connectionId, amount: amount,arreardate:arreardate
-    // var Ctype: string = first.type
-    // var url = findTypeUrl(Ctype)
-
-    // var cInput: String = first.searchinginput
     this.dataServise
       .getData(`reportunpaid/${branchID}/${RoadID}/${AreaID}`)
       .subscribe(
@@ -82,11 +63,9 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
           }, 1);
-          // this.ifGetData = true;
           this.isFetchDataFail = false;
         },
         (err) => {
-          // this.ifGetData = true;
           this.isFetchDataFail = true;
         }
       );
@@ -132,6 +111,5 @@ export class UnpaidReportsComponent implements AfterViewInit, OnInit {
   }
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    // this.connectionId = id.id;
   }
 }

@@ -1,7 +1,17 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -15,7 +25,7 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
   public loading: Boolean = false;
 
   Reconnection: FormGroup | any;
-  submitted = false
+  submitted = false;
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
@@ -24,55 +34,47 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public dataServise: HttpService,
-    private toastr: ToastrService,
-
-  ) { }
+    private toastr: ToastrService
+  ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   initialReconnectionForm() {
     this.Reconnection = this.fb.group({
       Remark: new FormControl('', [Validators.required]),
-      amount: new FormControl('', [Validators.required])
+      amount: new FormControl('', [Validators.required]),
     });
   }
   get f(): { [key: string]: AbstractControl } {
     return this.Reconnection.controls;
   }
   apply() {
-    let todayDate =new Date()
+    let todayDate = new Date();
     var admin = JSON.parse(localStorage.getItem('auth') || '{}');
-    var adminId = admin ? admin.id : null
-  
-    
-    let dataObj ={
-      connectionID:this.data.id,
-      paidDateTime:formatDate(todayDate, 'yyyy-MM-dd', "en-US"),
-      description: this.Reconnection.value.Remark,
-      paymentType:"DISCOUNT",
-      amount:this.Reconnection.value.amount,
-      enteredBy:adminId,
-      conductedBy:adminId,
-      phoneNo:this.data.primaryPhone
-    }
+    var adminId = admin ? admin.id : null;
 
-    // if (dataObj.description == "" || dataObj.amount == ""
-    // ) {
-    //   this.isEmpty();
-    // }
-    if(!this.Reconnection.valid){
+    let dataObj = {
+      connectionID: this.data.id,
+      paidDateTime: formatDate(todayDate, 'yyyy-MM-dd', 'en-US'),
+      description: this.Reconnection.value.Remark,
+      paymentType: 'DISCOUNT',
+      amount: this.Reconnection.value.amount,
+      enteredBy: adminId,
+      conductedBy: adminId,
+      phoneNo: this.data.primaryPhone,
+    };
+    if (!this.Reconnection.valid) {
       this.submitted = true;
-      return
-    }
-     else {
+      return;
+    } else {
       this.dataServise.postValue('payment', dataObj).subscribe(
         (res: any) => {
           if (res.errorMessage) {
             this.loading = false;
           } else {
-            this.showSuccess()
+            this.showSuccess();
             this.loading = false;
-            this.onNoClick()
+            this.onNoClick();
           }
         },
         (e) => {
@@ -83,8 +85,7 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
   }
   showSuccess() {
     this.toastr.success('Sucessfully Make a Payment', 'Sucessfully');
-    window.location.reload()
-
+    window.location.reload();
   }
   showError() {
     this.toastr.error('Someting Went Wrong', 'Error');
@@ -96,22 +97,4 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
 export interface DialogData {
   animal: string;
   id: string;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

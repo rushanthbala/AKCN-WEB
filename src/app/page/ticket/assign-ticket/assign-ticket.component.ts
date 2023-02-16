@@ -10,9 +10,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { TableUtil } from './tableUtils';
-import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import autoTable from 'jspdf-autotable';
@@ -43,7 +41,6 @@ export class AssignTicketComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   userData: any;
-  //
   loading: boolean = true;
   errmsg: string = '';
   sucmsg: string = '';
@@ -121,71 +118,47 @@ export class AssignTicketComponent implements AfterViewInit, OnInit {
         updatedAt: x.updatedAt,
       }));
     TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'assign-ticket');
-
-    // const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-    // const EXCEL_EXTENSION = '.xlsx';
-
-    // const worksheet = XLSX.utils.json_to_sheet(this.TICKET_DATA);
-
-    // const workbook ={
-    //   Sheets:{
-    //     'testingSheet': worksheet
-    //   },
-    //   SheetNames: ['testingSheet']
-    // }
-
-    // const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type:'array'})
-
-    // const blopData = new Blob([excelBuffer], {type:EXCEL_TYPE})
-    // this.fileServer.save(blopData, "AssignTicket")
-
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
 
- openPDF() {
-    // let DATA: any = document.getElementById('htmlData');
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    //   PDF.save('assign-ticket.pdf');
-    // });
-
-    let date : any = new Date();
-    let year : any = date.getFullYear();
-    let month : any = date.getMonth() + 1;
-    let todayDate : any = date.getDate();
+  openPDF() {
+    let date: any = new Date();
+    let year: any = date.getFullYear();
+    let month: any = date.getMonth() + 1;
+    let todayDate: any = date.getDate();
     let hours: any = date.getHours();
     let minutes: any = date.getMinutes();
     let seconds: any = date.getSeconds();
 
-    if(month < 10){
+    if (month < 10) {
       month = '0' + month;
     }
-    if(todayDate < 10){
+    if (todayDate < 10) {
       todayDate = '0' + todayDate;
     }
-    if(hours<10){
+    if (hours < 10) {
       hours = '0' + hours;
     }
-    if(minutes < 10){
+    if (minutes < 10) {
       minutes = '0' + minutes;
     }
-    if(seconds < 10){
+    if (seconds < 10) {
       seconds = '0' + seconds;
     }
 
-    var output = year + "-" + month + "-" + todayDate;
-    var output2 = hours + ":" + minutes + ":" + seconds;
+    var output = year + '-' + month + '-' + todayDate;
+    var output2 = hours + ':' + minutes + ':' + seconds;
 
     const doc = new jsPDF();
-    doc.text("Assign Tickets/"+ output + '/' + output2, 60, 10)
-    autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
-    doc.save('assign-ticket ' + output + ' ' + output2)
+    doc.text('Assign Tickets/' + output + '/' + output2, 60, 10);
+    autoTable(doc, {
+      html: '#ExampleNormalTable',
+      theme: 'striped',
+      margin: { top: 20 },
+    });
+    doc.save('assign-ticket ' + output + ' ' + output2);
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -229,3 +202,4 @@ export interface TicketElement {
   updatedAt: string;
   closedAt: string;
 }
+

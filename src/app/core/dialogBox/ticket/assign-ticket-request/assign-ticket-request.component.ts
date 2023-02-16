@@ -36,11 +36,11 @@ export class AssignTicketRequestDilogComponent implements OnInit {
 
   public selectedDeviceObj: any = {};
   public storedToken: any = localStorage.getItem('auth');
+  currentUser: any;
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
     this.TechnicianId = newObj.id;
     this.chackRequest.tech = newObj.firstName;
-    // ... do other stuff here ...
   }
 
   chackRequest: FormGroup | any;
@@ -73,25 +73,19 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   }
   assignYTicket() {
     let newDate = new Date();
-    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
-    var adminId = admin ? admin.id : null;
+   const auth: any = localStorage.getItem('auht');
+   this.currentUser = JSON.parse(auth);
 
     let dataObj = {
-      updatedBy: adminId,
+      updatedBy: this.currentUser?.firstName,
       updatedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
       assignedTo: this.TechnicianName,
       assignedToID: this.TechnicianId,
     };
     if (dataObj.assignedTo == 'Technician') {
-      // this.isEmpty();
       this.submitted = true;
       return;
-    }
-    // if(!this.chackRequest.valid){
-    //   this.submitted = true
-    //   return
-    // }
-    else {
+    } else {
       this.loading = true;
       this.dataServise
         .putValue(`ticket/assign/${this.data.TicketData.id}`, dataObj)
@@ -113,14 +107,8 @@ export class AssignTicketRequestDilogComponent implements OnInit {
   }
 
   getAll() {
-    // get TechnicianArray
-
     this.dataServise.getData(`${this.suburl1}`).subscribe((res) => {
       this.TechnicianArray = res;
-      // if (res.length > 0) {
-      //   this.TechnicianName = res[0].firstName;
-      //   this.TechnicianId = res[0].id;
-      // }
     });
   }
 

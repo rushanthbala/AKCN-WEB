@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { findTypeUrl } from 'src/app/servise/utils/function';
 import { MatSort, Sort } from '@angular/material/sort';
@@ -66,11 +66,9 @@ export class CreateRequestComponent implements OnInit {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         }, 1);
-        // this.ifGetData = true;
         this.isFetchDataFail = false;
       },
       (err) => {
-        // this.ifGetData = true;
         this.isFetchDataFail = true;
       }
     );

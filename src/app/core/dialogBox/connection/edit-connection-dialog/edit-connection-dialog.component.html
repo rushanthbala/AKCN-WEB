@@ -1,8 +1,6 @@
 <form [formGroup]="chackRequest">
   <div class="cus-model-c-div">
     <div class="form-heading int-div card-head-h2">Edit Connection</div>
-    <!-- {{data |json}} -->
-    <!-- <p class="para">{{ data.id }}</p> -->
     <div>
       <div class="row mt-2">
         <div class="col-12 col-sm-6 d-flex align-items-center">
@@ -52,7 +50,6 @@
         </div>
 
         <div class="col-12 col-sm-6 mt-3">
-          <!-- <div class="para mt-3 ps-3">Old ID </div> -->
           <input
             type="text"
             class="form-control int"
@@ -65,7 +62,6 @@
 
       <div class="row mt-2">
         <div class="col-12 col-sm-6 mt-3">
-          <!-- <div class="para mt-3 ps-3">Number Of TVs </div> -->
           <input
             type="text"
             class="form-control int"
@@ -75,7 +71,6 @@
           />
         </div>
         <div class="col-12 col-sm-6 mt-3">
-          <!-- <div class="para mt-3 ps-3">House Number </div> -->
           <input
             type="text"
             class="form-control int"
@@ -117,7 +112,6 @@
           </select>
         </div>
       </div>
-      <!-- branch & date -->
       <div class="row mt-2">
         <div class="col-12 col-sm-6">
           <div class="para mt-3 ps-3"></div>
@@ -135,7 +129,6 @@
           </select>
         </div>
         <div class="col-12 col-sm-6 mt-3">
-          <!-- <div class="para mt-3 ps-3">House Number </div> -->
           <input
             type="date"
             class="form-control int"
@@ -169,59 +162,5 @@
         </div>
       </div>
     </div>
-    <!-- <div class="row">
-            <div class="col-6">
-                <div>
-                    <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
-                        #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.area">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
-                    <div class="para mt-3 ps-3">Disconnected Date </div>
-                    <input type="date" class="form-control int" id="ID" placeholder="12-12-2022" formControlName="disconnectedDate" />
-        
-                    <div class="para mt-3 ps-3">Reconnection Fee </div>
-        
-                    <input type="text" class="form-control int" type="number" required id="ID" placeholder="Amount"
-                        formControlName="reconnectionFee" />
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
-                        Create
-                    </button>
-                    <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
-                        style="background-color: #fff !important; color: #027afe">
-                        Cancel
-                    </button>
-        
-                </div>
-            </div>
-            <div class="col-6">
-                <div>
-                    <select class="form-select" aria-label="Default select example" (change)='onSelect(val.value)' required
-                        #val>
-                        <option disabled selected value="null">Technician</option>
-                        <option *ngFor="let item of TechnicianArray" [value]="item.area">
-                            {{ item.firstName }}
-                        </option>
-                    </select>
-                    <div class="para mt-3 ps-3">Disconnected Date </div>
-                    <input type="date" class="form-control int" id="ID" placeholder="12-12-2022" formControlName="disconnectedDate" />
-        
-                    <div class="para mt-3 ps-3">Reconnection Fee </div>
-        
-                    <input type="text" class="form-control int" type="number" required id="ID" placeholder="Amount"
-                        formControlName="reconnectionFee" />
-                    <button class="input-group-text cus-btn-down cus-model-btn-down btn-c-1" (click)="ReconnectionRequest()">
-                        Create
-                    </button>
-                    <button class="input-group-text cus-model-cancel-btn-down btn-c-1 btn-cancel" (click)="onNoClick()"
-                        style="background-color: #fff !important; color: #027afe">
-                        Cancel
-                    </button>
-        
-                </div>
-            </div>
-        </div> -->
   </div>
 </form>

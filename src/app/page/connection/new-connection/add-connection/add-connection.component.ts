@@ -33,17 +33,19 @@ export class AddConnectionComponent implements OnInit {
     });
   }
   getAll() {
-    // get roadArray
+    // get road array
     this.dataServise.getData(`road`).subscribe((res) => {
       this.roadArray = res;
     });
-    // areaArray
+    // get area array
     this.dataServise.getData(`area`).subscribe((res) => {
       this.areaArray = res;
     });
+    //get employee Array
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.technicianArray = res;
     });
+    //get branch array
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
     });
@@ -66,9 +68,7 @@ export class AddConnectionComponent implements OnInit {
   public checkErrorUserForm = (controlName: string, errorName: string) => {
     return this.userForm.controls[controlName].hasError(errorName);
   };
-  onSubmit(values: any) {
-    // console.log(values, "ASAS");
-  }
+  onSubmit(values: any) {}
   constructor(
     private fb: FormBuilder,
     public dataServise: HttpService,
@@ -83,8 +83,6 @@ export class AddConnectionComponent implements OnInit {
       ConnectionDate: ['', Validators.required],
       Arrears: ['', Validators.required],
       ConnectionFee: ['', Validators.required],
-      // ConnectionFee
-      // Email: ['', [Validators.required, Validators.email]]
     });
   }
   inputset: FormGroup | any;

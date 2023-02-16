@@ -2,8 +2,6 @@
   class="d-flex justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto"
   *ngIf="showTable"
 >
-  <!-- class="d-flex card-div justify-content-center justify-content-lg-between justify-content-sm-center flex-wrap m-auto" -->
-
   <form [formGroup]="submit">
     <div class="input-div col-12 col-md-4">
       <input
@@ -33,39 +31,26 @@
       >
         PDF
       </button>
-      <!-- <button class="input-group-text cus-btn-down btn-c-3" id="basic-addon2" data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop">
-      Print
-    </button> -->
     </div>
   </div>
 </div>
 <br />
 <br />
 
-<div
-  *ngIf="TICKET_DATA && TICKET_DATA.length != 0"
-  class="container-6"
->
+<div *ngIf="TICKET_DATA && TICKET_DATA.length != 0" class="container-6">
   <div *ngIf="showTable">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body" id="assign">
         <div id="htmlData" class="table-responsive">
           <table
             mat-table
             [dataSource]="dataSource"
-            id="ExampleNormalTable"
             matSort
+            id="ExampleNormalTable"
             (matSortChange)="announceSortChange($event)"
             class=""
           >
-            <td mat-cell *matCellDef="let row" (click)="viewDetails(row)">
-              <!-- <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
-          </mat-checkbox> -->
-            </td>
+            <td mat-cell *matCellDef="let row" (click)="viewDetails(row)"></td>
 
             <!-- ticketID Column -->
             <ng-container matColumnDef="ticketID">
@@ -183,9 +168,6 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-            <!-- <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr> -->
           </table>
         </div>
 
@@ -198,7 +180,6 @@
   </div>
 </div>
 <div class="editData" *ngIf="!showTable">
-  <!--  [object]='subscriberdata'  text="text" -->
   <app-assign-details
     [object]="subscriberdata"
     text="text"

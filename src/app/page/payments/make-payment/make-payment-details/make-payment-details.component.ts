@@ -1,7 +1,6 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ChangeRequestComponent } from 'src/app/core/dialogBox/request/change-request/change-request.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ExtraRequestDialogBoxComponent } from 'src/app/core/dialogBox/extra-request-dialog-box/extra-request-dialog-box.component';
 import { ApplyDiscountDialogBoxComponent } from 'src/app/core/dialogBox/payment/apply-discount-dialog-box/apply-discount-dialog-box.component';
 import { UpdatePaymentComponent } from 'src/app/core/dialogBox/payment/make-payment/update-payment.component';
@@ -9,16 +8,16 @@ import { UpdatePaymentComponent } from 'src/app/core/dialogBox/payment/make-paym
 @Component({
   selector: 'app-make-payment-details',
   templateUrl: './make-payment-details.component.html',
-  styleUrls: ['./make-payment-details.component.scss']
+  styleUrls: ['./make-payment-details.component.scss'],
 })
-export class MakePaymentDetailsComponent   implements OnInit {
+export class MakePaymentDetailsComponent implements OnInit {
   // model
   animal: string | any;
   name: string | any;
-  constructor(private fb: FormBuilder,public dialog: MatDialog) {}
-  @Input() object:object | any;
-  @Input() text:string | any;
-  
+  constructor(private fb: FormBuilder, public dialog: MatDialog) {}
+  @Input() object: object | any;
+  @Input() text: string | any;
+
   loginForm: FormGroup | any;
   inputset: FormGroup | any;
 
@@ -26,9 +25,8 @@ export class MakePaymentDetailsComponent   implements OnInit {
   Reconnection: FormGroup | any;
   Change: FormGroup | any;
   Extra: FormGroup | any;
-  
+
   ngOnInit(): void {
-    
     this.initialForm();
     this.initialInputForm();
     this.initialReconnectionForm();
@@ -67,15 +65,14 @@ export class MakePaymentDetailsComponent   implements OnInit {
       road: '',
     });
   }
-  
- 
+
   applyDiscount(): void {
     const dialogRef = this.dialog.open(ApplyDiscountDialogBoxComponent, {
       width: '250px',
       data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
@@ -86,7 +83,7 @@ export class MakePaymentDetailsComponent   implements OnInit {
       data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
@@ -96,7 +93,7 @@ export class MakePaymentDetailsComponent   implements OnInit {
       data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
@@ -106,9 +103,8 @@ export class MakePaymentDetailsComponent   implements OnInit {
       data: this.object,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.animal = result;
     });
   }
-  
 }

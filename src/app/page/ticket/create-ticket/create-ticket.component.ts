@@ -51,54 +51,6 @@ export class CreateTicketComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-  userArray: any = [
-    {
-      id: 1,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 2,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 3,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 4,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-    {
-      id: 5,
-      subscriber: 'rushanth',
-      phone: '0776450707',
-      address: 'add 01',
-      status: '1212',
-      tv: '21',
-      type: 'NORMAL',
-    },
-  ];
-
   ngOnInit(): void {}
   searching(first: Object | any) {
     var Ctype: string = first.type;
@@ -115,11 +67,9 @@ export class CreateTicketComponent implements OnInit {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         }, 1);
-        // this.ifGetData = true;
         this.isFetchDataFail = false;
       },
       (err) => {
-        // this.ifGetData = true;
         this.isFetchDataFail = true;
       }
     );

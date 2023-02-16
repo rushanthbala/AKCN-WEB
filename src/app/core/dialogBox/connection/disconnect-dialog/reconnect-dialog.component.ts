@@ -72,13 +72,6 @@ export class ReconnectDialogComponent implements OnInit {
       conductdBy: adminId,
       connectionID: this.data.id,
     };
-    // if (data.actionDate == "" || data.remarks == "" ||
-    //   this.TechnicianId == "Technician"
-    // ) {
-    //   this.isEmpty();
-    //   this.loading = false;
-
-    // }
     if (!this.chackRequest.valid) {
       this.submitted = true;
       this.loading = false;
@@ -107,7 +100,6 @@ export class ReconnectDialogComponent implements OnInit {
   }
 
   getAll() {
-    // get TechnicianArray
     this.dataServise.getData(`employee`).subscribe((res) => {
       this.TechnicianArray = res;
     });

@@ -32,7 +32,6 @@ export class UserReportComponent {
   ifGetData: boolean = false;
   isFetchDataFail: boolean = false;
 
-
   constructor(
     private fb: FormBuilder,
     public dataServise: HttpService,
@@ -44,52 +43,37 @@ export class UserReportComponent {
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-
   ngOnInit(): void {}
 
   searching(first: Object | any) {
-    // var connectionId = first.connectionId
-    // var amount = first.amount
-    // var arreardate = first.arreardate
-    // console.log(connectionId, amount, arreardate);
-
     var userName = first.user.id;
     var fromdate = first.fromdate;
-    // console.log(fromdate, 'ff')
     let year1 = fromdate.getFullYear();
     let month1 = fromdate.getMonth() + 1;
     let day1 = fromdate.getDate();
-    if(day1 < 10){
-      day1 = "0" + day1;
+    if (day1 < 10) {
+      day1 = '0' + day1;
     }
 
-    if(month1 < 10){
-      month1 = "0" + month1;
+    if (month1 < 10) {
+      month1 = '0' + month1;
     }
 
-    let fromdate1 = year1 + "-" + month1 + "-" + day1 
-    // console.log(fromdate1)
+    let fromdate1 = year1 + '-' + month1 + '-' + day1;
 
     var todate = first.todate;
-    // console.log(todate, 'gg')
     let year2 = todate.getFullYear();
     let month2 = todate.getMonth() + 1;
     let day2 = todate.getDate();
-    if(day2 < 10){
-      day2 = "0" + day2;
+    if (day2 < 10) {
+      day2 = '0' + day2;
     }
 
-    if(month2 < 10){
-      month2 = "0" + month2;
+    if (month2 < 10) {
+      month2 = '0' + month2;
     }
 
-    let todate2 = year2 + "-" + month2 + "-" + day2 
-
-    // connectionId: connectionId, amount: amount,arreardate:arreardate
-    // var Ctype: string = first.type
-    // var url = findTypeUrl(Ctype)
-
-    // var cInput: String = first.searchinginput
+    let todate2 = year2 + '-' + month2 + '-' + day2;
     this.dataServise
       .getData(`userReport/${userName}/${fromdate1}/${todate2}`)
       .subscribe(
@@ -152,6 +136,5 @@ export class UserReportComponent {
   }
   viewDetails(id: any) {
     this.router.navigate([`auth/alter-connection/history/${id.id}`]);
-    // this.connectionId = id.id;
   }
 }

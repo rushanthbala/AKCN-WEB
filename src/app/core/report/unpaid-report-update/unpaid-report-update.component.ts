@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/servise/http/http.service';
 
@@ -44,7 +38,7 @@ export class UnpaidReportUpdateComponent {
   public StatusId: any;
   public StatusArray: any = [];
 
-  submitted = false
+  submitted = false;
 
   onChangeObj(newObj: any) {
     this.TechnicianName = newObj.firstName;
@@ -95,39 +89,20 @@ export class UnpaidReportUpdateComponent {
         value: 'Inactive',
       },
     ];
-    // get TechnicianArray
     this.dataServise.getData(`branch`).subscribe((res) => {
       this.BranchArray = res;
-      // if(res.length >0){
-      //   this.TechnicianName=res[0].firstName
-      //   this.TechnicianId=res[0].id
-      // }
     });
   }
-
-  // if(AreaID = 0){
-
-  // } else{
-
-  // }
 
   findArea(id: any) {
     this.dataServise.getData(`areaBybranchId/${id}`).subscribe((res) => {
       this.AreaArray = res;
-      // if(res.length >0){
-      //   this.TechnicianName=res[0].firstName
-      //   this.TechnicianId=res[0].id
-      // }
     });
   }
 
   findRoad(id: any) {
     this.dataServise.getData(`road/roadByAreaID/${id}`).subscribe((res) => {
       this.RoadArray = res;
-      // if(res.length >0){
-      //   this.TechnicianName=res[0].firstName
-      //   this.TechnicianId=res[0].id
-      // }
     });
   }
 
@@ -149,29 +124,18 @@ export class UnpaidReportUpdateComponent {
       RoadID: this.RoadId,
       AreaID: this.AreaId,
     };
-    // this.loading = true;
-
-    // let fromdate = this.loginForm.value.fromdate;
-    // let minAmount = this.loginForm.value.minAmount;
 
     if (
       this.BranchId == undefined ||
       this.RoadId == undefined ||
       this.AreaId == undefined
-      // !this.loginForm.valid
     ) {
       this.isEmpty();
-      // this.submitted = true
-      // this.loading = false;
     } else {
       this.OnClick.emit({ user: detailObj });
 
       this.loading = false;
     }
-
-    // this.OnClick.emit({ user: detailObj });
-
-    //   this.loading = false;
   }
   showSuccess() {
     this.toastr.success('Sucessfully Login', 'Sucessfully');
