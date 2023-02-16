@@ -26,6 +26,7 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
 
   Reconnection: FormGroup | any;
   submitted = false;
+  currentUser: any;
   ngOnInit(): void {
     this.initialReconnectionForm();
   }
@@ -50,8 +51,8 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
   }
   apply() {
     let todayDate = new Date();
-    var admin = JSON.parse(localStorage.getItem('auth') || '{}');
-    var adminId = admin ? admin.id : null;
+    const auth: any = localStorage.getItem('auth');
+    this.currentUser = JSON.parse(auth);
 
     let dataObj = {
       connectionID: this.data.id,
@@ -59,8 +60,8 @@ export class ApplyDiscountDialogBoxComponent implements OnInit {
       description: this.Reconnection.value.Remark,
       paymentType: 'DISCOUNT',
       amount: this.Reconnection.value.amount,
-      enteredBy: adminId,
-      conductedBy: adminId,
+      enteredBy: this.currentUser.firstName,
+      conductedBy: this.currentUser.firstName,
       phoneNo: this.data.primaryPhone,
     };
     if (!this.Reconnection.valid) {

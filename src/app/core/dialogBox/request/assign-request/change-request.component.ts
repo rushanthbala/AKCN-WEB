@@ -74,7 +74,7 @@ export class PendingChangeRequestComponent implements OnInit {
     this.currentUser = JSON.parse(auth);
 
     let dataObj = {
-      updatedBy: this.currentUser.firstName,
+      createdBY: this.currentUser.firstName,
       updatedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
       assignedTo: this.TechnicianName,
       assignedToID: this.TechnicianId,
