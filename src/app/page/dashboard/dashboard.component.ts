@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import { Component, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Chart, registerables } from 'node_modules/chart.js';
@@ -199,7 +198,7 @@ export class DashboardComponent implements OnInit {
           for (let i = 0; i < this.annualReportData.length; i++) {
             this.labledata?.push(
               this.annualReportData[i].month?.substring(0, 3)
-            );
+            );5
             this.realdata?.push(this.annualReportData[i].totalAmount);
           }
           this.renderChart(this.labledata, this.realdata);
