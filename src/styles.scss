@@ -6,12 +6,10 @@ html,
 body {
   height: 100%;
   font-family: "Montserrat", sans-serif !important;
-  // overflow: hidden;
 }
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif !important;
-  // overflow: hidden;
 }
 
 h1,
@@ -24,7 +22,6 @@ p {
 
 /* You can add global styles to this file, and also import other style files */
 :root {
-  // #008CB3
   --main: #fff;
   --primary: #00613d;
   --mainText: #00613d; /*using heading*/
@@ -40,24 +37,25 @@ p {
 .bootstrap-select .btn:focus {
   outline: none !important;
 }
-select,select:focus{
+select,
+select:focus {
   outline: none !important;
-  border-color:none !important;
-  box-shadow:none !important;
+  border-color: none !important;
+  box-shadow: none !important;
   outline: 0 none !important;
   border-color: none !important;
 }
-.form-select{
+.form-select {
   padding: 0.375rem 2.25rem 0.375rem 20px !important;
   font-size: 12px !important;
   height: 50px;
   color: #707070;
   opacity: 0.7;
 }
-.form-select:focus{
+.form-select:focus {
   outline: none !important;
-  border-color:none !important;
-  box-shadow:none !important;
+  border-color: none !important;
+  box-shadow: none !important;
   outline: 0 none !important;
   border-color: none !important;
 }
@@ -65,11 +63,6 @@ select,select:focus{
 .mat-drawer-inner-container::-webkit-scrollbar {
   display: none;
 }
-// select
-
-
-
-// intput 
 .int {
   padding-left: 20px;
   height: 50px;
@@ -80,10 +73,8 @@ select,select:focus{
   background: #99999911 0% 0% no-repeat padding-box;
   border-radius: 10px;
   color: #707070;
-  box-shadow:none !important;
+  box-shadow: none !important;
 }
-// btn
-
 .btn-com-sty {
   width: 100px;
   height: 40px !important;
@@ -108,9 +99,6 @@ select,select:focus{
   font-size: 14px;
   font-weight: 600;
 }
-
-// model box css
-
 .modal-header {
   border-bottom: none;
 }
@@ -134,7 +122,7 @@ select,select:focus{
   width: 100%;
 }
 .card-head-h2 {
-  color: #11193C;
+  color: #11193c;
   font-size: 13px;
   font-weight: 600;
   margin: 0px !important;
@@ -174,9 +162,6 @@ select,select:focus{
 .form-select {
   font-size: 14px !important;
 }
-
-
-// toast
 
 /* position */
 .toast-center-center {
@@ -230,10 +215,10 @@ select,select:focus{
 }
 .toast-message a,
 .toast-message label {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .toast-message a:hover {
-  color: #CCCCCC;
+  color: #cccccc;
   text-decoration: none;
 }
 .toast-close-button {
@@ -243,7 +228,7 @@ select,select:focus{
   float: right;
   font-size: 20px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
   text-shadow: 0 1px 0 #ffffff;
   /* opacity: 0.8; */
 }
@@ -282,7 +267,7 @@ button.toast-close-button {
   background-repeat: no-repeat;
   background-size: 24px;
   box-shadow: 0 0 12px #999999;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .toast-container .ngx-toastr:hover {
   box-shadow: 0 0 12px #000000;
@@ -322,16 +307,16 @@ button.toast-close-button {
   pointer-events: auto;
 }
 .toast-success {
-  background-color: #51A351;
+  background-color: #51a351;
 }
 .toast-error {
-  background-color: #BD362F;
+  background-color: #bd362f;
 }
 .toast-info {
-  background-color: #2F96B4;
+  background-color: #2f96b4;
 }
 .toast-warning {
-  background-color: #F89406;
+  background-color: #f89406;
 }
 .toast-progress {
   position: absolute;
@@ -368,10 +353,10 @@ button.toast-close-button {
     width: 25em;
   }
 }
-.errsmsg{
+.errsmsg {
   color: #dc3545 !important;
 }
-.errpad{
+.errpad {
   padding: 0px 0px 0px 10px;
   font-size: 14px;
 }

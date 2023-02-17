@@ -109,5 +109,6 @@ export class PendingDetailsComponent {
   }
   Back() {
     this.backTo.emit();
+    window.location.reload()
   }
 }

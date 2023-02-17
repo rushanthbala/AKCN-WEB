@@ -16,6 +16,7 @@ import autoTable from 'jspdf-autotable'
 import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import "jspdf-autotable";
 
 @Component({
   selector: 'app-pending-ticket',
@@ -34,6 +35,7 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
     'createdAt',
   ];
   EmployeeData: any;
+  dtElement: any;
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -149,7 +151,6 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
   }
   @ViewChild('content') content: ElementRef | any;
   @ViewChild('htmlData') htmlData!: ElementRef;
-
   public openPDF(): void {
     let date : any = new Date();
     let year : any = date.getFullYear();
@@ -179,8 +180,9 @@ export class PendingTicketComponent implements AfterViewInit, OnInit {
     var output2 = hours + ":" + minutes + ":" + seconds;
     let doc = new jsPDF();
     doc.text("Pending Tickets/"+ output + '/' + output2, 60, 10)
-    autoTable(doc, {html:"#ExampleNormalTable", theme:'striped', margin:{top: 20}});
+    autoTable(doc, {html:"#ExampleNormalTable",startY: 20, theme:'striped', margin:{top: 20}});
     doc.save('pending-ticket ' + output + ' ' + output2);
+     
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

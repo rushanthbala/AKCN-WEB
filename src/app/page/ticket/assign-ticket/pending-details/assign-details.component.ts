@@ -116,5 +116,6 @@ export class AssignDetailsComponent {
   }
   Back() {
     this.backTo.emit();
+    window.location.reload()
   }
 }

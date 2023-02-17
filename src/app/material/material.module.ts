@@ -11,13 +11,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [
     MatSortModule,
     MatTableModule,
@@ -28,7 +24,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatIconModule,
     MatDividerModule,
     MatPaginatorModule,
-    MatExpansionModule
-  ]
+    MatExpansionModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

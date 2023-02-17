@@ -106,5 +106,6 @@ export class PendingRequestDetailsComponent {
   }
   Back() {
     this.backTo.emit();
+    window.location.reload()
   }
 }

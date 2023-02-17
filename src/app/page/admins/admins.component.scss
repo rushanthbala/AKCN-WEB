@@ -1,143 +1,121 @@
 .register-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .int-div {
-    width: 100%;
-    text-align: center;
-  }
-  .btn-div {
-    max-width: 300px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .input-core {
-    height: 45px;
-    max-width: 500px;
-    min-width: 270px;
-    padding-left: 26px;
-    border: 1px solid #ccc;
-    border-radius: 24px;
-    outline: none;
-    width: 100%;
-    font-size: 16px;
-  }
-  .form-heading {
-    color: var(--mainText);
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
-  .form-btn {
-    background-color: var(--mainText);
-    height: 40px;
-    max-width: 30px;
-    min-width: 270px;
-    color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 24px;
-    width: 100%;
-    font-weight: 600;
-  }
-  
-  // enter
-  .subheadingCol {
-    color: var(--mainText);
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
-  .subheadingColLeft {
-    padding: 6px 18px;
-    border: 2px solid var(--mainText);
-    color: var(--mainText);
-    width: fit-content;
-    border-radius: 24px;
-    margin: auto 0px 0px auto;
-    cursor: pointer;
-  }
-  
-  .modal-header {
-    border-bottom: none;
-  }
-  
-  .model-footer {
-    border-bottom: none;
-  }
-  .modal {
-    margin-top: 6rem;
-  }
-  .modal-dialog {
-    box-shadow: 5px 5px 5px #ccc;
-  }
-  .modal-content {
-    border: none;
-  }
-  
-  // table
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+.int-div {
+  width: 100%;
+  text-align: center;
+}
+.btn-div {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+}
+.input-core {
+  height: 45px;
+  max-width: 500px;
+  min-width: 270px;
+  padding-left: 26px;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+}
+.form-heading {
+  color: var(--mainText);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.form-btn {
+  background-color: var(--mainText);
+  height: 40px;
+  max-width: 30px;
+  min-width: 270px;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  width: 100%;
+  font-weight: 600;
+}
+.subheadingCol {
+  color: var(--mainText);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.subheadingColLeft {
+  padding: 6px 18px;
+  border: 2px solid var(--mainText);
+  color: var(--mainText);
+  width: fit-content;
+  border-radius: 24px;
+  margin: auto 0px 0px auto;
+  cursor: pointer;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.model-footer {
+  border-bottom: none;
+}
+.modal {
+  margin-top: 6rem;
+}
+.modal-dialog {
+  box-shadow: 5px 5px 5px #ccc;
+}
+.modal-content {
+  border: none;
+}
+.main-div {
+  background-color: #fff;
+  height: auto;
+  border-radius: 24px;
+}
+@media only screen and (max-width: 900px) {
   .main-div {
-    background-color: #fff;
-    height: auto;
-    // margin-top: 2rem;
-    border-radius: 24px;
-    // margin:1rem 4rem 0rem 4rem;
+    margin: auto !important;
   }
-  @media only screen and (max-width:900px) {
-    .main-div {
-      margin: auto !important;
-    }
-  }
-  .img {
-    width: 100%;
-    max-width: 32px;
-    border-radius: 4px;
-  }
-  .main-heading {
-    font-weight: 700 !important;
-    font-size: 26px !important;
-    padding: 2rem 0px 0px 2rem;
-  }
-  .table-div {
-    padding: 1rem;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    padding: 10px;
-  }
-  
-  th,
-  td {
-    text-align: left;
-    padding: 8px;
-  }
-  th {
-    font-weight: 500;
-  }
-  td {
-    font-weight: 400;
-    color: #707070;
-  }
-  tr:nth-child(even) {
-    background-color: aliceblue;
-  }
-  
-  // .my-pagination /deep/ .ngx-pagination{
-  //   .ng-star-inserted{
-  //     a{
-  //       text-decoration: none;
-  //     }
-  //   }
-  //   .current {
-  //     background: var(--main);
-  //      a{
-  //       text-decoration: none;
-  //     }
-  //   }
-  // }
-  
+}
+.img {
+  width: 100%;
+  max-width: 32px;
+  border-radius: 4px;
+}
+.main-heading {
+  font-weight: 700 !important;
+  font-size: 26px !important;
+  padding: 2rem 0px 0px 2rem;
+}
+.table-div {
+  padding: 1rem;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  padding: 10px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+th {
+  font-weight: 500;
+}
+td {
+  font-weight: 400;
+  color: #707070;
+}
+tr:nth-child(even) {
+  background-color: aliceblue;
+}

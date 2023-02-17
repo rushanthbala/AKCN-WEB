@@ -122,5 +122,6 @@ export class AssignRequestDetailsComponent {
   } 
   Back(){
     this.backTo.emit()
+    window.location.reload()
   }
 }

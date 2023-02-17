@@ -42,8 +42,6 @@ export class AdminsComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    // this.userData = this.dataServise.userArray;
-    // getting real API
     this.getAllData();
     this.initialForm();
   }
@@ -59,8 +57,7 @@ export class AdminsComponent implements OnInit {
         this.userData = res;
       });
   }
-  handleDelete(id: any) {
-  }
+  handleDelete(id: any) {}
   AdminLogin() {
     this.loading = true;
     let data = {
@@ -74,19 +71,14 @@ export class AdminsComponent implements OnInit {
       (res: any) => {
         if (res.errorMessage) {
           this.errmsg = res.message || 'These credentials do not match !!.';
-          // localStorage.setItem('auth', 'res.token');
-          // this.router.navigate(['auth/home']);
           this.loading = false;
         } else {
           this.sucmsg = res.message || 'sucessfull !!.';
-          // console.log('auth', JSON.stringify(res.message));
           this.loading = false;
-          // this.router.navigate(['auth/admins/']);
           window.location.href = '/auth/admins/';
         }
       },
       (e) => {
-        // console.log(e, 'error');
         this.loading = false;
       }
     );
