@@ -2,15 +2,12 @@ import {
   Component,
   OnInit,
   ViewChild,
-  ElementRef,
   AfterViewInit,
 } from '@angular/core';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
 import { HttpService } from 'src/app/servise/http/http.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserPostPut } from 'src/app/core/dialogBox/settings/user-dialog/user-dialog.component';

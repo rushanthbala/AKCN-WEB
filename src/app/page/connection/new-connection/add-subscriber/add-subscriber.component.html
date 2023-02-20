@@ -110,62 +110,6 @@
           </mat-error>
         </div>
       </div>
-
-      <!-- password -->
-      <!-- <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
-        <div class="mb-3 cus-int-div">
-          <label for="email" class="form-label labels">Password </label>
-          <input
-            type="text"
-            formControlName="password"
-            class="form-control int"
-            id="email"
-            placeholder="Password"
-            minlength="6"
-            min="6"
-          />
-          <mat-error
-            *ngIf="checkErrorUserForm('password', 'required') && submitted"
-          >
-            Password is Required
-          </mat-error>
-          <mat-error
-            *ngIf="checkErrorUserForm('password', 'minlength') && submitted"
-          >
-            minimum 6 character
-          </mat-error>
-        </div>
-      </div> -->
-
-      <!-- <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center">
-        <div class="mb-3 cus-int-div">
-          <label for="email" class="form-label labels">Confirm Password </label>
-          <input
-            type="text"
-            formControlName="cPassword"
-            class="form-control int"
-            id="email"
-            placeholder="Password"
-            minlength="6"
-            min="6"
-          />
-          <mat-error
-            *ngIf="checkErrorUserForm('cPassword', 'required') && submitted"
-          >
-            Conform Password is Required
-          </mat-error>
-          <mat-error
-            *ngIf="
-              userForm.errors?.mismatch &&
-              (userForm.controls['password'].dirty ||
-                userForm.controls['password'].touched) &&
-              submitted
-            "
-          >
-            Password must be same
-          </mat-error>
-        </div>
-      </div> -->
     </div>
 
     <div class="row">
@@ -247,11 +191,6 @@
                 formControlName="OldID"
                 placeholder="Old Id"
               />
-              <!-- <mat-error
-                *ngIf="checkErrorUserForm('OldID', 'required') && submitted"
-              >
-                Old ID is Required
-              </mat-error> -->
             </div>
           </div>
         </div>
@@ -436,4 +375,3 @@
     </div>
   </form>
 </div>
-
