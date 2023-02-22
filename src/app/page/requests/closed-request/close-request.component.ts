@@ -32,6 +32,7 @@ export class CloseRequestComponent implements AfterViewInit, OnInit {
     'phone',
     'createdBy',
     'createdAt',
+    'doneAt'
   ];
 
   constructor(
@@ -66,6 +67,7 @@ export class CloseRequestComponent implements AfterViewInit, OnInit {
   getPendingData() {
     this.dataServise.getData(`request/status/closed`).subscribe(
       (res) => {
+        console.log(res)
         this.TICKET_DATA = res;
         this.dataSource = new MatTableDataSource(this.TICKET_DATA);
         setTimeout(() => {

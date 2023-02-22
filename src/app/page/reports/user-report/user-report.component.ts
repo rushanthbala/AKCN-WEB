@@ -24,10 +24,11 @@ export class UserReportComponent {
   userData: any = [];
   dataSource: any;
   displayedColumns: string[] = [
+    'invoiceID',
     'ConnectionID',
-    'ConnectionAddress',
-    'ConnectionStatus',
-    'ConnectionDate',
+    'description',
+    'amount',
+    'collectedAt',
   ];
   ifGetData: boolean = false;
   isFetchDataFail: boolean = false;

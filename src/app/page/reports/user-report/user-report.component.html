@@ -30,7 +30,25 @@
               class=""
             >
               <td mat-cell *matCellDef="let row"></td>
-              <!-- userID Column -->
+              <!-- invoiceId Column -->
+              <ng-container matColumnDef="invoiceID">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  sortActionDescription="Sort by invoiceID"
+                >
+                  Invoice ID
+                </th>
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  (click)="viewDetails(element)"
+                >
+                  {{ element.invoiceID }}
+                </td>
+              </ng-container>
+              <!-- collectionID Column -->
               <ng-container matColumnDef="ConnectionID">
                 <th
                   mat-header-cell
@@ -45,54 +63,52 @@
                   *matCellDef="let element"
                   (click)="viewDetails(element)"
                 >
-                  <a style="color: #027afe; cursor: pointer">{{
-                    element.connectionID
-                  }}</a>
+                  {{ element.connectionID }}
                 </td>
               </ng-container>
 
-              <!-- firstName Column -->
-              <ng-container matColumnDef="ConnectionAddress">
+              <!-- Description Column -->
+              <ng-container matColumnDef="description">
                 <th
                   mat-header-cell
                   *matHeaderCellDef
                   mat-sort-header
-                  sortActionDescription="Sort by ConnectionAddress"
+                  sortActionDescription="Sort by description"
                 >
-                  Connection Address
+                  Description
                 </th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.connectionAddress }}
+                  {{ element.description }}
                 </td>
               </ng-container>
 
-              <!-- roleID Column -->
-              <ng-container matColumnDef="ConnectionStatus">
+              <!-- amount Column -->
+              <ng-container matColumnDef="amount">
                 <th
                   mat-header-cell
                   *matHeaderCellDef
                   mat-sort-header
-                  sortActionDescription="Sort by ConnectionStatus"
+                  sortActionDescription="Sort by amount"
                 >
-                  Connection Status
+                  Amount
                 </th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.connectionStatus }}
+                  {{ element.amount }}
                 </td>
               </ng-container>
 
               <!-- status Column -->
-              <ng-container matColumnDef="ConnectionDate">
+              <ng-container matColumnDef="collectedAt">
                 <th
                   mat-header-cell
                   *matHeaderCellDef
                   mat-sort-header
-                  sortActionDescription="Sort by ConnectionDate"
+                  sortActionDescription="Sort by collectedAt"
                 >
-                  Connection Date
+                  Collected At
                 </th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.connectedDate }}
+                  {{ element.paidDateTime | date : "yyyy-MM-dd hh:mm" }}
                 </td>
               </ng-container>
 

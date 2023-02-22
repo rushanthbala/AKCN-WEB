@@ -47,7 +47,7 @@ export class TicketCancelDialogBoxComponent implements OnInit {
     return this.Reconnection.controls;
   }
   updateCancel() {
-    let newDate = new Date();
+    let newDate = new Date().toLocaleString("en-us", {timeZone:"Europe/London"});
     let dataObj = {
       reason: this.Reconnection.value.Remark,
       connectionID: this.data.id,

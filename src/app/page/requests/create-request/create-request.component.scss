@@ -1,44 +1,11 @@
 .card {
   border: none;
 }
-.card-text {
-  color: #000000;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 20px 0px 0px 15px;
-}
-.lbl {
-  padding-left: 20px;
-}
-.cus-form-check {
-  margin: 0px 14px 14px 1px;
-}
-.cus-btn {
-  background: #027afe !important;
-  color: #fff;
-  border-radius: 6px;
-}
-.int {
-  border-radius: 10px !important;
-  background-color: #99999917;
-}
-.main-div {
-  background-color: #fff;
-  border-radius: 24px;
-}
-@media only screen and (max-width: 900px) {
-  .main-div {
-    margin: auto !important;
-  }
-}
-.img {
-  width: 100%;
-  max-width: 32px;
-  border-radius: 4px;
-}
 .container-6 {
   display: flex;
   flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
 }
 
 .mat-table {
@@ -66,10 +33,13 @@
   color: #707070;
   opacity: 1;
   padding: 0px 108px 0px 0;
+  cursor: pointer;
 }
 .mat-cell {
   border: 0px;
-  cursor: pointer;
+}
+.mat-row {
+  border: 0px;
 }
 .mat-header-row {
   border: 0px;
@@ -96,25 +66,4 @@ td:last-child {
   color: #027afe;
   transform: none !important;
   opacity: 1 !important;
-}
-.status {
-  border-radius: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  width: 50%;
-  min-width: 60px;
-  font-size: 11px;
-}
-.DEACTIVE {
-  background-color: #b50a00;
-}
-.ACTIVE {
-  background-color: #31ab25;
-}
-.my-pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
 }

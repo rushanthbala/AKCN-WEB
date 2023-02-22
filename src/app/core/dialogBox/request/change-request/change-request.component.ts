@@ -56,7 +56,7 @@ export class ChangeRequestComponent implements OnInit {
     return this.chackRequest.controls;
   }
   ReconnectionRequest() {
-    let newDate = new Date();
+    let newDate = new Date().toLocaleString("en-US", { timeZone: "Europe/London" });;
     const auth: any = localStorage.getItem('auth');
     this.currentUser = JSON.parse(auth);
     let data = {
@@ -64,7 +64,7 @@ export class ChangeRequestComponent implements OnInit {
       description: this.chackRequest.value.description,
       address: this.chackRequest.value.address,
       createdBy: this.currentUser.firstName,
-      createdAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      createdAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
       roadId: this.roadId,
       areaId: this.areaId,
       requestType: 'Change Request',

@@ -31,6 +31,7 @@ export class DueReportComponent implements AfterViewInit, OnInit {
     'ConnectionAddress',
     'tvCount',
     'ConnectionDate',
+    'status',
     'dueAmount',
   ];
   ifGetData: boolean = false;

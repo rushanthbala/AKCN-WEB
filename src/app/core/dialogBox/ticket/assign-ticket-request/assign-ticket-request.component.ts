@@ -72,13 +72,13 @@ export class AssignTicketRequestDilogComponent implements OnInit {
     return this.chackRequest.controls;
   }
   assignYTicket() {
-    let newDate = new Date();
+    let newDate = new Date().toLocaleString("en-US", { timeZone: "Europe/London" });
    const auth: any = localStorage.getItem('auht');
    this.currentUser = JSON.parse(auth);
 
     let dataObj = {
       updatedBy: this.currentUser?.firstName,
-      updatedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      updatedAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
       assignedTo: this.TechnicianName,
       assignedToID: this.TechnicianId,
     };

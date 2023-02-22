@@ -164,6 +164,25 @@
               </td>
             </ng-container>
 
+            <!-- doneAt Column -->
+            <ng-container matColumnDef="doneAt">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                sortActionDescription="Sort by doneAt"
+              >
+                Done At
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="viewDetails(element)"
+              >
+                {{ element.closedAt | date : "yyyy-MM-dd hh:mm" }}
+              </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>

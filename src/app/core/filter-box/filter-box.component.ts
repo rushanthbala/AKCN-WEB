@@ -37,23 +37,6 @@ export class FilterBoxComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
   }
-
-  searching() {}
-  rename(name: string) {
-    if (name == 'ConnectionID') {
-      return 'Connection ID';
-    } else if (name == 'PhoneNo') {
-      return 'Phone Number';
-    } else if (name == 'NIC') {
-      return 'NIC';
-    } else if (name == 'OldID') {
-      return 'Old ID';
-    } else if (name == 'name') {
-      return 'Name';
-    } else {
-      return 'Value';
-    }
-  }
   emitEvent() {
     this.submitted = true;
     this.loading = true;

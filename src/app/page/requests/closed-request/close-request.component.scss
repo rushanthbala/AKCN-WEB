@@ -15,6 +15,9 @@
   color: #707070;
   padding: 0px 0px 0px 20px;
 }
+.cdk-keyboard-focused {
+  display: none !important;
+}
 .cus-btn-down {
   height: 40px;
   width: 50%;
@@ -67,7 +70,7 @@
   letter-spacing: 0px;
   color: #707070;
   opacity: 1;
-  padding: 0px 108px 0px 0;
+  padding: 0px 70px 0px 0;
 }
 .mat-cell {
   border: 0px;

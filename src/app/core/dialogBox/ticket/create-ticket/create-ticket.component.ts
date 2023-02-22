@@ -81,14 +81,15 @@ export class CreateTicketComponentDialog implements OnInit {
   }
 
   ReconnectionRequest() {
-    let newDate = new Date();
+    // let newDate = new Date();
+    const date = new Date().toLocaleString("en-US", { timeZone: "Europe/London" });
     let dataObj = {
       description: this.chackRequest.value.description,
       phone: this.chackRequest.value.phoneNumber,
       subject: this.subject,
       connectionID: this.data.id,
       createdBy: this.currentUser.firstName,
-      createdAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      createdAt: formatDate(date, 'yyyy-MM-dd hh:mm', 'en-US'),
     };
     if (!this.chackRequest.valid) {
       this.submitted = true;

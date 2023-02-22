@@ -35,14 +35,14 @@ export class ClosedRequestComponent implements OnInit {
     });
   }
   updateCancel() {
-    let newDate = new Date();
+    let newDate = new Date().toLocaleString("en-US", { timeZone: "Europe/London" });;
     const auth: any = localStorage.getItem('auth');
     this.currentUser = JSON.parse(auth);
 
     let dataObj = {
       updatedBy: this.currentUser.firstName,
-      closedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
-      updatedAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      closedAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
+      updatedAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
     };
     if (false) {
       this.isEmpty();

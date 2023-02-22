@@ -51,7 +51,7 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
   }
   ReconnectionRequest() {
     // request part
-    let newDate = new Date();
+    let newDate = new Date().toLocaleString("en-US", { timeZone: "Europe/London" });;
     const auth: any = localStorage.getItem('auth');
     this.currentUser = JSON.parse(auth);
 
@@ -61,7 +61,7 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
       description: this.Reconnection.value.description,
       phone: this.Reconnection.value.phoneNumber,
       createdBy: this.currentUser.firstName,
-      createdAt: formatDate(newDate, 'yyyy-MM-dd', 'en-US'),
+      createdAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
       subject: 'Extra TV',
     };
     if (!this.Reconnection.valid) {
