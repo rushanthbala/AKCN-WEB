@@ -66,7 +66,7 @@ export class EditConnectionDialogComponent implements OnInit {
       roadID: this.roadId,
       areaCode: this.areaId,
       connectionAddress: this.chackRequest.value.houseNo,
-      connectionID: this.data.id,
+      connectionID: this.data.connectionID,
       oldID: this.chackRequest.value.oldId,
       status: 'Active',
       connectedDate: formatDate(todayDate, 'yyyy-MM-dd', 'en-US'),
@@ -76,10 +76,9 @@ export class EditConnectionDialogComponent implements OnInit {
       actionDate: formatDate(todayDate, 'yyyy-MM-dd', 'en-US'),
     };
 
+    console.log(dataSet)
+
     if (
-      dataSet.oldID == '' ||
-      dataSet.tvCount == '' ||
-      dataSet.connectionAddress == '' ||
       dataSet.roadID == 'Road' ||
       dataSet.areaCode == 'Area' ||
       dataSet.branchID == 'Branch'

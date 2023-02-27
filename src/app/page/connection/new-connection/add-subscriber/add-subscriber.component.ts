@@ -29,6 +29,7 @@ export class AddCSubsciberComponent implements OnInit {
   userForm: FormGroup | any;
   submitted = false;
   nic: any;
+  isSubmitted= false 
   ngOnInit(): void {
     setTimeout(() => {
       this.getAll();
@@ -175,6 +176,7 @@ export class AddCSubsciberComponent implements OnInit {
                   this.showSuccess();
                   this.loading = false;
                   this.OnClick.emit();
+                  this.isSubmitted = true
                 }
               },
               (e) => {

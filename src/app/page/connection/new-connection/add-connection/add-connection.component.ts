@@ -132,9 +132,7 @@ export class AddConnectionComponent implements OnInit {
           this.loading = false;
         }
       );
-    } else {
-      alert('error');
-    }
+    } 
   }
   showSuccess() {
     this.toastr.success('Sucessfully Created', 'Sucessfull');

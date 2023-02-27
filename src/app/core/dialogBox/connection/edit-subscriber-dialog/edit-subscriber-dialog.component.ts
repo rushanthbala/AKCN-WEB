@@ -74,8 +74,7 @@ export class EditSubscriberDialogComponent implements OnInit {
       datas.lastName == '' ||
       datas.primaryNo == '' ||
       datas.secoundaryNo == 'Road' ||
-      datas.NIC == 'Area' ||
-      datas.email == ''
+      datas.NIC == 'Area'
     ) {
       this.isEmpty();
     } else {

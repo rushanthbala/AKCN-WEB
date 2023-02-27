@@ -45,7 +45,7 @@
             formControlName="secondaryPhone"
             class="form-control int"
             id="Secondary Phone"
-            placeholder="Secondary Phone"
+            placeholder="Secondary Ph (Not required)"
           />
           <!-- <mat-error
             *ngIf="
@@ -64,7 +64,7 @@
             formControlName="email"
             class="form-control int"
             id="email"
-            placeholder="email"
+            placeholder="email (Not required)"
           />
           <!-- <mat-error
             *ngIf="checkErrorUserForm('email', 'required') && submitted"
@@ -189,7 +189,7 @@
                 class="form-control int"
                 id="OldID"
                 formControlName="OldID"
-                placeholder="Old Id"
+                placeholder="Old Id (Not required)"
               />
             </div>
           </div>
@@ -367,11 +367,13 @@
     >
       <button
         class="input-group-text cus-btn-down btn-c-2"
-        (click)="addEventClick(); submitButton.disabled = true"
-        #submitButton
+        (click)="addEventClick()"
+        [disabled]="isSubmitted"
       >
         Add New Subscriber
       </button>
     </div>
   </form>
 </div>
+<!-- ; submitButton.disabled = true"
+        #submitButton -->
