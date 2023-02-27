@@ -89,7 +89,7 @@ export class CreateTicketComponentDialog implements OnInit {
       subject: this.subject,
       connectionID: this.data.id,
       createdBy: this.currentUser.firstName,
-      createdAt: formatDate(date, 'yyyy-MM-dd hh:mm', 'en-US'),
+      createdAt: formatDate(date, 'yyyy-MM-dd HH:mm', 'en-US'),
     };
     if (!this.chackRequest.valid) {
       this.submitted = true;

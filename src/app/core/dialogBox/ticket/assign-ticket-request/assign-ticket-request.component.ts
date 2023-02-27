@@ -78,7 +78,7 @@ export class AssignTicketRequestDilogComponent implements OnInit {
 
     let dataObj = {
       updatedBy: this.currentUser?.firstName,
-      updatedAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
+      updatedAt: formatDate(newDate, 'yyyy-MM-dd HH:mm', 'en-US'),
       assignedTo: this.TechnicianName,
       assignedToID: this.TechnicianId,
     };

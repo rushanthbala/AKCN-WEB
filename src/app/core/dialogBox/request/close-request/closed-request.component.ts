@@ -41,8 +41,8 @@ export class ClosedRequestComponent implements OnInit {
 
     let dataObj = {
       updatedBy: this.currentUser.firstName,
-      closedAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
-      updatedAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
+      closedAt: formatDate(newDate, 'yyyy-MM-dd HH:mm', 'en-US'),
+      updatedAt: formatDate(newDate, 'yyyy-MM-dd HH:mm', 'en-US'),
     };
     if (false) {
       this.isEmpty();

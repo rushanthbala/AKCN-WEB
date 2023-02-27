@@ -61,7 +61,7 @@ export class ExtraRequestDialogBoxComponent implements OnInit {
       description: this.Reconnection.value.description,
       phone: this.Reconnection.value.phoneNumber,
       createdBy: this.currentUser.firstName,
-      createdAt: formatDate(newDate, 'yyyy-MM-dd hh:mm', 'en-US'),
+      createdAt: formatDate(newDate, 'yyyy-MM-dd HH:mm', 'en-US'),
       subject: 'Extra TV',
     };
     if (!this.Reconnection.valid) {
