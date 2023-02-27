@@ -202,6 +202,6 @@ export class AddCSubsciberComponent implements OnInit {
     this.toastr.error('Someting Went Wrong', 'Error');
   }
   isEmpty() {
-    this.toastr.error('Please fill out all field', 'Error');
+    this.toastr.error('This Phone Number is Already taken', 'Error');
   }
 }
